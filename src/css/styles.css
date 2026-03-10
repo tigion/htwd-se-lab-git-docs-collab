@@ -1,0 +1,54 @@
+/* htwd header */
+#htwd {
+  display: table;
+  padding: 28px;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+  width: 100%;
+}
+#htwd a {
+  color: inherit;
+  text-decoration: underline;
+}
+#htwd span.text {
+  display: inline-block;
+}
+#htwd span.separator {
+  margin: 0 7px;
+}
+#htwd .htwd-logo,
+#htwd .htwd-menu,
+#htwd .htwd-cz {
+  display: table-cell;
+}
+#htwd .htwd-logo {
+  width: 148px;
+}
+#htwd .htwd-logo img {
+  width: 120px;
+  min-width: 120px;
+  margin: 0 28px 0 0;
+  padding: 0;
+}
+#htwd .htwd-menu {
+  vertical-align: middle;
+  line-height: 1.4em;
+}
+#htwd .htwd-cz {
+  width: 56px;
+}
+#htwd .htwd-cz img {
+  height: 29px;
+  margin: 0 0 0 28px;
+  border-radius: 20px;
+  opacity: 0.25;
+}
+#htwd .htwd-cz a:hover img {
+  opacity: 0.5;
+}
+
+/* Asciidoctor */
+
+.listingblock {
+  font-size: 0.9em;
+}

@@ -1,0 +1,24 @@
+include::header.inc.adoc[]
+
+== Teil 8 - GitHub Actions
+
+.Lernziele
+****
+#TODO#: GitHub Actions
+****
+
+{section-separator}
+
+=== 1. ...
+
+==== Aufgabe 1.1 - ...
+
+1. ...
+
+{section-separator}
+
+=== 2. ...
+
+==== Aufgabe 2.1 - ...
+
+include::sitemap.inc.adoc[]

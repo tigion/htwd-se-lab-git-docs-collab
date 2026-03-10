@@ -1,0 +1,25 @@
+include::header.inc.adoc[]
+
+== Teil 5 - Code-Review und Integration
+
+.Lernziele
+****
+#TODO#: Anlegen und Verwenden von Pull-Requests als Technik für Code Review und
+Integration, auch mit mehreren Commits, Diskussionen im PR
+****
+
+{section-separator}
+
+=== 1. ...
+
+==== Aufgabe 1.1 - ...
+
+1. ...
+
+{section-separator}
+
+=== 2. ...
+
+==== Aufgabe 2.1 - ...
+
+include::sitemap.inc.adoc[]

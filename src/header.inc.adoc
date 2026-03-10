@@ -1,0 +1,60 @@
+= Praktikumsaufgaben SE I/II
+// --- author, revision ---
+Christoph Zirkelbach <christoph.zirkelbach@htw-dresden.de>
+//{localdatetime}
+//0.1, 30.09.2019
+// --- metadata ---
+//:description:
+//:keywords:
+// --- settings ---
+//:doctype: book
+:toc:
+//:toc: left
+:toclevels: 3
+:toc-title: Inhaltsverzeichnis
+:icons: font
+:experimental:
+//:sectnums:
+//:sectnumlevels:
+:figure-caption: Abbildung
+:table-caption: Tabelle
+:!example-caption:
+:xrefstyle: full
+// highlight: rouge - for PDF generation
+//:source-highlighter: rouge - local installed
+//:rouge-style: github
+// highlight: highlight.js - for HTML preview/generation (also VSCode Extension)
+:source-highlighter: highlight.js
+:highlightjs-theme: github
+:highlightjs-languages: asciidoc
+//:last-update-label!:
+//:last-update-label: Asciidoctor {asciidoctor-version} | Zuletzt geändert am
+// --- folders ---
+//ifndef::imagesdir[:imagesdir: images]
+:imagesdir: images
+:diagramsdir: diagrams
+:plantumlsdir: plantuml
+// --- HTML ---
+:nofooter:
+:docinfo: shared
+:sectanchors:
+:favicon:
+:!webfonts:
+// --- PDF ---
+// Hyphenation for PDF documents
+:lang: DE
+:hyphens:
+// --- Alias ---
+// blank line alias
+:bl: pass:[ +]
+//:s1: {empty} +
+:section-separator: pass:[<hr style="margin: 3em auto 2.8em; width: 75%; border-top: 1px dashed lightgray">]
+// --- main document ---
+:maindocument: true
+
+
+// Preamble
+Praktikumsreihe zu Versionsverwaltung, Docs-as-Code und Zusammenarbeit
+
+
+// Don't delete the last two empty lines to avoid include errors

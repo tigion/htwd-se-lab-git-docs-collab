@@ -1,0 +1,76 @@
+
+.Hinweise zum Praktikum in den Windows-Laboren
+[%collapsible]
+====
+=====
+Aufgrund der nicht gespeicherten Nutzer-Profile in den *Windows-Laboren*, sind zu jedem Praktikumsbeginn folgende Schritte durchzuführen:
+
+****
+.Check-Liste zur Vorbereitung
+- [ ] https://www.informatik.htw-dresden.de/~zirkelba/praktika/se/arbeiten-mit-git-und-asciidoc/[Aufgabenstellung] geöffnet
+- [ ] https://github.com/[GitHub] Webseite geöffnet und eingeloggt
+- [ ] Projekt-Repository in GitHub geöffnet
+- [ ] _.gitconfig_ wiederhergestellt (`C:\Users\<username>\.gitconfig`)
+- [ ] Projekt in Visual Studio Code geöffnet
+- [ ] AsciiDoc-Erweiterung installiert
+****
+
+.Schritte zur Vorbereitung des Praktikums
+[%collapsible]
+======
+. Git-Konfiguration `C:\Users\<username>\.gitconfig` *wiederherstellen* oder anpassen:
++
+.per Editor in der _.gitconfig_
+[source,ini]
+----
+[user]
+  name = Vorname Nachname
+  email = s00000@stud.htw-dresden.de
+[safe]
+  directory = *
+----
+//[http]
+//  proxy = http://www-cache.htw-dresden.de:3128
++
+.oder per PowerShell und Git-Kommandos
+[source,console]
+----
+> git config --global user.name "Vorname Nachname"
+> git config --global user.email s00000@stud.htw-dresden.de
+> git config --global --add safe.directory *
+----
+//> git config --global http.proxy http://www-cache.htw-dresden.de:3128
+//. Visual Studio Code: Installieren der Erweiterung https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[AsciiDoc] vom _asciidoctor_ Projekt.
+. Visual Studio Code: Anpassen der AsciiDoc-Einstellungen:
+** Asciidoc > Preview: *Use Editor Style*: icon:square-o[] (deaktiviert)
+** Asciidoc > Extensions: *Enable Kroki*: icon:check-square-o[] (aktiviert)
+. icon:github[] GitHub Login mit gespeichertem oder neuem Personal Access Token über die PowerShell bekanntgeben:
++
+.Repository vorhanden
+[source,console]
+----
+> U:
+> cd path/to/repository/<repo-name>/
+> git pull
+Authentifizierung ...
+----
++
+.Repository nicht vorhanden (Home-/SAMBA-Laufwerk)
+[source,console]
+----
+> U:
+> cd path/to/repository/
+> git clone https://github.com/.../<repo-name>
+Authentifizierung ...
+----
++
+.Repository nicht vorhanden (TEMP-Laufwerk)
+[source,console]
+----
+> T:
+> git clone https://github.com/.../<repo-name>
+Authentifizierung ...
+----
+======
+=====
+====
