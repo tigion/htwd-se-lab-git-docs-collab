@@ -439,7 +439,7 @@ die Einstellungen in den Nutzerprofilen nicht gespeichert werden.
 
 {section-separator}
 
-=== 3. VS Code, AsciiDoc, Git
+=== 3. VS Code, AsciiDoc
 
 ==== Aufgabe 3.1 - Anpassung von VS Code
 
@@ -523,7 +523,14 @@ image::screenshot_vscode_asciidoc.png[Screenshot VSCode mit AsciiDoc Vorschau, w
 
 . Speichern Sie die Änderungen in Ihrer Datei _Beispieldokumentation.adoc_.
 
-==== Aufgabe 3.2 - Versionierung mit Git
+{section-separator}
+
+=== 4. Git-Workflow
+
+.Überblick zum Git Workflow
+image::grafik_git_workflow.jpg[Überblick zum Git Workflow, width=800]
+
+==== Aufgabe 4.1 - Versionierung der Änderungen
 
 Mit den folgenden Schritten nehmen Sie mithilfe von Visual Studio Code die
 Änderungen in Ihrem Projekt/Workspace als neue Version in Ihr Git-Repository auf:
