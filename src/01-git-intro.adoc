@@ -4,10 +4,11 @@ include::header.inc.adoc[]
 
 .Lernziele
 ****
-* Einrichtung und Kennenlernen der Grundlagen zur Nutzung von *GitHub*, *Git*,
-und *Visual Studio Code*
+* Einrichtung und Kennenlernen von *GitHub*, *Git*, und *Visual Studio Code*
 * Anlegen eines ersten Dokumentes mit *AsciiDoc*-Syntax.
-* Anwenden eines einfachen *Git-Workflows* zur Versionierung von Änderungen an einem Projekt
+* Anwenden des *Git-Workflows* zur Versionierung von Änderungen
+* Erstellen von HTML- und PDF-Dokumenten aus AsciiDoc-Dateien
+* Ignorieren von nicht ins Repository aufzunehmender Dateien
 ****
 
 {section-separator}
@@ -587,16 +588,215 @@ Arbeitsablauf::
 =====
 ====
 
+{section-separator}
+
+=== Extras
+
+==== HTML/PDF-Generierung
+
+
+Für die Generierung verwenden Sie im Terminal (PowerShell, Terminal in Visual
+Studio Code: "Menü > View > Terminal") den Befehle `asciidoctor` bzw.
+`asciidoctor-pdf`.
+
+.HTML
+[source,console]
+----
+$ asciidoctor Beispieldokumentation.adoc
+----
+
+.PDF
+[source,console]
+----
+$ asciidoctor-pdf Beispieldokumentation.adoc
+$ asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
+----
+
+Die fertig generierten Dokumente sehen dann wie folgt aus:
+
+:imageTitle: Screenshot Generiertes HTML (link) und PDF (rechts)
+:imageFile: screenshot_html_pdf.png
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=500]
+
+.Hinweise zur Nutzung über die *ilux150*
+[%collapsible]
+====
+=====
+Das Generieren der AsciiDoc-Dokumente kann auch auf dem Login-Server *ilux150*
+der Fakultät durchgeführt werden. Hier ist die entsprechenden
+Asciidoctor-Umgebung installiert.
+
+[IMPORTANT]
+======
+Studenten des Modules I925 (Studiengang Wirtschaftsingenieurwesen) haben keinen
+Zugriff auf die ilux150.
+======
+
+*Variante 1 (erstmalig): Repository Clone auf der ilux150 nicht vorhanden*
+
+. Loggen Sie sich per SSH oder über einen SSH-Client (Windows: bspw.
+  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html[Putty]) auf
+  den Linux-Server *ilux150* ein:
++
+[source,console]
+----
+$ ssh s00000@ilux150.informatik.htw-dresden.de
+----
+
+. Passen Sie, falls noch nicht geschehen, ihre Git-Konfig _.gitconfig_ an und
+  setzen Ihren Namen und E-Mail. (Siehe
+  <<praktikumsaufgaben-teil-01.adoc#section_git_config, Teil
+  1 - Git-Konfiguration per Git-Kommando>>):
++
+[source,console]
+----
+$ git config --global user.name "Vorname Nachname"
+$ git config --global user.email s00000@informatik.htw-dresden.de
+----
+
+. Navigieren Sie zu dem Verzeichnis, in dem Sie eine Kopie Ihres Repositories
+  *clonen* wollen.
++
+[source,console]
+----
+$ cd path/to/praktika/se/
+----
+
+. Clonen Sie Ihr Repository *htwd-se-example-project*:
++
+[source,console]
+----
+$ git clone https://github.com/<username>/htwd-se-example-project.git
+----
+
+. Wechseln Sie in das eben erstellte Verzeichnis *htwd-se-example-project*:
++
+[source,console]
+----
+$ cd htwd-se-example-project
+----
+
+. Generieren Sie die benötigten Dokumente:
++
+.HTML
+[source,console]
+----
+$ asciidoctor Beispieldokumentation.adoc
+----
++
+.PDF
+[source,console]
+----
+$ asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
+----
+
+*Variante 2: Repository Clone auf der ilux150 vorhanden*
+
+. Loggen Sie sich per SSH oder über einen SSH-Client (Windows: bspw.
+  https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html[Putty]) auf
+  den Linux-Server *ilux150* ein:
++
+[source,console]
+----
+$ ssh s00000@ilux150.informatik.htw-dresden.de
+----
+
+. Navigieren Sie zu Ihrem Projektverzeichnis *htwd-se-example-project*:
++
+[source,console]
+----
+$ cd path/to/praktika/se/htwd-se-example-project
+----
+
+. Aktualisieren Sie Ihr Repository auf den aktuellen Stand von GitHub:
++
+[source,console]
+----
+$ git pull
+----
+
+. Generieren Sie die benötigten Dokumente:
++
+.HTML
+[source,console]
+----
+$ asciidoctor Beispieldokumentation.adoc
+----
++
+.PDF
+[source,console]
+----
+$ asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
+----
+
+[NOTE]
+======
+Arbeiten Sie in den Windows-Laboren auf Ihrem `U:\`-Studentenlaufwerke (SAMBA),
+müssen Sie es auf der ilux150 nicht erst clonen, sondern navigieren direkt zu
+Ihrem Repository Verzeichnis.
+======
+=====
+====
+
+
+==== Dateien ignorieren
+
+Um zu verhindern, dass *ungewollte* oder *generierbare* Dateien, wie bspw.
+HTML- und PDF-Dateien, in das Repository aufgenommen bzw. deren Änderungen
+überwacht werden, müssen diese von Git ignoriert werden.
+
+Dafür gibt es die Möglichkeit, eine Datei _.gitignore_ im Repository anzulegen, in
+welcher alle Dateien, Verzeichnisse und Dateitypen festgelegt werden, welche Git
+ignorieren soll.
+
+[IMPORTANT]
+====
+Die Datei _.gitignore_ muss in Ihr Repository aufgenommen werden, damit Sie für jeden der Mitwirkenden gilt.
+====
+
+Um alle HTML- und PDF-Dateien im Projekt zu ignorieren, bieten sich folgende
+Einträge in der _.gitignore_ an:
+
+..gitignore
+[source,gitignore]
+----
+*.html
+*.pdf
+----
+
+Eine komplexere _.gitignore_ um HTML- und PDF-Dateien nur im *docs*-Verzeichnis
+zu ignorieren:
+
+..gitignore (komplexeres Beispiel)
+[source,gitignore]
+----
+# ignore unwanted files <1>
+*~
+.DS_Store
+
+# ignore special folder '.asciidoctor'
+.asciidoctor/ <2>
+
+# ignore files in the docs folder
+docs/*.html <3>
+docs/*.pdf
+----
+<1> mit `#` erhält man eine Kommentarzeile
+<2> Dies ist ein spezielles Verzeichnis, welches Asciidoctor beim Generieren
+(inkl. Vorschau) anlegt und temporäre Daten zwischenspeichert.
+<3> ignoriert `\*.html` und `*.pdf` Dateien nur im *docs*-Verzeichnis
+
 
 {section-separator}
 
 
-=== Vorbereitung privater Rechner
+==== Vorbereitung privater Rechner
 
 Für die Bearbeitung der Aufgaben und des späteren Beleges an Ihrem privaten
-Rechner, müssen Sie, falls noch nicht vorhanden, *Git* und *Visual Studio Code*
-und optional *Asciidoctor* installieren. Beachten Sie hierzu auch die Hinweise
-im Praktikum.
+Rechner, müssen Sie, falls noch nicht vorhanden, mindestens *Git* und *Visual
+Studio Code* samt *AsciiDoc-Erweiterung* installieren. Beachten Sie hierzu auch
+die Hinweise im Praktikum.
 
 TIP: Die zusammengefassten Hinweise zu der Installation für icon:windows[]
 Windows, icon:linux[] Linux und icon:apple[] macOS finden Sie unter

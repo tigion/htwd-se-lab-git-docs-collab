@@ -1,10 +1,11 @@
 include::header.inc.adoc[]
 
-== Teil 4 - Diagramme 1
+== Teil 6 - Code-Review und Integration
 
 .Lernziele
 ****
-#TODO#: PlantUML in Asciidoc: UML-Klassendiagramme und C4-Modell Level 1 und 2
+#TODO#: Anlegen und Verwenden von Pull-Requests als Technik für Code Review und
+Integration, auch mit mehreren Commits, Diskussionen im PR
 ****
 
 {section-separator}

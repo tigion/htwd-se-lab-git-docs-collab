@@ -1,11 +1,11 @@
 include::header.inc.adoc[]
 
-== Teil 7 - Diagramme 2
+== Teil 4 - Aufgabenmanagement
 
 .Lernziele
 ****
-#TODO#: PlantUML in Asciidoc: C4-Modell Level 3 und 4, Dynamic Diagram,
-Deployment Diagram
+#TODO#: Issues, Subissues, Labels, Projects, Boards, Abbildung von Product Backlog und
+Task Board (Tasks pro Sprint), Verknüpfung von Issues und Commits
 ****
 
 {section-separator}

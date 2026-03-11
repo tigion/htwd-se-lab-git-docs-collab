@@ -1,0 +1,358 @@
+include::header.inc.adoc[]
+
+== Teil 3 - Konflikte lösen
+
+In diesem Praktikumsteil geht es um Konflikte bei der Zusammenarbeit im Team
+oder der Verwendung von Branches mit Git und wie diese gelöst werden können.
+
+.Zusammenarbeit im Team mit Git
+image::grafik_overview_git_teamarbeit.jpg["Zusammenspiel von Git, GitHub und AsciiDoc im Praktikum", width=800, link="images/grafik_overview_git_teamarbeit.jpg"]
+
+.Lernziele
+****
+* Verwenden eine Repositorys im Team über GitHub
+* Umgang mit Konflikten in der Teamarbeit oder bei Branches mit Git
+* Lösen von Konflikten bei einem `git pull` oder `git push`
+****
+
+include::notes-windows-lab.inc.adoc[]
+
+{section-separator}
+
+=== Wie entstehen Konflikte?
+
+Beim Bearbeiten Ihres Projektes kann es an verschiedenen Stellen zu Konflikten
+kommen. Dies betrifft unterschiedliche Versionsstände in Branches oder Ihrer
+Teammitglieder gegenüber dem entfernten Repository auf GitHub.
+
+Die Konflikte bzw. Unterschiede lassen sich entweder *automatisch*
+zusammenführen (_merge_) oder erfordern ein *manuelles* Eingreifen (bspw.
+überschneidende Änderungen).
+
+[NOTE]
+====
+Mit `git merge --abort` lässt sich bei einem Konflikt der aktuelle
+Merge-Vorgang abbrechen und in den vorherigen Zustand zurückkehren. So kann der
+Konflikt zu einem späteren Zeitpunkt gelöst werden oder weitere Änderungen
+vorgenommen werden.
+====
+
+.Schritte zum Lösen eines push-Error Konfliktes mit `git pull`
+image::grafik_git_push_error.png["Schritte zum Lösen eines push-Error Konfliktes mit `git pull`", width=1024, link="images/grafik_git_push_error.png"]
+
+.Schritte zum Lösen eines push-Error Konfliktes mit `git pull --rebase`
+image::grafik_git_push_error2.png["Schritte zum Lösen eines push-Error Konfliktes mit `git pull --rebase`", width=1024, link="images/grafik_git_push_error2.png"]
+
+.Hinweis: push-Error Konflikte lösen
+[%collapsible]
+====
+=====
+Beim Senden *push* (`git push`) der Änderungen des lokalen Repositories zum
+Remote-Repository kann es zu einem Konflikt bzw. Fehler kommen, wenn das
+Remote-Repository in der Zwischenzeit neuere Versionen (_commits_) erhalten
+hat.
+
+In diesem Falle ist es notwendig sich die aktuell Version vom Remote-Repository
+über ein *pull* (`git pull` oder `git pull --rebase`) zu laden, was zwei
+Möglichkeiten eröffnet:
+
+Änderung an unterschiedlicher Stelle::
+* Variante `git pull`:
+.. Git kann Ihre lokalen Änderungen *automatisch* mit der neueren Version vom
+   Remote-Repository zusammenführen (*merge*). Es wird automatisch ein neuer
+   *Commit* vorbereitet (Message eingeben).
+.. Anschließend können Sie mit einem wiederholten *push* die neu
+   zusammengeführte Version an das Remote-Repository senden.
+* Variante `git pull --rebase`:
+.. Git passt die Basis (*rebase*) Ihrer lokalen Änderung an die neueste Version
+   des Remote-Repositories an. Bei einem Konflikt kann mit `git rebase --abort`
+   der Vorgang abgebrochen und dieser manuell mit `git pull` gelöst werden.
+.. Anschließend können Sie mit einem wiederholten *push* die neu
+   zusammengeführte Version an das Remote-Repository senden.
+
+Änderung an gleicher Stelle bzw. Überschneidung::
+Git kann Ihre lokalen Änderung *nicht automatisch* mit der neueren Version vom
+Remote-Repository zusammenführen (*mergen*). Die betreffenden Dateien
+beinhalten an den sich überschneidenden Zeilen beide Varianten. Oben die lokale
+und unten die entfernte Variante. Dies wird wie folgt markiert:
++
+----
+ <<<<<<< HEAD
+ Änderung 1
+ =======
+ Änderung 2
+ >>>>>>> feb62f7c8cb4201e4f7e2aede0b81c356c1cd31e
+----
++
+. Lösen sie den Konflikt *manuell*, besprechen Sie sich hierzu ggf. im Team,
+  durch ein Ersetzen bzw. Vereinen der Änderungen in den betreffenden Dateien.
+  Entfernen Sie die durch Git hinzugefügten Markierung.
++
+Alternativ entscheiden Sie sich für eine von beiden Versionen und ersetzen die
+lokale Version mit beiden Änderungen entweder mit Ihrer lokalen oder der
+entfernten Variante:
++
+----
+% git checkout --ours <file_name> <1>
+% git checkout --theirs <file_name> <2>
+----
+<1> ... Nimmt Ihre lokale Version
+<2> ... Nimmt die Version vom _remote_-Repository
++
+. Nehmen Sie die manuell angepasste Änderung (_add_ und _commit_) in Ihr
+  lokales Repository auf. Anschließend können Sie mit einem wiederholten *push*
+  die neu zusammengeführte Version an das Remote-Repository senden.
+=====
+====
+
+.Hinweis: pull-Error Konflikte lösen
+[%collapsible]
+====
+=====
+Sie haben in Ihrem lokalen Repository noch nicht versionierte oder noch im
+INDEX vorgemerkte Änderungen, welche auf einer älteren Version als das
+Remote-Repository basieren.
+
+Variante 1 - lokale nicht versionierte Änderung erst in das Repository aufnehmen::
+. Nehmen Sie Ihre lokale Änderung (_add_ und _commit_) als Version in Ihr
+  Repository auf.
+. Laden Sie sich mit *pull* die aktuelle Version vom Remote-Repository.
+. Git versucht den Konflikt automatisch zu lösen bzw. müssen Sie Ihn manuell
+  auflösen (_merge_).
+. Nehmen Sie Ihre neu bearbeiteten Änderungen (_add_ und _commit_) in Ihr
+  lokales Repository auf. Anschließend können Sie mit *push* die neu
+  zusammengeführte Version an das Remote-Repository senden.
+
+Variante 2 - lokale nicht versionierte Änderung verwerfen::
+. Mit `git checkout .` werden alle Änderungen im Workspace gegenüber Ihrer
+  letzten lokalen Version verworfen.
+. Anschließend können Sie mit *pull* die aktuelle Version des
+  Remote-Repositories laden.
+
+Variante 3 - lokale nicht versionierte und vorgemerkte Änderung verwerfen::
+. Mit `git reset --hard` werden alle Änderungen im INDEX und Workspace
+  gegenüber Ihrer letzten lokalen Version verworfen.
+. Anschließend können Sie mit *pull* die aktuelle Version des
+  Remote-Repositories laden.
+
+Weitere Varianten::
+- Mit https://git-scm.com/docs/git-stash[stash] können Sie lokale noch nicht
+  versionierte Änderungen temporär Zwischenspeichern und Ihren lokalen Stand
+  auf die letzte Version Ihres lokalen Repositories zurücksetzen.
+=====
+====
+
+.Hinweis: Fehler bei fehlender `git config pull` Einstellung für Merge, Rebase oder FF
+[%collapsible]
+====
+=====
+Ist kein Standardverhalten für den Umgang mit neuen Version und lokalen
+Versionen bei einem `pull` angegeben, muss dies noch zusätzlich in die
+*.gitconfig* mit aufgenommen werden.
+
+.Fehlermeldung:
+----
+Hinweis: Sie haben abweichende Branches und müssen angeben, wie mit diesen
+Hinweis: umgegangen werden soll.
+Hinweis: Sie können dies tun, indem Sie einen der folgenden Befehle vor dem
+Hinweis: nächsten Pull ausführen:
+Hinweis:
+Hinweis:   git config pull.rebase false  # Merge <1>
+Hinweis:   git config pull.rebase true   # Rebase <2>
+Hinweis:   git config pull.ff only       # ausschließlich Vorspulen <3>
+Hinweis:
+Hinweis: Sie können statt "git config" auch "git config --global" nutzen, um
+Hinweis: einen Standard für alle Repositories festzulegen. Sie können auch die
+Hinweis: Option --rebase, --no-rebase oder --ff-only auf der Kommandozeile nutzen,
+Hinweis: um das konfigurierte Standardverhalten pro Aufruf zu überschreiben.
+Schwerwiegend: Es muss angegeben werden, wie mit abweichenden Branches umgegangen werden sollen.
+----
+<1> ... Es wird eine neue Version erzeugt, welche das vereinte Ergebnis der
+lokalen und gepullten Versionen enthält.
+<2> ... Es wird die Basis der lokalen Versionen auf die neu gepullte Versionen
+aktualisiert.
+<3> ... Es wird keine neue Version erzeugt, sondern nur die neuen Versionen
+geladen. Es tritt ein Fehler auf, wenn es lokale Versionen gibt und es muss
+händisch ein Merge oder Rebase durchgeführt werden.
+=====
+====
+
+
+{section-separator}
+
+=== 1. Einrichtung des Teams
+
+Für die Bearbeitung der Aufgaben bilden Sie bitte Teams aus zwei Personen.
+Entscheiden Sie selbst, wer der Verantwortliche für das Git-Repository ist.
+
+.Rollen im Team:
+- icon:user[] **Person A** ... Mitglied im Team, Repository-Eigentümer
+- icon:user[] **Person B** ... Mitglied im Team
+
+Sind sie zu dritt, gibt es eine Rolle icon:user[] **Person C** mit ähnlichen
+Aufgaben wie Person B. Beispielsweise Erfassung der verwendeten Software in
+einer Datei _Software.adoc_.
+
+
+==== Aufgabe 1.1 - Repository erstellen
+
+.icon:user[] Person A
+Erstellen Sie in Ihrem GitHub-Account ein neues *_privates_* Repository
+*htwd-se-example-teamproject* mit folgenden Einstellungen:
+
+  * Repository name: `htwd-se-example-teamproject`
+  * Description: `Beispielteamprojekt für die Praktikumsaufgaben zum Thema Git und AsciiDoc`
+  * Initialize this repository with a README: `Ja`
+
+==== Aufgabe 1.2 - Mitglieder hinzufügen
+
+.icon:user[] Person A
+Fügen Sie Ihrem Repository *htwd-se-example-teamproject* über die Einstellungen
+"Settings > Manage access > Collaborators > Invite a collaborator" ihre
+Teammitglieder über den Account-Namen oder die E-Mail hinzu.
+
+[NOTE]
+====
+Alle Mitlgieder haben Schreibrechte und können gleichberechtigt Änderungen am
+Repository vornehmen. Siehe auch
+https://help.github.com/en/articles/permission-levels-for-a-user-account-repository[Permission
+levels for a user account repository].
+====
+
+.icon:user[] Person B
+Schauen Sie in Ihr Mail-Postfach und nehmen Sie die Einladung zum
+*htwd-se-example-teamproject* an. Öffnen Sie anschließend das Team-Repository
+auf GitHub von Person A.
+
+[NOTE]
+====
+Damit der Einladungslink funktioniert, müssen Sie im Webbrowser  schon bei
+GitHub angemeldet sein.
+====
+
+// ==== Aufgabe 1.3 - lokale Git-Konfiguration prüfen
+//
+// .icon:users[] Person A, B
+// Prüfen Sie mit `git config --list` Ihre lokale Git-Konfiguration, ob Ihr Name
+// und Ihre E-Mail korrekt gesetzt sind. Sollte dies nicht der Fall sein, passen
+// Sie sie laut <<praktikumsaufgaben-teil-01.adoc#section_git_config, Teil 1:
+// Aufgabe 2.1 - Konfiguration>> an.
+
+==== Aufgabe 1.3 - Repository Clonen
+
+.icon:users[] Person A, B
+Clonen Sie jeweils das Repository *htwd-se-example-teamproject* von Person A in
+ihr Studentenlaufwerk, bspw. unter `U:\praktika\se\`, oder an geeigneter Stelle
+lokal auf ihren Rechner.
+
+
+{section-separator}
+
+=== 2. Bearbeiten des Projektes
+
+==== Aufgabe 2.1 - vorgegebene Reihenfolge
+
+Es tritt kein Konflikt auf, da die Teammitglieder in einer vorgegebenen
+Reihenfolge arbeiten und sich nicht gegenseitig überschreiben. Diese Variante
+ist in der Praxis eher untypisch, da hier jeder immer auf den Stand des anderen
+warten muss, bevor er mit der Bearbeitung beginnen kann.
+
+.icon:user[] Person A
+1. Erstellen Sie im lokalen Workspaces Ihres *htwd-se-example-teamproject*
+   Repositories ein Verzeichnis *docs* und legen Sie in diesem eine neue Datei
+   *_Teamdokumentation.adoc_* mit folgendem Inhalt in Visual Studio Code an:
++
+.Teamdokumentation.adoc
+[source,asciidoc]
+----
+= Teamdokumentation
+Vorname Nachname <email>
+0.1, 01.09.2019
+:toc:
+:toc-title: Inhaltsverzeichnis
+// Platzhalter für weitere Dokumenten-Attribute
+
+== Einführung
+Dieses Dokument dient im Praktikum als Spielwiese für das Kennenlernen und
+praktische Üben von AsciiDoc und Teamarbeit mit Git.
+----
+2. Speichern Sie und nehmen Sie Ihre Änderungen als neue Version in Ihr lokales
+   Git-Repository und Ihr Team-Repository auf GitHub auf.
+
+.icon:user[] Person B
+1. Aktualisieren Sie mit "... > Pull" Ihr lokales Repository mit dem Stand von
+   entfernten Repository auf GitHub.
+2. Legen Sie in Ihrem Repository die neue Datei *Teammitglieder.adoc* im
+   Verzeichnis *docs* mit folgendem Inhalt in Visual Studio Code an:
++
+.Teammitglieder.adoc
+[source,asciidoc]
+----
+== Teammitglieder
+----
+3. Speichern Sie und nehmen Sie Ihre Änderungen als neue Version in Ihr lokales
+   Git-Repository und das Team-Repository auf GitHub auf.
+
+.icon:users[] Person A, B
+Aktualisieren (`git pull`) Sie Ihr lokales Repository, damit *jeder* den
+gleichen Stand wie das gemeinsame Team-Repository auf GitHub haben.
+
+.Aktuelle Projektstruktur:
+----
+htwd-se-example-teamproject
+├── docs
+│   ├── Teamdokumentation.adoc
+│   └── Teammitglieder.adoc
+└── README.md
+----
+
+==== Aufgabe 2.2 - freie Teamarbeit
+
+Bearbeiten Sie im Team die folgenden Aufgaben und nehmen Sie jeweils *jede
+einzelne gelöste Aufgabe* als neue Version in Ihr lokales und Ihr entferntes
+(GitHub) Teamrepository auf.
+
+Es ist keine bestimmt Reihenfolge vorgegeben, nur was wer tun soll. Versuchen
+Sie aufgetretene _merge_-Konflikte zu lösen oder provoziere Sie diese.
+
+[NOTE]
+====
+Mehrere Autoren werden in eine Zeile getrennt mit `;` + Leerzeichen
+geschrieben. Besteht ein Autorenname aus mehr als drei Teilen, müssen die Vor-
+und Nachnamen mit `_` jeweils zu einer Gruppe zusammengefasst werden.
+====
+
+.Aufgaben - icon:user[] Person A
+- Ergänzen Sie in der Datei *_Teamdokumentation.adoc_* im Dokumentenkopf Ihren
+  Namen und Ihre E-Mail.
+- Binden Sie in der Datei *_Teamdokumentation.adoc_* an geeigneter Stelle die
+  Dateie _Teammitglieder.adoc_ (und _Software.adoc_) über
+  https://asciidoctor.org/docs/user-manual/#include-directive[includes] ein.
+- Passen Sie in der Datei *_README.md_* den Titel an und fügen Sie eine kurze
+  Beschreibung hinzu.
+
+.Aufgaben - icon:user[] Person B
+- Ergänzen Sie in der Datei *_Teamdokumentation.adoc_* im Dokumentenkopf Ihren
+  Namen und Ihre E-Mail.
+- Legen Sie in der Datei *_Teammitglieder.adoc_* eine Tabelle mit den Namen und
+  der Rolle der Teammitglieder an.
+- Legen Sie eine Datei .gitignore an, um HTML- und PDF-Datei vom Repository
+  auszuschließen.
+
+.Endaufgabe - icon:users[] Person A, B
+. Aktualisieren Sie, wenn alle Aufgaben erledigt sind, Ihr lokales Repository.
+. Lassen Sie sich in VS Code über die AsciiDoc-Erweiterung die Vorschau der
+  fertigen Datei *_Teamdokumentation.adoc_* anzeigen und den Projektverlauf
+  (commit history) in Ihrem GitHub Repository.
+
+
+// {section-separator}
+//
+// === Ausblick
+//
+// Eine weitere Möglichkeiten für die Zusammenarbeit über GitHub sind *Pull
+// requests*, welche wir uns im nächsten Semester
+// (<<praktikumsaufgaben-teil-09.adoc#, Teil 9 - Teamarbeit 4: Code-Review>>)
+// anschauen.
+
+include::sitemap.inc.adoc[]

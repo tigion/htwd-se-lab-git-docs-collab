@@ -66,15 +66,16 @@ replace='\
   <li><span style="color: #ccc;"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Notizen<\/span><\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE I<\/span><\/li>\
   <li><a href="01-git-intro.html">Teil 1 - Git Intro<\/a><\/li>\
-  <li><a style="color: #ccc;" href="02-branching.html">Teil 2 - Parallel arbeiten<\/a><\/li>\
-  <li><a style="color: #ccc;" href="03-issues-projects.html">Teil 3 - Aufgabenmanagement<\/a><\/li>\
-  <li><a style="color: #ccc;" href="04-plantuml-1.html">Teil 4 - Diagramme 1<\/a><\/li>\
-  <li><a style="color: #ccc;" href="05-pull-requests.html">Teil 5 - Code-Review und Integration<\/a><\/li>\
+  <li><a href="02-branching.html">Teil 2 - Parallel arbeiten<\/a><\/li>\
+  <li><a href="03-conflicts.html">Teil 3 - Konflikte lösen<\/a><\/li>\
+  <li><a style="color: #ccc;" href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
+  <li><a style="color: #ccc;" href="05-plantuml-1.html">Teil 5 - Diagramme 1<\/a><\/li>\
+  <li><a style="color: #ccc;" href="06-pull-requests.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
   <\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
-  <li><a style="color: #ccc;" href="06-advanced-git.html">Teil 6 - Git Advanced<\/a><\/li>\
-  <li><a style="color: #ccc;" href="07-plantuml-2.html">Teil 7 - Diagramme 2<\/a><\/li>\
-  <li><a style="color: #ccc;" href="08-github-actions.html">Teil 8 - GitHub Actions<\/a><\/li>\
+  <li><a style="color: #ccc;" href="07-advanced-git.html">Teil 7 - Git Advanced<\/a><\/li>\
+  <li><a style="color: #ccc;" href="08-plantuml-2.html">Teil 8 - Diagramme 2<\/a><\/li>\
+  <li><a style="color: #ccc;" href="09-github-actions.html">Teil 9 - GitHub Actions<\/a><\/li>\
   <\/li>\
 '
 printf "Add extra sidemap: "

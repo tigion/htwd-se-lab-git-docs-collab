@@ -9,14 +9,15 @@ a|
 [unstyled]
 * icon:hand-o-right[] <<01-git-intro.adoc#, Teil 1 - Git Intro>>
 * icon:hand-o-right[] <<02-branching.adoc#, Teil 2 - Parallel arbeiten>>
-* icon:hand-o-right[] <<03-issues-projects.adoc#, Teil 3 - Aufgabenmanagement>>
-* icon:hand-o-right[] <<04-plantuml-1.adoc#, Teil 4 - Diagramme 1>>
-* icon:hand-o-right[] <<05-pull-requests.adoc#, Teil 5 - Code-Review und Integration>>
+* icon:hand-o-right[] <<03-conflicts.adoc#, Teil 3 - Konflikte lösen>>
+* icon:hand-o-right[] <<04-issues-projects.adoc#, Teil 4 - Aufgabenmanagement>>
+* icon:hand-o-right[] <<05-plantuml-1.adoc#, Teil 5 - Diagramme 1>>
+* icon:hand-o-right[] <<06-pull-requests.adoc#, Teil 6 - Code-Review und Integration>>
 a|
 [discrete]
 === Praktika - SE II
 [unstyled]
-* icon:hand-o-right[] <<06-advanced-git.adoc#, Teil 6 - Git Advanced>>
-* icon:hand-o-right[] <<07-plantuml-2.adoc#, Teil 7 - Diagramme 2>>
-* icon:hand-o-right[] <<08-github-actions.adoc#, Teil 8 - GitHub Actions>>
+* icon:hand-o-right[] <<07-advanced-git.adoc#, Teil 7 - Git Advanced>>
+* icon:hand-o-right[] <<08-plantuml-2.adoc#, Teil 8 - Diagramme 2>>
+* icon:hand-o-right[] <<09-github-actions.adoc#, Teil 9 - GitHub Actions>>
 |===

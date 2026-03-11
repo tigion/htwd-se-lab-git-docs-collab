@@ -1,6 +1,6 @@
 include::header.inc.adoc[]
 
-== Teil 8 - GitHub Actions
+== Teil 9 - GitHub Actions
 
 .Lernziele
 ****

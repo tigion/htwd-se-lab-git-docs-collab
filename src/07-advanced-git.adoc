@@ -1,11 +1,10 @@
 include::header.inc.adoc[]
 
-== Teil 3 - Aufgabenmanagement
+== Teil 7 - Git Advanced
 
 .Lernziele
 ****
-#TODO#: Issues, Subissues, Labels, Projects, Boards, Abbildung von Product Backlog und
-Task Board (Tasks pro Sprint), Verknüpfung von Issues und Commits
+#TODO#: Weiterführende Git Techniken: diff, restore, checkout, ggf. stash, rebase
 ****
 
 {section-separator}
