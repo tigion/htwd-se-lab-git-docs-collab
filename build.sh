@@ -51,7 +51,7 @@ attributes="-a toc=left"
 required_libs="-r asciidoctor-diagram"
 find "$source_folder" -maxdepth 1 -type f -name "*.adoc" -not -name "*.inc.adoc" -exec echo "  "{} \; -exec asciidoctor $attributes $required_libs -D "$build_folder" {} \;
 attributes="-a toc=auto"
-for special_subfolder in "faq" "installation-und-konfiguration"; do
+for special_subfolder in "faq" "install-and-config"; do
   find "${source_folder}/${special_subfolder}" -type f -name "*.adoc" -not -name "*.inc.adoc" -exec echo "  "{} \; -exec asciidoctor $attributes $required_libs -D "${build_folder}/${special_subfolder}" {} \;
 done
 echo "done"
@@ -61,7 +61,7 @@ search='<li><a href="#sitemap"><span class="icon"><i class="fa fa-sitemap"><\/i>
 replace='\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Seitenübersicht<\/span><\/li>\
   <li><a href="index.html">Einführung<\/a><\/li>\
-  <li><a href="installation-und-konfiguration\/index.html" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Installation \&amp; Konfiguration<\/a><\/li>\
+  <li><a href="install-and-config\/index.html" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Installation \&amp; Konfiguration<\/a><\/li>\
   <li><a href="faq\/index.html" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> FAQ \&amp; Tipps<\/a><\/li>\
   <li><span style="color: #ccc;"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Notizen<\/span><\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE I<\/span><\/li>\
@@ -102,9 +102,9 @@ fi
 
 # Copies additional folders and files to the build folder.
 printf "Copy additional files: "
-find "$source_folder" -mindepth 1 -maxdepth 1 -not \( -name "*.adoc" -o -name "*docinfo*" -o -name ".*" -o -name "plantuml" -o -name "faq" -o -name "installation-und-konfiguration" \) -exec cp -r {} "${build_folder}/" \;
+find "$source_folder" -mindepth 1 -maxdepth 1 -not \( -name "*.adoc" -o -name "*docinfo*" -o -name ".*" -o -name "plantuml" -o -name "faq" -o -name "install-and-config" \) -exec cp -r {} "${build_folder}/" \;
 find "${source_folder}/faq" -mindepth 1 -maxdepth 1 -not \( -name "*.adoc" -o -name "*docinfo*" -o -name ".*" -o -name "plantuml" \) -exec cp -r {} "${build_folder}/faq/" \;
-find "${source_folder}/installation-und-konfiguration" -mindepth 1 -maxdepth 1 -not \( -name "*.adoc" -o -name "*docinfo*" -o -name ".*" -o -name "plantuml" \) -exec cp -r {} "${build_folder}/installation-und-konfiguration/" \;
+find "${source_folder}/install-and-config" -mindepth 1 -maxdepth 1 -not \( -name "*.adoc" -o -name "*docinfo*" -o -name ".*" -o -name "plantuml" \) -exec cp -r {} "${build_folder}/install-and-config/" \;
 echo "done"
 
 # Runs the deploy script if needed.

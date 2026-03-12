@@ -800,7 +800,7 @@ die Hinweise im Praktikum.
 
 TIP: Die zusammengefassten Hinweise zu der Installation für icon:windows[]
 Windows, icon:linux[] Linux und icon:apple[] macOS finden Sie unter
-link:installation-und-konfiguration/[Installation & Konfiguration].
+link:install-and-config/[Installation & Konfiguration].
 
 
 include::sitemap.inc.adoc[]
