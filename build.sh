@@ -69,7 +69,7 @@ replace='\
   <li><a href="02-branching.html">Teil 2 - Parallel arbeiten<\/a><\/li>\
   <li><a href="03-conflicts.html">Teil 3 - Konflikte lösen<\/a><\/li>\
   <li><a style="color: #ccc;" href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
-  <li><a style="color: #ccc;" href="05-plantuml-1.html">Teil 5 - Diagramme 1<\/a><\/li>\
+  <li><a href="05-plantuml-1.html">Teil 5 - Diagramme 1<\/a><\/li>\
   <li><a style="color: #ccc;" href="06-pull-requests.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
   <\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
