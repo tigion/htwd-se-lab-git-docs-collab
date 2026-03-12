@@ -8,6 +8,8 @@ include::header.inc.adoc[]
 Task Board (Tasks pro Sprint), Verknüpfung von Issues und Commits
 ****
 
+include::notes-windows-lab.inc.adoc[]
+
 {section-separator}
 
 // Die Bearbeitung der Aufgabe 1 und zum Teil in Aufgabe 2 erfolgt in Ihrem Team-Repository *htwd-se-example-teamproject* aus dem letzten Praktikum. In Aufgabe 3 nehmen Sie Ihr Repository *htwd-se-example-project*.
