@@ -10,16 +10,208 @@ Task Board (Tasks pro Sprint), Verknüpfung von Issues und Commits
 
 {section-separator}
 
-=== 1. ...
+// Die Bearbeitung der Aufgabe 1 und zum Teil in Aufgabe 2 erfolgt in Ihrem Team-Repository *htwd-se-example-teamproject* aus dem letzten Praktikum. In Aufgabe 3 nehmen Sie Ihr Repository *htwd-se-example-project*.
+//
+// {section-separator}
 
-==== Aufgabe 1.1 - ...
 
-1. ...
+=== 1. GitHub Issues
+
+#TODO#
+
+NOTE: Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. They’re kind of like email—except they can be shared and discussed with the rest of your team. Most software projects have a bug tracker of some kind. GitHub’s tracker is called Issues, and has its own section in every repository. - https://guides.github.com/features/issues/[GitHub]
+
+GitHub bietet mit dem Bereich *Issues* eine Möglichkeit anstehende Aufgaben, aufgetretene Probleme und mögliche Verbesserungen zentral in Ihrem Projekt innerhalb Ihres Repository zu verwalten und zu diskutieren.
+
+:imageTitle: Screenshot: Bereich Issues auf GitHub
+:imageFile: screenshot_github_issues.png
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+
+Jeder Issue (Aufgabe, Ticket, ...) besteht aus einem *Titel* und der *Beschreibung* des Sachverhaltes. Zusätzlich können zur besserer Verwaltung noch *Assignees* (Beauftrage), *Labels* und weitere Kriterien hinzugefügt werden. Ebenfalls kann über *Kommentar* der Issue diskutiert und mit Anmerkungen versehen werden. Eine detailierte Beschreibung finden Sie in dem Guide: https://guides.github.com/features/issues/[Mastering Issues]
+
+Bei Verwendung bestimmter *Keywords* (https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords[Closing issues using keywords]) in den Commit Messages können *referenzierte Issues* automatisch geschlossen werden.
+
+.Hinweise: Verwenden von Referenzen in Issue-Kommentaren und Commits
+[%collapsible]
+====
+=====
+In den Issues und Commits können in den Kommentaren/Mitteilungen Verweise auf andere Elemente verwendet werden. Diese werden von GitHub automatisch verlinkt.
+
+[#table_verweise]
+.Ausgewählte Verweise
+[cols="1,1,3"]
+|===
+| *Issue*  | Nummer      | `#2`
+| *Commit* | SHA hash    | `5000fb638483c95d5f0346181af32096db2d23ff`
+| *User*   | Accountname | `@account`
+|===
+
+Siehe auch: https://help.github.com/en/articles/autolinked-references-and-urls[Autolinked references and URLs]
+
+Beispiele:
+
+* Commit Message:
+** `Setze Erweiterung aus Issue #2 um`
+** `Setze Erweiterung um (#2)`
+* Commit Message mit automatischem Schließen der zugehörigen Issue:
+** `Korrigiere Fehler (close #2)`
+* Issue Kommentar:
+** `... siehe Commit 479bcfca71f10423c0f1181853017b83af062c46`
+=====
+====
+
+==== Aufgabe 1.1 - Issues
+
+#TODO#:
+
+- Jeder eine Issue anlegen, Label und Teammitglied zuweisen (Assignees), Diskutieren
+
+
+==== Aufgabe 1.2 - Sub-Issues
+
+#TODO#:
+
+- Jeweils zwei Sub-Issues zur angelegten Issue erstellen
+- ...
+
+==== Aufgabe 1.3 - Issues bearbeiten, referenzieren
+
+#TODO#:
+
+- Zugewiesene Issues bearbeiten,
+- Referenzen in Commit Messages und Issue-Kommentaren verwenden
+- Issues schließen (manuell und automatisch über Commit Message)
 
 {section-separator}
 
-=== 2. ...
+=== 2. GitHub Projects
 
-==== Aufgabe 2.1 - ...
+#TODO#:
+
+- Was sind GitHub Projects?
+- Was sind Sichten und Boards?
+- Wie können Aufgaben (Issues) in Projects verwaltet werden?
+
+==== Aufgabe 2.1 - Projekt anlegen
+
+#TODO:#
+
+- Projekt anlegen
+
+==== Aufgabe 2.1 - Product Backlog
+
+#TODO#:
+
+- Sicht/Board für Product Backlog anlegen
+- vorhandene Issues zuweisen
+- neue Issues anlegen
+
+==== Aufgabe 2.2 - Task Board
+
+#TODO#:
+
+- Sicht/Board für Task Board anlegen
+- vorhandene/neu Issues zuweisen
+
+{section-separator}
+
+=== Extras
+
+==== Issue Check-Lists
+
+In den Issue-Beschreibungen können auch Aufgabenlisten angelegt werden. Dies können Teilschritte einer Issue sein oder eine Art Check-Liste, ob bspw. alle genannten Teammitglieder diese erfüllt haben. Bei Bedarf können Teilaufgaben auch in Sub-Issues oder neue Issues umgewandelt werden.
+
+Siehe auch: https://docs.github.com/de/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists[Informationen zu Aufgabenlisten]
+
+.Hinweise: Beispiele für Aufgabenlisten in Issues
+[%collapsible]
+====
+=====
+.Beispiel für Teilaufgaben:
+[code, markdown]
+----
+Abnahmekriterien:
+
+- [ ] Teilaufgabe 1 erledigt
+- [ ] Feedback eingeholt
+- [ ] Dokumentation aktualisiert
+- [ ] ...
+----
+
+.Beispiel für eine Check-Liste:
+[code, markdown]
+----
+Macht euch mit Aufgabenlisten vertraut.
+
+- [ ] Person A
+- [ ] Person B
+----
+=====
+====
+
+==== Issue Templates
+
+Mit Hilfe von https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates[Issue-Templates] können Vorgaben (wie Labels) und Strukturen für verschiedene Issues-Arten (User Stories, Tasks, Risiken, usw.) definiert werden.
+Diese Vorlage kann dann beim Erstellen einer Issue ausgewählt werden.
+
+- Repository-Einstellungen -> General -> Features -> Issues -> kbd:[Set up templates]
+- Die Templates werden unter dem Verzeichnis `.github/ISSUE_TEMPLATE/` im Repository gespeichert und mit versioniert.
+
+==== Issues Filters
+
+In der *Issues* Anzeige von GitHub werden alle vorhandenen *Issues* und
+*Pull Requests* aufgelistet. Standardmäßig ist die Sicht mit `is:issue is:open` auf offene Issues gefiltert.
+
+:imageTitle: Issue-Ansicht in GitHub
+:imageFile: screenshot_github_issues_filter.jpg
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+
+.Hinweise zu den Filtermöglichkeiten
+[%collapsible]
+====
+=====
+Für eine gezielte Sicht auf bestimmt Einträge, gibt es ein Vielzahl an Filtermöglichkeiten und deren Kombination. Ausgewählte finden Sie in der <<table_filterkritterien>> und eine komplette Liste und weitere Informationen unter folgenden Links:
+
+- https://help.github.com/en/github/searching-for-information-on-github/searching-issues-and-pull-requests[GitHub - Searching issues and pull requests]
+- https://help.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax[GitHub - Understanding the search syntax]
+- https://help.github.com/en/github/searching-for-information-on-github/sorting-search-results[GitHub - Sorting search results].
+
+.Ausgewählte Filterkritterien
+[#table_filterkritterien]
+[cols="1,3"]
+|===
+| Filter      | Beschreibung
+
+| `is:pr`     | Pull-Requests
+| `is:issue`  | Issues
+| `is:open`   | offen
+| `is:closed` | geschlossen
+| `author:USERNAME` | von einem Nutzer erstellt
+| `assignee:USERNAME` | einem Nutzer zugewiesen
+| `label:LABEL` | einem Label zugeordnet
+| `milestone:MILESTONE` | einem Meilenstein zugeordnet
+| `project:PROJECT` | einem Projekt zugeordnet
+|===
+
+.Filterkritterien für fehlende Angaben
+[cols="1,3"]
+|===
+| Filter         | Beschreibung
+
+| `no:label`     | keinem Label zugeordnet
+| `no:milestone` | keinem Meilenstein zugeordnet
+| `no:project`   | keinem Projekt zugeordnet
+| `no:assignee`  | keinem Nutzer zugeordnet
+|===
+
+Ein Filter mit `is:issue is:open no:assignee` ist sehr hilfreich, um offenen *Issues*, welchen keine Nutzer zur Bearbeitung zugeordnet sind, im Blick zu haben. Über ein `sort:created-asc` lässt sich die Ausgabe zeitlich sortieren.
+
+NOTE: Filter lassen sich aktuell nicht direkt in GitHub speichern, aber die Seiten-URL enthält nach einer Suche den Filter und lässt sich so als Bookmark speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
+`/issues?q=is:open+is:issue+no:assignee+sort:created-asc`
+=====
+====
+
 
 include::sitemap.inc.adoc[]
