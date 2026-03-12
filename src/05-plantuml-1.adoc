@@ -7,6 +7,8 @@ include::header.inc.adoc[]
 #TODO#: PlantUML in Asciidoc: UML-Klassendiagramme und C4-Modell Level 1 und 2
 ****
 
+include::notes-windows-lab.inc.adoc[]
+
 {section-separator}
 
 === 1. ...

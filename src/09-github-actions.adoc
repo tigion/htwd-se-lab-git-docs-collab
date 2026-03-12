@@ -7,6 +7,8 @@ include::header.inc.adoc[]
 #TODO#: GitHub Actions
 ****
 
+include::notes-windows-lab.inc.adoc[]
+
 {section-separator}
 
 === 1. ...
