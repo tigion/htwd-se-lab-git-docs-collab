@@ -205,6 +205,7 @@ kann.
    wird.
 * Mit `-i` können Commits angepasst und zusammengefasst werden, um die
    Historie übersichtlicher zu gestalten oder Fehler zu korrigieren.
+=====
 ====
 
 .Hinweise: Aktualisierung eines Branches
