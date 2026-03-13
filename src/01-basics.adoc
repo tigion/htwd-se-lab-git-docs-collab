@@ -1,6 +1,6 @@
 include::header.inc.adoc[]
 
-== Teil 1 - Git Intro
+== Teil 1 - Grundlagen
 
 .Lernziele
 ****

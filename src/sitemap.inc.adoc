@@ -7,7 +7,7 @@ a|
 [discrete]
 === Praktika - SE I
 [unstyled]
-* icon:hand-o-right[] <<01-git-intro.adoc#, Teil 1 - Git Intro>>
+* icon:hand-o-right[] <<01-basics.adoc#, Teil 1 - Grundlagen>>
 * icon:hand-o-right[] <<02-branching.adoc#, Teil 2 - Parallel arbeiten>>
 * icon:hand-o-right[] <<03-conflicts.adoc#, Teil 3 - Konflikte lösen>>
 * icon:hand-o-right[] <<04-issues-projects.adoc#, Teil 4 - Aufgabenmanagement>>
