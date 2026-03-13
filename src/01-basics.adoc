@@ -445,9 +445,6 @@ die Einstellungen in den Nutzerprofilen nicht gespeichert werden.
 ==== Aufgabe 3.1 - Anpassung von VS Code
 
 . Öffnen Sie Visual Studio Code.
-+
-NOTE: In den *Linux*-Laboren kann Visual Studio Code im Terminal über
-`code` gestartet werden.
 
 . Gehen Sie in Visual Studio Code in die *Extensions* Ansicht und suchen Sie
   nach `AsciiDoc`. Installieren Sie, falls noch nicht vorhanden, die
