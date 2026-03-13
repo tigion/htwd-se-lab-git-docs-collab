@@ -20,7 +20,7 @@ Es geht um das praktische Kennenlernen von Grundlagen und dem Abbau von Hürden 
 
 === Software Engineering I
 
-.Teil 1 - Git Intro
+.Teil 1 - Grundlagen
 - Online-Plattform *GitHub* (_Login_, _Repository_)
 - Versionsverwaltung mit *Git* (_config_, _clone_, _status_, _add_, _commit_, _push_)
 - Editor *Visual Studio Code* (_Extensions_, _Git_)
