@@ -1,16 +1,18 @@
 include::header.inc.adoc[]
 
-== Teil 3 - Konflikte lösen
+== Teil 3 - Teamarbeit und Konflikte
 
-In diesem Praktikumsteil geht es um Konflikte bei der Zusammenarbeit im Team
-oder der Verwendung von Branches mit Git und wie diese gelöst werden können.
+In diesem Praktikumsteil geht es um die Zusammenarbeit im Team an einem
+gemeinsamen Projekt mit Git und GitHub. Dabei werden typische Konflikte bei der
+Zusammenarbeit oder der Verwendung von Branches und deren Lösungsmöglichkeiten
+vorgestellt.
 
 .Zusammenarbeit im Team mit Git
 image::grafik_overview_git_teamarbeit.jpg["Zusammenspiel von Git, GitHub und AsciiDoc im Praktikum", width=800, link="images/grafik_overview_git_teamarbeit.jpg"]
 
 .Lernziele
 ****
-* Verwenden eine Repositorys im Team über GitHub
+* Verwenden eines gemeinsamen Team-Repositories auf GitHub
 * Umgang mit Konflikten in der Teamarbeit oder bei Branches mit Git
 * Lösen von Konflikten bei einem `git pull` oder `git push`
 ****

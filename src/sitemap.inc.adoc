@@ -9,7 +9,7 @@ a|
 [unstyled]
 * icon:hand-o-right[] <<01-basics.adoc#, Teil 1 - Grundlagen>>
 * icon:hand-o-right[] <<02-branching.adoc#, Teil 2 - Parallel arbeiten>>
-* icon:hand-o-right[] <<03-conflicts.adoc#, Teil 3 - Konflikte lösen>>
+* icon:hand-o-right[] <<03-collaboration.adoc#, Teil 3 - Teamarbeit und Konflikte>>
 * icon:hand-o-right[] <<04-issues-projects.adoc#, Teil 4 - Aufgabenmanagement>>
 * icon:hand-o-right[] <<05-plantuml-1.adoc#, Teil 5 - Diagramme 1>>
 * icon:hand-o-right[] <<06-pull-requests.adoc#, Teil 6 - Code-Review und Integration>>
