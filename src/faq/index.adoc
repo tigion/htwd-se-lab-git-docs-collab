@@ -1,4 +1,4 @@
-= Arbeiten mit Git und AsciiDoc: pass:q[<br>]FAQ & Tipps
+= FAQ & Tipps
 Christoph Zirkelbach <christoph.zirkelbach@htw-dresden.de>
 :toc:
 :toclevels: 2

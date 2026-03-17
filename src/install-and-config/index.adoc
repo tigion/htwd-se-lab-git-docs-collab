@@ -1,4 +1,4 @@
-= Arbeiten mit Git und AsciiDoc: pass:q[<br>]Installation & Konfiguration
+= Installation & Konfiguration
 Christoph Zirkelbach <christoph.zirkelbach@htw-dresden.de>
 :toc:
 :toclevels: 4
