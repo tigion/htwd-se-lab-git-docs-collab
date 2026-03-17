@@ -30,35 +30,37 @@ Es geht um das praktische Kennenlernen von Grundlagen und dem Abbau von Hürden 
 - Branching in *Git*
 ** _branch_, _switch_, _checkout_, _rebase_, _merge_
 ** _local-/remote-Branch_
+
+.Teil 3 - Teamarbeit und Konflikte #TODO#
+- Zusammenarbeit im Team mit *GitHub* (_Collaborators_, ...)
 - Konflikte (_pull_, _merge_) und deren Lösung
 
-.Teil 3 - Aufgabenmanagement #TODO#
-- Zusammenarbeit im Team mit *GitHub* (_Collaborators_, ...)
+.Teil 4 - Aufgabenmanagement #TODO#
 ** _Issues_, _Subissues_, _Labels_, *GitHub Projects*, _Boards_, ...
 ** Issue-Templates
 - Verknüpfung von Issues und Commits
 - Abbildung von Product Backlog und Task Board (Tasks pro Sprint)
 
-.Teil 4 - Diagramme 1 #TODO#
+.Teil 5 - Diagramme 1 #TODO#
 - Textbasierte Diagrammgenerierung mit *PlantUML*
 ** _UML-Klassendiagramme_ und _C4-Model Diagramme Level 1 und 2_
 - Struktur und Verwendung in Asciidoctor
 
-.Teil 5 - Code-Review und Integration #TODO#
+.Teil 6 - Code-Review und Integration #TODO#
 - *Code-Review* und *Integration* (_Pull-/Merge-Request_, _Fork_)
 
 
 === Software Engineering II
 
-.Teil 6 - Git Advanced #TODO#
+.Teil 7 - Git Advanced #TODO#
 - Änderungs- und Versionsverwaltung (_diff_, _checkout_, _restore_, _stash_, _reset_, _revert_, _amend_, _rebase_)
 // Weiterführende Git Techniken: diff, restore, checkout, ggf. stash, rebase
 
-.Teil 7 - Diagramme 2 #TODO#
+.Teil 8 - Diagramme 2 #TODO#
 - Weitere Diagrammtypen mit *PlantUML*
 ** _C4-Modell Level 3 und 4_, _Dynamic Diagram_, _Deployment Diagram_
 
-.Teil 8 - GitHub Actions
+.Teil 9 - GitHub Actions
 - CIs und Workflows mit *GitHub Actions*
 
 == Hinweise & Einschränkungen
