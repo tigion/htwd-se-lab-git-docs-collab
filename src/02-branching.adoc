@@ -175,8 +175,6 @@ kann.
 * Ebenfalls kann es hilfreich sein, wenn man eine flache Historie im Repository
   haben möchte, so dass bei einem Merge statt eines _merge_-Commits ein
   _fast-forward_-Merge durchgeführt werden kann.
-+
-#TODO# Grafik (Tafelbild): Merge-Commits vs Fast Forward Merges
 =====
 ====
 
@@ -186,25 +184,22 @@ kann.
 =====
 *`merge` (recursive, `--no-ff`)*
 
-* Ist einfach und sicher, da die Historie beibehalten wird und Merges und
-   beteiligte Commits erkennbar bleiben.
+* Führt zu einer verzweigten Historie, die die beteiligten Commits der Branches
+  und deren Zusammenführung deutlich macht.
 * Merge-Commits lassen sich einfacher per `revert` rückgängig machen.
 
 *`merge` (fast-forward)*
 
-* Führt zu einer lineareren (flachen) Historie, was die Nachverfolgbarkeit
-   verbessert.
+* Führt zu einer linearen (flachen) Historie, wenn der zu mergende Branch auf
+  dem letzten Stand des aktuellen Branches basiert.
 * Variante, falls man keine Merge-Commits haben möchte.
 
 *`rebase`*
 
-* Führt zu einer lineareren (flachen) Historie, was nachfolgende
-   _fast-forward_-Merges erlaubt.
-* Kann helfen, Konflikte frühzeitig zu erkennen und zu lösen, da der
-   _aktuelle_-Branch auf den aktuellen Stand des _basis_-Branches gebracht
-   wird.
-* Mit `-i` können Commits angepasst und zusammengefasst werden, um die
-   Historie übersichtlicher zu gestalten oder Fehler zu korrigieren.
+* Aktualisiert die Basis des _aktuellen_-Branches auf die aktuelle Version des
+  _basis_-Branches, was nachfolgende _fast-forward_-Merges erlaubt.
+* Mit `-i` können Commits angepasst und zusammengefasst werden, um die Historie
+  übersichtlicher zu gestalten oder Fehler zu korrigieren.
 =====
 ====
 
