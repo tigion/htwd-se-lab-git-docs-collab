@@ -204,15 +204,6 @@ Vorname Nachname
 $ git config --global user.email
 s00000@stud.htw-dresden.de
 ----
-+
-.Auflistung der kompletten Git-Konfiguration:
-[source, console]
-----
-$ git config --list
-...
-user.name=Vorname Nachname
-user.email=s00000@stud.htw-dresden.de
-----
 
 . Sichern Sie die funktionierende Git-Konfiguration in ihr Studentenlaufwerk,
   bspw. unter `U:\praktika\se\.gitconfig`, damit diese bei einem neuen Anmelden
