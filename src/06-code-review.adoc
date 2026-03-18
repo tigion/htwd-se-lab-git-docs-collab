@@ -2,6 +2,10 @@ include::header.inc.adoc[]
 
 == Teil 6 - Code-Review und Integration
 
+In diesem Aufgabenteil werden Pull-/Merge-Requests als Variante eines
+Code-Reviews, das Filtern von Issues und das Organisieren von Issues angelehnt
+am OpenUP betrachtet.
+
 .Lernziele
 ****
 #TODO#: Anlegen und Verwenden von Pull-Requests als Technik für Code Review und

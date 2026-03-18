@@ -70,7 +70,7 @@ replace='\
   <li><a href="03-collaboration.html">Teil 3 - Teamarbeit und Konflikte<\/a><\/li>\
   <li><a style="color: #ccc;" href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
   <li><a href="05-plantuml-1.html">Teil 5 - Diagramme 1<\/a><\/li>\
-  <li><a style="color: #ccc;" href="06-pull-requests.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
+  <li><a style="color: #ccc;" href="06-code-review.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
   <\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
   <li><a href="07-advanced-git.html">Teil 7 - Git Advanced<\/a><\/li>\
