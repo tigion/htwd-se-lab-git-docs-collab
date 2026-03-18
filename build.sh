@@ -75,7 +75,7 @@ replace='\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
   <li><a href="07-advanced-git.html">Teil 7 - Git Advanced<\/a><\/li>\
   <li><a style="color: #ccc;" href="08-plantuml-2.html">Teil 8 - Diagramme 2<\/a><\/li>\
-  <li><a style="color: #ccc;" href="09-github-actions.html">Teil 9 - GitHub Actions<\/a><\/li>\
+  <li><a href="09-github-actions.html">Teil 9 - GitHub Actions<\/a><\/li>\
   <\/li>\
 '
 printf "Add extra sidemap: "
