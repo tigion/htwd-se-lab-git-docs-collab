@@ -12,3 +12,7 @@ Versionsverwaltung, Docs-as-Code und Zusammenarbeit mit Hilfe von [Git], [AsciiD
 [Praktikumsaufgaben SE I/II]: https://www.informatik.htw-dresden.de/~zirkelba/praktika/se/git-docs-collab/
 
 Link: [Praktikumsaufgaben SE I/II]
+
+[arbeiten-mit-git-und-asciidoc]: https://github.com/tigion/htwd-work-with-git-and-asciidoc
+
+Der vorherige Stand der Aufgaben ist [hier][arbeiten-mit-git-und-asciidoc] zu finden.
