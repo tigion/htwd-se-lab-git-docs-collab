@@ -48,8 +48,8 @@ Hauptzweig aufgenommen.
 *Merge*
 
 Wird der Versionsstand eines Branches in einen anderen Branch aufgenommen
-(`merge`) geschieht dies entweder mit der *fast-forward* oder *recursive*
-(3-Wege-Merge) Strategie.
+(`merge`) geschieht dies entweder mit der *fast-forward* oder *ort* (früher
+*recursive*) Strategie.
 
 _fast-forward_::
 +
@@ -65,16 +65,6 @@ $   vi feature.txt → git add . → git commit -m "..."
 $ git switch main
 $ git merge feature
 ----
-////
-----
-$ git branch feature
-$ git checkout feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git checkout main
-$ git merge feature
-----
-////
 ======
 +
 Basiert der zu mergende Branch (_feature_-Branch) auf dem letzten Stand des
@@ -85,9 +75,14 @@ mergenden Branches (_feature_-Branch) bewegt. + Möchte man keinen
 _fast-forward_-Merge, sondern immer einen neuen _merge_-Commit haben, kann dies
 mit `--no-ff` erzwungen werden.
 
-_recursive_ (3-Wege-Merge, _merge_-Commit)::
+_ort_ (_recursive_)::
 +
 image::grafik_git_merge_recursive.png[...,width=602]
++
+https://git-scm.com/docs/git-rebase.html#Documentation/git-rebase.txt-ort[ort]
+ist ein 3-Wege-Merge mit einem _merge_-Commit und ersetzt den älteren
+_recursive_-Algorithmus seit Git v2.34.0 (seit v2.49.0 ist _recursive_ ein
+Synonym für _ort_).
 +
 .Beispiel: Git-Kommandos
 [%collapsible]
@@ -100,17 +95,6 @@ $ git switch main
 $   vi main.txt → git add . → git commit -m "..."
 $ git merge feature
 ----
-////
-----
-$ git branch feature
-$ git checkout feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git checkout main
-$   vi main.txt → git add . → git commit -m "..."
-$ git merge feature
-----
-////
 ======
 +
 Gibt es im aktuellen Branch (_main_-Branch) Versionen, die nach der Abspaltung
@@ -182,7 +166,7 @@ kann.
 [%collapsible]
 ====
 =====
-*`merge` (recursive, `--no-ff`)*
+*`merge` (ort, `--no-ff`)*
 
 * Führt zu einer verzweigten Historie, die die beteiligten Commits der Branches
   und deren Zusammenführung deutlich macht.
