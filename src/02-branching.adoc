@@ -18,8 +18,8 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 * Konzepte von Branches verstehen und verwenden
 ** Branches erstellen, wechseln, vereinen, aktualisieren und entfernen
 ** Unterschiede zwischen `merge` und `rebase`
-* Konflikte bei Merges und Rebase lösen
 * Verwendung von lokalen und remote Branches
+// * Konflikte bei Merges und Rebase lösen
 ****
 
 include::notes-windows-lab.inc.adoc[]
@@ -128,18 +128,6 @@ $   vi main.txt → git add . → git commit -m "..."
 $ git switch feature
 $ git rebase main
 ----
-////
-----
-$ git branch feature
-$ git checkout feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git checkout main
-$   vi main.txt → git add . → git commit -m "..."
-$ git checkout feature
-$ git rebase main
-----
-////
 ======
 
 Wird zusätzlich noch die Option `-i` verwendet, können die neu erstellt Commits
@@ -170,6 +158,7 @@ kann.
 
 * Führt zu einer verzweigten Historie, die die beteiligten Commits der Branches
   und deren Zusammenführung deutlich macht.
+* Feature-Branches bleiben in der Historie erhalten und nachvollziehbar.
 * Merge-Commits lassen sich einfacher per `revert` rückgängig machen.
 
 *`merge` (fast-forward)*
