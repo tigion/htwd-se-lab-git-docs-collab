@@ -310,41 +310,6 @@ $ git merge --no-ff feature → git branch -d feature <9>
 =====
 ====
 
-.Hinweise: Konfiguration Standardverhalten von `pull`, `rebase` und `merge`
-[%collapsible]
-====
-=====
-Git bietet die Möglichkeit, das Standardverhalten von `pull`, `rebase` und
-`merge` zu konfigurieren.
-
-..gitconfig
-[source,gitconfig]
-----
-[pull]
-    rebase = true <1>
-[rebase]
-    autoStash = true <2>
-[merge]
-    ff = false <3>
-    conflictStyle = zdiff3 <4>
-
-[core]
-    editor = "code --wait" <5>
-----
-<1> Bei `git pull` und wenn es neue Commits im Remote-Branch gibt, wird bei: +
-    `false`: einen *Merge* durchgeführt (default) +
-    `true`: ein *Rebase* durchgeführt
-<2> `true`: Bei einem Rebase werden automatisch alle uncommitteten Änderungen
-    zwischengespeichert (gestasht) und nach dem Rebase wiederhergestellt.
-<3> Bei `git merge <branch>` wird bei: +
-    `true`: wenn möglich, ein *fast-forward* Merge durchgeführt (default) +
-    `false`: immer einen *Merge* mit einem neuen Merge-Commit durchgeführt,
-    auch wenn ein *fast-forward* möglich wäre
-<4> Legt den Stil der Konfliktmarkierungen bei einem Merge-Konflikt fest.
-<5> Legt den Standard-Editor für Git-Kommandos fest.
-=====
-====
-
 .Hilfreiche Branching Kommandos
 [cols="2,3"]
 |===
@@ -352,27 +317,23 @@ Git bietet die Möglichkeit, das Standardverhalten von `pull`, `rebase` und
 
 | `git branch`                    | lokale Branches auflisten +
 `-r` remote Branches, `-a` local und remote Branches
-| `git show-branch`               | Branches mit ihren Commits auflisten +
-`-r` remote Branches, `-a` local und remote Branches
-| `git branch <new-branch>`           | Branch anlegen
+| `git branch <new-branch>`       | Branch anlegen
 | `git switch <branch> +
 git checkout <branch>` | Branch wechseln
 | `git switch -`                  | Zum vorherigen Branch wechseln
 | `git switch -c <new-branch> +
-git checkout -b <new-branch>`     | Branch anlegen und wechseln. Kurzform für `git branch <new-branch>` gefolgt von einem `git switch <new-branch>` oder `git checkout <new-branch>`.
+git checkout -b <new-branch>`  | Branch anlegen und wechseln. Kurzform für `git branch <new-branch>` gefolgt von einem `git switch <new-branch>` oder `git checkout <new-branch>`.
 | `git branch -d <branch>`        | Branch löschen (`-d` _merged_, `-D` _unmerged_)
 | `git merge <branch>`            | Versionen aus <branch> in den aktuellen Branch aufnehmen.
 | `git merge --no-ff <branch>`    | Kein _fast forward_ merge, sondern immer neuer merge-Commit
 | `git rebase <branch>`           | Versionen aus dem aktuellen Branch auf die aktuelle Version von <branch> aktualisieren. Mit der Option `-i` können Commits angepasst und zusammengefasst werden.
-| `git diff <branch1>..<branch2>` | Unterschiede zwischen `<branch1>` und `<branch2>` anzeigen
 |===
 
 {section-separator}
 
-=== 1. Branches verwenden
+=== 1. Vorbereitung
 
-[#aufgabe_1-1]
-==== Aufgabe 1.1 - Branches (_local_)
+==== Aufgabe 1.1 - Wiederholung
 
 . Öffnen Sie Ihr *htwd-se-example-project* Projekt vom letzten Praktikum als
   *Ordner* in *VS Code*.
@@ -400,7 +361,15 @@ git checkout -b <new-branch>`     | Branch anlegen und wechseln. Kurzform für `
 ----
 
 . Nehmen Sie das eben angelegte Dokument in den _main_-Branch als neue Version
-  auf und pushen Sie es in Ihr _remote_-Repository (`git push`).
+  auf.
+
+. Synchronisieren (pushen) Sie die neue Version in Ihr _remote_-Repository (`git push`).
+
+{section-separator}
+
+=== 2. Branches verwenden
+
+==== Aufgabe 2.1 - Branches (_local_)
 
 . Legen Sie ausgehend vom _main_-Branch einen neuen lokalen _feature_-Branch an
   und wechseln Sie in diesen (`git switch -c feature`). Ersetzen Sie im
@@ -436,7 +405,7 @@ dem _main_-Branch per `git rebase main`.
 . Synchronisieren Sie Ihre Änderung in Ihr _remote_-Repository (`git push`).
 
 
-==== Aufgabe 1.2 - Branches (_remote_)
+==== Aufgabe 2.2 - Branches (_remote_)
 
 Lokale Branches können auf einem _remote_-Repository bereitgestellt werden, so
 dass diese öffentlich bzw. von Teammitglieder mit genutzt werden können.
@@ -510,5 +479,41 @@ Sind die Branches remote und lokal gelöscht, aber ein `git branch -a` listet no
 ----
 =====
 ====
+
+{section-separator}
+
+=== Extras
+
+==== Standardverhalten konfigurieren
+
+Git bietet die Möglichkeit, das Standardverhalten von `pull`, `rebase` und
+`merge` zu konfigurieren.
+
+..gitconfig
+[source,gitconfig]
+----
+[pull]
+    rebase = true <1>
+[rebase]
+    autoStash = true <2>
+[merge]
+    ff = true <3>
+    conflictStyle = zdiff3 <4>
+
+[core]
+    editor = "code --wait" <5>
+----
+<1> Bei `git pull` und wenn es neue Commits im Remote-Branch gibt, wird bei: +
+    `false`: einen *Merge* durchgeführt (default) +
+    `true`: ein *Rebase* durchgeführt
+<2> `true`: Bei einem Rebase werden automatisch alle uncommitteten Änderungen
+    zwischengespeichert (gestasht) und nach dem Rebase wiederhergestellt.
+<3> Bei `git merge <branch>` wird bei: +
+    `true`: wenn möglich, ein *fast-forward* Merge durchgeführt (default) +
+    `false`: immer einen *Merge* mit einem neuen Merge-Commit durchgeführt,
+    auch wenn ein *fast-forward* möglich wäre
+<4> Legt den Stil der Konfliktmarkierungen bei einem Merge-Konflikt fest.
+<5> Legt den Standard-Editor für Git-Kommandos fest.
+
 
 include::sitemap.inc.adoc[]

@@ -75,6 +75,8 @@ $ git diff --cached <3>
 $ git diff <commit-id> <4>
 $ git diff <commit-id> HEAD <5>
 $ git diff <commit-id-1> <commit-id-2> <6>
+
+$ git diff <branch-1> <branch-2> <7>
 ----
 <1> zeigt Unterschied der letzten Version (_HEAD_) zum lokalen Arbeitsstand
 <2> mit der zusätzlichen Angabe `<file>` kann gezielt eine Datei oder ein Verzeichnis verglichen werden
@@ -82,6 +84,7 @@ $ git diff <commit-id-1> <commit-id-2> <6>
 <4> zeigt Unterschied der Version `<commit-id>` zum lokalen Arbeitsstand
 <5> zeigt Unterschied der Version `<commit-id>` zur letzten Version `HEAD`
 <6> zeigt Unterschied von Version `<commit-id-1>` (älter) zur Version `<commit-id-2>` (neuer)
+<7> zeigt Unterschied von Branch `<branch-1>` zu Branch `<branch-2>`
 =====
 ====
 
