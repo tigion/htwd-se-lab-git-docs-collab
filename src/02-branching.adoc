@@ -41,11 +41,11 @@ extra Branch entwickelt und getestet werden, ohne den Hauptzweig zu
 beeinflussen. Nach Fertigstellung werden die Änderungen in den stabilen
 Hauptzweig aufgenommen.
 
-.Hinweise: `merge`
+.Erklärung von `merge`
 [%collapsible]
 ====
 =====
-*Merge*
+*merge*
 
 Wird der Versionsstand eines Branches in einen anderen Branch aufgenommen
 (`merge`) geschieht dies entweder mit der *fast-forward* oder *ort* (früher
@@ -105,7 +105,7 @@ mergenden Branches.
 =====
 ====
 
-.Hinweise: `rebase`
+.Erklärung von `rebase`
 [%collapsible]
 ====
 =====
@@ -202,80 +202,6 @@ $ git merge main
   zwischenzeitliche neuere Versionen im _main_-Branch vor einem Merge in diesen
   im _feature_-Branch erst zu testen bzw. mögliche Konflikte zu lösen.
   Andernfalls fallen die Konflikte erst beim Merge in den _main_-Branch auf.
-=====
-====
-
-.Hinweise: Aussagekräftige Branch-Namen
-[%collapsible]
-====
-=====
-Verwendet man mehrere Branches im Repository, ist es sinnvoll *aussagekräftige
-Namen* zu verwenden und im Team entsprechende *Namenskonventionen* festzulegen.
-
-.Namen mit Trennzeichen:
-Namen könnten mit einem Wort für die Art des Branches beginnen gefolgt von
-spezifischen Informationen. Trennzeichen für eine bessere Lesbarkeit könnten
-`-` und `_` sein.
-
-- Art: `hotfix-`, `fix-`, `bugfix-`, `feature-`, `update-`, `test-`, etc.
-- Info: `feature-pdf-generation`, `bugfix-issue-12`, `update-js-framework`, etc.
-
-.Namen mit hierarchischer Struktur:
-Eine weitere Variante wäre mit Hilfe von `/` (forward slash) hierarchische
-Branch-Namen zu verwenden. So könnten bspw. mit `+git branch --list
-'feature/*'+` oder `+git show-branch 'feature/*'+` alle vorhandenen bzw.
-Commits zu den _feature_-Branches aufgelistet werden.
-
-- Bspw.: `feature/pdf-generation`, `bugfix/issue-12`, `bugfix/issue-15`, etc.
-- Einige Clients bilden die Branches dann auch als navigierbare Struktur ab:
-+
-----
-├── bugfix
-│   ├── issue-12
-│   └── issue-15
-├── feature
-│   ├── pdf-generation
-│   └── xyz
-└── main
-----
-
-WARNING: Branch-Namen dürfen nicht mit einem `/` enden.
-=====
-====
-
-.Beispiel: Verwendung von Branches mit `merge` und `rebase`
-[%collapsible]
-====
-=====
-Das Repository befindet sich im _main_-Branch. Für ein neues Feature und einen
-zwischenzeitlichen Bugfix werden ein _feature_-Branch und ein _bugfix_-Branch
-angelegt. Fertig bearbeitet werden die beiden neuen Branches in den
-_main_-Branch aufgenommen und anschließend entfernt.
-
-----
-$ git switch -c feature <1>
-$ vi feature.txt → git add . → git commit -m "Add ..." <2>
-$ vi feature.txt → git add . → git commit -m "Change ..."
-$ git switch main <3>
-$ git switch -c bugfix <4>
-$ vi main.txt → git add . → git commit -m "Bugfix ..."
-$ git switch main <5>
-$ git merge bugfix → git branch -d bugfix <6>
-$ git switch feature <7>
-$ vi feature.txt → git add . → git commit -m "Change ..."
-$ git switch main <8>
-$ git merge --no-ff feature → git branch -d feature <9>
-----
-<1> _feature_-Branch vom _main_-Branch erstellen und hin wechseln.
-<2> Feature bearbeiten und als neuen Commit in den aktuellen Branch aufnehmen. +
-    Die Option `-a` lässt `git commit ...` vorher geänderte und gelöschte Dateien mit aufnehmen.
-<3> in den _main_-Branch wechseln
-<4> _bugfix_-Branch vom _main_-Branch erstellen und hin wechseln
-<5> in den _main_-Branch wechseln
-<6> _bugfix_-Branch in den _main_-Branch mergen (optional mit `--no-ff`) und anschließend löschen
-<7> in den _feature_-Branch wechseln
-<8> in den _main_-Branch wechseln
-<9> _feature_-Branch in den _main_-Branch mergen und anschließend löschen
 =====
 ====
 
@@ -483,6 +409,125 @@ Sind die Branches remote und lokal gelöscht, aber ein `git branch -a` listet no
 {section-separator}
 
 === Extras
+
+==== Branch-Namen
+
+Verwendet man mehrere Branches im Repository, ist es sinnvoll *aussagekräftige
+Namen* zu verwenden und im Team entsprechende *Namenskonventionen* festzulegen.
+
+.Namen mit Trennzeichen:
+Namen könnten mit einem Wort für die Art des Branches beginnen gefolgt von
+spezifischen Informationen. Trennzeichen für eine bessere Lesbarkeit könnten
+`-` und `_` sein.
+
+- Art: `hotfix-`, `fix-`, `bugfix-`, `feature-`, `update-`, `test-`, etc.
+- Info: `feature-pdf-generation`, `bugfix-issue-12`, `update-js-framework`, etc.
+
+.Namen mit hierarchischer Struktur:
+Eine weitere Variante wäre mit Hilfe von `/` (forward slash) hierarchische
+Branch-Namen zu verwenden. So könnten bspw. mit `+git branch --list
+'feature/*'+` oder `+git show-branch 'feature/*'+` alle vorhandenen bzw.
+Commits zu den _feature_-Branches aufgelistet werden.
+
+- Bspw.: `feature/pdf-generation`, `bugfix/issue-12`, `bugfix/issue-15`, etc.
+- Einige Clients bilden die Branches dann auch als navigierbare Struktur ab:
++
+----
+├── bugfix
+│   ├── issue-12
+│   └── issue-15
+├── feature
+│   ├── pdf-generation
+│   └── xyz
+└── main
+----
+
+WARNING: Branch-Namen dürfen nicht mit einem `/` enden.
+
+{section-separator}
+
+==== Beispielhafte Anwendung
+
+Das Repository befindet sich im _main_-Branch. Für ein neues Feature und einen
+zwischenzeitlichen Bugfix werden ein temporärer _feature_-Branch und ein
+_bugfix_-Branch verwendet.
+
+. _feature_-Branch vom _main_-Branch erstellen und hin wechseln:
++
+[source,shell]
+----
+$ git switch -c feature
+----
+
+. Feature bearbeiten und als neuen Commit in den _feature_-Branch aufnehmen:
++
+[source,shell]
+----
+$ vi feature.txt
+$ git add . → git commit -m "Add ..."
+----
++
+Die Verwendung der Option `-a` in `git commit -a ...` ist eine Kurzform für
+`git add .` gefolgt von `git commit ...`.
+
+. In den _main_-Branch zurück wechseln und _bugfix_-Branch vom diesem aus
+  erstellen und hin wechseln:
++
+[source,shell]
+----
+$ git switch main
+$ git switch -c bugfix
+----
+
+. Bugfix bearbeiten und als neuen Commit in den _bugfix_-Branch aufnehmen:
++
+[source,shell]
+----
+$ vi main.txt
+$ git add . → git commit -m "Bugfix ..."
+----
+
+. In den _main_-Branch zurück wechseln. Anschließend die Änderungen vom _bugfix_-Branch in
+  diesen aufnehmen (standardmäßig fast-forward-Merge) und anschließend den _bugfix_-Branch
+  löschen:
++
+[source,shell]
+----
+$ git switch main
+$ git merge bugfix
+$ git branch -d bugfix
+----
+
+. In den _feature_-Branch wechseln. Anschließend den _feature_-Branch per
+  `rebase` auf den aktuellen Stand des _main_-Branches aktualisieren:
++
+[source,shell]
+----
+$ git switch feature
+$ git rebase main
+----
+
+. Feature weiter bearbeiten und als neuen Commit in den _feature_-Branch
+  aufnehmen:
++
+[source,shell]
+----
+$ vi feature.txt
+$ git add . → git commit -m "Change ..."
+----
+
+. In den _main_-Branch zurück wechseln. Anschließend die Änderungen vom
+  _feature_-Branch mit einem Merge-Commit (`--no-ff`) in diesen aufnehmen und
+  anschließend den _feature_-Branch löschen:
++
+[source,shell]
+----
+$ git switch main
+$ git merge --no-ff feature
+$ git branch -d feature
+----
+
+{section-separator}
 
 ==== Standardverhalten konfigurieren
 
