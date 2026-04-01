@@ -542,7 +542,7 @@ Alternativ gibt es auch die Möglichkeit https://git-scm.com/docs/git-config#_co
 ----
 [user]
     name = Vorname Nachname
-    email = s00000@stud.htw-dresden.de
+    email = vorname.nachname@stud.htw-dresden.de
 ----
 =====
 ====

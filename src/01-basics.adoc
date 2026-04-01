@@ -128,16 +128,21 @@ Konfigurationen je Repository verwenden.
 ----
 [user]
   name = Vorname Nachname
-  email = s00000@stud.htw-dresden.de <1>
+  email = vorname.nachname@stud.htw-dresden.de <1>
 
 # Nur für Netzlaufwerke der HTWD Laborrechner notwendig,
 # kann auf privaten Rechnern weggelassen werden.
 [safe]
   directory = * <2>
 ----
-<1> Für die E-Mail verwenden Sie bitte eine ihrer HTWD Adressen mit `s00000@stud.htw-dresden.de`, `vorname.nachname@stud.htw-dresden.de` oder `s00000@informatik.htw-dresden.de` welche in Ihrem GitHub-Account verwendet wird.
-<2> Erlaubt es Git, Repositories auf (Netz-)Laufwerken mit unterschiedlichen Eigentümer-Einstellungen trotz `fatal: unsafe repository`-Sicherheitsmeldung zu nutzen. +
-Dies in den Windows-Laboren der HTWD der Fall, wenn sie auf ihrem Studenten-Laufwerk (`U:`) arbeiten.
+<1> Für die E-Mail verwenden Sie bitte eine ihrer HTWD Adressen (bspw.
+    `s00000@htw-dresden.de` oder `vorname.nachname@stud.htw-dresden.de`), welche in
+    Ihrem GitHub-Account verwendet wird.
+<2> Erlaubt es Git, Repositories auf (Netz-)Laufwerken mit unterschiedlichen
+    Eigentümer-Einstellungen trotz `fatal: unsafe repository`-Sicherheitsmeldung zu
+    nutzen. +
+    Dies in den Windows-Laboren der HTWD der Fall, wenn sie auf ihrem
+    Studenten-Laufwerk (`U:`) arbeiten.
 
 .Hinweise: Git-Meldung: `fatal: unsafe repository`
 [%collapsible]
@@ -152,13 +157,15 @@ https://git-scm.com/docs/git-config/2.35.2#Documentation/git-config.txt-safedire
 von Git explizit erlaubt werden.
 
 .Für alle betreffenden Repositories erlauben:
-Mit `git config --global --add safe.directory *` oder direkt über die _.gitconfig_ muss folgendes hinzugefügt werden:
+Mit `git config --global --add safe.directory *` oder direkt über die
+_.gitconfig_ muss folgendes hinzugefügt werden:
 [source,ini]
 ----
 [safe]
   directory = * <1>
 ----
-<1> Der `*`-Stern dient als Platzhalter für alle betreffenden Repositories, egal in welchem Verzeichnispfad sie sich befinden.
+<1> Der `*`-Stern dient als Platzhalter für alle betreffenden Repositories,
+    egal in welchem Verzeichnispfad sie sich befinden.
 
 .Nur ein bestimmtes Repository erlauben:
 . Terminal öffnen, bspw. in VS Code: "View > Terminal"
@@ -202,7 +209,7 @@ Vorname Nachname
 [source, console]
 ----
 $ git config --global user.email
-s00000@stud.htw-dresden.de
+vorname.nachname@stud.htw-dresden.de
 ----
 
 . Sichern Sie die funktionierende Git-Konfiguration in ihr Studentenlaufwerk,
@@ -220,7 +227,7 @@ Einstellungen mit `git config [--global] --unset ...` entfernt werden.
 [source, console]
 ----
 $ git config --global user.name "Vorname Nachname"
-$ git config --global user.email s00000@informatik.htw-dresden.de
+$ git config --global user.email vorname.nachname@stud.htw-dresden.de
 ----
 
 Für die Labore der HTWD zusätzlich noch ein:

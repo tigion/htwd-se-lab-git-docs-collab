@@ -401,7 +401,7 @@ note right of {variable1} : {variable2}
 [source,asciidoc]
 ----
 = Diagramme mit PlantUML
-Vorname Nachname <vorname.nachname@htw-dresden.de>
+Vorname Nachname <vorname.nachname@stud.htw-dresden.de>
 // document attributes
 :toc:
 :toc-title: Inhaltsverzeichnis
