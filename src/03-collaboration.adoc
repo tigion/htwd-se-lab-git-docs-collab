@@ -328,7 +328,7 @@ und Nachnamen mit `_` jeweils zu einer Gruppe zusammengefasst werden.
 - Ergänzen Sie in der Datei *_Teamdokumentation.adoc_* im Dokumentenkopf Ihren
   Namen und Ihre E-Mail.
 - Binden Sie in der Datei *_Teamdokumentation.adoc_* an geeigneter Stelle die
-  Dateie _Teammitglieder.adoc_ (und _Software.adoc_) über
+  Datei _Teammitglieder.adoc_ (wenn vorhanden auch die _Software.adoc_) über
   https://asciidoctor.org/docs/user-manual/#include-directive[includes] ein.
 - Passen Sie in der Datei *_README.md_* den Titel an und fügen Sie eine kurze
   Beschreibung hinzu.
@@ -336,8 +336,9 @@ und Nachnamen mit `_` jeweils zu einer Gruppe zusammengefasst werden.
 .Aufgaben - icon:user[] Person B
 - Ergänzen Sie in der Datei *_Teamdokumentation.adoc_* im Dokumentenkopf Ihren
   Namen und Ihre E-Mail.
-- Legen Sie in der Datei *_Teammitglieder.adoc_* eine Tabelle mit den Namen und
-  der Rolle der Teammitglieder an.
+- Legen Sie in der Datei *_Teammitglieder.adoc_* eine
+  https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[Tabelle]
+  mit den Namen und der Rolle der Teammitglieder an.
 - Legen Sie eine Datei .gitignore an, um HTML- und PDF-Datei vom Repository
   auszuschließen.
 
