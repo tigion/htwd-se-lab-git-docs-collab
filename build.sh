@@ -64,12 +64,12 @@ replace='\
   <li><a href="install-and-config\/index.html" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Installation \&amp; Konfiguration<\/a><\/li>\
   <li><a href="faq\/index.html" target="_blank" rel="noopener noreferrer"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> FAQ \&amp; Tipps<\/a><\/li>\
   <li><span style="color: #ccc;"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Notizen<\/span><\/li>\
-  <li><a href="project-work.html">Hinweise Projektarbeit<\/a><\/li>\
+  <li><a href="project-work.html"><span class="icon"><i class="fa fa-sticky-note-o"><\/i><\/span> Hinweise Projektarbeit<\/a><\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE I<\/span><\/li>\
   <li><a href="01-basics.html">Teil 1 - Grundlagen<\/a><\/li>\
   <li><a href="02-branching.html">Teil 2 - Parallel arbeiten<\/a><\/li>\
   <li><a href="03-collaboration.html">Teil 3 - Teamarbeit und Konflikte<\/a><\/li>\
-  <li><a style="color: #ccc;" href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
+  <li><a href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
   <li><a href="05-plantuml-1.html">Teil 5 - Diagramme 1<\/a><\/li>\
   <li><a href="06-code-review.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
   <\/li>\

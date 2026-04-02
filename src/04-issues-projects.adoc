@@ -4,8 +4,10 @@ include::header.inc.adoc[]
 
 .Lernziele
 ****
-#TODO#: Issues, Subissues, Labels, Projects, Boards, Abbildung von Product Backlog und
-Task Board (Tasks pro Sprint), Verknüpfung von Issues und Commits
+* Verwenden von *Issues* zur Verwaltung von Aufgaben, Problemen und Verbesserungen
+** *Sub-Issues*, *Labels* und referenzieren von *Issues* und *Commits*
+* #TODO# Verwenden von *GitHub Projects* zur Verwaltung von Aufgaben im Projekt
+** *Product Backlog* und *Task Board*
 ****
 
 include::notes-windows-lab.inc.adoc[]
@@ -19,9 +21,14 @@ include::notes-windows-lab.inc.adoc[]
 
 === 1. GitHub Issues
 
-#TODO#
-
-NOTE: Issues are a great way to keep track of tasks, enhancements, and bugs for your projects. They’re kind of like email—except they can be shared and discussed with the rest of your team. Most software projects have a bug tracker of some kind. GitHub’s tracker is called Issues, and has its own section in every repository. - https://guides.github.com/features/issues/[GitHub]
+[NOTE]
+====
+Issues are a great way to keep track of tasks, enhancements, and bugs for your
+projects. They’re kind of like email—except they can be shared and discussed
+with the rest of your team. Most software projects have a bug tracker of some
+kind. GitHub’s tracker is called Issues, and has its own section in every
+repository. - https://guides.github.com/features/issues/[GitHub Issues]
+====
 
 GitHub bietet mit dem Bereich *Issues* eine Möglichkeit anstehende Aufgaben, aufgetretene Probleme und mögliche Verbesserungen zentral in Ihrem Projekt innerhalb Ihres Repository zu verwalten und zu diskutieren.
 
@@ -63,58 +70,115 @@ Beispiele:
 =====
 ====
 
+==== Vorbereitung
+
+. Verwenden Sie für die Bearbeitung der Aufgaben Ihr Team-Repository
+  *htwd-se-example-teamproject* mit der gleichen Teamzusammenstellung
+  aus dem letzten Praktikum.
+  +
+  Falls Sie in einer neue Teamzusammenstellung sind, legen Sie ein neues
+  Repository an und fügen Sie die entsprechenden Teammitglieder als
+  Collaborators hinzu.
+
+. Öffnen Sie Ihr Team-Repository auf GitHub und in VS Code auf Ihrem Rechner.
+
+
 ==== Aufgabe 1.1 - Issues
 
-#TODO#:
-
-- Jeder eine Issue anlegen, Label und Teammitglied zuweisen (Assignees), Diskutieren
-
+. Jeder erstellt Issue mit einem Titel und einer Beschreibung, die eine
+  Aufgabe, ein Problem oder eine Verbesserung beschreibt.
+. Weisen Sie der Issue ein Label zu (z.B. `task`, `bug`, `enhancement`) zu.
+. Diskutieren Sie die Issue im Kommentarbereich, um weitere Details zu klären
+  oder Feedback zu geben.
 
 ==== Aufgabe 1.2 - Sub-Issues
 
-#TODO#:
-
-- Jeweils zwei Sub-Issues zur angelegten Issue erstellen
-- ...
+. Legen Sie für Ihre eben erstellte Issue zwei Sub-Issues an, um sie in
+  konkretere Aufgabe zu unterteilen.
+. Weisen Sie den Sub-Issue ein Teammitglied zu (Assignee).
 
 ==== Aufgabe 1.3 - Issues bearbeiten, referenzieren
 
-#TODO#:
-
-- Zugewiesene Issues bearbeiten,
-- Referenzen in Commit Messages und Issue-Kommentaren verwenden
-- Issues schließen (manuell und automatisch über Commit Message)
+. Bearbeiten Sie in VS Code *eine* der Ihnen zugewiesenen Issues.
+. Nehmen Sie das Ergebnis als neue Version, mit einer Referenz zur Issue, in
+  Ihr lokales Repository auf und synchronisieren Sie es mit GitHub.
+. Schließen Sie die Issue manuell auf GitHub oder automatisch über eine erneute
+  Version mit entsprechender Commit Message.
 
 {section-separator}
 
 === 2. GitHub Projects
 
-#TODO#:
+[NOTE]
+====
+A project is an adaptable collection of items that you can view as a table,
+a kanban board, or a roadmap and that stays up-to-date with GitHub data. Your
+projects can track issues, pull requests, and ideas that you note down.
+- https://docs.github.com/de/issues/planning-and-tracking-with-projects[GitHub
+Projects]
+====
 
-- Was sind GitHub Projects?
-- Was sind Sichten und Boards?
-- Wie können Aufgaben (Issues) in Projects verwaltet werden?
+// TODO: Beispiel Screenshot eines GitHub Projects einfügen
+
+.Was sind GitHub Projects?
+Mit Hilfe von GitHub Projects können Aufgaben (Issues und Pull Requests) eines
+oder mehrerer Projekte in separaten Sichten organisiert werden. Sie bieten eine
+flexible Möglichkeit, Aufgaben zu planen, zu priorisieren und den Fortschritt
+im Blick zu behalten.
+
+.Was sind Sichten und Boards?
+Ein GitHub Project enthält anpassbare Sichten (Views), um die Aufgaben in einem
+Projekt zu organisieren, zu verfolgen und zu verwalten. Es gibt verschiedene
+Arten von Sichten, wie z.B. Tabellen, Boards oder Roadmaps, die jeweils
+unterschiedliche Möglichkeiten bieten.
+
+Weitere Informationen in der offiziellen Dokumentation von GitHub:
+
+- https://docs.github.com/de/issues/planning-and-tracking-with-projects[GitHub
+Projects]
+** https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects[Creating projects]
+** https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-projects[Managing items in your projects]
+** https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields[Understanding fields]
+
+// - Wie können Aufgaben (Issues) in Projects verwaltet werden?
+
+// TODO: Klären:
+//       - Beispiel für Product Backlog und Task Board
+//       - spalten für Priorisierung und Iterations/Sprints
+//       - Verwendung von Iterationen/Sprints
+//         - Filter für Task Board?
+
+==== Vorbereitung
+
+Für die Folgenden Aufgaben benötigen wir wieder Ihr eigenes *htwd-se-example-project*
+Repository aus den ersten Praktika.
+
+. Öffnen Sie auf GitHub Ihr *htwd-se-example-project* Repository.
+. Legen Sie eine Issue mit dem Titel `GitHub Project einrichten` und dem Label `?` an.
 
 ==== Aufgabe 2.1 - Projekt anlegen
 
-#TODO:#
+#TODO#
 
-- Projekt anlegen
+. Legen Sie ein neues GitHub Project mit dem Namen "..." an.
+. ...
 
 ==== Aufgabe 2.1 - Product Backlog
 
-#TODO#:
+#TODO#
 
-- Sicht/Board für Product Backlog anlegen
-- vorhandene Issues zuweisen
-- neue Issues anlegen
+. Legen Sie eine neue Sicht als *Tabelle* mit dem Namen "Product Backlog" an.
+. ...
+. Weisen Sie die vorhandene Issue `GitHub Project einrichten` dem Projekt zu.
+. Legen Sie eine neue Aufgabe `Sichten anlegen` als Issue direkt im Product Backlog an.
 
 ==== Aufgabe 2.2 - Task Board
 
-#TODO#:
+#TODO#
 
-- Sicht/Board für Task Board anlegen
-- vorhandene/neu Issues zuweisen
+. Legen Sie eine neue Sicht als *Board* mit dem Namen "Task Board" an.
+. ...
+//. Filtern Sie die Issues so, dass nur Issues mit dem Label *task* angezeigt werden.
 
 {section-separator}
 
