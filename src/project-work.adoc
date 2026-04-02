@@ -1,0 +1,91 @@
+include::header.inc.adoc[]
+
+== Hinweise zur Projektarbeit
+
+Für die Projektarbeit soll ein *neues Repository* auf Basis eines von uns
+bereitgestellten *Template-Repositories* angelegt werden. Das Template enthält
+bereits eine vorgegebene Struktur mit den notwendigen Verzeichnissen, Dateien
+und Konfigurationen.
+
+[WARNING]
+====
+Die folgenden Schritte sind nur von einem Teammitglied durchzuführen, welches das
+Projekt-Repository für sein Projektteam anlegt.
+====
+
+{section-separator}
+
+=== 1. Projekt Repository anlegen
+
+. Loggen Sie sich auf GitHub ein und öffnen Sie folgendes Template Repository:
+** https://github.com/htwdd-se/SE-Projektvorlage[SE-Projektvorlage]
+
+. Klicken Sie auf den Button "Use this template" und wählen Sie "Create a new
+  repository".
+
+. Geben Sie einen Repository Namen für Ihr Projekt-Repository ein, z.B.
+  `se-projekt-x0`, und klicken Sie auf "Create repository". Dadurch wird eine
+  Kopie des Template Repositories in Ihrem GitHub Account erstellt.
+
+. Sobald das Repository angelegt ist, gehen Sie in die Repository Einstellungen
+  und fügen Sie unter "Collaborators" die Mitglieder Ihres Projektteam hinzu.
+  Damit haben alle Teammitglieder Zugriff auf das Repository und Sie können
+  gemeinsam daran arbeiten.
+
+{section-separator}
+
+=== 2. Issue Labels anlegen
+
+. Legen Sie im Projekt-Repository über "Issues -> Labels -> New label" folgende
+  benötigte Labels an:
+** `spike`, `user-story`, `technical-story`, `project-task`, `task`, `bug`
+
+{section-separator}
+
+=== 3. Issue Templates anpassen
+
+Im Verzeichnis `.github/ISSUE_TEMPLATE/` befinden sich vorgefertigte Issue
+Templates.
+
+. Passen Sie in der Konfiguration `config.yml` die Verweise zu den Dokumenten
+  an, indem Sie die `[ORG]` und `[REPO]` Platzhalter durch die Daten ihres
+  Projekt-Repository ersetzen.
+
+. Passen Sie im Template `user-story.md` und `technical-story.md` jeweils im
+  Abschnitt *Definition of Ready* ebenfalls die `[ORG]` und `[REPO]`
+  Platzhalter im Verweis zum _team_charter.adoc_ Dokument auf an.
+
+{section-separator}
+
+=== 4. Projektinformationen anpassen
+
+In der Datei _docs/_includes/default-attributes.inc.adoc_ ist am Anfang der
+**Projektname** und der **Systemname** als Attribute global zur Verwendung in
+den Dokumenten definiert.
+
+- **Projektname** `:project-name:` ... Enthält das Projektthema inklusive der Projekt-ID
+- **Systemname** `:project-system-name:` ... Enthält den kurzen Systemnamen der Software/Anwendung
+
+[source,asciidoc]
+----
+// Meta
+:project-name: Projektname (X0)
+:project-system-name: Systemname
+----
+
+- `X0` ... steht als Platzhalter für die Projekt-ID (bspw. A1, B2)
+- `<Platzhalter>` ... Platzhalter inkl. der `<` und `>` ersetzen
+
+[NOTE]
+====
+Diese Attribute können über `{project-name}` und `{project-system-name}` in der
+Dokumentation an beliebiger Stelle verwendet werden.
+====
+
+{section-separator}
+
+=== 5. README.md beachten
+
+Beachten Sie auch weitere Hinweise in der *README.md* Datei des Template-Repositories.
+
+include::sitemap.inc.adoc[]
