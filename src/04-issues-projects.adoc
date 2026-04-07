@@ -6,8 +6,8 @@ include::header.inc.adoc[]
 ****
 * Verwenden von *Issues* zur Verwaltung von Aufgaben, Problemen und Verbesserungen
 ** *Sub-Issues*, *Labels* und referenzieren von *Issues* und *Commits*
-* #TODO# Verwenden von *GitHub Projects* zur Verwaltung von Aufgaben im Projekt
-** *Product Backlog* und *Task Board*
+* Verwenden von *GitHub Projects* zur Verwaltung von Aufgaben im Projekt
+** Felder und Sichten für *Product Backlog*, *Sprint Planning* und *Current Sprint*
 ****
 
 include::notes-windows-lab.inc.adoc[]
