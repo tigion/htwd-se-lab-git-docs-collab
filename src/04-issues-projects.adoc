@@ -139,6 +139,7 @@ Projects]
 ** https://docs.github.com/en/issues/planning-and-tracking-with-projects/creating-projects[Creating projects]
 ** https://docs.github.com/en/issues/planning-and-tracking-with-projects/managing-items-in-your-projects[Managing items in your projects]
 ** https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields[Understanding fields]
+** https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects[Filtering projects]
 
 // - Wie können Aufgaben (Issues) in Projects verwaltet werden?
 
@@ -154,31 +155,94 @@ Für die Folgenden Aufgaben benötigen wir wieder Ihr eigenes *htwd-se-example-p
 Repository aus den ersten Praktika.
 
 . Öffnen Sie auf GitHub Ihr *htwd-se-example-project* Repository.
-. Legen Sie eine Issue mit dem Titel `GitHub Project einrichten` und dem Label `?` an.
+. Legen Sie eine neue Issues an:
+** Issue: `GitHub Project einrichten`, Label: `project-task`
 
 ==== Aufgabe 2.1 - Projekt anlegen
 
-#TODO#
+. Legen Sie ein neues GitHub Project im Reiter *Projects* mit dem Button btn:[+
+  New project] in Ihrem *htwd-se-example-project* Repository an:
+** Template: `Table` (Start from scratch)
+** Name: `Example Project`
+** Import `Open issues` from repository: `htwd-se-example-project`
+. Bennen Sie die *View* (Sicht) der Tabelle in `Example View` um.
 
-. Legen Sie ein neues GitHub Project mit dem Namen "..." an.
-. ...
+==== Aufgabe 2.2 - Felder anlegen
+
+. Blenden Sie die Anzeige der Spalte *Linked pull request* aus (Hide field).
+
+. Passen Sie über "Field settings..." die Werte der Spalte *Status* an:
+** umbenennen von `Todo` in `New`
+** anlegen von `Ready`, `In Progress`, `In Review`, `Blocked`, `Done`
+** Passen Sie ggf. die Reihenfolge und die Farben an.
+
+. Legen Sie ein neues Feld *Iteration* über btn:[+ New field] an:
+** Field name: `Iteration`
+** Field type: `Iteration`
+** Starts on: Montag der aktuellen Woche
+** Duration: `2 weeks`
+
+. Legen Sie ein neues Feld *Priority* an:
+.. Feldeigenschaften:
+*** Field name: `Priority`
+*** Field type: `Single select`
+*** Options: `P0` (Kritisch), `P1` (Hoch), `P2` (Mittel), `P3` (Niedrig)
+.. Fügen Sie jeweils eine passende Beschreibung sowie Farbe hinzu und passen Sie
+  ggf. die Reihenfolge an.
+*** P0: `Kritisch (Must have)` (bspw. rot)
+*** P1: `Hoch (Should have)` (bspw. orange)
+*** P2: `Mittel (Could have)` (bspw. gelb)
+*** P3: `Niedrig (Nice to have)` (bspw. grau)
+
+. Legen Sie ein neues Feld *Estimate* an:
+** Field name: `Estimate`
+** Field type: `Number`
+
+. Legen Sie ein neues Feld *Feature* an:
+** Field name: `Feature`
+** Field type: `Text`
 
 ==== Aufgabe 2.1 - Product Backlog
 
-#TODO#
+. Legen Sie eine neue Sicht als *Tabelle* mit dem Namen *Product Backlog* an.
 
-. Legen Sie eine neue Sicht als *Tabelle* mit dem Namen "Product Backlog" an.
-. ...
-. Weisen Sie die vorhandene Issue `GitHub Project einrichten` dem Projekt zu.
-. Legen Sie eine neue Aufgabe `Sichten anlegen` als Issue direkt im Product Backlog an.
+. Passen Sie den Filter wie folgt an:
+** Filter: `is:open label:user-story,technical-story,bug,spike`
 
-==== Aufgabe 2.2 - Task Board
+. Passen Sie die zu verwendenden Spalten an, das nur relevante Informationen
+  angezeigt werden (z.B. Titel, Status, Priority, Iteration, Estimate,
+  Feature).
 
-#TODO#
+. Legen Sie eine neue Issue und zwei zugehörige Sub-Issues über die eben
+  erstellte Sicht an:
+** Issue: `Benutzer kann sich anmelden`, Label: `user-story`
+*** Sub-Issue: `API-Endpunkt für Login erstellen`, Label: `task`
+*** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`
 
-. Legen Sie eine neue Sicht als *Board* mit dem Namen "Task Board" an.
-. ...
-//. Filtern Sie die Issues so, dass nur Issues mit dem Label *task* angezeigt werden.
+==== Aufgabe 2.2 - Sprint Planning
+
+. Legen Sie eine neue Sicht als *Tabelle* mit dem Namen *Sprint Planning* an.
+
+. Passen Sie den Filter wie folgt an:
+** Filter: `is:open label:task`
+
+. Passen Sie die zu verwendenden Spalten an:
+** Titel, Status, Priority, Iteration, Estimate
+
+. Gruppieren Sie die Tabelle nach dem Feld *Iteration* (Settings View):
+** Group by: `Iteration`
+
+==== Aufgabe 2.3 - Current Sprint
+
+. Legen Sie eine neue Sicht als *Board* mit dem Namen *Current Sprint* an.
++
+Standardmäßig wird *Status* als Basis für die Spalten des Boards verwendet.
+
+. Passen Sie den Filter wie folgt an:
+** Filter: `iteration:@current`
+
+. Weißen Sie der Sub-Issue `API-Endpunkt für Login erstellen` die Iteration
+  `Iteration 1` zu.
 
 {section-separator}
 
@@ -186,7 +250,10 @@ Repository aus den ersten Praktika.
 
 ==== Issue Check-Lists
 
-In den Issue-Beschreibungen können auch Aufgabenlisten angelegt werden. Dies können Teilschritte einer Issue sein oder eine Art Check-Liste, ob bspw. alle genannten Teammitglieder diese erfüllt haben. Bei Bedarf können Teilaufgaben auch in Sub-Issues oder neue Issues umgewandelt werden.
+In den Issue-Beschreibungen können auch Aufgabenlisten angelegt werden. Dies
+können Teilschritte einer Issue sein oder eine Art Check-Liste, ob bspw. alle
+genannten Teammitglieder diese erfüllt haben. Bei Bedarf können Teilaufgaben
+auch in Sub-Issues oder neue Issues umgewandelt werden.
 
 Siehe auch: https://docs.github.com/de/get-started/writing-on-github/working-with-advanced-formatting/about-task-lists[Informationen zu Aufgabenlisten]
 
@@ -218,16 +285,21 @@ Macht euch mit Aufgabenlisten vertraut.
 
 ==== Issue Templates
 
-Mit Hilfe von https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates[Issue-Templates] können Vorgaben (wie Labels) und Strukturen für verschiedene Issues-Arten (User Stories, Tasks, Risiken, usw.) definiert werden.
+Mit Hilfe von
+https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests/about-issue-and-pull-request-templates[Issue-Templates]
+können Vorgaben (wie Labels) und Strukturen für verschiedene Issues-Arten (User
+Stories, Tasks, Risiken, usw.) definiert werden.
 Diese Vorlage kann dann beim Erstellen einer Issue ausgewählt werden.
 
 - Repository-Einstellungen -> General -> Features -> Issues -> kbd:[Set up templates]
-- Die Templates werden unter dem Verzeichnis `.github/ISSUE_TEMPLATE/` im Repository gespeichert und mit versioniert.
+- Die Templates werden unter dem Verzeichnis `.github/ISSUE_TEMPLATE/` im
+  Repository gespeichert und mit versioniert.
 
 ==== Issues Filters
 
-In der *Issues* Anzeige von GitHub werden alle vorhandenen *Issues* und
-*Pull Requests* aufgelistet. Standardmäßig ist die Sicht mit `is:issue is:open` auf offene Issues gefiltert.
+In der *Issues* Anzeige von GitHub werden alle vorhandenen *Issues* und *Pull
+Requests* aufgelistet. Standardmäßig ist die Sicht mit `is:issue is:open` auf
+offene Issues gefiltert.
 
 :imageTitle: Issue-Ansicht in GitHub
 :imageFile: screenshot_github_issues_filter.jpg
@@ -238,7 +310,10 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 [%collapsible]
 ====
 =====
-Für eine gezielte Sicht auf bestimmt Einträge, gibt es ein Vielzahl an Filtermöglichkeiten und deren Kombination. Ausgewählte finden Sie in der <<table_filterkritterien>> und eine komplette Liste und weitere Informationen unter folgenden Links:
+Für eine gezielte Sicht auf bestimmt Einträge, gibt es ein Vielzahl an
+Filtermöglichkeiten und deren Kombination. Ausgewählte finden Sie in der
+<<table_filterkritterien>> und eine komplette Liste und weitere Informationen
+unter folgenden Links:
 
 - https://help.github.com/en/github/searching-for-information-on-github/searching-issues-and-pull-requests[GitHub - Searching issues and pull requests]
 - https://help.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax[GitHub - Understanding the search syntax]
@@ -272,10 +347,17 @@ Für eine gezielte Sicht auf bestimmt Einträge, gibt es ein Vielzahl an Filterm
 | `no:assignee`  | keinem Nutzer zugeordnet
 |===
 
-Ein Filter mit `is:issue is:open no:assignee` ist sehr hilfreich, um offenen *Issues*, welchen keine Nutzer zur Bearbeitung zugeordnet sind, im Blick zu haben. Über ein `sort:created-asc` lässt sich die Ausgabe zeitlich sortieren.
+Ein Filter mit `is:issue is:open no:assignee` ist sehr hilfreich, um offenen
+*Issues*, welchen keine Nutzer zur Bearbeitung zugeordnet sind, im Blick zu
+haben. Über ein `sort:created-asc` lässt sich die Ausgabe zeitlich sortieren.
 
-NOTE: Filter lassen sich aktuell nicht direkt in GitHub speichern, aber die Seiten-URL enthält nach einer Suche den Filter und lässt sich so als Bookmark speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
+[NOTE]
+======
+Filter lassen sich aktuell nicht direkt in GitHub speichern, aber die
+Seiten-URL enthält nach einer Suche den Filter und lässt sich so als Bookmark
+speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
 `/issues?q=is:open+is:issue+no:assignee+sort:created-asc`
+======
 =====
 ====
 
