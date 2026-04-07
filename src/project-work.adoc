@@ -15,7 +15,9 @@ Projekt-Repository für sein Projektteam anlegt.
 
 {section-separator}
 
-=== 1. Projekt Repository anlegen
+=== GitHub Repository
+
+==== 1. Projekt Repository anlegen
 
 . Loggen Sie sich auf GitHub ein und öffnen Sie folgendes Template Repository:
 ** https://github.com/htwdd-se/SE-Projektvorlage[SE-Projektvorlage]
@@ -34,7 +36,7 @@ Projekt-Repository für sein Projektteam anlegt.
 
 {section-separator}
 
-=== 2. Issue Labels anlegen
+==== 2. Issue Labels anlegen
 
 . Legen Sie im Projekt-Repository über "Issues -> Labels -> New label" folgende
   benötigte Labels an:
@@ -42,7 +44,7 @@ Projekt-Repository für sein Projektteam anlegt.
 
 {section-separator}
 
-=== 3. Issue Templates anpassen
+==== 3. Issue Templates anpassen
 
 Im Verzeichnis `.github/ISSUE_TEMPLATE/` befinden sich vorgefertigte Issue
 Templates.
@@ -57,7 +59,7 @@ Templates.
 
 {section-separator}
 
-=== 4. Projektinformationen anpassen
+==== 4. Projektinformationen anpassen
 
 In der Datei _docs/_includes/default-attributes.inc.adoc_ ist am Anfang der
 **Projektname** und der **Systemname** als Attribute global zur Verwendung in
@@ -84,8 +86,40 @@ Dokumentation an beliebiger Stelle verwendet werden.
 
 {section-separator}
 
-=== 5. README.md beachten
+==== 5. README.md beachten
 
 Beachten Sie auch weitere Hinweise in der *README.md* Datei des Template-Repositories.
+
+{section-separator}
+
+=== GitHub Project #TODO#
+
+==== 1. Projekt anlegen
+
+. Legen Sie in Ihrem Projekt-Repository über "Projects -> New project" ein
+  neues GitHub Project mit einem passenden Namen an.
+
+. Laden Sie alle Teammitglieder in das GitHub Project über "Project Settings ->
+  Manage access -> Invite collaborators" ein.
+
+==== 2. Sichten anlegen
+
+* *Product Backlog*
+** Type: `Table`
+** Filter: `is:open label:user-story,technical-story,bug,spike`)
+
+* *Sprint Planning*
+** Type: `Table`
+** Filter: `is:open label:task`
+
+* *Current Sprint*
+** Type: `Board`
+** Filter: `iteration:@current`
+
+* *Bugs*
+** Type: `Table`
+** Filter: `label:bug`
+
+* ggf. weitere benötigte Sichten
 
 include::sitemap.inc.adoc[]
