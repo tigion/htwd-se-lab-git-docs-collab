@@ -104,17 +104,19 @@ Beachten Sie auch weitere Hinweise in der *README.md* Datei des Template-Reposit
 
 ==== 2. Sichten anlegen
 
+Legen Sie, laut Vorgabe, die benötigten Sichten und Felder an.
+
 * *Product Backlog*
 ** Type: `Table`
-** Filter: `is:open label:user-story,technical-story,bug,spike`)
+** Filter: `is:open no:sprint`)
 
 * *Sprint Planning*
 ** Type: `Table`
-** Filter: `is:open label:task`
+** Filter: `is:open label:task,project-task`
 
 * *Current Sprint*
 ** Type: `Board`
-** Filter: `iteration:@current`
+** Filter: `sprint:@current`
 
 * *Bugs*
 ** Type: `Table`
