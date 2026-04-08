@@ -30,22 +30,33 @@ kind. GitHub’s tracker is called Issues, and has its own section in every
 repository. - https://guides.github.com/features/issues/[GitHub Issues]
 ====
 
-GitHub bietet mit dem Bereich *Issues* eine Möglichkeit anstehende Aufgaben, aufgetretene Probleme und mögliche Verbesserungen zentral in Ihrem Projekt innerhalb Ihres Repository zu verwalten und zu diskutieren.
+GitHub bietet mit dem Bereich *Issues* eine Möglichkeit anstehende Aufgaben,
+aufgetretene Probleme und mögliche Verbesserungen zentral in Ihrem Projekt
+innerhalb Ihres Repository zu verwalten und zu diskutieren.
 
 :imageTitle: Screenshot: Bereich Issues auf GitHub
 :imageFile: screenshot_github_issues.png
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-Jeder Issue (Aufgabe, Ticket, ...) besteht aus einem *Titel* und der *Beschreibung* des Sachverhaltes. Zusätzlich können zur besserer Verwaltung noch *Assignees* (Beauftrage), *Labels* und weitere Kriterien hinzugefügt werden. Ebenfalls kann über *Kommentar* der Issue diskutiert und mit Anmerkungen versehen werden. Eine detailierte Beschreibung finden Sie in dem Guide: https://guides.github.com/features/issues/[Mastering Issues]
+Jeder Issue (Aufgabe, Ticket, ...) besteht aus einem *Titel* und der
+*Beschreibung* des Sachverhaltes. Zusätzlich können zur besserer Verwaltung
+noch *Assignees* (Beauftrage), *Labels* und weitere Kriterien hinzugefügt
+werden. Ebenfalls kann über *Kommentar* der Issue diskutiert und mit
+Anmerkungen versehen werden. Eine detailierte Beschreibung finden Sie in dem
+Guide: https://guides.github.com/features/issues/[Mastering Issues]
 
-Bei Verwendung bestimmter *Keywords* (https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords[Closing issues using keywords]) in den Commit Messages können *referenzierte Issues* automatisch geschlossen werden.
+Bei Verwendung bestimmter *Keywords*
+(https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords[Closing
+issues using keywords]) in den Commit Messages können *referenzierte Issues*
+automatisch geschlossen werden.
 
 .Hinweise: Verwenden von Referenzen in Issue-Kommentaren und Commits
 [%collapsible]
 ====
 =====
-In den Issues und Commits können in den Kommentaren/Mitteilungen Verweise auf andere Elemente verwendet werden. Diese werden von GitHub automatisch verlinkt.
+In den Issues und Commits können in den Kommentaren/Mitteilungen Verweise auf
+andere Elemente verwendet werden. Diese werden von GitHub automatisch verlinkt.
 
 [#table_verweise]
 .Ausgewählte Verweise
@@ -107,7 +118,7 @@ Collaborators hinzu.
 
 {section-separator}
 
-=== 2. GitHub Projects
+=== 2. GitHub Projects #TODO#
 
 [NOTE]
 ====
@@ -209,8 +220,8 @@ technische Stories.
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-Dies dient als Grundlage, um konkrete Tasks abzuleiten und zu klären, welche
-Aufgaben `neu` oder `ready` für die Bearbeitung sind.
+Dies dient als Grundlage, um zu klären, welche Aufgaben `neu` oder `ready` für
+die Bearbeitung sind.
 
 . Bennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
 
@@ -221,19 +232,15 @@ Aufgaben `neu` oder `ready` für die Bearbeitung sind.
 . Blenden Sie die Anzeige folgender Spalten aus (Hide field):
 ** `Assignees`, `Labels`, `Linked pull requests`
 
-. Legen Sie eine neue Issue und zwei zugehörige Sub-Issues über die eben
-  erstellte Sicht an:
+. Legen Sie zwei neue Issues mit dem Label `user-story` an:
 ** Issue: `Benutzer kann sich anmelden`, Label: `user-story`
-*** Sub-Issue: `API-Endpunkt für Login erstellen`, Label: `task`
-*** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`
+** Issue: `Benutzer kann seinen Account verwalten`, Label: `user-story`
 
-. Ändern Sie den Status folgender Issues auf `Ready`:
-** `GitHub Project einrichten`
-** `#API-Endpunkt für Login erstellen`
+. Ändern Sie den Status der angelegten User-Story `Benutzer kann sich anmelden` auf `Ready`.
 
 ==== Aufgabe 2.2 - Sprint Planning
 
-Anzeige aller offener Aufgaben (Tasks) gruppiert nach Ihrer Zuordnung zu den Sprints.
+Anzeige aller offener Aufgaben gruppiert nach Ihrer Zuordnung zu den Sprints.
 
 :imageTitle: Screenshot: GitHub Project - Sprint Planning
 :imageFile: screenshot_github_project_sprint_planning.png
@@ -241,14 +248,14 @@ Anzeige aller offener Aufgaben (Tasks) gruppiert nach Ihrer Zuordnung zu den Spr
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
 Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
-Übersicht über alle offenen Aufgaben zu behalten.
+Übersicht über alle offenen (Ready) Aufgaben zu behalten.
 
 . Legen Sie eine neue Sicht als *Tabelle* mit dem Namen *Sprint Planning* an.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `is:open label:task,project-task`
-+
-optional zusätzlich: `-status:New`
+** Filter: `is:open label:user-story,technical-story,spike,bug,task,project-task`
+// +
+// optional zusätzlich: `-status:New`
 
 . Passen Sie die zu verwendenden Spalten an:
 ** Titel, Status, Priority, Iteration, Estimate
@@ -256,9 +263,15 @@ optional zusätzlich: `-status:New`
 . Gruppieren Sie die Tabelle nach dem Feld *Iteration* (Settings View):
 ** Group by: `Sprint`
 
-. Weißen Sie folgenden Sub-Issue den Sprint `Sprint 1` zu:`
+. Weißen Sie die folgenden Aufgaben (Issues) dem Sprint `Sprint 1` zu:
 ** `GitHub Project einrichten`
-** `API-Endpunkt für Login erstellen`
+** `Benutzer kann sich anmelden`
+
+. Legen Sie zur User-Story `Benutzer kann sich anmelden` zwei neue Sub-Issues an:
+*** Sub-Issue: `API-Endpunkt für Login erstellen`, Label: `task`, Sprint: `Sprint 1`
+*** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`, Sprint:
+    ohne Zuordnung
+
 
 ==== Aufgabe 2.3 - Current Sprint
 
@@ -270,7 +283,7 @@ Status.
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-Dies dient als Übersicht über den Fortschritt der Aufgaben (Tasks) im aktuellen
+Dies dient als Übersicht über den Fortschritt der Aufgaben im aktuellen
 Sprint.
 
 . Legen Sie eine neue Sicht als *Board* mit dem Namen *Current Sprint* an.

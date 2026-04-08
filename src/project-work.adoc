@@ -112,7 +112,7 @@ Legen Sie, laut Vorgabe, die benötigten Sichten und Felder an.
 
 * *Sprint Planning*
 ** Type: `Table`
-** Filter: `is:open label:task,project-task`
+** Filter: `is:open label:user-story,technical-story,spike,bug,task,project-task`
 
 * *Current Sprint*
 ** Type: `Board`
