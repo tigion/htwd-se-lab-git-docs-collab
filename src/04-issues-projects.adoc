@@ -75,31 +75,31 @@ Beispiele:
 . Verwenden Sie für die Bearbeitung der Aufgaben Ihr Team-Repository
   *htwd-se-example-teamproject* mit der gleichen Teamzusammenstellung
   aus dem letzten Praktikum.
-  +
-  Falls Sie in einer neue Teamzusammenstellung sind, legen Sie ein neues
-  Repository an und fügen Sie die entsprechenden Teammitglieder als
-  Collaborators hinzu.
++
+Falls Sie in einer neue Teamzusammenstellung sind, legen Sie ein neues
+Repository an und fügen Sie die entsprechenden Teammitglieder als
+Collaborators hinzu.
 
 . Öffnen Sie Ihr Team-Repository auf GitHub und in VS Code auf Ihrem Rechner.
 
 
 ==== Aufgabe 1.1 - Issues
 
-. Jeder erstellt Issue mit einem Titel und einer Beschreibung, die eine
-  Aufgabe, ein Problem oder eine Verbesserung beschreibt.
+. Jeder erstellt *ein* Issue mit einem Titel und einer Beschreibung, die eine
+  kleine beispielhafte Aufgabe, ein Problem oder eine Verbesserung darstellt.
 . Weisen Sie der Issue ein Label zu (z.B. `task`, `bug`, `enhancement`) zu.
 . Diskutieren Sie die Issue im Kommentarbereich, um weitere Details zu klären
   oder Feedback zu geben.
 
 ==== Aufgabe 1.2 - Sub-Issues
 
-. Legen Sie für Ihre eben erstellte Issue zwei Sub-Issues an, um sie in
+. Legen Sie für Ihr eben erstelltes Issue zwei Sub-Issues an, um sie in
   konkretere Aufgabe zu unterteilen.
-. Weisen Sie den Sub-Issue ein Teammitglied zu (Assignee).
+. Weisen Sie *einer* Sub-Issue ein Teammitglied zu (Assignee).
 
-==== Aufgabe 1.3 - Issues bearbeiten, referenzieren
+==== Aufgabe 1.3 - Issues bearbeiten
 
-. Bearbeiten Sie in VS Code *eine* der Ihnen zugewiesenen Issues.
+. Bearbeiten Sie in VS Code die eine Ihnen zugewiesenen Issues.
 . Nehmen Sie das Ergebnis als neue Version, mit einer Referenz zur Issue, in
   Ihr lokales Repository auf und synchronisieren Sie es mit GitHub.
 . Schließen Sie die Issue manuell auf GitHub oder automatisch über eine erneute
@@ -165,34 +165,31 @@ Repository aus den ersten Praktika.
 ** Template: `Table` (Start from scratch)
 ** Name: `Example Project`
 ** Import `Open issues` from repository: `htwd-se-example-project`
-. Bennen Sie die *View* (Sicht) der Tabelle in `Example View` um.
 
 ==== Aufgabe 2.2 - Felder anlegen
 
-. Blenden Sie die Anzeige der Spalte *Linked pull request* aus (Hide field).
-
 . Passen Sie über "Field settings..." die Werte der Spalte *Status* an:
 ** umbenennen von `Todo` in `New`
-** anlegen von `Ready`, `In Progress`, `In Review`, `Blocked`, `Done`
+** anlegen von `Ready`, `In Progress`, `In Review`, `Done`
 ** Passen Sie ggf. die Reihenfolge und die Farben an.
 
-. Legen Sie ein neues Feld *Iteration* über btn:[+ New field] an:
-** Field name: `Iteration`
-** Field type: `Iteration`
-** Starts on: Montag der aktuellen Woche
-** Duration: `2 weeks`
-
-. Legen Sie ein neues Feld *Priority* an:
+. Legen Sie ein neues Feld *Priority* über btn:[+ New field] an:
 .. Feldeigenschaften:
 *** Field name: `Priority`
 *** Field type: `Single select`
 *** Options: `P0` (Kritisch), `P1` (Hoch), `P2` (Mittel), `P3` (Niedrig)
 .. Fügen Sie jeweils eine passende Beschreibung sowie Farbe hinzu und passen Sie
-  ggf. die Reihenfolge an.
+  ggf. die Reihenfolge an:
 *** P0: `Kritisch (Must have)` (bspw. rot)
 *** P1: `Hoch (Should have)` (bspw. orange)
 *** P2: `Mittel (Could have)` (bspw. gelb)
 *** P3: `Niedrig (Nice to have)` (bspw. grau)
+
+. Legen Sie ein neues Feld *Sprint* an:
+** Field name: `Sprint`
+** Field type: `Iteration`
+** Starts on: Montag der aktuellen Woche
+** Duration: `2 weeks`
 
 . Legen Sie ein neues Feld *Estimate* an:
 ** Field name: `Estimate`
@@ -204,14 +201,25 @@ Repository aus den ersten Praktika.
 
 ==== Aufgabe 2.1 - Product Backlog
 
-. Legen Sie eine neue Sicht als *Tabelle* mit dem Namen *Product Backlog* an.
+Anzeige aller offener Aufgaben, insbesondere User Stories, Bugs, Spikes und
+technische Stories.
+
+:imageTitle: Screenshot: GitHub Project - Product Backlog
+:imageFile: screenshot_github_project_product_backlog.png
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+
+Dies dient als Grundlage, um konkrete Tasks abzuleiten und zu klären, welche
+Aufgaben `neu` oder `ready` für die Bearbeitung sind.
+
+. Bennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `is:open label:user-story,technical-story,bug,spike`
+** Filter: `is:open no:sprint`
+// ** Filter: `is:open label:user-story,technical-story,bug,spike`
 
-. Passen Sie die zu verwendenden Spalten an, das nur relevante Informationen
-  angezeigt werden (z.B. Titel, Status, Priority, Iteration, Estimate,
-  Feature).
+. Blenden Sie die Anzeige folgender Spalten aus (Hide field):
+** `Assignees`, `Labels`, `Linked pull requests`
 
 . Legen Sie eine neue Issue und zwei zugehörige Sub-Issues über die eben
   erstellte Sicht an:
@@ -219,30 +227,60 @@ Repository aus den ersten Praktika.
 *** Sub-Issue: `API-Endpunkt für Login erstellen`, Label: `task`
 *** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`
 
+. Ändern Sie den Status folgender Issues auf `Ready`:
+** `GitHub Project einrichten`
+** `#API-Endpunkt für Login erstellen`
+
 ==== Aufgabe 2.2 - Sprint Planning
+
+Anzeige aller offener Aufgaben (Tasks) gruppiert nach Ihrer Zuordnung zu den Sprints.
+
+:imageTitle: Screenshot: GitHub Project - Sprint Planning
+:imageFile: screenshot_github_project_sprint_planning.png
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+
+Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
+Übersicht über alle offenen Aufgaben zu behalten.
 
 . Legen Sie eine neue Sicht als *Tabelle* mit dem Namen *Sprint Planning* an.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `is:open label:task`
+** Filter: `is:open label:task,project-task`
++
+optional zusätzlich: `-status:New`
 
 . Passen Sie die zu verwendenden Spalten an:
 ** Titel, Status, Priority, Iteration, Estimate
 
 . Gruppieren Sie die Tabelle nach dem Feld *Iteration* (Settings View):
-** Group by: `Iteration`
+** Group by: `Sprint`
+
+. Weißen Sie folgenden Sub-Issue den Sprint `Sprint 1` zu:`
+** `GitHub Project einrichten`
+** `API-Endpunkt für Login erstellen`
 
 ==== Aufgabe 2.3 - Current Sprint
+
+Anzeige aller Aufgaben, die aktuell in Bearbeitung sind, gruppiert nach ihrem
+Status.
+
+:imageTitle: Screenshot: GitHub Project - Current Sprint
+:imageFile: screenshot_github_project_current_sprint.png
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+
+Dies dient als Übersicht über den Fortschritt der Aufgaben (Tasks) im aktuellen
+Sprint.
 
 . Legen Sie eine neue Sicht als *Board* mit dem Namen *Current Sprint* an.
 +
 Standardmäßig wird *Status* als Basis für die Spalten des Boards verwendet.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `iteration:@current`
+** Filter: `sprint:@current`
 
-. Weißen Sie der Sub-Issue `API-Endpunkt für Login erstellen` die Iteration
-  `Iteration 1` zu.
+. Bewegen Sie die Issue `GitHub Project einrichten` in die Spalte `In Progress`.
 
 {section-separator}
 
