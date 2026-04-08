@@ -215,8 +215,8 @@ Aufgaben `neu` oder `ready` für die Bearbeitung sind.
 . Bennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `is:open no:sprint`
-// ** Filter: `is:open label:user-story,technical-story,bug,spike`
+** Filter: `is:open label:user-story,technical-story,spike,bug,task`
+// ** Filter: `is:open no:sprint`
 
 . Blenden Sie die Anzeige folgender Spalten aus (Hide field):
 ** `Assignees`, `Labels`, `Linked pull requests`
