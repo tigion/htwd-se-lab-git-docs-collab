@@ -181,7 +181,8 @@ Repository aus den ersten Praktika.
 
 . Passen Sie über "Field settings..." die Werte der Spalte *Status* an:
 ** umbenennen von `Todo` in `New`
-** anlegen von `Ready`, `In Progress`, `In Review`, `Done`
+** anlegen von `Ready`, `In Progress`, `In Review`, `Done` (sofern nicht schon
+   vorhanden)
 ** Passen Sie ggf. die Reihenfolge und die Farben an.
 
 . Legen Sie ein neues Feld *Priority* über btn:[+ New field] an:
@@ -226,11 +227,11 @@ die Bearbeitung sind.
 . Bennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `is:open label:user-story,technical-story,spike,bug,task`
+** Filter: `is:open label:user-story,technical-story,spike,bug no:sprint`
 // ** Filter: `is:open no:sprint`
 
 . Blenden Sie die Anzeige folgender Spalten aus (Hide field):
-** `Assignees`, `Labels`, `Linked pull requests`
+** `Assignees`, `Labels`, `Linked pull requests`, `Sprint`, `Sub-issues progress`
 
 . Legen Sie zwei neue Issues mit dem Label `user-story` an:
 ** Issue: `Benutzer kann sich anmelden`, Label: `user-story`
@@ -269,8 +270,7 @@ Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
 
 . Legen Sie zur User-Story `Benutzer kann sich anmelden` zwei neue Sub-Issues an:
 *** Sub-Issue: `API-Endpunkt für Login erstellen`, Label: `task`, Sprint: `Sprint 1`
-*** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`, Sprint:
-    ohne Zuordnung
+*** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`, Sprint: `Sprint 1`
 
 
 ==== Aufgabe 2.3 - Current Sprint
@@ -291,7 +291,7 @@ Sprint.
 Standardmäßig wird *Status* als Basis für die Spalten des Boards verwendet.
 
 . Passen Sie den Filter wie folgt an:
-** Filter: `sprint:@current`
+** Filter: `sprint:@current label:task,project-task -status:Ready`
 
 . Bewegen Sie die Issue `GitHub Project einrichten` in die Spalte `In Progress`.
 
