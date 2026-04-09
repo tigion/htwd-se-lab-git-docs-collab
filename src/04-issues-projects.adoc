@@ -224,7 +224,7 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 Dies dient als Grundlage, um zu klären, welche Aufgaben `neu` oder `ready` für
 die Bearbeitung sind.
 
-. Bennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
+. Benennen Sie die vorhandene *View* (Sicht) in `Product Backlog` um.
 
 . Passen Sie den Filter wie folgt an:
 ** Filter: `is:open label:user-story,technical-story,spike,bug no:sprint`
