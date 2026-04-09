@@ -211,7 +211,7 @@ Repository aus den ersten Praktika.
 ** Field name: `Feature`
 ** Field type: `Text`
 
-==== Aufgabe 2.1 - Product Backlog
+==== Aufgabe 2.3 - Product Backlog
 
 Anzeige aller offener Aufgaben, insbesondere User Stories, Bugs, Spikes und
 technische Stories.
@@ -239,7 +239,7 @@ die Bearbeitung sind.
 
 . Ändern Sie den Status der angelegten User-Story `Benutzer kann sich anmelden` auf `Ready`.
 
-==== Aufgabe 2.2 - Sprint Planning
+==== Aufgabe 2.4 - Sprint Planning
 
 Anzeige aller offener Aufgaben gruppiert nach Ihrer Zuordnung zu den Sprints.
 
@@ -273,7 +273,7 @@ Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
 *** Sub-Issue: `Registrierungsformular implementieren`, Label: `task`, Sprint: `Sprint 1`
 
 
-==== Aufgabe 2.3 - Current Sprint
+==== Aufgabe 2.5 - Current Sprint
 
 Anzeige aller Aufgaben, die aktuell in Bearbeitung sind, gruppiert nach ihrem
 Status.
