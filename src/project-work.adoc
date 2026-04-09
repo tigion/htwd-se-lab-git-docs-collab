@@ -108,7 +108,7 @@ Legen Sie, laut Vorgabe, die benötigten Sichten und Felder an.
 
 * *Product Backlog*
 ** Type: `Table`
-** Filter: `is:open label:user-story,technical-story,spike,bug,task`
+** Filter: `is:open label:user-story,technical-story,spike,bug no:sprint`
 
 * *Sprint Planning*
 ** Type: `Table`
@@ -116,7 +116,7 @@ Legen Sie, laut Vorgabe, die benötigten Sichten und Felder an.
 
 * *Current Sprint*
 ** Type: `Board`
-** Filter: `sprint:@current`
+** Filter: `sprint:@current label:task,project-task -status:Ready`
 
 * *Bugs*
 ** Type: `Table`
