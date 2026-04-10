@@ -210,12 +210,12 @@ Erstellen Sie in Ihrem GitHub-Account ein neues *_privates_* Repository
 
 .icon:user[] Person A
 Fügen Sie Ihrem Repository *htwd-se-example-teamproject* über die Einstellungen
-"Settings > Manage access > Collaborators > Invite a collaborator" ihre
+"Settings > Collaborators > Manage access > Add people" ihre
 Teammitglieder über den Account-Namen oder die E-Mail hinzu.
 
 [NOTE]
 ====
-Alle Mitlgieder haben Schreibrechte und können gleichberechtigt Änderungen am
+Alle Mitglieder haben Schreibrechte und können gleichberechtigt Änderungen am
 Repository vornehmen. Siehe auch
 https://help.github.com/en/articles/permission-levels-for-a-user-account-repository[Permission
 levels for a user account repository].
