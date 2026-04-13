@@ -118,7 +118,7 @@ Collaborators hinzu.
 
 {section-separator}
 
-=== 2. GitHub Projects #TODO#
+=== 2. GitHub Projects
 
 [NOTE]
 ====
@@ -203,13 +203,13 @@ Repository aus den ersten Praktika.
 ** Starts on: Montag der aktuellen Woche
 ** Duration: `2 weeks`
 
-. Legen Sie ein neues Feld *Estimate* an:
-** Field name: `Estimate`
-** Field type: `Number`
-
-. Legen Sie ein neues Feld *Feature* an:
-** Field name: `Feature`
-** Field type: `Text`
+// . Legen Sie ein neues Feld *Estimate* an:
+// ** Field name: `Estimate`
+// ** Field type: `Number`
+//
+// . Legen Sie ein neues Feld *Feature* an:
+// ** Field name: `Feature`
+// ** Field type: `Text`
 
 ==== Aufgabe 2.3 - Product Backlog
 
@@ -412,5 +412,13 @@ speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
 =====
 ====
 
+==== GitHub Project Filter
+
+Nützliche Filter für GitHub Project Sichten:
+
+- `sprint:@current` - Alle Issues, welche dem aktuellen Sprint zugeordnet sind
+- `sprint:@none` - Alle Issues, welche keinem Sprint zugeordnet sind
+- `assignee:@me` - Alle Issues, welche mir zugeordnet sind
+- `is:closed` - Alle geschlossenen Issues
 
 include::sitemap.inc.adoc[]
