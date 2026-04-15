@@ -509,8 +509,177 @@ angezeigt werden.
 
 {section-separator}
 
-=== Extras
+[#c4-model-diagrams]
+=== C4 Model Diagramme
 
+PlantUML kann neben UML auch Diagramme basierend auf dem
+https://c4model.com/[C4 Model] erzeugen. Dies wären, sortiert nach zunehmenden
+Detailgrad, die https://c4model.com/#SystemContextDiagram[Kontext-],
+https://c4model.com/#ContainerDiagram[Kontainer-] und
+https://c4model.com/#ComponentDiagram[Komponentendiagramme]. Es gibt noch die
+https://c4model.com/img/glyphicons-basic-351-link.svg[Codediagramme], diese
+können bspw. mit den aus der UML bekannten Klassendiagrammen dargestellt
+werden.
+
+* https://c4model.com/[The C4 model for visualising software architecture]
+* https://youtu.be/x2-rSnhpw0g[Visualising software architecture with the C4 model - Simon Brown, Agile on the Beach 2019]
+* [1] https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[The Hitchhiker’s Guide to PlantUML - C4 PlantUML]
+* [2] https://github.com/RicardoNiepel/C4-PlantUML[GitHub - C4-PlantUML]
+
+Schauen Sie sich auf https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[+[1]+] und https://github.com/RicardoNiepel/C4-PlantUML[+[2]+] die Syntax für die C4 Model Diagramme an und erstellen Sie, angelehnt an das Beispiel, ein C4 Model Diagramm.
+
+* https://github.com/plantuml-stdlib/C4-PlantUML#supported-diagram-types[C4-PlantUML - Supported Diagram Types]
+
+.Hinweise: C4 Model Diagramme in PlantUML
+[%collapsible]
+====
+=====
+
+.Layout-Optionen
+----
+LAYOUT_TOP_DOWN or LAYOUT_LEFT_RIGHT <1>
+LAYOUT_WITH_LEGEND <2>
+LAYOUT_AS_SKETCH <3>
+----
+<1> Diagrammausrichtung
+<2> Legende anzeigen
+<3> Darstellungsstil skizzenhaft
+
+.Diagrammtitel
+* Diagrammtitel werden mit `titel` vergeben:
++
+----
+title Dies ist ein Diagrammtitel
+----
+
+.Diagrammtypen und deren C4-Model Elemente
+* *System Context & System Landscape diagrams*
+** Import: `!include <c4/C4_Context.puml>`
+** C4-Model Elemente:
+*** `Person`, `Person_Ext`
+*** `System`, `System_Ext`
+*** `SystemDb`, `SystemDb_Ext`
+** C4 Model Kontainer:
+*** `Boundary`, `System_Boundary`, `Enterprise_Boundary`
+* *Container diagram*
+** Import: `!include <c4/C4_Container.puml>`
+** Zusätzliche C4-Model Elemente (Knoten):
+*** `Container`, `ContainerDb`
+** Zusätzliche C4-Model Elemente (Kontainer):
+*** `Container_Boundary`
+* *Component diagram*
+** Import: `!include <c4/C4_Component.puml>`
+** Zusätzliche C4-Model Elemente (Knoten):
+*** `Component`, `ComponentDb`
+
+.Elemente (Knoten)
+* Für jedes Element wird ein Alias, der Name und eine Beschreibung vergeben:
++
+----
+Person(alias, Name, "Beschreibung")
+----
+
+.Beziehungen (Kanten)
+* Beziehungen werden über `Rel(...)` beschrieben und können zwischen Elementen und Kontainern bestehen:
++
+----
+Rel(alias_person1, alias_container1, "Beschreibung")
+Rel(alias_element1, alias_element2, "Beschreibung", "Text in [...]")
+----
+* Über `Rel_R`, `Rel_L`, `Rel_D`, `Rel_U`, `Rel_Back`, `Rel_Neighbor` und `Rel_Back_Neighbor` kann die Pfeilrichtung und Ausrichtung des in Beziehung stehenden Elementes beeinflusst werden.
+
+.Kontainer (Bereiche)
+* Elemente kann man in Bereiche bündeln:
++
+----
+Boundary(alias, "Name") {
+  ...
+}
+----
+=====
+====
+
+._example_c4-model-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Diagramm mit PlantUML
+:diagramFile: example_c4-model-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+==== Context Diagramm (Level 1)
+
+._example_c4-model-context-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-context-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Context Diagramm
+:diagramFile: example_c4-model-context-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+==== Container Diagramm (Level 2)
+
+._example_c4-model-container-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-container-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Container Diagramm
+:diagramFile: example_c4-model-container-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+
+==== Dynamic Diagram
+
+- https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#dynamic-diagram[Dynamic Diagram Sample]
+
+._example_c4-dynamic-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-dynamic-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Dynamic Diagramm mit PlantUML
+:diagramFile: example_c4-dynamic-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+==== Deployment Diagram
+
+- https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#deployment-diagram[Deployment Diagram Sample]
+
+._example_c4-deployment-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-deployment-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Deployment Diagramm mit PlantUML
+:diagramFile: example_c4-deployment-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+{section-separator}
+
+=== UML Diagramme
 
 ==== Klassendiagramm
 
@@ -604,136 +773,6 @@ include::{plantumlsdir}/example_class-diagram.puml[]
 :diagramFile: example_class-diagram
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
-[#c4-model-diagrams]
-==== C4 Model Diagramme
-
-PlantUML kann neben UML auch Diagramme basierend auf dem
-https://c4model.com/[C4 Model] erzeugen. Dies wären, sortiert nach zunehmenden
-Detailgrad, die https://c4model.com/#SystemContextDiagram[Kontext-],
-https://c4model.com/#ContainerDiagram[Kontainer-] und
-https://c4model.com/#ComponentDiagram[Komponentendiagramme]. Es gibt noch die
-https://c4model.com/img/glyphicons-basic-351-link.svg[Codediagramme], diese
-können bspw. mit den aus der UML bekannten Klassendiagrammen dargestellt
-werden.
-
-* https://c4model.com/[The C4 model for visualising software architecture]
-* https://youtu.be/x2-rSnhpw0g[Visualising software architecture with the C4 model - Simon Brown, Agile on the Beach 2019]
-* [1] https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[The Hitchhiker’s Guide to PlantUML - C4 PlantUML]
-* [2] https://github.com/RicardoNiepel/C4-PlantUML[GitHub - C4-PlantUML]
-
-Schauen Sie sich auf https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[+[1]+] und https://github.com/RicardoNiepel/C4-PlantUML[+[2]+] die Syntax für die C4 Model Diagramme an und erstellen Sie, angelehnt an das Beispiel, ein C4 Model Diagramm.
-
-.Hinweise: C4 Model Diagramme in PlantUML
-[%collapsible]
-====
-=====
-
-.Layout-Optionen
-----
-LAYOUT_TOP_DOWN or LAYOUT_LEFT_RIGHT <1>
-LAYOUT_WITH_LEGEND <2>
-LAYOUT_AS_SKETCH <3>
-----
-<1> Diagrammausrichtung
-<2> Legende anzeigen
-<3> Darstellungsstil skizzenhaft
-
-.Diagrammtitel
-* Diagrammtitel werden mit `titel` vergeben:
-+
-----
-title Dies ist ein Diagrammtitel
-----
-
-.Diagrammtypen und deren C4-Model Elemente
-* *System Context & System Landscape diagrams*
-** Import: `!include <c4/C4_Context.puml>`
-** C4-Model Elemente:
-*** `Person`, `Person_Ext`
-*** `System`, `System_Ext`
-*** `SystemDb`, `SystemDb_Ext`
-** C4 Model Kontainer:
-*** `Boundary`, `System_Boundary`, `Enterprise_Boundary`
-* *Container diagram*
-** Import: `!include <c4/C4_Container.puml>`
-** Zusätzliche C4-Model Elemente (Knoten):
-*** `Container`, `ContainerDb`
-** Zusätzliche C4-Model Elemente (Kontainer):
-*** `Container_Boundary`
-* *Component diagram*
-** Import: `!include <c4/C4_Component.puml>`
-** Zusätzliche C4-Model Elemente (Knoten):
-*** `Component`, `ComponentDb`
-
-.Elemente (Knoten)
-* Für jedes Element wird ein Alias, der Name und eine Beschreibung vergeben:
-+
-----
-Person(alias, Name, "Beschreibung")
-----
-
-.Beziehungen (Kanten)
-* Beziehungen werden über `Rel(...)` beschrieben und können zwischen Elementen und Kontainern bestehen:
-+
-----
-Rel(alias_person1, alias_container1, "Beschreibung")
-Rel(alias_element1, alias_element2, "Beschreibung", "Text in [...]")
-----
-* Über `Rel_R`, `Rel_L`, `Rel_D`, `Rel_U`, `Rel_Back`, `Rel_Neighbor` und `Rel_Back_Neighbor` kann die Pfeilrichtung und Ausrichtung des in Beziehung stehenden Elementes beeinflusst werden.
-
-.Kontainer (Bereiche)
-* Elemente kann man in Bereiche bündeln:
-+
-----
-Boundary(alias, "Name") {
-  ...
-}
-----
-=====
-====
-
-._example_c4-model-diagram.puml_
-[%collapsible]
-====
-[source,puml]
-----
-include::{plantumlsdir}/example_c4-model-diagram.puml[]
-----
-====
-
-:diagramTitle: C4 Model Diagramm mit PlantUML
-:diagramFile: example_c4-model-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
-
-==== C4 Model Context Diagramm
-
-._example_c4-model-context-diagram.puml_
-[%collapsible]
-====
-[source,puml]
-----
-include::{plantumlsdir}/example_c4-model-context-diagram.puml[]
-----
-====
-
-:diagramTitle: C4 Model Context Diagramm
-:diagramFile: example_c4-model-context-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
-
-==== C4 Model Container Diagramm
-
-._example_c4-model-container-diagram.puml_
-[%collapsible]
-====
-[source,puml]
-----
-include::{plantumlsdir}/example_c4-model-container-diagram.puml[]
-----
-====
-
-:diagramTitle: C4 Model Container Diagramm
-:diagramFile: example_c4-model-container-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
-
+==== Entity Relationship Diagramm #TODO#
 
 include::sitemap.inc.adoc[]
