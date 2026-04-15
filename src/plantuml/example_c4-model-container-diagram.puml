@@ -1,0 +1,14 @@
+@startuml
+
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Container.puml>
+
+Person(personAlias, "Label", "Optional Description")
+
+System_Boundary(c1, "Sample System") {
+    Container(containerAlias, "Container Name", "Technology", "Optional Description")
+}
+Rel(personAlias, containerAlias, "Label", "Optional Technology")
+
+@enduml

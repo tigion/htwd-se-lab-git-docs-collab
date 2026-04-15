@@ -494,15 +494,17 @@ angezeigt werden.
 
 ==== Aufgabe 1.2 - Klassendiagramm
 
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein Klassendiagramm, welches
-  ... #TODO#
+. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *Klassendiagramm*.
 
-==== Aufgabe 1.3 - C4 Model Diagramme
+==== Aufgabe 1.3 - C4 Model Context Diagramm
 
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein C4 Model Context (Level
-  1) Diagramm, welches ... #TODO#
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein C4 Model Container
-  (Level 2) Diagramm, welches ... #TODO#
+. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *C4 Model Context (Level
+  1) Diagramm*.
+
+==== Aufgabe 1.4 - C4 Model Container Diagramm
+
+. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *C4 Model Container
+  (Level 2) Diagramm*.
 
 
 {section-separator}
@@ -701,6 +703,36 @@ include::{plantumlsdir}/example_c4-model-diagram.puml[]
 
 :diagramTitle: C4 Model Diagramm mit PlantUML
 :diagramFile: example_c4-model-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+==== C4 Model Context Diagramm
+
+._example_c4-model-context-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-context-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Context Diagramm
+:diagramFile: example_c4-model-context-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+==== C4 Model Container Diagramm
+
+._example_c4-model-container-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-container-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Container Diagramm
+:diagramFile: example_c4-model-container-diagram
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
 

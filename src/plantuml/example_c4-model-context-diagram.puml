@@ -1,0 +1,30 @@
+@startuml
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Context.puml>
+
+' Images
+!include <office/Users/user.puml>
+!include <office/Users/mobile_user.puml>
+
+LAYOUT_WITH_LEGEND()
+
+title System Context Diagram – [Systemname]
+
+Person(user, "Nutzer:in", "Verwendet das System über Web oder Mobile")
+Person(admin, "Administrator:in", "Verwaltet und konfiguriert das System")
+
+System(system, "[Systemname]", "Kernfunktionalität des Systems")
+
+SystemDb(db, "Datenbank", "Persistente Datenhaltung des Systems")
+
+System_Ext(ext1, "Externer Dienst\n[z. B. LDAP / SSO]", "Authentifizierung und Identitätsverwaltung")
+System_Ext(ext2, "Externer Dienst\n[z. B. E-Mail-Server]", "Versand von Benachrichtigungen")
+
+Rel(user, system, "nutzt", "Web / Mobile")
+Rel(admin, system, "verwaltet")
+Rel(system, db, "liest / schreibt", "JDBC / SQL")
+Rel(system, ext1, "authentifiziert über", "LDAP / OAuth2")
+Rel(system, ext2, "sendet Benachrichtigungen über", "SMTP")
+
+@enduml
