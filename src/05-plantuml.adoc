@@ -674,6 +674,25 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 
 {section-separator}
 
+===== icon:star[] Component Diagram
+
+- https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#component-diagram[Component Diagram Sample]
+
+._example_c4-dynamic-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-dynamic-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Component Diagramm mit PlantUML
+:diagramFile: example_c4-component-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+{section-separator}
+
 ===== icon:star[] Deployment Diagram
 
 - https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#deployment-diagram[Deployment Diagram Sample]

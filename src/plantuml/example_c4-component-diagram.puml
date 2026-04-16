@@ -1,0 +1,42 @@
+@startuml
+
+' source: https://github.com/plantuml-stdlib/C4-PlantUML
+' C4 Model
+!include <c4/C4_Component.puml>
+
+LAYOUT_WITH_LEGEND()
+
+title Component Diagram – [Systemname]
+
+Container_Boundary(frontend, "Frontend") {
+  Component(booking_ui, "Buchungskomponente", "z. B. React / Angular", "Ermöglicht Nutzern das Erstellen und Verwalten von Buchungen")
+  Component(auth_ui, "Authentifizierungskomponente", "z. B. React / Angular", "Handhabt Login, Logout und Session-Management")
+  Component(shared_ui, "Gemeinsame UI-Komponenten", "z. B. Design System", "Wiederverwendbare UI-Elemente wie Buttons, Formulare, Navigation")
+}
+
+Container_Boundary(backend, "Backend") {
+  Component(booking_ctrl, "Buchungs-Controller", "z. B. REST Controller", "Nimmt eingehende Buchungsanfragen entgegen und delegiert an den Service")
+  Component(booking_svc, "Buchungs-Service", "z. B. Spring Service", "Enthält die Buchungslogik und orchestriert Repository und Benachrichtigung")
+  Component(user_svc, "Nutzer-Service", "z. B. Spring Service", "Verwaltung von Nutzerdaten und Authentifizierungslogik")
+  Component(notification_svc, "Benachrichtigungs-Service", "z. B. Spring Service", "Erstellt und versendet Benachrichtigungen an Nutzer:innen")
+}
+
+Container_Boundary(persistence, "Persistenz") {
+  Component(booking_repo, "Buchungs-Repository", "z. B. JPA Repository", "Datenzugriff für Buchungsentitäten")
+  Component(user_repo, "Nutzer-Repository", "z. B. JPA Repository", "Datenzugriff für Nutzerentitäten")
+  ContainerDb(db, "Datenbank", "z. B. PostgreSQL", "Persistente Datenhaltung für alle Entitäten")
+}
+
+System_Ext(ext, "Externer E-Mail-Dienst", "Zustellung von E-Mail-Benachrichtigungen, z. B. via SMTP")
+
+Rel(booking_ui, booking_ctrl, "sendet Buchungsanfragen", "REST / HTTPS")
+Rel(auth_ui, user_svc, "authentifiziert Nutzer:in", "REST / HTTPS")
+Rel(booking_ctrl, booking_svc, "delegiert an", "Java API")
+Rel(booking_svc, booking_repo, "liest / schreibt Buchungen", "JPA")
+Rel(booking_svc, notification_svc, "löst Benachrichtigung aus", "Java API")
+Rel(user_svc, user_repo, "liest / schreibt Nutzerdaten", "JPA")
+Rel(booking_repo, db, "persistiert Daten", "SQL")
+Rel(user_repo, db, "persistiert Daten", "SQL")
+Rel(notification_svc, ext, "sendet E-Mails über", "SMTP")
+
+@enduml
