@@ -655,40 +655,40 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 
 {section-separator}
 
-===== icon:star[] Dynamic Diagram
-
-- https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#dynamic-diagram[Dynamic Diagram Sample]
-
-._example_c4-dynamic-diagram.puml_
-[%collapsible]
-====
-[source,puml]
-----
-include::{plantumlsdir}/example_c4-dynamic-diagram.puml[]
-----
-====
-
-:diagramTitle: C4 Dynamic Diagramm mit PlantUML
-:diagramFile: example_c4-dynamic-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
-
-{section-separator}
-
 ===== icon:star[] Component Diagram
 
 - https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#component-diagram[Component Diagram Sample]
 
-._example_c4-dynamic-diagram.puml_
+._example_c4-model-component-diagram.puml_
 [%collapsible]
 ====
 [source,puml]
 ----
-include::{plantumlsdir}/example_c4-dynamic-diagram.puml[]
+include::{plantumlsdir}/example_c4-model-component-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Component Diagramm mit PlantUML
-:diagramFile: example_c4-component-diagram
+:diagramTitle: C4 Model Component Diagramm mit PlantUML
+:diagramFile: example_c4-model-component-diagram
+plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+
+{section-separator}
+
+===== icon:star[] Dynamic Diagram
+
+- https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#dynamic-diagram[Dynamic Diagram Sample]
+
+._example_c4-model-dynamic-diagram.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_c4-model-dynamic-diagram.puml[]
+----
+====
+
+:diagramTitle: C4 Model Dynamic Diagramm mit PlantUML
+:diagramFile: example_c4-model-dynamic-diagram
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
 {section-separator}
@@ -697,17 +697,17 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 
 - https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/samples/C4CoreDiagrams.md#deployment-diagram[Deployment Diagram Sample]
 
-._example_c4-deployment-diagram.puml_
+._example_c4-model-deployment-diagram.puml_
 [%collapsible]
 ====
 [source,puml]
 ----
-include::{plantumlsdir}/example_c4-deployment-diagram.puml[]
+include::{plantumlsdir}/example_c4-model-deployment-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Deployment Diagramm mit PlantUML
-:diagramFile: example_c4-deployment-diagram
+:diagramTitle: C4 Model Deployment Diagramm mit PlantUML
+:diagramFile: example_c4-model-deployment-diagram
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
 {section-separator}
