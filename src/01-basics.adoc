@@ -278,7 +278,10 @@ https://github.com/<account>/htwd-se-example-project.git
 Zu finden auf GitHub in Ihrem Repository beim Klick auf den grünen *Code*
 Button im Bereich HTTPS.
 
-===== Variante - Visual Studio Code (HTTPS):
+.Variante - Visual Studio Code (HTTPS)
+[%collapsible]
+====
+=====
 . In Visual Studio Code kann über folgende Varianten ein Git-Rpository geclont
   werden:
 ** "View > Source Control" -> Button kbd:[Clone Repository]
@@ -301,7 +304,7 @@ Falls in VS Code schon ein Repository geöffnet ist, kann dies auch in "View
 Verwenden Sie: *GitHub OAuth*, welches die Authentifizierung über den Webbrowser ermöglicht.
 
 [NOTE]
-====
+======
 Die Kommunikation ihres Repositories per *_https_* mit GitHub verlangt jedes
 Mal erneut den Login. Deswegen ist in den Windows-Laboren die Option mit `git
 config --global credential.helper=manager` schon in der Git-Konfiguration
@@ -309,6 +312,8 @@ gesetzt. Damit bleibt Ihr Login für die aktuelle Sitzung gespeichert.
 Alternativ können Sie auch einen Timeout mit `git config --global
 credential.helper 'cache -timeout=5400'` einstellen, so würde der Login 60
 Minuten gespeichert bleiben.
+======
+=====
 ====
 
 .Variante - Terminal (HTTPS)
