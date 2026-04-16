@@ -1,0 +1,18 @@
+@startuml
+
+skinparam monochrome true
+skinparam defaultFontSize 13
+
+start
+:App öffnen;
+if (Bereits registriert?) then (ja)
+  :Login;
+else (nein)
+  :Registrierung;
+  :Bestätigungs-E-Mail;
+  :E-Mail bestätigen;
+endif
+:Startseite;
+stop
+
+@enduml

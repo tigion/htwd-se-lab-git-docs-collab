@@ -1,0 +1,28 @@
+@startuml
+
+' options
+left to right direction
+hide empty members
+
+title "Domänenmodell"
+
+entity Nutzer {
+  Name
+  E-Mail
+}
+
+entity Bestellung {
+  Bestellnummer
+  Datum
+  Status
+}
+
+entity Produkt {
+  Bezeichnung
+  Preis
+}
+
+Nutzer "1" --> "0..*" Bestellung : gibt auf
+Bestellung "1" --> "1..*" Produkt : enthält
+
+@enduml
