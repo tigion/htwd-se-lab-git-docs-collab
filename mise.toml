@@ -1,0 +1,47 @@
+[tools]
+# Comment out to use the existing Ruby version on the system.
+# ruby = "4.0" # mise install
+
+[settings]
+ruby.compile = false
+
+[env]
+BUNDLE_PATH = "vendor/bundle"
+
+# --- General development tasks ---
+
+[tasks.build]
+description = "Build artifacts from AsciiDoc sources"
+run = "bundle exec ./build.sh"
+
+[tasks.deploy]
+description = "Deploy artifacts to the web server"
+run = "bundle exec ./deploy.sh"
+
+# --- Development setup tasks ---
+
+[tasks."dev:setup"]
+description = "Set up the development environment"
+run = [ "bundle install", "bundle check" ]
+
+# --- Ruby gem management tasks ---
+
+[tasks."gems:install"]
+description = "Install Ruby gems via Bundler"
+run = "bundle install"
+
+[tasks."gems:outdated"]
+description = "Show outdated gems"
+run = "bundle outdated"
+
+[tasks."gems:update"]
+description = "Update gems within constraints"
+run = "bundle update"
+
+[tasks."gems:clean"]
+description = "Remove unused gems from vendor/bundle"
+run = "bundle clean --force"
+
+[tasks."gems:check"]
+description = "Check if bundle is consistent"
+run = "bundle check"

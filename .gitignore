@@ -1,8 +1,10 @@
 *~
 .DS_Store
 
-# ignore special folder '.asciidoctor'
+# ignore development environment files
 .asciidoctor/
+vendor/
+.mise
 
 # ignore unwanted project folders
 build/

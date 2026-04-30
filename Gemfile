@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 
 # Needed ruby version
-# ruby "4.0.2"
+ruby ">=4.0.0"
 
 # Dependencies
 gem "logger" # Dependency of gem "asciidoctor" (Needed since ruby 4.0.0)
