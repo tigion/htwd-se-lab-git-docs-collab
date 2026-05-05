@@ -395,6 +395,10 @@ note right of {variable1} : {variable2}
   *Ordner* in *VS Code* und passen Sie folgende Einstellung an:
 ** AsciiDoc -> Extensions: *Enable Kroki*: icon:check-square-o[] (aktiviert)
 
+. Legen Sie in Ihrem Repository eine *.gitignore*-Datei an und schließen Sie
+  die generierten Diagramme und das temporäre *.asciidoctor* Verzeichnis vom
+  Repository aus. (siehe <<_git_konfiguration,Git Konfiguration>>)
+
 . Legen Sie in Ihrem Repository im *docs* Verzeichnis die Ordner *images* und
   *plantuml* an.
 
@@ -478,6 +482,11 @@ Ein Beispiel für ein im Dokument inkludiertes PlantUML-Diagramm als externe Dat
 . Installieren Sie (falls noch nicht vorhanden) die Erweiterung
   https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml[PlantUML]
   für Visual Studio Code.
++
+Passen Sie in den Einstellungen von VS Code unter "Settings > Extensions
+> PlantUML configuration" die Einstellungen **Render** auf `PlantUMLServer` an,
+um auch ohne lokal installierte PlantUML-Version die Diagramme in der Vorschau
+anzeigen zu können.
 +
 [NOTE]
 ====
