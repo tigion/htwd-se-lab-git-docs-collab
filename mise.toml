@@ -1,6 +1,6 @@
 [tools]
 # Comment out to use the existing Ruby version on the system.
-# ruby = "4.0" # mise install
+ruby = "4.0" # mise install
 
 [settings]
 ruby.compile = false
