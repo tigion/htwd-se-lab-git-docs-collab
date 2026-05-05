@@ -405,7 +405,7 @@ note right of {variable1} : {variable2}
 . Legen Sie dort weiterhin ein neues AsciiDoc-Dokument
   *diagramme-mit-plantuml.adoc* mit folgendem Inhalt an:
 +
-.Vorlage: demo-diagramme.adoc
+.Vorlage: diagramme-mit-plantuml.adoc
 [%collapsible]
 ====
 [source,asciidoc]
