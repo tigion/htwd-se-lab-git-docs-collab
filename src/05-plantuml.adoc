@@ -484,9 +484,9 @@ Ein Beispiel für ein im Dokument inkludiertes PlantUML-Diagramm als externe Dat
   für Visual Studio Code.
 +
 Passen Sie in den Einstellungen von VS Code unter "Settings > Extensions
-> PlantUML configuration" die Einstellungen **Render** auf `PlantUMLServer` an,
-um auch ohne lokal installierte PlantUML-Version die Diagramme in der Vorschau
-anzeigen zu können.
+> PlantUML configuration" die Einstellungen **Render** auf `PlantUMLServer` und
+**Server** auf den vorgeschlagenen offiziellen an, um auch ohne lokal
+installierte Tools die Diagramme in der Vorschau anzeigen zu können.
 +
 [NOTE]
 ====
