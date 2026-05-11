@@ -471,11 +471,11 @@ Ein Beispiel für ein im Dokument inkludiertes PlantUML-Diagramm als externe Dat
 ====
 
 
-. Speichern sie die Datei _demo-diagramme.adoc_ und lassen Sie sich die
+. Speichern sie die Datei _diagramme-mit-plantuml.adoc_ und lassen Sie sich die
   Vorschau des AsciiDoc-Dokuments parallel in VS Code anzeigen.
 ** Es sollten jetzt ein Testdiagramm und ein Infodiagramm zu sehen sein.
 
-. Bearbeiten Sie die Datei _demo-diagramme.adoc_ und ergänzen Sie obiges
+. Bearbeiten Sie die Datei _diagramme-mit-plantuml.adoc_ und ergänzen Sie obiges
   <<diagram_syntax-example_source,Beispiel eines Klassendiagramm>> als
   *eingebettetes* Diagramm.
 
@@ -495,7 +495,7 @@ bearbeitet (Syntax highlight, ...), exportiert und in einer Live-Vorschau
 angezeigt werden.
 ====
 
-. Bearbeiten Sie die Datei _demo-diagramme.adoc_ und ergänzen Sie obiges
+. Bearbeiten Sie die Datei _diagramme-mit-plantuml.adoc_ und ergänzen Sie obiges
   <<diagram_syntax-example_source,Beispiel eines Klassendiagramm>> als
   *includiertes* Diagramm.
 ** Erstellen Sie hierzu eine Datei _syntax-example2.puml_ im Verzeichnis
@@ -503,22 +503,22 @@ angezeigt werden.
 ** Übernehmen den Inhalt des eingebetteten Diagrammes und aktivieren die
    PlantUML-Vorschau.
 
-. Überprüfen Sie das Ergebnis Ihrer _demo-diagramme.adoc_ in der Vorschau
+. Überprüfen Sie das Ergebnis Ihrer _diagramme-mit-plantuml.adoc_ in der Vorschau
   des AsciiDoc-Dokuments.
 
 
 ==== Aufgabe 1.2 - Klassendiagramm
 
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *Klassendiagramm*.
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *Klassendiagramm*.
 
 ==== Aufgabe 1.3 - C4 Model Context Diagramm
 
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *C4 Model Context (Level
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model Context (Level
   1) Diagramm*.
 
 ==== Aufgabe 1.4 - C4 Model Container Diagramm
 
-. Erweitern Sie die Datei _demo-diagramme.adoc_ um ein *C4 Model Container
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model Container
   (Level 2) Diagramm*.
 
 
