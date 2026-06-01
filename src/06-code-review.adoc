@@ -4,8 +4,8 @@ include::header.inc.adoc[]
 
 .Lernziele
 ****
-#TODO#: Anlegen und Verwenden von Pull-Requests als Technik für Code Review und
-Integration, auch mit mehreren Commits, Diskussionen im PR
+- Verwenden von **Pull-Requests** (Commits, Diskussionen, Genehmigungen) für **Code Review** und **Integration**
+- Verwenden von **Forks** für Vorschläge von Änderungen als **Pull-Requests** für ein anderes Repository
 ****
 
 include::notes-windows-lab.inc.adoc[]
@@ -492,6 +492,6 @@ händisch auflösen.
 . Nach erfolgreicher Übernahme Ihrer Änderung, erscheint auf
   https://tigion.github.io/htwd-playground-fork-colors/[Fork Colors (Demo
   Seite)] ein zusätzlicher Farbkreis mit Ihren Angaben.
-. (optional) Jetzt können Sie den Fork auf GitHub und lokal löschen.
+. Jetzt können Sie den Fork auf GitHub und lokal löschen.
 
 include::sitemap.inc.adoc[]
