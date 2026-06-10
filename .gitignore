@@ -5,6 +5,7 @@
 .asciidoctor/
 vendor/
 .mise
+bin/
 
 # ignore unwanted project folders
 build/

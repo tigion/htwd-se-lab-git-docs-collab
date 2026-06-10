@@ -7,6 +7,7 @@ ruby.compile = false
 
 [env]
 BUNDLE_PATH = "vendor/bundle"
+_.path = ["./bin"]
 
 # --- General development tasks ---
 
@@ -22,13 +23,17 @@ run = "bundle exec ./deploy.sh"
 
 [tasks."dev:setup"]
 description = "Set up the development environment"
-run = [ "bundle install", "bundle check" ]
+run = [ "mise run gems:install", "mise run gems:check", "mise run gems:binstubs" ]
 
 # --- Ruby gem management tasks ---
 
 [tasks."gems:install"]
 description = "Install Ruby gems via Bundler"
 run = "bundle install"
+
+[tasks."gems:binstubs"]
+description = "Generate binstubs for installed gems"
+run = "bundle binstubs --all"
 
 [tasks."gems:outdated"]
 description = "Show outdated gems"
