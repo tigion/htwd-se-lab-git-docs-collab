@@ -41,7 +41,7 @@ run = "bundle outdated"
 
 [tasks."gems:update"]
 description = "Update gems within constraints"
-run = "bundle update"
+run = "bundle update --all --conservative"
 
 [tasks."gems:clean"]
 description = "Remove unused gems from vendor/bundle"
