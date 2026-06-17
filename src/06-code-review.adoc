@@ -18,7 +18,7 @@ include::notes-windows-lab.inc.adoc[]
 image::geek-and-poke_dev-cycle-friday-evening-edition.jpg[Geek&Poke: Dev Cycle (Friday Evening Edition), width=200, role="right", link="http://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition"]
 
 Für qualitativ guten Code sind *Code-Reviews* unabdingbar. Plattformen wie
-icon:github[] Github (oder bspw. icon:gitlab[] GitLab) bieten dafür die
+icon:github[] GitHub (oder bspw. icon:gitlab[] GitLab) bieten dafür die
 Möglichkeit von Pull-/Merge-Requests.
 
 Code-Review::

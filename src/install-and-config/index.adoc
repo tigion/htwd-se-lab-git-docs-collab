@@ -637,7 +637,7 @@ Einzig für die PDF-Generierung ist es noch möglich die loakl installierte Vers
 Weitere hilfreiche Erweiterungen für Visual Studio Code wären:
 
 * https://marketplace.visualstudio.com/items?itemName=shardulm94.trailing-spaces[Trailing Spaces] ... highlight trailing spaces and delete them in a flash
-* https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles[Markdown Preview Github Styling] ... changes VS Code's built-in markdown preview to match Github's styling
+* https://marketplace.visualstudio.com/items?itemName=bierner.markdown-preview-github-styles[Markdown Preview GitHub Styling] ... changes VS Code's built-in markdown preview to match GitHub's styling
 * https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml[PlantUML] ... rich PlantUML support for Visual Studio Code
 * https://marketplace.visualstudio.com/items?itemName=mhutchie.git-graph[Git Graph] ... View a Git Graph of your repository, and perform Git actions from the graph
 

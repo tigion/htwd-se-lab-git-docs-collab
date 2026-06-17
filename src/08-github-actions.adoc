@@ -2,7 +2,7 @@ include::header.inc.adoc[]
 
 == Teil 9 - GitHub Actions
 
-In diesem Aufgabenteil wollen wir erste Möglichkeiten von *Github Actions*
+In diesem Aufgabenteil wollen wir erste Möglichkeiten von *GitHub Actions*
 kennenlernen, was *Workflows* sind und wie sie unsere Arbeit mit dem Repository
 auf GitHub unterstützen können.
 
