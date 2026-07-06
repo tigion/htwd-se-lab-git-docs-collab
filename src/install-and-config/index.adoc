@@ -444,7 +444,8 @@ In dieser Variante wird das Projektverzeichnis innerhalb von Visual Studio Code 
 
 . Folgenden Inhalte für die Datei _devcontainer.json_ übernehmen:
 +
-[source, json, title="devcontainer.json"]
+.devcontainer.json
+[source, json]
 ----
 {
     "name": "Asciidoctor", <1>
@@ -471,7 +472,8 @@ Enthält den Namen, den Ort des zugehörigen Dockerfiles und die für den Contai
 
 . Folgenden Inhalte für die Datei _Dockerfile_ übernehmen:
 +
-[source, docker, title="Dockerfile"]
+.Dockerfile
+[source, dockerfile]
 ----
 FROM asciidoctor/docker-asciidoctor
 ----
