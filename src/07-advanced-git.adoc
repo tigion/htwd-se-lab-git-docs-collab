@@ -2,7 +2,8 @@ include::header.inc.adoc[]
 
 == Teil 7 - Git Advanced
 
-In den folgenden Aufgaben wird die Änderungs-/Versionsverwaltung von Git genauer betrachtet.
+In den folgenden Aufgaben wird die Änderungs-/Versionsverwaltung von Git
+genauer betrachtet.
 
 :imageTitle: Git-Versionskette
 :imageFile: grafik_git_versions_chain.png
@@ -23,10 +24,13 @@ include::notes-windows-lab.inc.adoc[]
 
 === Hinweise zur Bearbeitung
 
-Bearbeiten Sie die Aufgaben in Ihrem vorhandenem `htwd-se-example-project` Repository.
+Bearbeiten Sie die Aufgaben in Ihrem vorhandenem `htwd-se-example-project`
+Repository.
 
 ====
-Nutzen Sie die Möglichkeiten sich auf Webseiten wie der offiziellen http://git-scm.com/documentation[Git Dokumentation] oder anderen Ressourcen über die verwendeten git-Kommandos und -Konzepte zu informieren.
+Nutzen Sie die Möglichkeiten sich auf Webseiten, wie der offiziellen
+http://git-scm.com/documentation[Git Dokumentation] oder anderen Ressourcen,
+über die verwendeten git-Kommandos und -Konzepte zu informieren.
 
 .Linkliste zu hilfreichen Webseiten und Videos
 [%collapsible]
@@ -38,34 +42,46 @@ Nutzen Sie die Möglichkeiten sich auf Webseiten wie der offiziellen http://git-
 =====
 ====
 
-In den Aufgaben gibt es ebenfalls [underline]#aufklappbare Hinweise#. Diese beinhalten die benötigten git-Kommandos mit erklärenden Anmerkungen.
+In den Aufgaben gibt es [underline]#aufklappbare Hinweise# mit Erklärungen zu
+den git-Kommandos.
 
-Je nach verwendetem git-Client oder IDE sind die Kommandos über entsprechenden Menüpunkte und Schaltflächen zu erreichen. Es ist Ihnen freigestellt, ob Sie einen grafischen Client/IDE oder das Terminal verwenden.
+Je nach verwendetem git-Client oder IDE sind die Kommandos über entsprechenden
+Menüpunkte und Schaltflächen zu erreichen. Es ist Ihnen freigestellt, ob Sie
+einen grafischen Client/IDE oder das Terminal verwenden.
 
 Terminal in Visual Studio Code icon:linux[] icon:apple[] icon:windows[]::
   Über das Hauptmenü: "View > Terminal" kann innerhalb von VS Code ein Terminal geöffnet werde.
 Terminal unter icon:windows[] Windows::
   PowerShell, git-Bash, Eingabeaufforderung (cmd), ...
 Terminal unter icon:linux[] Linux, icon:apple[] macOS::
-  XTerm, Konsole, Terminal.app, ...
+  Konsole, Terminal.app, kitty, Ghostty ...
 
 {section-separator}
 
 === 1. Änderungen und Versionen verwalten
 
-Die folgenden Aufgaben behandeln Möglichkeiten zum Umgang mit *Änderungen* und *Versionen* (Commits) im lokalen Arbeitsverzeichnis.
+. Die folgenden Aufgaben behandeln den Umgang mit *Änderungen* und *Versionen*
+(Commits) im lokalen Arbeitsverzeichnis.
 
 - *Änderung* ... (noch) nicht versionierte Änderung im lokalen Arbeitsverzeichnis
 - *Version* ... versionierte Änderung (Commit) im lokalen Arbeitsverzeichnis
 
 ==== Aufgabe 1.1 - Versionen untersuchen
 
-Untersuchen Sie in Ihrem lokalen Repository einen älteren Projektstand (Version) indem Sie sich die Unterschiede (`diff`) zwischen Versionen oder neueren Änderungen anzeigen lassen und direkt zu früheren Versionen in Ihrem Projekt springen (`checkout`). Kehren Sie anschließend zum aktuellen Stand zurück.
+Untersuchen Sie in Ihrem lokalen Repository Unterschiede zu früheren Versionen
+und wechseln Sie temporär zu einem früheren Projektstand.
 
+. Vergleichen Sie mithilfe von `diff` verschiedene Commits bzw. Änderungen.
++
 .Hinweise: `diff`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `diff` werden die Unterschiede zwischen zwei Versionen (Commits)
+oder zum lokalen Arbeitsstand angezeigt. Ein `+` steht für eine hinzugefügte und
+ein `-` für eine entfernte Zeilen. Änderungen innerhalb einer Zeile werden mit
+einer Kombination aus `-` und `+` dargestellt.
+
 ----
 $ git diff <1>
 $ git diff <file> <2>
@@ -79,53 +95,81 @@ $ git diff <commit-id-1> <commit-id-2> <6>
 $ git diff <branch-1> <branch-2> <7>
 ----
 <1> zeigt Unterschied der letzten Version (_HEAD_) zum lokalen Arbeitsstand
-<2> mit der zusätzlichen Angabe `<file>` kann gezielt eine Datei oder ein Verzeichnis verglichen werden
-<3> mit `--cached` werden die vorgemerkten Änderungen gegenüber `HEAD` oder einer angegebenen Version verglichen
+<2> mit der zusätzlichen Angabe `<file>` kann gezielt eine Datei oder ein
+    Verzeichnis verglichen werden
+<3> mit `--cached` werden die vorgemerkten Änderungen gegenüber `HEAD` oder
+    einer angegebenen Version verglichen
 <4> zeigt Unterschied der Version `<commit-id>` zum lokalen Arbeitsstand
 <5> zeigt Unterschied der Version `<commit-id>` zur letzten Version `HEAD`
-<6> zeigt Unterschied von Version `<commit-id-1>` (älter) zur Version `<commit-id-2>` (neuer)
+<6> zeigt Unterschied von Version `<commit-id-1>` (älter) zur Version
+    `<commit-id-2>` (neuer)
 <7> zeigt Unterschied von Branch `<branch-1>` zu Branch `<branch-2>`
 =====
 ====
 
+. Wechseln Sie mit `checkout` zu einem älteren Projektstand und kehren
+Sie danach wieder zum aktuellen Stand zurück.
++
 .Hinweise: `checkout`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `checkout` wird der Arbeitsbereich auf den Zustand einer
+bestimmten Version (Commit) oder eines Branches gesetzt.
+
 image::grafik_git_checkout.png["...",width=251]
+
 ----
 $ git log --oneline <1>
 $ git checkout <old_commit_id> <2>
 $ git switch main <3>
 ----
-<1> Versionshistorie (commits) anzeigen, die Option `--oneline` erlaubt eine Anzeige mit weniger Details auf einer Zeile pro Commit
+<1> Versionshistorie (commits) anzeigen, die Option `--oneline` erlaubt eine
+    Anzeige mit weniger Details auf einer Zeile pro Commit
 <2> vergangenen Projektstand laden
-<3> Neuere Alternativ zu `git checkout <branch>`. Zu aktuellem Projektstand (_main_-Branch) zurückkehren. Zwischenzeitliche Commits auf den vergangenen Projektstand werden verworfen.
+<3> Neuere Alternativ zu `git checkout <branch>`. Zu aktuellem Projektstand
+    (_main_-Branch) zurückkehren. Zwischenzeitliche Commits auf den vergangenen
+    Projektstand werden verworfen.
 
-NOTE: In der unteren Statusleiste (links) in VS Code oder über das git-Kommando `git branch` sieht man den aktuellen Branch, bspw. _main_. Seit Oktober 2020 verwenden alle auf GitHub neu erstellten Repository `main` anstelle von `master` als Standard-Branch (https://github.com/github/renaming[Quelle]).
+NOTE: In der unteren Statusleiste (links) in VS Code oder über das git-Kommando
+`git branch` sieht man den aktuellen Branch, bspw. _main_. Seit Oktober 2020
+verwenden alle auf GitHub neu erstellten Repository `main` anstelle von
+`master` als Standard-Branch (https://github.com/github/renaming[Quelle]).
 =====
 ====
 
 ==== Aufgabe 1.2 - Änderung wegspeichern
-Nehmen Sie in Ihrem Repository eine lokale Änderung vor und speichern Sie diese temporär mit `stash` weg. Schauen Sie sich Ihren lokalen Arbeitsstand an. Stellen Sie anschließend Ihre weggespeicherte Änderung wieder her und nehmen Sie diese als neue Version auf.
+
+. Nehmen Sie in Ihrem Repository eine lokale Änderung vor und speichern Sie diese
+temporär mit `stash` weg. Schauen Sie sich Ihren lokalen Arbeitsstand an.
+. Stellen Sie anschließend Ihre weggespeicherte Änderung wieder her und nehmen
+Sie diese als neue Version auf.
 
 .Hinweise: `stash`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `stash` lassen sich Änderungen im lokalen Arbeitsverzeichnis
+vorübergehend speichern und bei Bedarf später wiederherstellen. Dies ist
+hilfreich, wenn eine begonnene Arbeit unterbrochen oder kurzfristig der Branch
+gewechselt werden soll, ohne die aktuellen Änderungen als Commit zu speichern.
+
 image::grafik_git_stash.png["...",width=625]
+
 ----
-$ git stash <1> <2>
-$ git stash save "Arbeitsstand X"
+$ git stash <1>
+
+$ git stash save "Arbeitsstand X" <2>
 $ git stash -u
 $ git stash -S
 $ git stash -k
 
 $ git stash pop <3>
 $ git stash apply <4>
+
 $ git stash drop <5>
 
-$ git stash list <6>
+$ git stash list <9>
 stash@{0}: WIP on main: ...
 stash@{1}: WIP on main: ...
 stash@{2}: On main: Arbeitsstand X
@@ -133,86 +177,139 @@ stash@{2}: On main: Arbeitsstand X
 $ git stash show <7>
 $ git stash show -p <8>
 ----
-<1> Änderungen an unter Versionskontrolle stehenden Dateien und im INDEX (staged) befindliche Änderungen werden aus dem Arbeitsverzeichnis temporär weggespeichert
-<2> Varianten:
-+
-* `save "..."` ... benennt den erzeugten Stash für eine bessere Unterscheidung
-* `-u` ... speichert zusätzlich *untracked* neue bzw. noch nicht unter Versionskontrolle stehende Dateien weg
-* `-S` ... nur *staged* im INDEX befindliche Änderungen werden aus dem Arbeitsverzeichnis temporär weggespeichert
-* `-k` ... nur *unstaged* nicht im INDEX befindliche Änderungen werden aus dem Arbeitsverzeichnis temporär weggespeichert
-<3> `pop` ... stellt die weggespeicherte Änderung wieder her und entfernt den zugehörigen _Stash_
-<4> `apply` ... stellt die weggespeicherte Änderung wieder her und behält den zugehörigen _Stash_ (nützlich, wenn die Änderung noch an anderer Stelle (bspw. anderer _Branch_) gebraucht wird)
+<1> Änderungen an *tracked* und *staged* Dateien werden aus dem
+    Arbeitsverzeichnis weggespeichert
+<2> `save "..."` ... benennt den erzeugten Stash +
+    `-u` ... speichert zusätzlich *untracked* Dateien weg +
+    `-S` ... speichert nur *staged* Dateien weg +
+    `-k` ... speichert nur *unstaged* weg
+<3> `pop` ... stellt die weggespeicherte Änderung wieder her und entfernt den
+    zugehörigen _Stash_
+<4> `apply` ... stellt die weggespeicherte Änderung wieder her und behält den
+    zugehörigen _Stash_ (nützlich, wenn die Änderung noch an anderer Stelle (bspw.
+    anderer _Branch_) gebraucht wird)
 <5> `drop` ... entfernt den Stash mit den enthaltenen Änderungen
 <6> `list` ... Liste der vorhandenen _Stashes_
-<7> `show` ... zeigt Kurzform der Änderungen im _Stash_ gegenüber der aktuellen Version
+<7> `show` ... zeigt Kurzform der Änderungen im _Stash_ gegenüber der aktuellen
+    Version
 <8> `show -p` ... zeigt auch inhaltliche Änderungen (Patch-Form)
 
-NOTE: Hat man mehrere Stashs, wird bei `pop`, `apply` und `drop` der zuletzt angelegte genommen. Man kann auch den gewünschten Stash mit bspw. `git stash pop stash@{1}` angegeben. Der neueste ist `stash@{0}` (default), der nächst ältere `stash@{1}` und so weiter.
+NOTE: Hat man mehrere Stashs, wird bei `pop`, `apply` und `drop` der zuletzt
+angelegte genommen. Man kann auch den gewünschten Stash mit bspw. `git stash
+pop stash@{1}` angegeben. Der neueste ist `stash@{0}` (default), der nächst
+ältere `stash@{1}` und so weiter.
+
+.Status von Dateien und Änderungen in Git
+[cols="^1,3"]
+|===
+| Status      | Beschreibung
+
+| `tracked`   | Dateien, die unter Versionskontrolle stehen
+| `untracked` | Neue Dateien, die noch nicht unter Versionskontrolle stehen
+| `staged`    | Änderungen im Index, die zum Commit vorgemerkt sind
+| `unstaged`  | Änderungen an verfolgten Dateien, die noch nicht zum Commit vorgemerkt sind
+|===
 =====
 ====
 
 ==== Aufgabe 1.3 - Änderung verwerfen
 
-Nehmen Sie in Ihrem Repository eine lokale Änderung vor und verwerfen Sie diese anschließend, ohne eine neue Version zu erstellen.
+Nehmen Sie in Ihrem Repository eine lokale Änderung vor und verwerfen Sie diese
+anschließend, ohne eine neue Version zu erstellen.
 
 .Hinweise: `checkout`, `restore`, `reset`, `clean`
 [%collapsible]
 ====
 =====
 image::grafik_git_checkout-reset-clean.png["...",width=381]
+
 ----
 $ git checkout -- <file(s)> <1>
 $ git restore -- <file(s)> <2>
 $ git reset --hard <3>
 $ git clean -df <4>
 ----
-<1> Setzt lokale Änderungen einer oder mehrerer unter Versionskontrolle stehender Dateien auf die letzte Version zurück. Ein `.` statt `<file(s)>` nimmt alle lokalen Änderungen.
+<1> Setzt lokale Änderungen einer oder mehrerer unter Versionskontrolle
+    stehender Dateien auf die letzte Version zurück. Ein `.` statt `<file(s)>`
+    nimmt alle lokalen Änderungen.
 <2> Neuere alternative Variante gegenüber `checkout`.
-<3> Alternative Möglichkeit zu `git checkout .` bzw. `git restore .`. Ein `--hard` veranlasst bei einem `git reset` auch den Workspace, also die lokalen (geänderten) Dateien, zurückzusetzen.
-<4> Entfernt alle lokalen nicht unter Versionskontrolle stehenden Dateien. (https://git-scm.com/docs/git-clean[git-clean Dokumentation], `-n` Testlauf, `-i` interaktiv, `-d` beachte auch entsprechende Verzeichnisse, `-f` ignoriere Löschwarnung)
+<3> Alternative Möglichkeit zu `git checkout .` bzw. `git restore .`. Ein
+    `--hard` veranlasst bei einem `git reset` auch den Workspace, also die lokalen
+    (geänderten) Dateien, zurückzusetzen.
+<4> Entfernt alle lokalen nicht unter Versionskontrolle stehenden Dateien.
+    (https://git-scm.com/docs/git-clean[git-clean Dokumentation], `-n` Testlauf,
+    `-i` interaktiv, `-d` beachte auch entsprechende Verzeichnisse, `-f` ignoriere
+    Löschwarnung)
 =====
 ====
 
 ==== Aufgabe 1.4 - Version verwerfen
 
-1. Nehmen Sie in Ihrem Repository eine Änderung als neue lokale Version auf. Schauen Sie sich die Versionshistorie an und nehmen Sie die eben gemachte Version mit `reset` zurück.
+. Nehmen Sie in Ihrem Repository eine Änderung als neue lokale Version auf.
+  Schauen Sie sich die Versionshistorie an und nehmen Sie die eben gemachte
+  Version mit `reset` zurück.
 +
 .Hinweise: `reset`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `reset` kann der aktuelle Stand des Repository auf eine frühere
+Version (Commit) zurückgesetzt werden. Alle davon ausgehenden neueren Versionen
+werden verworfen.
+
+Die enthaltenen Änderungen bleiben im Arbeitsverzeichnis erhalten, wenn nicht
+die Option `--hard` angegeben wird.
+
 image::grafik_git_reset.png["...",width=490]
+
 ----
 $ git add .
 $ git commit -m "..."
 $ git log --oneline
 $ git reset --hard <commit_id> <1> <2>
 ----
-<1> Setzt den aktuellen Stand des Repository auf die angegeben Version (Commit-ID) zurück. Mit der Option `--hard` wird auch das lokale Arbeitsverzeichnis zurückgesetzt.
-<2> Die Commit-ID kann relative `HEAD~1` oder absolut `a2a33s23` angegeben werden. Alle davon ausgehenden neueren Version werden verworfen.
+<1> Setzt den aktuellen Stand des Repository auf die angegeben Version
+    (Commit-ID) zurück.
+<2> Die Commit-ID kann relative `HEAD~1` oder absolut `a2a33s23` angegeben
+    werden. Alle davon ausgehenden neueren Version werden verworfen.
 =====
 ====
 +
-IMPORTANT: Die Verwendung von `reset` ist nur für *lokale*, *private* und noch *nicht veröffentlichte* Versionen (Commits) geeignet. Denn das Verändern der Repository-Historie führt, im Gegensatz zu `revert`, zu Problemen mit anderen Nutzern, da die Versionskette nicht mehr synchron ist.
+IMPORTANT: Die Verwendung von `reset` ist nur für *lokale*, *private* und noch
+*nicht veröffentlichte* Versionen (Commits) geeignet. Denn das Verändern der
+Repository-Historie führt, im Gegensatz zu `revert`, zu Problemen mit anderen
+Nutzern, da die Versionskette nicht mehr synchron ist.
 
-2. Nehmen Sie in Ihrem Repository eine weitere Änderung als neue lokale Version auf. Schauen Sie sich die Versionshistorie an und nehmen Sie die eben gemachte Version mit `revert` zurück.
+. Nehmen Sie in Ihrem Repository eine weitere Änderung als neue lokale Version
+  auf. Schauen Sie sich die Versionshistorie an und nehmen Sie die eben
+  gemachte Version diesmal mit `revert` zurück.
 +
 .Hinweise: `revert`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `revert` kann **eine** bestimmte Version (Commit) zurückgenommen
+werden. Dabei wird eine neue Version erzeugt, die den aktuellen Stand ohne die
+Änderung der zurückgenommenen Version enthält.
+
+Die Versionshistorie bleibt inklusive der zurückgenommenen Version erhalten.
+
 image::grafik_git_revert.png["...",width=593]
+
 ----
 $ git add .
 $ git commit -m "..."
 $ git log --oneline
 $ git revert <commit_id> <1>
 ----
-<1> Nimmt die Änderung der angegebenen Version zurück und erzeugt eine neue Version (ohne die Änderung der zurückgenommenen Version) im Repository. Die Versionshistorie bleibt inklusive der zurückgenommen Version erhalten.
+<1> Nimmt die Änderung der angegebenen Version zurück und erzeugt eine neue
+    Version (ohne die Änderung der zurückgenommenen Version).
 =====
 ====
 +
-NOTE: Die Verwendung von `revert` erhält, gegenüber `reset`, die Versionskette und ist konsistent zu *entfernten*, *öffentlichen* und *geteilten* Repositories.
+NOTE: Die Verwendung von `revert` erhält, gegenüber `reset`, die Versionskette
+und ist konsistent zu *entfernten*, *öffentlichen* und *geteilten*
+Repositories.
 
 
 {section-separator}
@@ -220,31 +317,51 @@ NOTE: Die Verwendung von `revert` erhält, gegenüber `reset`, die Versionskette
 === 2. Versionen ändern und zusammenfassen
 
 [#warning1]
-IMPORTANT: Das Ändern (`commit --amend`) und das Zusammenfassen (`rebase -i`) von Versionen zu einer neuen Version verändert die Commit-ID(s) und die Versionshistorie, ähnlich wie bei `reset`, des Repository. Es ist nur für *lokale*, *private* Repository und noch *nicht veröffentlichte* Versionen empfohlen, um unterschiedliche Versionsketten mit anderen Nutzern zu vermeiden.
+IMPORTANT: Das Ändern (`commit --amend`) und das Zusammenfassen (`rebase -i`)
+von Versionen zu einer neuen Version verändert die Commit-ID(s) und die
+Versionshistorie, ähnlich wie bei `reset`, des Repository. Es ist nur für
+*lokale*, *private* Repository und noch *nicht veröffentlichte* Versionen
+empfohlen, um unterschiedliche Versionsketten mit anderen Nutzern zu vermeiden.
 
-Falls der oder die ursprünglichen Commits schon an ein _remote_-Repository gepusht wurde, muss der überschriebene Commit noch einmal mit `git push --force` oder besser https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease[`git push --force-with-lease`] gepusht werden. (obere <<#warning1,Warnung>> beachten!)
+Falls der oder die ursprünglichen Commits schon an ein _remote_-Repository
+gepusht wurde, muss der überschriebene Commit noch einmal mit `git push
+--force` oder besser
+https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease[`git
+push --force-with-lease`] gepusht werden. (obere <<#warning1,Warnung>>
+beachten!)
 
 .Hinweise: Force-Push mit VS Code
 [%collapsible]
 ====
 =====
-In VS Code ist über das Git-Menü standardmäßig kein Force-Push möglich und man kann nur über das integrierte Terminal ein `git push --force` auszuführen.
+In VS Code ist über das Git-Menü standardmäßig kein Force-Push möglich und man
+kann nur über das integrierte Terminal ein `git push --force` auszuführen.
 
-Über die Einstellungen von VS Code: "Settings > Extensions > Git" kann die Option *Allow Force Push* aktiviert werden. Danach sind im Git-Menü "... > Pull, Push > " entsprechende *Push (Force)* Einträge vorhanden.
+Über die Einstellungen von VS Code: "Settings > Extensions > Git" kann die
+Option *Allow Force Push* aktiviert werden. Danach sind im Git-Menü "...
+> Pull, Push > " entsprechende *Push (Force)* Einträge vorhanden.
 =====
 ====
 
 ==== Aufgabe 2.1 - letzte Version ändern
 
-1. Nehmen Sie in Ihrem Repository eine Änderung als neue lokale Version auf und schauen Sie sich die Versionshistorie an.
+. Nehmen Sie in Ihrem Repository eine Änderung als neue lokale Version auf und
+  schauen Sie sich die Versionshistorie an.
 
-2. Ändern Sie mit `commit --amend` die Commit-Message des eben erstellten letzten Commits. Alternativ nehmen Sie vorher eine lokale Änderung vor, welche mit in die Änderung des letzten Commits einfließen soll.
+. Ändern Sie mit `commit --amend` die Commit-Message des eben erstellten
+  letzten Commits. Alternativ nehmen Sie vorher eine lokale Änderung vor,
+  welche mit in die Änderung des letzten Commits einfließen soll.
 
 .Hinweise: `commit --amend`
 [%collapsible]
 ====
 =====
+Der Zusatz `--amend` ist eine gute Möglichkeit, um Fehler in der Commit-Message
+zu korrigieren oder vergessene Änderungen oder Dateien nachträglich
+aufzunehmen.
+
 image::grafik_git_commit_amend.png["...",width=393]
+
 ----
 $ ...
 $ git add .
@@ -256,22 +373,28 @@ $ git commit --amend -m "... (neue) Message ..." <2>
 $ git log --oneline
 ----
 <1> optional: Aufnahme der vergessenen/zusätzlichen Änderungen.
-<2> Mit der Option `--amend` wird der letzten Commit mit dem aktuellen Commit überschrieben.
-Dies ist eine gute Möglichkeit, um Fehler in der Commit-Message zu korrigieren oder vergessene Änderungen oder Dateien aufzunehmen.
+<2> Mit der Option `--amend` wird der letzten Commit mit dem aktuellen Commit
+    überschrieben.
 =====
 ====
 
 [#aufgabe2-2]
 ==== Aufgabe 2.2 - Versionen zusammenfassen
 
-1. Nehmen Sie in Ihr Repository *drei* neue Versionen (Commits) auf.
-2. Fassen Sie mit `rebase -i` die letzten drei Commits zu einem neuen Commit zusammen.
+. Nehmen Sie in Ihr Repository *drei* neue Versionen (Commits) auf.
+. Fassen Sie mit `rebase -i` die letzten drei Commits zu einem neuen Commit
+  zusammen.
 
 .Hinweise: `rebase -i`
 [%collapsible]
 ====
 =====
+Mit dem Befehl `rebase -i` können mehrere Commits nachträglich angepasst,
+zusammengefasst oder gelöscht werden. Dabei wird die Versionshistorie verändert
+und die Commit-IDs der zusammengefassten Commits ändern sich.
+
 image::grafik_git_rebase-i.png["...",width=435]
+
 ----
 $ git log --oneline
 00af044 (HEAD -> main) Fix typo in <object>
@@ -290,8 +413,11 @@ $ git log --oneline
 f000045 (HEAD -> main) Add new <object>
 ...
 ----
-<1> Alle neueren Commits nach der angegebenen Commit-ID können jetzt einzeln bearbeitet (siehe Tabelle) werden. Der älteste Commit steht oben.
-<2> Die beiden Nachfolge-Commits (`00af044`, `0af0043`) werden mit `f` (fixup) statt `pick` markiert, um in den vorhergehenden Commit (`af00042`) aufgenommen zu werden.
+<1> Alle neueren Commits nach der angegebenen Commit-ID können jetzt einzeln
+    bearbeitet (siehe Tabelle) werden. Der älteste Commit steht oben.
+<2> Die beiden Nachfolge-Commits (`00af044`, `0af0043`) werden mit `f` (fixup)
+    statt `pick` markiert, um in den vorhergehenden Commit (`af00042`) aufgenommen
+    zu werden.
 
 [cols="^1,3"]
 |===
@@ -303,7 +429,9 @@ f000045 (HEAD -> main) Add new <object>
 | `f`, `fixup`  | Commit ohne Commit-Message in vorherigen Commit aufnehmen
 |===
 
-NOTE: Ist bei Ihnen im Terminal für Git der Editor vi(m) eingestellt, können Sie mit kbd:[i] in den Bearbeitungsmodus wechseln und nach der Änderung mit kbd:[esc] und der Eingabe von `:wq` speichern und den Editor schließen.
+NOTE: Ist bei Ihnen im Terminal für Git der Editor vi(m) eingestellt, können
+Sie mit kbd:[i] in den Bearbeitungsmodus wechseln und nach der Änderung mit
+kbd:[esc] und der Eingabe von `:wq` speichern und den Editor schließen.
 =====
 ====
 
