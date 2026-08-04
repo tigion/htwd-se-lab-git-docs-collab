@@ -24,7 +24,7 @@ include::notes-windows-lab.inc.adoc[]
 
 === Hinweise zur Bearbeitung
 
-Bearbeiten Sie die Aufgaben in Ihrem vorhandenem `htwd-se-example-project`
+Bearbeiten Sie die Aufgaben in Ihrem vorhandenen `htwd-se-example-project`
 Repository.
 
 ====
@@ -50,7 +50,7 @@ Menüpunkte und Schaltflächen zu erreichen. Es ist Ihnen freigestellt, ob Sie
 einen grafischen Client/IDE oder das Terminal verwenden.
 
 Terminal in Visual Studio Code icon:linux[] icon:apple[] icon:windows[]::
-  Über das Hauptmenü: "View > Terminal" kann innerhalb von VS Code ein Terminal geöffnet werde.
+  Über das Hauptmenü: "View > Terminal" kann innerhalb von VS Code ein Terminal geöffnet werden.
 Terminal unter icon:windows[] Windows::
   PowerShell, git-Bash, Eingabeaufforderung (cmd), ...
 Terminal unter icon:linux[] Linux, icon:apple[] macOS::
@@ -79,7 +79,7 @@ und wechseln Sie temporär zu einem früheren Projektstand.
 =====
 Mit dem Befehl `diff` werden die Unterschiede zwischen zwei Versionen (Commits)
 oder zum lokalen Arbeitsstand angezeigt. Ein `+` steht für eine hinzugefügte und
-ein `-` für eine entfernte Zeilen. Änderungen innerhalb einer Zeile werden mit
+ein `-` für eine entfernte Zeile. Änderungen innerhalb einer Zeile werden mit
 einer Kombination aus `-` und `+` dargestellt.
 
 ----
@@ -88,9 +88,9 @@ $ git diff <file> <2>
 
 $ git diff --cached <3>
 
-$ git diff <commit-id> <4>
-$ git diff <commit-id> HEAD <5>
-$ git diff <commit-id-1> <commit-id-2> <6>
+$ git diff <commit> <4>
+$ git diff <commit> HEAD <5>
+$ git diff <commit-1> <commit-2> <6>
 
 $ git diff <branch-1> <branch-2> <7>
 ----
@@ -99,10 +99,10 @@ $ git diff <branch-1> <branch-2> <7>
     Verzeichnis verglichen werden
 <3> mit `--cached` werden die vorgemerkten Änderungen gegenüber `HEAD` oder
     einer angegebenen Version verglichen
-<4> zeigt Unterschied der Version `<commit-id>` zum lokalen Arbeitsstand
-<5> zeigt Unterschied der Version `<commit-id>` zur letzten Version `HEAD`
-<6> zeigt Unterschied von Version `<commit-id-1>` (älter) zur Version
-    `<commit-id-2>` (neuer)
+<4> zeigt Unterschied der Version `<commit>` zum lokalen Arbeitsstand
+<5> zeigt Unterschied der Version `<commit>` zur letzten Version `HEAD`
+<6> zeigt Unterschied von Version `<commit-1>` (älter) zur Version
+    `<commit-2>` (neuer)
 <7> zeigt Unterschied von Branch `<branch-1>` zu Branch `<branch-2>`
 =====
 ====
@@ -117,23 +117,26 @@ Sie danach wieder zum aktuellen Stand zurück.
 Mit dem Befehl `checkout` wird der Arbeitsbereich auf den Zustand einer
 bestimmten Version (Commit) oder eines Branches gesetzt.
 
+Zum aktuellen Stand kann man mit `git switch <branch>`, neuere Alternative zu
+`git checkout <branch>`, zurückkehren. Zwischenzeitliche Commits auf den
+vergangenen Projektstand erscheinen nicht mehr in der Historie, sind aber
+kurzzeitig über https://git-scm.com/docs/git-reflog[`git reflog`] wiederherstellbar.
+
 image::grafik_git_checkout.png["...",width=251]
 
 ----
 $ git log --oneline <1>
-$ git checkout <old_commit_id> <2>
+$ git checkout <old_commit> <2>
 $ git switch main <3>
 ----
 <1> Versionshistorie (commits) anzeigen, die Option `--oneline` erlaubt eine
     Anzeige mit weniger Details auf einer Zeile pro Commit
 <2> vergangenen Projektstand laden
-<3> Neuere Alternativ zu `git checkout <branch>`. Zu aktuellem Projektstand
-    (_main_-Branch) zurückkehren. Zwischenzeitliche Commits auf den vergangenen
-    Projektstand werden verworfen.
+<3> Zu aktuellem Projektstand (_main_-Branch) zurückkehren.
 
 NOTE: In der unteren Statusleiste (links) in VS Code oder über das git-Kommando
 `git branch` sieht man den aktuellen Branch, bspw. _main_. Seit Oktober 2020
-verwenden alle auf GitHub neu erstellten Repository `main` anstelle von
+verwenden alle auf GitHub neu erstellten Repositories `main` anstelle von
 `master` als Standard-Branch (https://github.com/github/renaming[Quelle]).
 =====
 ====
@@ -158,18 +161,14 @@ image::grafik_git_stash.png["...",width=625]
 
 ----
 $ git stash <1>
-
-$ git stash save "Arbeitsstand X" <2>
-$ git stash -u
-$ git stash -S
-$ git stash -k
+$ git stash push <2>
 
 $ git stash pop <3>
 $ git stash apply <4>
 
 $ git stash drop <5>
 
-$ git stash list <9>
+$ git stash list <6>
 stash@{0}: WIP on main: ...
 stash@{1}: WIP on main: ...
 stash@{2}: On main: Arbeitsstand X
@@ -177,37 +176,57 @@ stash@{2}: On main: Arbeitsstand X
 $ git stash show <7>
 $ git stash show -p <8>
 ----
-<1> Änderungen an *tracked* und *staged* Dateien werden aus dem
-    Arbeitsverzeichnis weggespeichert
-<2> `save "..."` ... benennt den erzeugten Stash +
-    `-u` ... speichert zusätzlich *untracked* Dateien weg +
-    `-S` ... speichert nur *staged* Dateien weg +
-    `-k` ... speichert nur *unstaged* weg
-<3> `pop` ... stellt die weggespeicherte Änderung wieder her und entfernt den
-    zugehörigen _Stash_
-<4> `apply` ... stellt die weggespeicherte Änderung wieder her und behält den
-    zugehörigen _Stash_ (nützlich, wenn die Änderung noch an anderer Stelle (bspw.
-    anderer _Branch_) gebraucht wird)
-<5> `drop` ... entfernt den Stash mit den enthaltenen Änderungen
-<6> `list` ... Liste der vorhandenen _Stashes_
-<7> `show` ... zeigt Kurzform der Änderungen im _Stash_ gegenüber der aktuellen
-    Version
-<8> `show -p` ... zeigt auch inhaltliche Änderungen (Patch-Form)
+<1> `git stash` ist eine Kurzform für `git stash push`.
+<2> Änderungen an verfolgten (*tracked*) Dateien werden im Stash gespeichert
+    und aus dem Arbeitsverzeichnis entfernt und im Stash abgelegt
+<3> `pop` ... stellt die gespeicherten Änderungen wieder her und entfernt den
+    zugehörigen _Stash_.
+<4> `apply` ... stellt die gespeicherten Änderungen wieder her und behält den
+    zugehörigen _Stash_ (nützlich, wenn die Änderungen noch an anderer Stelle,
+    z.B. in einem anderen _Branch_, benötigt werden).
+<5> `drop` ... entfernt den _Stash_ mit den enthaltenen Änderungen.
+<6> `list` ... zeigt eine Liste der vorhandenen _Stashes_.
+<7> `show` ... zeigt eine Übersicht der Änderungen im _Stash_ gegenüber der
+    aktuellen Version.
+<8> `show -p` ... zeigt die konkreten Zeilenänderungen im Patch-Format.
 
 NOTE: Hat man mehrere Stashs, wird bei `pop`, `apply` und `drop` der zuletzt
 angelegte genommen. Man kann auch den gewünschten Stash mit bspw. `git stash
-pop stash@{1}` angegeben. Der neueste ist `stash@{0}` (default), der nächst
-ältere `stash@{1}` und so weiter.
+pop stash@{1}` angegeben. Der neueste ist `stash@{0}` (default), der
+nächstältere `stash@{1}` und so weiter.
+
+.Optionen für `git stash [push]`
+[cols="3,4,10"]
+|===
+| Option | Langform              | Beschreibung
+
+| `-m "<message>"`
+| `--message "<message>"`
+| Gibt dem erzeugten Stash eine Beschreibung bzw. einen Namen. `git stash -m "<message>"` (`git stash save "<message>"` ist die veraltete Variante.)
+
+| `-u`
+| `--include-untracked`
+| Speichert zusätzlich *untracked* Dateien im Stash.
+
+| `-S`
+| `--staged`
+| Speichert nur *staged* Änderungen im Stash.
+
+| `-k`
+| `--keep-index`
+| Behält *staged* Änderungen im Arbeitsverzeichnis und speichert nur *unstaged* Änderungen im Stash.
+|===
 
 .Status von Dateien und Änderungen in Git
-[cols="^1,3"]
+[cols="1,3"]
 |===
 | Status      | Beschreibung
 
 | `tracked`   | Dateien, die unter Versionskontrolle stehen
 | `untracked` | Neue Dateien, die noch nicht unter Versionskontrolle stehen
+
 | `staged`    | Änderungen im Index, die zum Commit vorgemerkt sind
-| `unstaged`  | Änderungen an verfolgten Dateien, die noch nicht zum Commit vorgemerkt sind
+| `unstaged`  | Änderungen an *tracked* Dateien, die noch nicht zum Commit vorgemerkt sind
 |===
 =====
 ====
@@ -253,7 +272,7 @@ $ git clean -df <4>
 [%collapsible]
 ====
 =====
-Mit dem Befehl `reset` kann der aktuelle Stand des Repository auf eine frühere
+Mit dem Befehl `reset` kann der aktuelle Stand des Repositorys auf eine frühere
 Version (Commit) zurückgesetzt werden. Alle davon ausgehenden neueren Versionen
 werden verworfen.
 
@@ -266,16 +285,16 @@ image::grafik_git_reset.png["...",width=490]
 $ git add .
 $ git commit -m "..."
 $ git log --oneline
-$ git reset --hard <commit_id> <1> <2>
+$ git reset --hard <commit> <1> <2>
 ----
-<1> Setzt den aktuellen Stand des Repository auf die angegeben Version
-    (Commit-ID) zurück.
-<2> Die Commit-ID kann relative `HEAD~1` oder absolut `a2a33s23` angegeben
-    werden. Alle davon ausgehenden neueren Version werden verworfen.
+<1> Setzt den aktuellen Stand des Repositorys auf die angegebe Version
+    (Commit) zurück.
+<2> Der Commit kann relativ `HEAD~1` oder absolut `a2a33b23` angegeben
+    werden.
 =====
 ====
 +
-IMPORTANT: Die Verwendung von `reset` ist nur für *lokale*, *private* und noch
+IMPORTANT: Die Verwendung von `reset` ist nur für *lokale*, *private* oder noch
 *nicht veröffentlichte* Versionen (Commits) geeignet. Denn das Verändern der
 Repository-Historie führt, im Gegensatz zu `revert`, zu Problemen mit anderen
 Nutzern, da die Versionskette nicht mehr synchron ist.
@@ -300,7 +319,7 @@ image::grafik_git_revert.png["...",width=593]
 $ git add .
 $ git commit -m "..."
 $ git log --oneline
-$ git revert <commit_id> <1>
+$ git revert <commit> <1>
 ----
 <1> Nimmt die Änderung der angegebenen Version zurück und erzeugt eine neue
     Version (ohne die Änderung der zurückgenommenen Version).
@@ -318,13 +337,13 @@ Repositories.
 
 [#warning1]
 IMPORTANT: Das Ändern (`commit --amend`) und das Zusammenfassen (`rebase -i`)
-von Versionen zu einer neuen Version verändert die Commit-ID(s) und die
-Versionshistorie, ähnlich wie bei `reset`, des Repository. Es ist nur für
+von Versionen zu einer neuen Version verändern die Commit-ID(s) und die
+Versionshistorie des Repositorys, ähnlich wie bei `reset`. Es ist nur für
 *lokale*, *private* Repository und noch *nicht veröffentlichte* Versionen
 empfohlen, um unterschiedliche Versionsketten mit anderen Nutzern zu vermeiden.
 
-Falls der oder die ursprünglichen Commits schon an ein _remote_-Repository
-gepusht wurde, muss der überschriebene Commit noch einmal mit `git push
+Falls der oder die ursprünglichen Commits schon in ein _remote_-Repository
+gepusht wurden, muss der überschriebene Commit noch einmal mit `git push
 --force` oder besser
 https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease[`git
 push --force-with-lease`] gepusht werden. (obere <<#warning1,Warnung>>
@@ -335,7 +354,7 @@ beachten!)
 ====
 =====
 In VS Code ist über das Git-Menü standardmäßig kein Force-Push möglich und man
-kann nur über das integrierte Terminal ein `git push --force` auszuführen.
+kann nur über das integrierte Terminal `git push --force` ausführen.
 
 Über die Einstellungen von VS Code: "Settings > Extensions > Git" kann die
 Option *Allow Force Push* aktiviert werden. Danach sind im Git-Menü "...
@@ -373,7 +392,7 @@ $ git commit --amend -m "... (neue) Message ..." <2>
 $ git log --oneline
 ----
 <1> optional: Aufnahme der vergessenen/zusätzlichen Änderungen.
-<2> Mit der Option `--amend` wird der letzten Commit mit dem aktuellen Commit
+<2> Mit der Option `--amend` wird der letzte Commit mit dem aktuellen Commit
     überschrieben.
 =====
 ====
@@ -382,7 +401,7 @@ $ git log --oneline
 ==== Aufgabe 2.2 - Versionen zusammenfassen
 
 . Nehmen Sie in Ihr Repository *drei* neue Versionen (Commits) auf.
-. Fassen Sie mit `rebase -i` die letzten drei Commits zu einem neuen Commit
+. Fassen Sie mit `rebase -i` diese drei Commits zu einem neuen Commit
   zusammen.
 
 .Hinweise: `rebase -i`
@@ -392,6 +411,11 @@ $ git log --oneline
 Mit dem Befehl `rebase -i` können mehrere Commits nachträglich angepasst,
 zusammengefasst oder gelöscht werden. Dabei wird die Versionshistorie verändert
 und die Commit-IDs der zusammengefassten Commits ändern sich.
+
+NOTE: Es werden nur die Commits nach dem angegebenen Commit verwendet. Git
+arbeitet die Commits vom ältesten (oben) zum neuesten (unten) ab. Bei `squash`
+und `fixup` wird der ausgewählte Commit mit dem direkt darüberstehenden
+(älteren) Commit zusammengeführt.
 
 image::grafik_git_rebase-i.png["...",width=435]
 
@@ -403,7 +427,6 @@ af00042 Add new <object>
 f000041 Fixup #11 <object>
 ...
 
-//$ git rebase -i f000041
 $ git rebase -i HEAD~3 <1>
 pick af00042 Add new <object>
 f    0af0043 Update <object> <2>
@@ -413,25 +436,28 @@ $ git log --oneline
 f000045 (HEAD -> main) Add new <object>
 ...
 ----
-<1> Alle neueren Commits nach der angegebenen Commit-ID können jetzt einzeln
-    bearbeitet (siehe Tabelle) werden. Der älteste Commit steht oben.
+<1> Alle neueren Commits nach dem angegebenen Commit (hier relativ) werden
+    einzeln bearbeitet (siehe Tabelle). Alternative kann der Commit auch
+    direkt per `$ git rebase -i f000041` angegeben werden.
 <2> Die beiden Nachfolge-Commits (`00af044`, `0af0043`) werden mit `f` (fixup)
     statt `pick` markiert, um in den vorhergehenden Commit (`af00042`) aufgenommen
-    zu werden.
+    zu werden. (Erst wird `0af0043` mit `af00042` zusammengeführt, danach
+    `00af044` mit dem eben neu entstandenen Commit.)
 
-[cols="^1,3"]
+.Rebase-Aktionen
+[cols="1,1,5"]
 |===
-| Kommando      | Beschreibung
+| Aktion   | Kurz | Beschreibung
 
-| `p`, `pick`   | Commit verwenden
-| `r`, `reword` | Commit verwenden und Commit-Message ändern
-| `s`, `sqash`  | Commit und Commit-Message in vorherigen Commit aufnehmen
-| `f`, `fixup`  | Commit ohne Commit-Message in vorherigen Commit aufnehmen
+| `pick`   | `p`  | Commit behalten (unverändert)
+| `reword` | `r`  | Commit behalten, aber Commit-Message ändern
+| `squash` | `s`  | Commit mit vorherigen Commit zusammenführen, inkl. Commit-Message
+| `fixup`  | `f`  | Commit mit vorherigen Commit zusammenführen, ohne Commit-Message
 |===
 
 NOTE: Ist bei Ihnen im Terminal für Git der Editor vi(m) eingestellt, können
 Sie mit kbd:[i] in den Bearbeitungsmodus wechseln und nach der Änderung mit
-kbd:[esc] und der Eingabe von `:wq` speichern und den Editor schließen.
+kbd:[Esc] und der Eingabe von `:wq` speichern und den Editor schließen.
 =====
 ====
 
