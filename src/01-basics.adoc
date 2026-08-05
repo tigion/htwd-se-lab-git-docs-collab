@@ -1,6 +1,15 @@
 include::header.inc.adoc[]
 
+
 == Teil 1 - Grundlagen
+
+Im ersten Teil des Praktikums geht es um die Einrichtung und das Kennenlernen
+der Werkzeuge *GitHub*, *Git*, *Visual Studio Code* und *AsciiDoc*.
+
+:imageTitle: Meanwhile, in the Classroom...
+:imageFile: comic_basics.jpg
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=700]
 
 .Lernziele
 ****
