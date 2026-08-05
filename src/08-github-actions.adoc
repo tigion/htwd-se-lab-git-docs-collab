@@ -1,6 +1,6 @@
 include::header.inc.adoc[]
 
-== Teil 9 - GitHub Actions
+== Teil 8 - GitHub Actions
 
 In diesem Aufgabenteil wollen wir erste Möglichkeiten von *GitHub Actions*
 kennenlernen, was *Workflows* sind und wie sie unsere Arbeit mit dem Repository
@@ -26,8 +26,8 @@ code reviews, branch management, and issue triaging work the way you want."
 
 ==== GitHub Actions
 
-Mit *GitHub Actions* können zusätzlich zu im Repository gehosteten und
-versionierten Quellcode Softwareentwicklungsprozesse in *Workflows*
+Mit *GitHub Actions* können zusätzlich zu im Repository gehostetem und
+versioniertem Quellcode Softwareentwicklungsprozesse in *Workflows*
 automatisiert werden. Diese sind auch unter dem Begriff *CI/CD* (_Continuous
 Integration, Continuous Delivery/Deployment_) bekannt. Damit können bspw.
 Tests, Buildvorgänge und das Bereitstellen der Software automatisiert werden.
@@ -59,12 +59,12 @@ GitHub Actions::
     anzulegen und zu automatisieren.
 
 Workflow::
-    Ein Workflow ist eine zum Repository gehörender automatisierte Prozess,
+    Ein Workflow ist ein zum Repository gehörender automatisierter Prozess,
     welcher in einer Datei mit YAML-Syntax unter `.github/workflows/`
     beschrieben wird. Workflows bestehen aus einem oder mehreren Jobs und
     können durch ein Ereignis ausgelöst werden. Man kann sie zum Erstellen
     (_build_), Testen (_test_), Packen (_package_), Freigeben (_release_) oder
-    Bereitstellen (_deploy_) eines Projekts auf GitHub verwendet werden.
+    Bereitstellen (_deploy_) eines Projekts auf GitHub verwenden.
 
 Event::
     Ein Event bzw. Ereignis ist eine bestimmte Aktivität, welche einen Workflow
@@ -87,7 +87,7 @@ Runner::
 
 Step::
 Ein Step bzw. Schritt ist eine einzelne Aufgabe in einem Job, welche der Reihe
-nach ausgeführt werden. Ein Schritt kann entweder eine Aktion oder ein
+nach ausgeführt wird. Ein Schritt kann entweder eine Aktion oder ein
 Shell-Befehl sein. Jeder Schritt in einem Job wird auf demselben Runner
 ausgeführt, sodass sie Daten miteinander teilen können.
 +
@@ -99,10 +99,10 @@ mehr bearbeitet und der Job wird mit einem negativen Ergebnis beendet.
 ====
 
 Action::
-    Eine Action ist ein eigenständiger Befehle, der zu einem Step gehört.
-    Actions sind die kleinsten Teile eines Workflows. Diese können Shell
-    Kommandos (`run:`) oder von GitHub bzw. der Community vorbereitete Actions
-    (`uses:`) sein.
+    Eine Action ist ein eigenständiger Befehl, der zu einem Step gehört.
+    Actions sind die kleinsten Teile eines Workflows. Diese können
+    Shell-Kommandos (`run:`) oder von GitHub bzw. der Community vorbereitete
+    Actions (`uses:`) sein.
 
 Die Workflow-Dateien liegen im Repository unter dem Verzeichnis
 `.github/workflows/` im https://yaml.org/spec/1.2/spec.html[YAML]-Format. Jeder
@@ -114,7 +114,7 @@ _example.yaml_, beschrieben.
 ====
 =====
 Ausführliche Hinweise zur Syntax findet man unter:
-https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions[Workflow syntax for GitHub Actions].
+https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax[Workflow syntax for GitHub Actions].
 
 .example.yaml
 [source, yaml]
@@ -131,15 +131,16 @@ jobs: <3>
     steps: <8>
       # step 1 - action <9>
       - name: Checkout the repository <10>
-        uses: actions/checkout@v5 <11>
+        uses: actions/checkout@v7 <11>
 
       # step 2 - single line shell command
       - name: Check file
-        run: test -f "$MY_FILE" <12>
+        working-directory: folder/subfolder <12>
+        run: test -f "$MY_FILE" <13>
 
       # step 3 - multi line shell command
       - name: Check versions
-        run: | <13>
+        run: | <14>
             echo "check versions:"
             git --version
             java -version
@@ -149,28 +150,32 @@ jobs: <3>
     auch gezielt auf Branches oder Dateien/Verzeichnisse eingeschränkt werden.
     Siehe <<example_event>>.
 <3> `:jobs:` Bereich für alle Jobs in diesem Workflow
-<4> `<job_id>:` Erster Job mit der eindeutigen ID "test" im Jobs Bereich
+<4> `<job_id>:` Erster Job mit der eindeutigen ID "test" im Jobs-Bereich
 <5> `name: <job_name>` Legt den Namen eines Jobs fest.
 <6> `runs-on:` Definiert den Runner mit seiner Umgebung `ubuntu-latest` für
     den zugehörigen Job. In diesem Falle die von GitHub gehostete virtuelle
     Umgebung mit Ubuntu Linux.
-<7> `env:` Hier können Umgebungsvariablen, bspw. `JSON_FILE` definiert
+<7> `env:` Hier können Umgebungsvariablen, bspw. `MY_FILE` definiert
     werden, welche in den Steps verwendet werden.
 <8> `steps:` Bereich für alle Schritte zu einem Job.
 <9> `#` Kommentar
 <10> `- name: <step_name>` Legt den Namen eines Steps fest.
-<11> `uses: <action>` Eine spezielle Action `actions/checkout@v5`, welche
-     den Inhalt des Repositories in den Runner läd, so dass nachfolgende Actions
+<11> `uses: <action>` Eine spezielle Action `actions/checkout@v7`, welche
+     den Inhalt des Repositories in den Runner lädt, so dass nachfolgende Actions
      damit arbeiten können.
-<12> `run: <shell_command>` Führt statt einer vorgegebenen Action einen
+<12> `working-directory: <path>` Legt das Arbeitsverzeichnis für den Step fest.
+     Besser lesbar als `cd <path>`, da das Arbeitsverzeichnis explizit für den
+     Step definiert wird.
+<13> `run: <shell_command>` Führt statt einer vorgegebenen Action ein
      *einzeiliges* Shell-Kommando aus.
-<13> `run: |` Führt ein *mehrzeiliges* Shell-Kommando aus.
+<14> `run: |` Führt ein *mehrzeiliges* Shell-Kommando aus.
 
 
 
 .Beispiel eines komplexeren Events
 [#example_event]
-Folgend ein Beispiel für ein Event, welches auf *Push* für den Branch *main* und eine bestimmte Datei _data/colors.json_ reagiert:
+Folgend ein Beispiel für ein Event, welches auf *Push* für den Branch *main*
+und eine bestimmte Datei _data/colors.json_ reagiert:
 
 [source, yaml]
 ----
@@ -181,70 +186,31 @@ on:
       - 'data/colors.json'
 ----
 
-* https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#on[Workflow syntax for GitHub Actions: on]
+* https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax#on[Workflow syntax for GitHub Actions: on]
 
 =====
 ====
-
-////
-.Hinweise: YAML-Syntax #TODO#
-[%collapsible]
-====
-=====
-* https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions[Workflow syntax for GitHub Actions]
-* https://en.wikipedia.org/wiki/YAML[Wikipedia: YAML]
-
-.Listen und Arrays
-[source, yaml]
-----
-# inline format
-on: [push, pull_request]
-
-# block format
-on:
-  - push:
-  - pull_request:
-# or (GitHub Actions Example)
-on:
-  push:
-  pull_request:
-----
-
-.Schlüssel-Wert-Paare (key value)
-[source, yaml]
-----
---- # indented block
-  name: John Smith
-  age: 33
---- # inline block
-{name: John Smith, age: 33}
-----
-
-.Einzeilige und Mehrzeilige Strings
-[source, yaml]
-----
-# multi-line strings with newlines
-
-----
-
-=====
-====
-////
-
 
 .Hinweise: Verwendung von Workflows auf GitHub
 [%collapsible]
 ====
 =====
 
-Die Workflows der GitHub Actions findet man im Reiter *Actions*. Hier können sie verwaltet und die Ergebnisse eingesehen werden. Über den Button kbd:[New workflows] können eigene Workflows angelegt oder aus Vorlagen passende ausgewählt werden. Alternativ kann man die Workflow-Dateien auch direkt unter `.github/workflows` anlegen.
+Die Workflows der GitHub Actions findet man im Reiter *Actions*. Hier können
+sie verwaltet und die Ergebnisse eingesehen werden. Über den Button kbd:[New
+workflows] können eigene Workflows angelegt oder aus Vorlagen passende
+ausgewählt werden. Alternativ kann man die Workflow-Dateien auch direkt unter
+`.github/workflows` anlegen.
 
 :imageTitle: GitHub Actions in GitHub
 :imageFile: screenshot_github_github-actions.png
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-Sind die Workflows angelegt, werden sie bei Änderungen am Quellcode bzw. in Abhängigkeit der festgelegten Events ausgeführt. Den Status der Workflows, ob sie erfolgreich ausgeführt werden konnten, erkennt man innerhalb der GitHub Oberfläche an Symbolen und Textangaben.
+Sind die Workflows angelegt, werden sie bei Änderungen am Quellcode bzw. in
+Abhängigkeit der festgelegten Events ausgeführt. Den Status der Workflows, ob
+sie erfolgreich ausgeführt werden konnten, erkennt man innerhalb der
+GitHub-Oberfläche an Symbolen und Textangaben.
 
 .Workflow-Statussymbole
 [cols="^1,^1,7",width=75%]
@@ -279,6 +245,77 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 =====
 ====
 
+.Hinweise: YAML-Syntax
+[%collapsible]
+====
+=====
+Weitere Hinweise zur Syntax findet man unter:
+
+* https://docs.github.com/en/actions/reference/workflows-and-actions/workflow-syntax[Workflow syntax for GitHub Actions]
+* https://yaml.org/spec/1.2/spec.html[YAML 1.2]
+* https://en.wikipedia.org/wiki/YAML[Wikipedia: YAML]
+
+.YAML-Grundelemente
+[source,yaml]
+----
+# Kommentare beginnen mit #
+
+# Einfaches Schlüssel-Wert-Paar
+# Schlüssel: runs-on
+# Wert: "ubuntu-latest"
+runs-on: ubuntu-latest
+
+# Sequenz (Liste) als Blockform
+# Der Wert von "on" ist eine Liste mit zwei Elementen
+on:
+  - push
+  - pull_request
+
+# Dasselbe als Flow-Style (Kurzform)
+on: [push, pull_request]
+
+# Mapping (Sammlung von Schlüssel-Wert-Paaren)
+# Der Wert von "on" ist hier ein Mapping.
+# push und pull_request sind Schlüssel mit dem Wert null.
+on:
+  push:
+  pull_request:
+
+# Mapping mit verschachtelten Schlüssel-Wert-Paaren
+jobs:
+  test:
+    runs-on: ubuntu-latest
+----
+
+.Mehrzeilige Strings
+[source,yaml]
+----
+run: |
+  echo "Zeile 1"
+  echo "Zeile 2"
+----
+
+.Quotes und Sonderzeichen
+[source,yaml]
+----
+env:
+  FILE_NAME: "README.md"
+  GREETING: 'Hello World'
+  JSON: '{"name":"test","ok":true}'
+----
+
+.Wichtige Regeln
+[source,yaml]
+----
+# 1. YAML arbeitet mit Einrückung
+# 2. Verwenden Sie Leerzeichen, keine Tabs
+# 3. Der Doppelpunkt trennt Schlüssel und Wert
+# 4. Mehrzeilige Blöcke werden mit | geschrieben
+# 5. Einrückung muss innerhalb eines Blocks konsistent sein
+----
+=====
+====
+
 
 {section-separator}
 
@@ -286,11 +323,13 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
 ==== Aufgabe 1 - Quickstart
 
+:gha-quickstart-url: https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow
+:gha-quickstart-name: Quickstart for GitHub Actions
+
 Bearbeiten Sie die Aufgaben in Ihrem vorhandenem
 `htwd-se-example-project`-Repository oder legen Sie sich dafür ein neues
 Repository auf GitHub an. Die Aufgabe orientiert sich am Einführungsbeispiel:
-https://docs.github.com/en/actions/quickstart[Quickstart for GitHub Actions]
-von GitHub.
+{gha-quickstart-url}[{gha-quickstart-name}] von GitHub.
 
 . Erstellen Sie in Ihrem _lokalen_-Repository das Verzeichnis
   `.github/workflows/`.
@@ -314,7 +353,7 @@ jobs:
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
       - name: Check out repository code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       - run: echo "🖥️ The workflow is now ready to test your code on the runner."
       - name: List files in the repository
@@ -322,13 +361,14 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 ----
+Quelle: {gha-quickstart-url}[{gha-quickstart-name}]
 ====
 +
 ****
 Die Vorgabe enthält einen Workflow namens *GitHub Actions Demo*, welcher durch
 ein *Push*-Event ausgelöst wird und aus einem Job *Explore-GitHub-Actions*
 besteht. Der Job selbst besteht aus 8 Steps, welche Shell Kommandos und eine
-Action `actions/checkout@v5` zum Clonen Ihres Repository in den Runner (Ubuntu
+Action `actions/checkout@v7` zum Clonen Ihres Repository in den Runner (Ubuntu
 Linux) enthalten.
 ****
 . Übernehmen Sie die Änderung als neue Version in Ihr Repository und pushen
@@ -340,30 +380,32 @@ Linux) enthalten.
 
 ==== Aufgabe 2 - Unit-Tests
 
-In dieser Aufgabe wollen wir ein kleines Projekt automatisiert mit Unit-Tests
-in einem Workflow testen lassen. Es gibt eine Varianten in *Java* (Maven) und
-eine in *Python* (Unittest).
+In dieser Aufgabe wird ein kleines Projekt automatisiert mithilfe von
+Unit-Tests in einem Workflow getestet. Dafür stehen eine Java- und eine
+Python-Variante zur Verfügung.
 
-Dafür verwenden wir das bereitgestellte
-https://github.com/tigion/htwd-se-practical-github-actions-exercise[htwd-se-practical-github-actions-exercise]
-Repository. Sie können dies gern mit Ihren Klassen aus dem Praktikum zum Thema
-*UnitTest mit Java und Python* erweitern bzw. anpassen.
+:exercise-repo-url: https://github.com/tigion/htwd-se-lab-github-actions-exercise
+:exercise-repo-name: htwd-se-lab-github-actions-exercise
+
+Als Grundlage verwenden wir das bereitgestellte
+{exercise-repo-url}[{exercise-repo-name}]-Repository. Alternativ
+können Sie auch Ihr Projekt aus dem Praktikum zum Thema *Unit-Tests mit Java
+und Python* verwenden.
 
 . Erstellen Sie sich vom Repository-Template
-  https://github.com/tigion/htwd-se-practical-github-actions-exercise[htwd-se-practical-github-actions-exercise]
-  ein Repository in Ihrem GitHub Account und clonen es anschließend lokal auf
-  Ihren Rechner.
+  {exercise-repo-url}[{exercise-repo-name}] ein Repository in Ihrem
+  GitHub Account und klonen es anschließend lokal auf Ihren Rechner.
 . Legen Sie sich im Verzeichnis `.github/workflows/` entweder eine neue
-  Workflow-Datei `maven-test.yaml` oder `python-test.yaml` an.
+  Workflow-Datei `java-unit-tests.yaml` oder `python-unit-tests.yaml` an.
 . Übernehmen Sie entsprechend folgenden Inhalt:
 +
-.maven-test.yaml
+.java-unit-tests.yaml
 [%collapsible]
 ====
 [source,yaml]
 ----
 # This workflow will test a Java project with Maven
-# For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-maven
+# See also: https://docs.github.com/en/actions/tutorials/build-and-test-code/java-with-maven
 
 name: Unit tests with Maven
 
@@ -383,24 +425,24 @@ jobs:
     steps:
     # step 1 - clone project
     - name: Checkout the repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
 
     # step 2 - provide java
     - name: Set up JDK 21
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
+        distribution: 'temurin'
         java-version: '21'
-        distribution: 'adopt'
+        cache: 'maven'
 
     # step 3 - run tests
     - name: Test with Maven
-      run: |
-        cd example-java
-        mvn -B test --file pom.xml
+      working-directory: example-java
+      run: mvn -B test
 ----
 ====
 +
-.python-test.yaml
+.python-unit-tests.yaml
 [%collapsible]
 ====
 [source,yaml]
@@ -425,19 +467,18 @@ jobs:
     steps:
     # step 1 - clone project
     - name: Checkout the repository
-      uses: actions/checkout@v5
+      uses: actions/checkout@v7
 
     # step 2 - provide python
     - name: Set up Python
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v7
       with:
         python-version: '3.x'
 
     # step 3 - run tests
     - name: Test with Python
-      run: |
-        cd example-python
-        python3 -m unittest tests.test_town.TestTown
+      working-directory: example-python
+      run: python3 -m unittest discover -s tests
 ----
 ====
 +
@@ -447,7 +488,7 @@ Die Workflows werden jeweils durch *Push*- und *Pull-Request*-Events im
 `example-python` ausgelöst. Im Job *test* werden im Runner unter Ubuntu Linux
 drei Steps der Reihe nach ausgeführt:
 
-. Projekt clonen
+. Projekt klonen
 . Umgebung bereitstellen
 . Unit-Tests ausführen
 ****
@@ -460,12 +501,12 @@ drei Steps der Reihe nach ausgeführt:
 . Sehen Sie sich auf GitHub im Reiter *Actions* das Ergebnis Ihres Workflows
   an. Dies kann einen Moment dauern.
 . Ein Test ist fehlgeschlagen. Es darf nicht möglich sein, Einwohnerzahlen
-  kleiner 0 einzugeben. Passen sie die *Town*-Klassen so an, dass bei weiteren
+  kleiner 0 einzugeben. Passen Sie die *Town*-Klassen so an, dass bei weiteren
   Pushs keine Tests mehr fehlschlagen. Je nach Testanforderung, ist eine
   Exception oder ein minimaler Standardwert von 0 zu verwenden.
 +
-.icon:warning[role=red] *Spoiler Alert* icon:warning[role=red] <- enthält Lösungsvorschläge
 [%collapsible]
+.Lösungsvorschläge – icon:warning[role=red] *Spoiler Alert*
 ====
 .Java:
 [source,java]
@@ -485,14 +526,14 @@ public void setResidents(int residents) {
 [source,python]
 ----
 @residents.setter
-    def residents(self, value):
-        # variant: min default value 0
-        self.__residents = 0 if value < 0 else value
+def residents(self, value):
+    # variant: min default value 0
+    self.__residents = 0 if value < 0 else value
 
-        # variant: exception
-        #if value < 0:
-        #    raise ValueError("residents must be equal or greater than 0")
-        #self.__residents = value
+    # variant: exception
+    #if value < 0:
+    #    raise ValueError("residents must be equal or greater than 0")
+    #self.__residents = value
 ----
 ====
 . Überlegen Sie sich eine Erweiterung des Workflows, welche Sie als weiteren
