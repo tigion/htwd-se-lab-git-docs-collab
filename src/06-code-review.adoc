@@ -14,8 +14,10 @@ include::notes-windows-lab.inc.adoc[]
 
 === 1. Code-Review und Integration
 
-//.Geek&Poke - Dev Cycle (Friday Evening Edition)
-image::geek-and-poke_dev-cycle-friday-evening-edition.jpg[Geek&Poke: Dev Cycle (Friday Evening Edition), width=200, role="right", link="http://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition"]
+// The original comic is from the Geek&Poke comic series.
+// Geek&Poke - Dev Cycle (Friday Evening Edition)
+// http://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition
+image::comic_development-cycle-friday-evening-edition.jpg[Development Cycle Friday Evening Edition (Based on Geek&Poke), width=250, role="right"]
 
 Für qualitativ guten Code sind *Code-Reviews* unabdingbar. Plattformen wie
 icon:github[] GitHub (oder bspw. icon:gitlab[] GitLab) bieten dafür die

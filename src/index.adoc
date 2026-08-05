@@ -65,9 +65,6 @@ Es geht um das praktische Kennenlernen von Grundlagen und dem Abbau von Hürden 
 
 == Hinweise & Einschränkungen
 
-//.Geek&Poke - The New Developer
-image::geek-and-poke_the_new_developer.jpg[Geek&Poke: The New Developer, width=200, role="right", link="http://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html"]
-
 - Die Praktikumsaufgaben können in den *Computer-Laboren* der Fakultät unter icon:linux[] Linux bzw. icon:windows[] Windows oder auf dem *eigenen Rechner* bearbeitet werden.
 - *Linux-Labore*: Nutzereinstellungen bleiben erhalten und werden in den jeweiligen Home- bzw. Profil-Verzeichnissen gespeichert.
 - *Windows-Labore*: Es werden keine Nutzerprofile gespeichert. Die Konfiguration von Git und das Anpassen der Werkzeuge (Erweiterungen, Einstellungen) muss nach jedem Anmelden neu vorgenommen werden.
