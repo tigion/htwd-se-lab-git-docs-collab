@@ -475,7 +475,12 @@ jobs:
       with:
         python-version: '3.x'
 
-    # step 3 - run tests
+    # step 3 - install project
+    - name: Install Python project
+      working-directory: example-python
+      run: python3 -m pip install -e .
+
+    # step 4 - run tests
     - name: Test with Python
       working-directory: example-python
       run: python3 -m unittest discover -s tests
@@ -512,13 +517,9 @@ drei Steps der Reihe nach ausgeführt:
 [source,java]
 ----
 public void setResidents(int residents) {
-  // variant: exception
   if (residents < 0)
-    throw new IllegalArgumentException("residents must be equal or greater than 0: " + residents);
+    throw new IllegalArgumentException("Residents cannot be negative: " + residents);
   this.residents = residents;
-
-  // variant: min default value 0
-  //this.residents = (residents < 0) ? 0 : residents;
 }
 ----
 
@@ -527,13 +528,13 @@ public void setResidents(int residents) {
 ----
 @residents.setter
 def residents(self, value):
-    # variant: min default value 0
-    self.__residents = 0 if value < 0 else value
+    if value is None or not isinstance(value, int):
+        raise ValueError("Residents must be an integer.")
 
-    # variant: exception
-    #if value < 0:
-    #    raise ValueError("residents must be equal or greater than 0")
-    #self.__residents = value
+    if value < 0:
+        raise ValueError("Residents cannot be negative.")
+
+    self.__residents = value
 ----
 ====
 . Überlegen Sie sich eine Erweiterung des Workflows, welche Sie als weiteren
