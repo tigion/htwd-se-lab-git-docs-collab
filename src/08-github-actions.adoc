@@ -518,7 +518,8 @@ drei Steps der Reihe nach ausgeführt:
 ----
 public void setResidents(int residents) {
   if (residents < 0)
-    throw new IllegalArgumentException("Residents cannot be negative: " + residents);
+    throw new IllegalArgumentException("Residents cannot be negative.");
+
   this.residents = residents;
 }
 ----
