@@ -513,7 +513,9 @@ drei Steps der Reihe nach ausgeführt:
 [%collapsible]
 .Lösungsvorschläge – icon:warning[role=red] *Spoiler Alert*
 ====
-.Java:
+.Java
+[%collapsible]
+=====
 [source,java]
 ----
 public void setResidents(int residents) {
@@ -523,8 +525,11 @@ public void setResidents(int residents) {
   this.residents = residents;
 }
 ----
+=====
 
-.Python:
+.Python
+[%collapsible]
+=====
 [source,python]
 ----
 @residents.setter
@@ -537,6 +542,22 @@ def residents(self, value):
 
     self.__residents = value
 ----
+=====
+
+.Rust
+[%collapsible]
+=====
+[source,rust]
+----
+pub fn info(&self) -> String {
+    match self.residents {
+        0 => format!("{} has no residents.", self.name),
+        1 => format!("{} has 1 resident.", self.name),
+        n => format!("{} has {} residents.", self.name, n),
+    }
+}
+----
+=====
 ====
 . Überlegen Sie sich eine Erweiterung des Workflows, welche Sie als weiteren
   Step hinzufügen. Dies könnte bspw. die Ausgabe der Java- oder Python-Version
