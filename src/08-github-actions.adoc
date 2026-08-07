@@ -552,10 +552,9 @@ Linux die Steps der Reihe nach ausgeführt:
   zugehörigen Workflow auszulösen.
 . Sehen Sie sich auf GitHub im Reiter *Actions* das Ergebnis Ihres Workflows
   an. Dies kann einen Moment dauern.
-. Ein Test ist fehlgeschlagen. Es darf nicht möglich sein, Einwohnerzahlen
-  kleiner 0 einzugeben. Passen Sie die *Town*-Klassen so an, dass bei weiteren
-  Pushs keine Tests mehr fehlschlagen. Je nach Testanforderung, ist eine
-  Exception oder ein minimaler Standardwert von 0 zu verwenden.
+. Tests sind fehlgeschlagen. Schauen Sie sich das Fehlerprotokoll an, um die
+  Fehlerquellen zu identifizieren. Beheben Sie die Fehler, sodass bei
+  zukünftigen Pushes keine Tests mehr fehlschlagen.
 +
 [%collapsible]
 .Lösungsvorschläge – icon:warning[role=red] *Spoiler Alert*
