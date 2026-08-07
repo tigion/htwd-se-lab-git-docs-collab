@@ -381,8 +381,8 @@ Linux) enthalten.
 ==== Aufgabe 2 - Unit-Tests
 
 In dieser Aufgabe wird ein kleines Projekt automatisiert mithilfe von
-Unit-Tests in einem Workflow getestet. Dafür stehen eine Java- und eine
-Python-Variante zur Verfügung.
+Unit-Tests in einem Workflow getestet. Dafür stehen eine Java-, eine Python-
+und eine Rust-Variante zur Verfügung.
 
 :exercise-repo-url: https://github.com/tigion/htwd-se-lab-github-actions-exercise
 :exercise-repo-name: htwd-se-lab-github-actions-exercise
@@ -396,7 +396,8 @@ und Python* verwenden.
   {exercise-repo-url}[{exercise-repo-name}] ein Repository in Ihrem
   GitHub Account und klonen es anschließend lokal auf Ihren Rechner.
 . Legen Sie sich im Verzeichnis `.github/workflows/` entweder eine neue
-  Workflow-Datei `java-unit-tests.yaml` oder `python-unit-tests.yaml` an.
+  Workflow-Datei `java-unit-tests.yaml`, `python-unit-tests.yaml` oder
+  `rust-unit-tests.yaml` an.
 . Übernehmen Sie entsprechend folgenden Inhalt:
 +
 .java-unit-tests.yaml
@@ -448,6 +449,7 @@ jobs:
 [source,yaml]
 ----
 # This workflow will test a Python project
+# See also: https://docs.github.com/en/actions/tutorials/build-and-test-code/python
 
 name: Unit tests with Python
 
@@ -487,11 +489,56 @@ jobs:
 ----
 ====
 +
+.rust-unit-tests.yaml
+[%collapsible]
+====
+[source,yaml]
+----
+# This workflow will test a Rust project
+# See also: https://docs.github.com/en/actions/tutorials/build-and-test-code/rust
+
+name: Unit tests with Rust
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'example-rust/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'example-rust/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    # step 1 - clone project
+    - name: Checkout the repository
+      uses: actions/checkout@v7
+
+    # step 2 - provide Rust toolchain
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+
+    # step 3 - cache Rust dependencies
+    - name: Cache Rust dependencies
+      uses: Swatinem/rust-cache@v2
+      with:
+        workspaces: example-rust
+
+    # step 4 - run tests
+    - name: Test with Cargo
+      working-directory: example-rust
+      run: cargo test
+----
+====
++
 ****
 Die Workflows werden jeweils durch *Push*- und *Pull-Request*-Events im
-*main*-Branch auf ihr jeweiliges Verzeichnis `example-java` bzw.
-`example-python` ausgelöst. Im Job *test* werden im Runner unter Ubuntu Linux
-drei Steps der Reihe nach ausgeführt:
+*main*-Branch auf ihr jeweiliges Verzeichnis `example-java`, `example-python`
+bzw. `example-rust` ausgelöst. Im Job *test* werden im Runner unter Ubuntu
+Linux die Steps der Reihe nach ausgeführt:
 
 . Projekt klonen
 . Umgebung bereitstellen
@@ -500,9 +547,9 @@ drei Steps der Reihe nach ausgeführt:
 . Übernehmen Sie die eben angelegten Workflow-Dateien als neue Version in Ihr
   Repository und pushen diese zum _remote_-Repository.
 . Nehmen Sie eine Änderung (bspw. Kommentar in der jeweiligen
-  Main-Klasse/-Methode) im Verzeichnis `example-java` oder `example-python` vor
-  und als neue Version in das Repository auf, um den zugehörigen Workflow
-  auszulösen.
+  Main-Klasse/-Methode) im Verzeichnis `example-java`, `example-python` oder
+  `example-rust` vor und als neue Version in das Repository auf, um den
+  zugehörigen Workflow auszulösen.
 . Sehen Sie sich auf GitHub im Reiter *Actions* das Ergebnis Ihres Workflows
   an. Dies kann einen Moment dauern.
 . Ein Test ist fehlgeschlagen. Es darf nicht möglich sein, Einwohnerzahlen
