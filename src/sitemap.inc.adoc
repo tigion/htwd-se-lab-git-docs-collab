@@ -8,7 +8,7 @@ a|
 === Praktika - SE I
 [unstyled]
 * icon:hand-o-right[] <<01-basics.adoc#, Teil 1 - Grundlagen>>
-* icon:hand-o-right[] <<02-branching.adoc#, Teil 2 - Parallel arbeiten>>
+* icon:hand-o-right[] <<02-git-branching.adoc#, Teil 2 - Parallel arbeiten>>
 * icon:hand-o-right[] <<03-teamwork.adoc#, Teil 3 - Teamarbeit und Konflikte>>
 * icon:hand-o-right[] <<04-issues-projects.adoc#, Teil 4 - Aufgabenmanagement>>
 * icon:hand-o-right[] <<05-diagrams.adoc#, Teil 5 - Diagramme>>
