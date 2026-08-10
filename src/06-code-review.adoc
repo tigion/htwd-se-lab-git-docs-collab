@@ -14,11 +14,7 @@ wie Sie über Forks Änderungen an öffentlichen Repositories vorschlagen könne
 .{imageTitle} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition[Original])]
 image::{imageFile}["{imageTitle}", width=700, alt="{imageTitle}"]
 
-.Lernziele
-****
-- Verwenden von **Pull-Requests** (Commits, Diskussionen, Genehmigungen) für **Code Review** und **Integration**
-- Verwenden von **Forks** für Vorschläge von Änderungen als **Pull-Requests** für ein anderes Repository
-****
+include::learning-goals.inc.adoc[tag=06-code-review]
 
 include::notes-windows-lab.inc.adoc[]
 

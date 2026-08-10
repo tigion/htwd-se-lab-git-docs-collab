@@ -11,14 +11,7 @@ der Werkzeuge *GitHub*, *Git*, *Visual Studio Code* und *AsciiDoc*.
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=700, title="{imageTitle}"]
 
-.Lernziele
-****
-* Einrichtung und Kennenlernen von *GitHub*, *Git*, und *Visual Studio Code*
-* Anlegen eines ersten Dokumentes mit *AsciiDoc*-Syntax.
-* Anwenden des *Git-Workflows* zur Versionierung von Änderungen
-* Erstellen von HTML- und PDF-Dokumenten aus AsciiDoc-Dateien
-* Ignorieren von nicht ins Repository aufzunehmender Dateien
-****
+include::learning-goals.inc.adoc[tag=01-basics]
 
 {section-separator}
 

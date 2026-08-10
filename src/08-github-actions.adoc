@@ -6,12 +6,7 @@ In diesem Aufgabenteil wollen wir erste Möglichkeiten von *GitHub Actions*
 kennenlernen, was *Workflows* sind und wie sie unsere Arbeit mit dem Repository
 auf GitHub unterstützen können.
 
-.Lernziele
-****
-- Verstehen, was GitHub Actions sind und welche Möglichkeiten sie bieten
-- Aufbau von Workflows, Jobs, Steps und Actions verstehen
-- Einfache Automatisierungen mit GitHub Actions umsetzen können
-****
+include::learning-goals.inc.adoc[tag=08-github-actions]
 
 include::notes-windows-lab.inc.adoc[]
 

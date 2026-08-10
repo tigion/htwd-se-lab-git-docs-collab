@@ -10,13 +10,7 @@ genauer betrachtet.
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-.Lernziele
-****
-- Versionen untersuchen und vergleichen
-- Änderungen verwerfen oder (temporär) wegspeichern
-- Versionen löschen oder zurücknehmen
-- Versionen ändern oder zusammenzufassen
-****
+include::learning-goals.inc.adoc[tag=07-git-advanced]
 
 include::notes-windows-lab.inc.adoc[]
 

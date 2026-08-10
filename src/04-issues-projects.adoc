@@ -2,13 +2,7 @@ include::header.inc.adoc[]
 
 == Teil 4 - Aufgabenmanagement
 
-.Lernziele
-****
-* Verwenden von *Issues* zur Verwaltung von Aufgaben, Problemen und Verbesserungen
-** *Sub-Issues*, *Labels* und referenzieren von *Issues* und *Commits*
-* Verwenden von *GitHub Projects* zur Verwaltung von Aufgaben im Projekt
-** Felder und Sichten für *Product Backlog*, *Sprint Planning* und *Current Sprint*
-****
+include::learning-goals.inc.adoc[tag="04-issues-projects"]
 
 include::notes-windows-lab.inc.adoc[]
 

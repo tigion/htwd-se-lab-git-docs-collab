@@ -11,10 +11,7 @@ http://plantuml.com/de/guide[PlantUML].
 :diagramWidth: 800
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}", width={diagramWidth}, subs=attributes+]
 
-.Lernziele
-****
 include::learning-goals.inc.adoc[tag="05-diagrams"]
-****
 
 include::notes-windows-lab.inc.adoc[]
 

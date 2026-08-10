@@ -1,0 +1,113 @@
+=== Software Engineering I
+
+// tag::01-basics[]
+.🎓 Lernziele von Teil 1 - Grundlagen
+[%collapsible]
+====
+****
+* Einrichtung und Kennenlernen von *GitHub*, *Git* und *Visual Studio Code*
+* Anlegen eines ersten Dokumentes mit **AsciiDoc**-Syntax
+* Anwenden des *Git-Workflows* zur Versionierung von Änderungen
+** `git add`, `git commit`, `git push`, `git pull`
+* Erstellen von HTML- und PDF-Dokumenten aus AsciiDoc-Dateien
+* Ignorieren von Dateien, die nicht ins Repository aufgenommen werden sollen
+****
+====
+// end::01-basics[]
+
+// tag::02-git-branching[]
+.🎓 Lernziele von Teil 2 - Parallel arbeiten
+[%collapsible]
+====
+****
+* Konzepte von *Branches* in Git verstehen und verwenden
+** Branches erstellen, wechseln, vereinen, aktualisieren und entfernen
+** `git branch`, `git switch`, `git merge`, `git rebase`
+** Unterschiede zwischen `merge` und `rebase`
+* Verwendung von lokalen und remote Branches
+****
+====
+// end::02-git-branching[]
+
+// tag::03-teamwork[]
+.🎓 Lernziele von Teil 3 - Teamarbeit und Konflikte
+[%collapsible]
+====
+****
+* Verwenden eines gemeinsamen *Team-Repositories* auf GitHub
+* Umgang mit *Konflikten* in der Teamarbeit oder bei der Zusammenführung von Git-Branches
+* Lösen von ``merge``-Konflikten bei einem `git pull` oder `git push`
+****
+====
+// end::03-teamwork[]
+
+// tag::04-issues-projects[]
+.🎓 Lernziele von Teil 4 - Aufgabenmanagement
+[%collapsible]
+====
+****
+* Verwenden von *Issues* zur Verwaltung von Aufgaben, Problemen und Verbesserungen
+** *Sub-Issues*, *Labels* und das Referenzieren von *Issues* und *Commits*
+* Verwenden von *GitHub Projects* zur Verwaltung von Aufgaben im Projekt
+** Felder und Sichten für *Product Backlog*, *Sprint Planning* und *Current Sprint*
+****
+====
+// end::04-issues-projects[]
+
+// tag::05-diagrams[]
+.🎓 Lernziele von Teil 5 - Diagramme
+[%collapsible]
+====
+****
+* Verwenden von textbasierten Diagrammen in AsciiDoc-Dokumenten
+* Kennenlernen der *PlantUML* Notation
+* Anwenden von ersten Diagrammtypen:
+** **UML**-Klassendiagramme, **C4-Modell** Level 1 und 2
+** Hinweise und Beispiele zu weiteren Diagrammtypen
+****
+====
+// end::05-diagrams[]
+
+// tag::06-code-review[]
+.🎓 Lernziele von Teil 6 - Code-Review und Integration
+[%collapsible]
+====
+****
+* Verwenden von *Pull-Requests* (Commits, Diskussionen, Genehmigungen) für *Code Review* und *Integration*
+* Verwenden von *Forks* für Vorschläge von Änderungen als *Pull-Requests* für ein anderes Repository
+****
+====
+// end::06-code-review[]
+
+=== Software Engineering II
+
+// tag::07-git-advanced[]
+.🎓 Lernziele von Teil 7 - Git Advanced
+[%collapsible]
+====
+****
+* Änderungen und Versionen mit *Git-Kommandos* verwalten
+** Versionen untersuchen und vergleichen (`git diff`, `git log`, `git checkout`)
+** Änderungen verwerfen (`git restore`, `git clean`)
+** Änderungen (temporär) wegspeichern (`git stash`)
+** Versionen zurücknehmen mit `git reset` (Historie umschreiben) oder `git revert` (Historie erhalten)
+* Versionen ändern oder zusammenfassen
+** Ändern der letzten Version mit `git commit --amend`
+** Zusammenfassen und Umstrukturieren von Versionen mit `git rebase -i`
+* Risiken beim Verändern von veröffentlichten Versionen kennen und vermeiden
+****
+====
+// end::07-git-advanced[]
+
+// tag::08-github-actions[]
+.🎓 Lernziele von Teil 8 - GitHub Actions
+[%collapsible]
+====
+****
+* Verstehen, was *GitHub Actions* sind und welche Möglichkeiten sie bieten
+* Aufbau von Workflows, Events, Jobs, Runner, Steps und Actions verstehen
+* Anlegen und konfigurieren von Workflows mit der **YAML**-Syntax
+* Automatisieren von einfachen Abläufen mit *Unit-Tests*
+****
+====
+// end::08-github-actions[]

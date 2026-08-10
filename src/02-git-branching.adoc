@@ -13,14 +13,7 @@ arbeiten.
 .{imageTitle}
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
-.Lernziele
-****
-* Konzepte von Branches verstehen und verwenden
-** Branches erstellen, wechseln, vereinen, aktualisieren und entfernen
-** Unterschiede zwischen `merge` und `rebase`
-* Verwendung von lokalen und remote Branches
-// * Konflikte bei Merges und Rebase lösen
-****
+include::learning-goals.inc.adoc[tag=02-git-branching]
 
 include::notes-windows-lab.inc.adoc[]
 
