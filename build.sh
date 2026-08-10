@@ -74,7 +74,7 @@ replace='\
   <li><a href="06-code-review.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
   <\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
-  <li><a href="07-advanced-git.html">Teil 7 - Git Advanced<\/a><\/li>\
+  <li><a href="07-git-advanced.html">Teil 7 - Git Advanced<\/a><\/li>\
   <li><a href="08-github-actions.html">Teil 8 - GitHub Actions<\/a><\/li>\
   <\/li>\
 '

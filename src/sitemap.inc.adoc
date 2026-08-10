@@ -17,6 +17,6 @@ a|
 [discrete]
 === Praktika - SE II
 [unstyled]
-* icon:hand-o-right[] <<07-advanced-git.adoc#, Teil 7 - Git Advanced>>
+* icon:hand-o-right[] <<07-git-advanced.adoc#, Teil 7 - Git Advanced>>
 * icon:hand-o-right[] <<08-github-actions.adoc#, Teil 8 - GitHub Actions>>
 |===
