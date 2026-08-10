@@ -68,7 +68,7 @@ replace='\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE I<\/span><\/li>\
   <li><a href="01-basics.html">Teil 1 - Grundlagen<\/a><\/li>\
   <li><a href="02-branching.html">Teil 2 - Parallel arbeiten<\/a><\/li>\
-  <li><a href="03-collaboration.html">Teil 3 - Teamarbeit und Konflikte<\/a><\/li>\
+  <li><a href="03-teamwork.html">Teil 3 - Teamarbeit und Konflikte<\/a><\/li>\
   <li><a href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
   <li><a href="05-diagrams.html">Teil 5 - Diagramme<\/a><\/li>\
   <li><a href="06-code-review.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
