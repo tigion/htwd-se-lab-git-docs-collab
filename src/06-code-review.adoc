@@ -2,6 +2,18 @@ include::header.inc.adoc[]
 
 == Teil 6 - Code-Review und Integration
 
+In diesem Teil lernen Sie, wie Sie Änderungen mit Pull-/Merge-Requests und
+Code-Reviews prüfen und in andere Branches integrieren. Außerdem erfahren Sie,
+wie Sie über Forks Änderungen an öffentlichen Repositories vorschlagen können.
+
+// The original comic is from the Geek&Poke comic series.
+// Geek&Poke - Dev Cycle (Friday Evening Edition)
+// https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition
+:imageTitle: Development Cycle - Friday Evening Edition
+:imageFile: comic_development-cycle-friday-evening-edition.jpg
+.{imageTitle} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition[Original])]
+image::{imageFile}["{imageTitle}", width=700, alt="{imageTitle}"]
+
 .Lernziele
 ****
 - Verwenden von **Pull-Requests** (Commits, Diskussionen, Genehmigungen) für **Code Review** und **Integration**
@@ -13,11 +25,6 @@ include::notes-windows-lab.inc.adoc[]
 {section-separator}
 
 === 1. Code-Review und Integration
-
-// The original comic is from the Geek&Poke comic series.
-// Geek&Poke - Dev Cycle (Friday Evening Edition)
-// http://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition
-image::comic_development-cycle-friday-evening-edition.jpg[Development Cycle Friday Evening Edition (Based on Geek&Poke), width=250, role="right"]
 
 Für qualitativ guten Code sind *Code-Reviews* unabdingbar. Plattformen wie
 icon:github[] GitHub (oder bspw. icon:gitlab[] GitLab) bieten dafür die

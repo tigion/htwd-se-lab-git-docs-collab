@@ -184,8 +184,11 @@ händisch ein Merge oder Rebase durchgeführt werden.
 
 // The original comic is from the Geek&Poke comic series.
 // Geek&Poke - The New Developer
-// http://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html
-image::comic_the-new-developer.jpg[The New Developer, width=250, role="right"]
+// https://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html
+:imageTitle: The New Developer
+:imageFile: comic_the-new-developer.jpg
+.{imageTitle} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html[Original])]
+image::{imageFile}["{imageTitle}", width=250, role="right"]
 
 === 1. Einrichtung des Teams
 

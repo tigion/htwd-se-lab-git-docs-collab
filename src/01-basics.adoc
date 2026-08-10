@@ -9,7 +9,7 @@ der Werkzeuge *GitHub*, *Git*, *Visual Studio Code* und *AsciiDoc*.
 :imageTitle: Meanwhile, in the Classroom...
 :imageFile: comic_basics.jpg
 .{imageTitle}
-image::{imageFile}["{imageTitle}", width=700]
+image::{imageFile}["{imageTitle}", width=700, title="{imageTitle}"]
 
 .Lernziele
 ****
