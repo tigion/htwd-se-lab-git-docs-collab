@@ -5,8 +5,6 @@ include::header.inc.adoc[]
 Der Aufgabenteil beschäftigt sich mit der Verwendung von Branches
 (Verzweigungen) in Git, um parallel an verschiedenen Projektständen zu
 arbeiten.
-// Es werden die Konzepte von Branches, Merging und Rebase vorgestellt und die
-// Unterschiede zwischen lokalen und remote Branches erläutert.
 
 :imageTitle: Git-Versionsblütenzweige
 :imageFile: grafik_git_version_blossom_branch_text.jpg
@@ -41,60 +39,87 @@ Hauptzweig aufgenommen.
 *merge*
 
 Wird der Versionsstand eines Branches in einen anderen Branch aufgenommen
-(`merge`) geschieht dies entweder mit der *fast-forward* oder *ort* (früher
-*recursive*) Strategie.
+(`merge`) geschieht dies entweder mit der **fast-forward**-Strategie oder der
+**ort**-Strategie (früher *recursive*) Strategie.
 
 _fast-forward_::
 +
+--
 image::grafik_git_merge_fast-forward.png[...,width=549]
-+
+
 .Beispiel: Git-Kommandos
 [%collapsible]
 ======
+[source,sh]
 ----
-$ git switch -c feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git switch main
-$ git merge feature
+# Create a new feature branch and switch to it
+git switch -c feature
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Switch back to the main branch
+git switch main
+# Merge the feature branch into the main branch
+git merge feature
 ----
 ======
-+
-Basiert der zu mergende Branch (_feature_-Branch) auf dem letzten Stand des
-aktuellen Branches (_main_-Branch), liegen die letzten Versionen der beiden
+
+Basiert der zu mergende Branch (__feature__-Branch) auf dem letzten Stand des
+aktuellen Branches (__main__-Branch), liegen die letzten Versionen der beiden
 Branches in einer direkten Nachfolge. Somit wird durch ein *fast-forward* der
-Zeiger des aktuellen Branches (_main_-Branch) auf die letzte Version des zu
-mergenden Branches (_feature_-Branch) bewegt. + Möchte man keinen
-_fast-forward_-Merge, sondern immer einen neuen _merge_-Commit haben, kann dies
-mit `--no-ff` erzwungen werden.
+Zeiger des aktuellen Branches (__main__-Branch) auf die letzte Version des zu
+mergenden Branches (__feature__-Branch) bewegt. +
+Möchte man keinen __fast-forward__-Merge, sondern immer einen neuen
+__merge__-Commit haben, kann dies mit `--no-ff` erzwungen werden.
+--
 
 _ort_ (_recursive_)::
 +
+--
 image::grafik_git_merge_recursive.png[...,width=602]
-+
+
 https://git-scm.com/docs/git-rebase.html#Documentation/git-rebase.txt-ort[ort]
-ist ein 3-Wege-Merge mit einem _merge_-Commit und ersetzt den älteren
-_recursive_-Algorithmus seit Git v2.34.0 (seit v2.49.0 ist _recursive_ ein
+ist ein 3-Wege-Merge mit einem __merge__-Commit und ersetzt den älteren
+__recursive__-Algorithmus seit Git v2.34.0 (seit v2.49.0 ist _recursive_ ein
 Synonym für _ort_).
-+
+
 .Beispiel: Git-Kommandos
 [%collapsible]
 ======
+[source,sh]
 ----
-$ git switch -c feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git switch main
-$   vi main.txt → git add . → git commit -m "..."
-$ git merge feature
+# Create a new feature branch and switch to it
+git switch -c feature
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Switch back to the main branch
+git switch main
+# Edit the main file and commit changes
+vi main.txt
+git add .
+git commit -m "..."
+# Merge the feature branch into the main branch
+git merge feature
 ----
 ======
-+
-Gibt es im aktuellen Branch (_main_-Branch) Versionen, die nach der Abspaltung
-des zu mergenden Branches (_feature_-Branch) erstellt worden sind, wird beim
-Merge im aktuellen Branch (_main_-Branch) eine neue Version (_merge_-Commit)
+
+Gibt es im aktuellen Branch (__main__-Branch) Versionen, die nach der Abspaltung
+des zu mergenden Branches (__feature__-Branch) erstellt worden sind, wird beim
+Merge im aktuellen Branch (__main__-Branch) eine neue Version (__merge__-Commit)
 erstellt. Diese enthält das vereinte Ergebnis aus den letzten Versionen der zu
 mergenden Branches.
+--
 =====
 ====
 
@@ -112,34 +137,45 @@ basieren, auf eine neuere Version aktualisiert.
 .Beispiel: Git-Kommandos
 [%collapsible]
 ======
+[source,sh]
 ----
-$ git switch -c feature
-$   vi feature.txt → git add . → git commit -m "..."
-$   vi feature.txt → git add . → git commit -m "..."
-$ git switch main
-$   vi main.txt → git add . → git commit -m "..."
-$ git switch feature
-$ git rebase main
+# Create a new feature branch and switch to it
+git switch -c feature
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Edit the feature file and commit changes
+vi feature.txt
+git add .
+git commit -m "..."
+# Switch back to the main branch
+git switch main
+# Edit the main file and commit changes
+vi main.txt
+git add .
+git commit -m "..."
+# Switch back to the feature branch
+git switch feature
+# Rebase the feature branch onto the main branch
+git rebase main
 ----
 ======
 
-Wird zusätzlich noch die Option `-i` verwendet, können die neu erstellt Commits
-zusätzlich verändert und zusammengefasst werden. (Siehe:
-<<praktikumsaufgaben-teil-07.adoc#aufgabe2-2, Aufgabe 2.2>>)
+Wird zusätzlich noch die Option `-i` verwendet, können die neu erstellten
+Commits zusätzlich verändert und zusammengefasst werden. (Siehe:
+<<07-git-advanced.adoc#aufgabe2-2, Aufgabe 2.2>>)
 
-[IMPORTANT]
-======
-Ein Rebase erzeugt immer neue Versionen (Commits-IDs, Commit-Inhalte) was in
-Verbindung mit öffentlichen und geteilten Team-Repositories zu Problemen führen
-kann.
-======
+IMPORTANT: Ein Rebase erzeugt immer neue Versionen (Commits-IDs,
+Commit-Inhalte) was in Verbindung mit öffentlichen und geteilten
+Team-Repositories zu Problemen führen kann.
 
-* Rebase ist hilfreich, wenn bspw. im _main_-Branch eine neue Version
-  (_bugfix_-Commit) hinzukommt, welche für die weitere Bearbeitung im
-  _feature_-Branch ebenfalls relevant ist.
+* Rebase ist hilfreich, wenn bspw. im __main__-Branch eine neue Version
+  (__bugfix__-Commit) hinzukommt, welche für die weitere Bearbeitung im
+  __feature__-Branch ebenfalls relevant ist.
 * Ebenfalls kann es hilfreich sein, wenn man eine flache Historie im Repository
-  haben möchte, so dass bei einem Merge statt eines _merge_-Commits ein
-  _fast-forward_-Merge durchgeführt werden kann.
+  haben möchte, so dass bei einem Merge statt eines __merge__-Commits ein
+  __fast-forward__-Merge durchgeführt werden kann.
 =====
 ====
 
@@ -162,8 +198,8 @@ kann.
 
 *`rebase`*
 
-* Aktualisiert die Basis des _aktuellen_-Branches auf die aktuelle Version des
-  _basis_-Branches, was nachfolgende _fast-forward_-Merges erlaubt.
+* Aktualisiert die Basis des __aktuellen__-Branches auf die aktuelle Version des
+  __basis__-Branches, was nachfolgende __fast-forward__-Merges erlaubt.
 * Mit `-i` können Commits angepasst und zusammengefasst werden, um die Historie
   übersichtlicher zu gestalten oder Fehler zu korrigieren.
 =====
@@ -173,28 +209,30 @@ kann.
 [%collapsible]
 ====
 =====
-Der _feature_-Branch kann während seiner Bearbeitung wie folgt auf
-zwischenzeitlich neuere Versionen im _main_-Branch aktualisiert werden.
+Der __feature__-Branch kann während seiner Bearbeitung wie folgt auf
+zwischenzeitlich neuere Versionen im __main__-Branch aktualisiert werden.
 
-.Variante 1: rebase _feature_-Branch auf _main_-Branch
+.Variante 1: rebase __feature__-Branch auf __main__-Branch
+[source,sh]
 ----
-$ git switch feature
-$ git rebase main
+git switch feature
+git rebase main
 ----
 
-.Variante 2: merge _main_-Branch auf _feature_-Branch
+.Variante 2: merge __main__-Branch auf __feature__-Branch
+[source,sh]
 ----
-$ git switch feature
-$ git merge main
+git switch feature
+git merge main
 ----
 
 * Für die Aktualisierung eines in der Version länger zurückliegenden oder mit
-  einem alten Feature abgeschlossenen _feature_-Branches ist die Variante 2 mit
+  einem alten Feature abgeschlossenen __feature__-Branches ist die Variante 2 mit
   einem Merge empfohlen.
-* Ein Rebase des _feature_-Branches kann auch sinnvoll sein, um
-  zwischenzeitliche neuere Versionen im _main_-Branch vor einem Merge in diesen
-  im _feature_-Branch erst zu testen bzw. mögliche Konflikte zu lösen.
-  Andernfalls fallen die Konflikte erst beim Merge in den _main_-Branch auf.
+* Ein Rebase des __feature__-Branches kann auch sinnvoll sein, um
+  zwischenzeitliche neuere Versionen im __main__-Branch vor einem Merge in diesen
+  im __feature__-Branch erst zu testen bzw. mögliche Konflikte zu lösen.
+  Andernfalls fallen die Konflikte erst beim Merge in den __main__-Branch auf.
 =====
 ====
 
@@ -208,19 +246,19 @@ $ git merge main
   den Benutzer sichtbar, der das Repository auf seinem Rechner verwaltet.
   Änderungen in einem lokalen Branch wirken sich nicht auf andere Benutzer oder
   das zentrale (remote) Repository aus, bis sie explizit in ein
-  _remote_-Repository gepusht werden.
-* Lokale Änderungen könne so noch bearbeitet, getestet und überprüft werden, bevor sie
+  __remote__-Repository gepusht werden.
+* Lokale Änderungen können so noch bearbeitet, getestet und überprüft werden, bevor sie
   in das zentrale Repository übernommen werden.
-* Normales vorgehen für rein lokale Repositories ohne zentrale (remote) Repositories.
+* Normales Vorgehen für rein lokale Repositories ohne zentrale (remote) Repositories.
 
 *remote*
 
 * Commits und Branches existieren in einem zentralen Repository (z.B. auf
   GitHub, GitLab, Bitbucket, etc.) und sind für alle Benutzer sichtbar, die
   Zugriff auf dieses Repository haben.
-* Änderungen in einem _remote_-Branch wirken sich auf alle Benutzer aus, die
+* Änderungen in einem __remote__-Branch wirken sich auf alle Benutzer aus, die
   dieses Repository klonen oder darauf zugreifen.
-* Lokale Repositories müssen regelmäßig mit dem _remote_-Repository
+* Lokale Repositories müssen regelmäßig mit dem __remote__-Repository
   synchronisiert werden, um die neuesten Änderungen zu erhalten.
 * Remote-Branches ermöglichen die Zusammenarbeit und das Teilen von Branches
   zwischen mehreren Benutzern in einem Team.
@@ -229,7 +267,7 @@ $ git merge main
 =====
 ====
 
-.Hilfreiche Branching Kommandos
+.Hilfreiche Branching-Kommandos
 [cols="2,3"]
 |===
 | Kommando | Beschreibung
@@ -276,13 +314,12 @@ git checkout -b <new-branch>`  | Branch anlegen und wechseln. Kurzform für `git
 == Feature 2
 
 <insert_feature_here>
-
 ----
 
-. Nehmen Sie das eben angelegte Dokument in den _main_-Branch als neue Version
+. Nehmen Sie das eben angelegte Dokument in den __main__-Branch als neue Version
   auf.
 
-. Synchronisieren (pushen) Sie die neue Version in Ihr _remote_-Repository (`git push`).
+. Synchronisieren (pushen) Sie die neue Version in Ihr __remote__-Repository (`git push`).
 
 {section-separator}
 
@@ -290,111 +327,118 @@ git checkout -b <new-branch>`  | Branch anlegen und wechseln. Kurzform für `git
 
 ==== Aufgabe 2.1 - Branches (_local_)
 
-. Legen Sie ausgehend vom _main_-Branch einen neuen lokalen _feature_-Branch an
+. Legen Sie ausgehend vom __main__-Branch einen neuen lokalen __feature__-Branch an
   und wechseln Sie in diesen (`git switch -c feature`). Ersetzen Sie im
-  Abschnitte *Feature 1* den feature-Platzhalter mit neuem Text und nehmen Sie die
+  Abschnitt *Feature 1* den feature-Platzhalter mit neuem Text und nehmen Sie die
   Änderung als neuen Commit auf.
 +
-WARNING: Den eben angelegten _feature_-Branch nicht zu GitHub publizieren!
+WARNING: Den eben angelegten __feature__-Branch nicht zu GitHub publizieren!
 
-. Legen Sie ausgehend vom _main_-Branch (`git switch main`) einen neuen lokalen
-  _bugfix_-Branch an und wechseln Sie in diesen (`git switch -c bugfix`).
-  Abschnitte *Beschreibung* den bugfix-Platzhalter mit neuem Text und nehmen
-  Sie die Änderung als neuen Commit auf.
+. Legen Sie ausgehend vom __main__-Branch (`git switch main`) einen neuen lokalen
+  __bugfix__-Branch an und wechseln Sie in diesen (`git switch -c bugfix`).
+  Ersetzen Sie im Abschnitt *Beschreibung* den bugfix-Platzhalter mit neuem
+  Text und nehmen Sie die Änderung als neuen Commit auf.
 +
-WARNING: Den eben angelegten _bugfix_-Branch nicht zu GitHub publizieren!
-// . Führen Sie anschließend ein interaktives Rebasing (`git rebase -i HEAD~2`) aus, um die beiden
-//   Bugfix-Änderungen in einem Commit zu vereinen.
+WARNING: Den eben angelegten __bugfix__-Branch nicht zu GitHub publizieren!
 
-. Jetzt übernehmen (mergen) Sie die Änderungen vom _bugfix_-Branch in den
-  _main_-Branch (`git switch main`, `git merge bugfix`) und entfernen den
-  _bugfix_-Branch (`git branch -d bugfix`). Synchronisieren Sie Ihre Änderung
-  in Ihr _remote_-Repository (`git push`).
+. Jetzt übernehmen (mergen) Sie die Änderungen vom __bugfix__-Branch in den
+  __main__-Branch (`git switch main`, `git merge bugfix`) und entfernen den
+  __bugfix__-Branch (`git branch -d bugfix`). Synchronisieren Sie Ihre Änderung
+  in Ihr __remote__-Repository (`git push`).
 
-. Wechseln Sie in den _feature_-Branch (`git switch feature`).
+. Wechseln Sie in den __feature__-Branch (`git switch feature`).
 +
-Optional: Aktualisieren Sie den _feature_-Branch mit der neuen Änderungen aus
-dem _main_-Branch per `git rebase main`.
+Optional: Aktualisieren Sie den __feature__-Branch mit den neuen Änderungen aus
+dem __main__-Branch per `git rebase main`.
 
-. Fügen Sie in den Abschnitte *Feature 1* weiteren Text als neuen Commit ein.
-  Nehmen Sie anschließend die Änderungen aus dem _feature_-Branch in den
-  _main_-Branch ohne fast-forward-Merge (`git switch main`, `git merge --no-ff
-  feature`) auf und entfernen den _feature_-Branch (`git branch -d feature`).
+. Fügen Sie in den Abschnitt *Feature 1* weiteren Text als neuen Commit ein.
+  Nehmen Sie anschließend die Änderungen aus dem __feature__-Branch in den
+  __main__-Branch ohne fast-forward-Merge (`git switch main`, `git merge --no-ff
+  feature`) auf und entfernen den __feature__-Branch (`git branch -d feature`).
 
-. Synchronisieren Sie Ihre Änderung in Ihr _remote_-Repository (`git push`).
+. Synchronisieren Sie Ihre Änderung in Ihr __remote__-Repository (`git push`).
 
 
 ==== Aufgabe 2.2 - Branches (_remote_)
 
-Lokale Branches können auf einem _remote_-Repository bereitgestellt werden, so
-dass diese öffentlich bzw. von Teammitglieder mit genutzt werden können.
+Lokale Branches können auf einem __remote__-Repository bereitgestellt werden, so
+dass diese öffentlich bzw. von Teammitgliedern mit genutzt werden können.
 
-. Legen Sie in Ihrem Repository einen neuen lokalen _feature-x_-Branch an und
+. Legen Sie in Ihrem Repository einen neuen lokalen __feature-x__-Branch an und
   wechseln Sie in diesen.
 
-. Nehmen Sie in den _feature-x_-Branch ein paar Commits auf.
+. Nehmen Sie in den __feature-x__-Branch ein paar Commits auf.
 
-. Veröffentlichen Sie den lokalen _feature-x_-Branch auf Ihrem
-  _remote_-Repository (`git push -u origin feature-x`).
+. Veröffentlichen Sie den lokalen __feature-x__-Branch auf Ihrem
+  __remote__-Repository (`git push -u origin feature-x`).
 
 . Übernehmen (mergen) Sie im lokalen Repository die Änderungen vom
-  _feature-x_-Branch in den _main_-Branch und entfernen Sie anschließend den
-  lokalen _feature-x_-Branch. Synchronisieren Sie Ihre Änderung in Ihr
-  _remote_-Repository.
+  __feature-x__-Branch in den __main__-Branch und entfernen Sie anschließend den
+  lokalen __feature-x__-Branch. Synchronisieren Sie Ihre Änderung in Ihr
+  __remote__-Repository.
 
-. Entfernen Sie jetzt den _feature-x_-Branch auf Ihrem _remote_-Repository
+. Entfernen Sie jetzt den __feature-x__-Branch auf Ihrem __remote__-Repository
   (`git push origin --delete feature-x`).
 
-.Hinweise: _remote_-Branches
+.Hinweise: __remote__-Branches
 [%collapsible]
 ====
 =====
-.Neuen _local_-Branch in das _remote_-Repository aufnehmen:
+.Neuen __local__-Branch in das __remote__-Repository aufnehmen:
+[source,sh]
 ----
-$ git push -u origin <new_local_branch> <1>
+git push -u origin <new_local_branch> <1>
 ----
-<1> Nimmt einen neuen lokalen Branch `<new_local_branch>` in das _remote_-Repository (origin) auf und verbindet den lokalen mit diesem.
+<1> Nimmt einen neuen lokalen Branch `<new_local_branch>` in das
+    __remote__-Repository (origin) auf und verbindet den lokalen Branch mit diesem.
 
-.Neuen _remote_-Branch in das lokale Repository aufnehmen:
+.Neuen __remote____-Branch in das lokale Repository aufnehmen:
+[source,sh]
 ----
-$ git pull <1> <2>
-$ git switch <new_remote_branch> <3>
+git pull <1> <2>
+git switch <new_remote_branch> <3>
 ----
-<1> lokalen Stand vom _remote_-Repository aktualisieren
+<1> lokalen Stand vom __remote__-Repository aktualisieren
 <2> Alternativ geht auch ein `git fetch`, wenn man nur neue Branches und
     Versionen laden möchte, ohne diese schon mit dem Arbeitsverzeichnis zu mergen.
-<3> In den neuen _remote_-Branch wechseln. Da er lokal nicht vorhanden ist,
+<3> In den neuen __remote__-Branch wechseln. Da er lokal nicht vorhanden ist,
     wird automatisch ein gleichnamiger _lokaler_ Branch angelegt und mit dem
-    _remote_-Branch verbunden.
+    __remote__-Branch verbunden.
 
-._local_-Branch und _remote_-Branch synchronisieren:
+.__local__-Branch und __remote__-Branch synchronisieren:
+[source,sh]
 ----
-$ git pull <1>
-$ git pull origin <branch> <2>
+git pull <1>
+git pull origin <branch> <2>
 
-$ git push --all <3>
-$ git push <4>
-$ git push origin <branch> <5>
+git push --all <3>
+git push <4>
+git push origin <branch> <5>
 ----
-<1> Lade alle Änderung von remote Branches, welche mit lokalen verbunden sind.
-<2> Lade nur `<branch>` Änderungen vom _remote_-Repository `origin`.
-<3> Sende alle Änderungen von _local_-Branches, welche mit _remote_-Branches
+<1> Lade alle Änderungen von remote Branches, welche mit lokalen verbunden sind.
+<2> Lade nur `<branch>` Änderungen vom __remote__-Repository `origin`.
+<3> Sende alle Änderungen von __local__-Branches, welche mit __remote__-Branches
     verbunden sind.
-<4> Sende alle Änderungen vom aktuellen _local_-Branch, wenn er mit einem
-    _remote_-Branch verbunden ist.
-<5> Sende alle Änderungen vom _local_-Branch `<branch>`, wenn er mit einem
-    _remote_-Branch auf dem _remote_-Repository `origin` verbunden ist.
+<4> Sende alle Änderungen vom aktuellen __local__-Branch, wenn er mit einem
+    __remote__-Branch verbunden ist.
+<5> Sende alle Änderungen vom __local__-Branch `<branch>`, wenn er mit einem
+    __remote__-Branch auf dem __remote__-Repository `origin` verbunden ist.
 
-._remote_-Branch löschen:
+.__remote____-Branch löschen:
+[source,sh]
 ----
 git push <remote-repo> --delete <remote-branch> <1>
 ----
-<1> Löscht den <remote-branch> auf dem <remote-repo>. In der Regel lautet der <remote-repo> Name _origin_.
+<1> Löscht den <remote-branch> auf dem <remote-repo>. In der Regel lautet der
+    <remote-repo> Name _origin_.
 
 .Veraltete Referenzen entfernen:
-Sind die Branches remote und lokal gelöscht, aber ein `git branch -a` listet noch veraltete Referenzen zu _remote_-Branches auf, können Sie wie folgt entfernt werden:
+Sind die Branches remote und lokal gelöscht, aber ein `git branch -a` listet
+noch veraltete Referenzen zu __remote__-Branches auf, können Sie wie folgt
+entfernt werden:
+[source,sh]
 ----
-% git remote prune origin
+git remote prune origin
 ----
 =====
 ====
@@ -413,18 +457,19 @@ Namen könnten mit einem Wort für die Art des Branches beginnen gefolgt von
 spezifischen Informationen. Trennzeichen für eine bessere Lesbarkeit könnten
 `-` und `_` sein.
 
-- Art: `hotfix-`, `fix-`, `bugfix-`, `feature-`, `update-`, `test-`, etc.
-- Info: `feature-pdf-generation`, `bugfix-issue-12`, `update-js-framework`, etc.
+* Art: `hotfix-`, `fix-`, `bugfix-`, `feature-`, `update-`, `test-`, etc.
+* Info: `feature-pdf-generation`, `bugfix-issue-12`, `update-js-framework`, etc.
 
 .Namen mit hierarchischer Struktur:
 Eine weitere Variante wäre mit Hilfe von `/` (forward slash) hierarchische
 Branch-Namen zu verwenden. So könnten bspw. mit `+git branch --list
 'feature/*'+` oder `+git show-branch 'feature/*'+` alle vorhandenen bzw.
-Commits zu den _feature_-Branches aufgelistet werden.
+Commits zu den __feature__-Branches aufgelistet werden.
 
-- Bspw.: `feature/pdf-generation`, `bugfix/issue-12`, `bugfix/issue-15`, etc.
-- Einige Clients bilden die Branches dann auch als navigierbare Struktur ab:
+* Bspw.: `feature/pdf-generation`, `bugfix/issue-12`, `bugfix/issue-15`, etc.
+* Einige Clients bilden die Branches dann auch als navigierbare Struktur ab:
 +
+[source,txt]
 ----
 ├── bugfix
 │   ├── issue-12
@@ -441,83 +486,83 @@ WARNING: Branch-Namen dürfen nicht mit einem `/` enden.
 
 ==== Beispielhafte Anwendung
 
-Das Repository befindet sich im _main_-Branch. Für ein neues Feature und einen
-zwischenzeitlichen Bugfix werden ein temporärer _feature_-Branch und ein
-_bugfix_-Branch verwendet.
+Das Repository befindet sich im __main__-Branch. Für ein neues Feature und einen
+zwischenzeitlichen Bugfix werden ein temporärer __feature__-Branch und ein
+__bugfix__-Branch verwendet.
 
-. _feature_-Branch vom _main_-Branch erstellen und hin wechseln:
+. __feature__-Branch vom __main__-Branch erstellen und in diesen wechseln:
 +
-[source,shell]
+[source,sh]
 ----
-$ git switch -c feature
+git switch -c feature
 ----
 
-. Feature bearbeiten und als neuen Commit in den _feature_-Branch aufnehmen:
+. Feature bearbeiten und als neuen Commit in den __feature__-Branch aufnehmen:
 +
-[source,shell]
+[source,sh]
 ----
-$ vi feature.txt
-$ git add . → git commit -m "Add ..."
+vi feature.txt
+git add .
+git commit -m "add ..."
 ----
-+
-Die Verwendung der Option `-a` in `git commit -a ...` ist eine Kurzform für
-`git add .` gefolgt von `git commit ...`.
 
-. In den _main_-Branch zurück wechseln und _bugfix_-Branch vom diesem aus
+. In den __main__-Branch zurück wechseln und __bugfix__-Branch vom diesem aus
   erstellen und hin wechseln:
 +
-[source,shell]
+[source,sh]
 ----
-$ git switch main
-$ git switch -c bugfix
+git switch main
+git switch -c bugfix
 ----
 
-. Bugfix bearbeiten und als neuen Commit in den _bugfix_-Branch aufnehmen:
+. Bugfix bearbeiten und als neuen Commit in den __bugfix__-Branch aufnehmen:
 +
-[source,shell]
+[source,sh]
 ----
-$ vi main.txt
-$ git add . → git commit -m "Bugfix ..."
+vi main.txt
+git add .
+git commit -m "fix ..."
 ----
 
-. In den _main_-Branch zurück wechseln. Anschließend die Änderungen vom _bugfix_-Branch in
-  diesen aufnehmen (standardmäßig fast-forward-Merge) und anschließend den _bugfix_-Branch
+. In den __main__-Branch zurück wechseln. Anschließend die Änderungen vom __bugfix__-Branch in
+  diesen aufnehmen (standardmäßig fast-forward-Merge) und anschließend den __bugfix__-Branch
   löschen:
 +
-[source,shell]
+[source,sh]
 ----
-$ git switch main
-$ git merge bugfix
-$ git branch -d bugfix
+git switch main
+git merge bugfix
+git branch -d bugfix
 ----
 
-. In den _feature_-Branch wechseln. Anschließend den _feature_-Branch per
-  `rebase` auf den aktuellen Stand des _main_-Branches aktualisieren:
+. In den __feature__-Branch wechseln. Anschließend den __feature__-Branch per
+  `rebase` auf den aktuellen Stand des __main__-Branches aktualisieren:
 +
-[source,shell]
+[source,sh]
 ----
-$ git switch feature
-$ git rebase main
+git switch feature
+git rebase main
 ----
 
-. Feature weiter bearbeiten und als neuen Commit in den _feature_-Branch
+. Feature weiter bearbeiten und als neuen Commit in den __feature__-Branch
   aufnehmen:
 +
-[source,shell]
+[source,sh]
 ----
-$ vi feature.txt
-$ git add . → git commit -m "Change ..."
+vi feature.txt
+git add .
+git commit -m "update ..."
 ----
 
-. In den _main_-Branch zurück wechseln. Anschließend die Änderungen vom
-  _feature_-Branch mit einem Merge-Commit (`--no-ff`) in diesen aufnehmen und
-  anschließend den _feature_-Branch löschen:
+. In den __main__-Branch zurück wechseln. Anschließend die Änderungen vom
+  __feature__-Branch mit einem Merge-Commit (`--no-ff`) in diesen aufnehmen und
+  anschließend den __feature__-Branch löschen:
 +
-[source,shell]
+[source,sh]
 ----
-$ git switch main
-$ git merge --no-ff feature
-$ git branch -d feature
+git switch main
+git merge --no-ff feature
+git branch -d feature
 ----
 
 {section-separator}
@@ -528,12 +573,14 @@ Git bietet die Möglichkeit, das Standardverhalten von `pull`, `rebase` und
 `merge` zu konfigurieren.
 
 ..gitconfig
-[source,gitconfig]
+[source,ini]
 ----
 [pull]
     rebase = true <1>
+
 [rebase]
     autoStash = true <2>
+
 [merge]
     ff = true <3>
     conflictStyle = zdiff3 <4>
@@ -551,6 +598,8 @@ Git bietet die Möglichkeit, das Standardverhalten von `pull`, `rebase` und
     `false`: immer einen *Merge* mit einem neuen Merge-Commit durchgeführt,
     auch wenn ein *fast-forward* möglich wäre
 <4> Legt den Stil der Konfliktmarkierungen bei einem Merge-Konflikt fest.
+    https://git-scm.com/docs/git-merge/2.38.0#_how_conflicts_are_presented[`zdiff3`]
+    wurde mit Git 2.35 eingeführt.
 <5> Legt den Standard-Editor für Git-Kommandos fest.
 
 
