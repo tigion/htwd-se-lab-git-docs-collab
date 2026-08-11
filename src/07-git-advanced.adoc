@@ -230,25 +230,28 @@ nächstältere `stash@{1}` und so weiter.
 Nehmen Sie in Ihrem Repository eine lokale Änderung vor und verwerfen Sie diese
 anschließend, ohne eine neue Version zu erstellen.
 
-.Hinweise: `checkout`, `restore`, `reset`, `clean`
+.Hinweise: `restore` (`checkout`), `reset`, `clean`
 [%collapsible]
 ====
 =====
 image::grafik_git_checkout-reset-clean.png["...",width=381]
 
 ----
-$ git checkout -- <file(s)> <1>
-$ git restore -- <file(s)> <2>
+$ git restore -- <file> <2>
+$ git checkout -- <file> <1>
 $ git reset --hard <3>
 $ git clean -df <4>
 ----
 <1> Setzt lokale Änderungen einer oder mehrerer unter Versionskontrolle
-    stehender Dateien auf die letzte Version zurück. Ein `.` statt `<file(s)>`
-    nimmt alle lokalen Änderungen.
-<2> Neuere alternative Variante gegenüber `checkout`.
-<3> Alternative Möglichkeit zu `git checkout .` bzw. `git restore .`. Ein
-    `--hard` veranlasst bei einem `git reset` auch den Workspace, also die lokalen
-    (geänderten) Dateien, zurückzusetzen.
+    stehender Dateien auf die letzte Version zurück. +
+    `git restore :/` – Verwirft alle Änderungen im Repository. +
+    `git restore .` – Verwirft alle Änderungen im aktuellen Verzeichnis. +
+    `git restore <file>` – Verwirft die Änderungen in den angegebenen Dateien
+    oder Verzeichnissen.
+<2> Ältere alternative Variante gegenüber `restore`.
+<3> Alternative Möglichkeit zu `git restore :/`. Ein `--hard` veranlasst bei
+    einem `git reset` auch den Workspace, also die lokalen (geänderten) Dateien,
+    zurückzusetzen.
 <4> Entfernt alle lokalen nicht unter Versionskontrolle stehenden Dateien.
     (https://git-scm.com/docs/git-clean[git-clean Dokumentation], `-n` Testlauf,
     `-i` interaktiv, `-d` beachte auch entsprechende Verzeichnisse, `-f` ignoriere
