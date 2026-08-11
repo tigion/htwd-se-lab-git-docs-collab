@@ -272,18 +272,38 @@ git merge main
 |===
 | Kommando | Beschreibung
 
-| `git branch`                    | lokale Branches auflisten +
-`-r` remote Branches, `-a` local und remote Branches
-| `git branch <new-branch>`       | Branch anlegen
+| `git branch`
+| lokale Branches auflisten +
+  `-r` remote Branches, `-a` local und remote Branches
+
+| `git branch <new-branch>`
+| Branch anlegen
+
 | `git switch <branch> +
-git checkout <branch>` | Branch wechseln
-| `git switch -`                  | Zum vorherigen Branch wechseln
+  git checkout <branch>`
+| Branch wechseln
+
+| `git switch -`
+| Zum vorherigen Branch wechseln
+
 | `git switch -c <new-branch> +
-git checkout -b <new-branch>`  | Branch anlegen und wechseln. Kurzform für `git branch <new-branch>` gefolgt von einem `git switch <new-branch>` oder `git checkout <new-branch>`.
-| `git branch -d <branch>`        | Branch löschen (`-d` _merged_, `-D` _unmerged_)
-| `git merge <branch>`            | Versionen aus <branch> in den aktuellen Branch aufnehmen.
-| `git merge --no-ff <branch>`    | Kein _fast forward_ merge, sondern immer neuer merge-Commit
-| `git rebase <branch>`           | Versionen aus dem aktuellen Branch auf die aktuelle Version von <branch> aktualisieren. Mit der Option `-i` können Commits angepasst und zusammengefasst werden.
+  git checkout -b <new-branch>`
+| Branch anlegen und wechseln. Kurzform für `git branch <new-branch>` gefolgt
+  von einem `git switch <new-branch>` oder `git checkout <new-branch>`.
+
+| `git branch -d <branch>`
+| Branch löschen (`-d` _merged_, `-D` _unmerged_)
+
+| `git merge <branch>`
+| Versionen aus <branch> in den aktuellen Branch aufnehmen.
+
+| `git merge --no-ff <branch>`
+| Kein _fast forward_ merge, sondern immer neuer merge-Commit
+
+| `git rebase <branch>`
+| Versionen aus dem aktuellen Branch auf die aktuelle Version von <branch>
+  aktualisieren. Mit der Option `-i` können Commits angepasst und zusammengefasst
+  werden.
 |===
 
 {section-separator}
