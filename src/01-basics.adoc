@@ -19,33 +19,38 @@ include::learning-goals.inc.adoc[tag=01-basics]
 
 ==== Aufgabe 1.1 - Login
 
-1. Loggen Sie sich auf der Webseite https://github.com/[github.com] ein.
+. Loggen Sie sich auf der Webseite https://github.com/[github.com] ein.
    Sollten Sie noch keinen Account haben, kann er über
    https://github.com/join[github.com/join] erstellt werden.
 +
-Sie haben die Wahl, ob Sie einen neuen Account für Ihre HTWD E-Mail-Adresse
-erstellen oder Sie Ihrem bestehenden Account Ihre HTWD E-Mail-Adresse über
-"Settings > Emails" hinzufügen.
+Sie können entweder einen neuen Account für Ihre HTWD-E-Mail-Adresse erstellen
+oder die HTWD-E-Mail-Adresse zu Ihrem bestehenden Account unter „Settings
+> Emails“ hinzufügen.
 
-TIP: Ist dem GitHub-Account die HTWD E-Mail-Adresse hinzugefügt oder dieser
-direkt damit angelegt worden, können über das
-https://education.github.com/students[GitHub Education] Programm weitere
-Features von GitHub freigeschaltet und an weiteren Bonusprogrammen teilgenommen
-werden.
+TIP: Bei Verwendung einer HTWD-E-Mail-Adresse erhalten Sie über das
+https://github.com/education/students[GitHub Education]-Programm Zugriff auf
+weitere GitHub-Features und können an zusätzlichen Bonusprogrammen teilnehmen.
 
 ==== Aufgabe 1.2 - Repository anlegen
 
-1. Erstellen Sie ein neues Repository mit folgenden Einstellungen:
+. Erstellen Sie ein neues Repository mit folgenden Einstellungen:
 
 ** Repository name: `htwd-se-example-project`
 ** Description: `Beispielprojekt für die Praktika in Software Engineering`
 ** Choose visibility: `Private` (oder `Public`)
 ** Add README: `On` (erster Inhalt im Repository)
 
+NOTE: Die _README.md_ enthält eine kurze Beschreibung des Projekts sowie wichtige
+Informationen zur Nutzung und Bearbeitung des Repositories. Sie ist im
+https://markdown.de/[Markdown]-Format geschrieben und wird auf GitHub
+automatisch als Projektbeschreibung angezeigt.
+
 ==== Aufgabe 1.3 - Repository ändern
 
-. Passen Sie die Datei *_README.md_* auf GitHub mit folgendem Inhalt an:
+. Bearbeiten Sie die Datei *_README.md_* direkt über die GitHub-Webseite und
+  ersetzen Sie den Inhalt durch Folgendes:
 +
+--
 .README.md
 [source,markdown]
 ----
@@ -55,20 +60,18 @@ Ein erstes Projekt für die Praktika im Fach Software Engineering.
 
 ## Inhalt
 
-Es dient als Spielwiese für die Bearbeitung der Aufgaben, um die Grundlagen der
-Versionsverwaltung mit Git, die Dokumentation mit AsciiDoc und den Umgang mit
-GitHub kennenzulernen.
+Dieses Projekt dient als Übungsumgebung für die Praktikumsaufgaben.
 
-- **Git**, **GitHub** und **AsciiDoc**
+- Versionsverwaltung mit **Git**
+- Dokumentation mit **AsciiDoc**
+- Verwendung von **GitHub**
 ----
 
-* https://help.github.com/en/articles/basic-writing-and-formatting-syntax[GitHub Markdown - Basic writing and formatting syntax]
+* Hinweise zum Markdown-Support von GitHub: https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax[Basic writing and formatting syntax]
+--
 
-. Nehmen Sie die Änderung mit kbd:[Commit changes...] als neue Version in das Repository auf.
-
-// Ist die Datei _README.md_ nicht vorhanden, legen Sie eine neue Datei
-// *_README.md_* über kbd:[Create new file] in Ihrem Repository auf GitHub für die
-// Projekt-Beschreibung im https://markdown.de/[Markdown]-Format an.
+. Nehmen Sie die Änderung mit kbd:[Commit changes...] als neue Version in Ihr
+  Repository auf.
 
 
 {section-separator}
@@ -171,8 +174,8 @@ _.gitconfig_ muss folgendes hinzugefügt werden:
 
 .Nur ein bestimmtes Repository erlauben:
 . Terminal öffnen, bspw. in VS Code: "View > Terminal"
-. zum passenden Repository-Verzeichnis navigieren `cd path/to/repo`
-. im Terminal `git status` ausführen
+. Zum passenden Repository-Verzeichnis navigieren `cd path/to/repo`
+. Im Terminal `git status` ausführen
 +
 [source,console]
 ----
@@ -182,10 +185,9 @@ To add an exception for this directory, call:
         git config --global --add safe.directory '%(prefix)///141.56...
 ----
 . Befehl `git config --global --add safe.directory...` aus obiger Meldung ausführen
-. im Terminal `git status` noch einmal ausführen
+. Im Terminal `git status` noch einmal ausführen
 =====
 ====
-
 --
 
 . Speichern Sie die gemachten Änderungen über "File > Save" bzw. kbd:[strg+s]
@@ -269,16 +271,16 @@ $ git config --global --add safe.directory *
 
 ==== Aufgabe 2.2 - Repository Klonen
 
-https://help.github.com/en/articles/cloning-a-repository[Clonen] Sie Ihr
-Repository *htwd-se-example-project* in Ihr Studentenlaufwerk, bspw. unter
-`U:\praktika\se\`, oder an geeigneter Stelle lokal auf Ihren Rechner.
+https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository[Clonen]
+Sie Ihr Repository *htwd-se-example-project* in Ihr Studentenlaufwerk, bspw.
+unter `U:\praktika\se\`, oder an geeigneter Stelle lokal auf Ihren Rechner.
 
 .Repository-URL:
 ----
 https://github.com/<account>/htwd-se-example-project.git
 ----
 
-Zu finden auf GitHub in Ihrem Repository beim Klick auf den grünen *Code*
+Zu finden auf GitHub in Ihrem Repository beim Klick auf den grünen kbd:[Code]
 Button im Bereich HTTPS.
 
 .Variante - Visual Studio Code (HTTPS)
@@ -328,12 +330,13 @@ Minuten gespeichert bleiben.
   zur Authentication-Methode Nummer *2* für den Personal access token von
   GitHub:
 +
+--
 .Clone-Befehl:
 [source,sh]
 ----
 git clone https://github.com/<account>/htwd-se-example-project.git
 ----
-+
+
 .Ausgabe icon:windows[] Windows - PowerShell:
 [source,console]
 ----
@@ -351,7 +354,7 @@ remote: Compressing objects: 100% (8/8), done.
 remote: Total 10 (delta 0), reused 4 (delta 0), pack-reused 0
 Receiving objects: 100% (10/10), done.
 ----
-+
+
 .Ausgabe icon:linux[] Linux und icon:apple[] macOS - Terminal:
 [source,console]
 ----
@@ -365,6 +368,7 @@ remote: Compressing objects: 100% (8/8), done.
 remote: Total 10 (delta 0), reused 4 (delta 0), pack-reused 0
 Receiving objects: 100% (10/10), done.
 ----
+--
 =====
 ====
 
@@ -385,19 +389,20 @@ https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/c
   tokens" einen neuen Token bspw. `Praktikum SE I` mit einer Gültigkeit für
   dieses Semester und nur dem Scope *repo* und *workflow* an.
 +
+--
 WARNING: Der Personal access token ist nur nach dem Erstellen zu sehen und kann
 danach nicht wieder angezeigt werden!
-+
+
 In den Laboren (Windows) werden Ihre Profile nicht gespeichert, was zum Verlust
 des verwendeten Passwortes/Tokens nach dem Abmelden führt, weswegen wir zu
 jedem Praktikum wiederholt diesen Token für die (erste) Kommunikation mit Git
 zu GitHub benötigen.
-+
+
 * Möglichkeit 1: Sie speichern den generierten Token an geeigneter Stelle ab,
   um diesen in jedem Praktikum wiederholt verwenden zu können.
 * Möglichkeit 2: Sie lassen sich zu jedem Praktikumsbeginn den vorhandenen
   Token über kbd:[Regenerate token] neu generieren.
-
+--
 
 [NOTE]
 ======
@@ -482,11 +487,12 @@ die Einstellungen in den Nutzerprofilen nicht gespeichert werden.
   AsciiDoc-Beispiel und passen Sie den Autor an Ihren Namen und das Datum an
   das heutige an.
 +
+--
 Infos zur Syntax:
 https://asciidoctor.org/docs/asciidoc-syntax-quick-reference/[AsciiDoc Syntax
 Quick reference] und https://asciidoctor.org/docs/user-manual/[Asciidoctor User
 Manual]
-+
+
 .Beispieldokumentation.adoc
 [source,asciidoc]
 ----
@@ -505,16 +511,21 @@ Dieses Dokument dient im Praktikum als Spielwiese für das Kennenlernen und prak
 <3> ... Version, Datum
 <4> ... Attribut für das Inhaltsverzeichnis
 <5> ... Kommentar, wird später nicht generiert
-+
+
 [NOTE]
 ====
-Mehrere Autoren werden in *eine Zeile* getrennt mit `;` geschrieben. Besteht
-ein Autorenname aus mehr als *drei* Teilen, müssen die Vor- und Nachnamen mit
-`_` jeweils zu einer Gruppe zusammengefasst werden.
+Mehrere Autoren werden in *eine Zeile* getrennt mit `;&#160;` (Semikolon
++ Leerzeichen) geschrieben. Namen können aus Vor-, Mittel- und Nachnamen
+bestehen. Besteht ein Namensteil aus mehreren Teilen, müssen diese jeweils mit
+`_` zu einer Gruppe zusammengefasst werden.
 
-- Bspw: `+Vorname1_Vorname2 Nachname1_Nachname2 <email>+` oder `+Vorname
-  Nachname1_Nachname2_Nachname3 <email>+`
+[source,asciidoc]
+----
+= Dokumenten-Titel
+Vorname1_Vorname2 Nachname1_Nachname2 <email>; Vorname Nachname1_Nachname2_Nachname3 <email>; ...
+----
 ====
+--
 
 . Aktivieren Sie in Visual Studio Code die parallele Vorschau des
   AsciiDoc-Dokumentes, siehe <<image_vscode_asciidoc>>, mit dem dritten Button
@@ -545,26 +556,32 @@ image::screenshot_vscode_git.png[Screenshot VSCode mit Git-Integration, width=60
 
 . Aktivieren Sie über die Sidebar die Versionsverwaltungsansicht
   kbd:[Ctrl+Shift+G] ("View > Source Control")
+
 . Im Bereich *CHANGES* (`git status`) sehen Sie alle _neuen_ *U* (unbeobachtet
   bzw. untracked/unverfolgt), _geänderten_ *M* (modifiziert) und _gelöschten_
   *D* (gelöscht) Dateien gegenüber ihrer aktuellen Repository-Version. Über das
   icon:plus[] Symbol (`git add`) bei den einzelnen Dateien oder im Bereich
   CHANGES können Sie einzelne oder alle Änderungen in den *INDEX* (Bereich
   *STAGED CHANGES*) aufnehmen.
+
 . Im Bereich *STAGED CHANGES* sehen Sie alle im *INDEX* vorgemerkten geänderten
   Dateien. Über das icon:minus[] Symbol (`git rm --cached`, `git reset`) können
   diese wieder aus dem Index entfernt werden.
+
 . Geben Sie in der *Textbox* (_Message ..._) einen kurzen Text über die
   Änderungen die Sie an Ihrem Projekt vorgenommen haben an.
+
 . Mit kbd:[Enter] oder über das icon:check[] Symbol (`git commit`) können Sie
   jetzt alle im INDEX vorgemerkten Änderungen mit der angegebenen
   Commit-Message als neue Version in Ihr *lokales* Repository aufnehmen.
+
 . Senden Sie jetzt den Stand Ihres *lokalen* Repositories zu Ihrem entfernten
   (_remote_) Repository auf GitHub. Dies erfolgt über "... > Pull, Push
   > Push" (`git push`).
 +
 Alternativ über den kbd:[Sync Changes] Button, welcher eine Kombination aus
 Pull & Push ist.
+
 . Schauen Sie sich im Webbrowser auf GitHub Ihre eben gemachten Änderungen in
   Ihrem Repository an.
 
@@ -580,6 +597,7 @@ Version.
 Initialer Schritt::
 . `cd path/to/folder` <- Zum Verzeichnis wechseln in dem das Repository liegen soll
 . `git clone \https://github.com/<account>/htwd-se-example-project.git` <- Lokale Kopie vom Remote-Repository erstellen (einmalig)
+
 Arbeitsablauf::
 . `cd htwd-se-example-project` <- In das Repository-Verzeichnis wechseln
 . `git pull` <- Neue (mögliche) Version(en) vom Remote-Repository laden
@@ -597,7 +615,6 @@ Arbeitsablauf::
 === Extras
 
 ==== HTML/PDF-Generierung
-
 
 Für die Generierung verwenden Sie im Terminal (PowerShell, Terminal in Visual
 Studio Code: "Menü > View > Terminal") die Befehle `asciidoctor` bzw.
@@ -681,17 +698,19 @@ cd htwd-se-example-project
 
 . Generieren Sie die benötigten Dokumente:
 +
+--
 .HTML
 [source,sh]
 ----
 asciidoctor Beispieldokumentation.adoc
 ----
-+
+
 .PDF
 [source,sh]
 ----
 asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
 ----
+--
 
 *Variante 2: Repository Clone auf der ilux150 vorhanden*
 
@@ -720,17 +739,19 @@ git pull
 
 . Generieren Sie die benötigten Dokumente:
 +
+--
 .HTML
 [source,sh]
 ----
 asciidoctor Beispieldokumentation.adoc
 ----
-+
+
 .PDF
 [source,sh]
 ----
 asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
 ----
+--
 
 [NOTE]
 ======
@@ -748,14 +769,11 @@ Um zu verhindern, dass *ungewollte* oder *generierbare* Dateien, wie bspw.
 HTML- und PDF-Dateien, in das Repository aufgenommen bzw. deren Änderungen
 überwacht werden, müssen diese von Git ignoriert werden.
 
-Dafür gibt es die Möglichkeit, eine Datei _.gitignore_ im Repository anzulegen, in
-welcher alle Dateien, Verzeichnisse und Dateitypen festgelegt werden, welche Git
-ignorieren soll.
+Dazu wird im Repository eine Datei _.gitignore_ angelegt, in der festgelegt wird,
+welche Dateien, Verzeichnisse und Dateitypen von Git ignoriert werden sollen.
 
-[IMPORTANT]
-====
-Die Datei _.gitignore_ muss in Ihr Repository aufgenommen werden, damit Sie für jeden der Mitwirkenden gilt.
-====
+IMPORTANT: Die Datei _.gitignore_ muss in Ihr Repository aufgenommen werden, damit Sie für
+jeden der Mitwirkenden gilt.
 
 Um alle HTML- und PDF-Dateien im Projekt zu ignorieren, bieten sich folgende
 Einträge in der _.gitignore_ an:
@@ -795,14 +813,22 @@ docs/*.pdf
 
 ==== Vorbereitung privater Rechner
 
-Für die Bearbeitung der Aufgaben und des späteren Beleges an Ihrem privaten
-Rechner, müssen Sie, falls noch nicht vorhanden, mindestens *Git* und *Visual
-Studio Code* samt *AsciiDoc-Erweiterung* installieren. Beachten Sie hierzu auch
-die Hinweise im Praktikum.
+Für die Bearbeitung der Aufgaben und des Belegprojekts benötigen Sie auf Ihrem
+privaten Rechner folgende zusätzliche Software:
 
-TIP: Die zusammengefassten Hinweise zu der Installation für icon:windows[]
-Windows, icon:linux[] Linux und icon:apple[] macOS finden Sie unter
-link:install-and-config/[Installation & Konfiguration].
+- *Git* mit eingerichteter Konfiguration (siehe <<section_git_config>>)
+- *Visual Studio Code* mit der *AsciiDoc-Erweiterung*
 
+Die Installation der *Asciidoctor*-Tools, für die Generierung von HTML- und
+PDF-Dateien, ist nicht notwendig, da dies auch auf den Laborrechnern oder der
+ilux150 durchgeführt werden kann.
+
+TIP: Weitere Informationen zur link:install-and-config/[Installation und Konfiguration] unter
+icon:windows[] Windows, icon:linux[] Linux und icon:apple[] macOS.
+
+IMPORTANT: Der Umgang mit *Git*, *GitHub* und *Visual Studio Code* ist
+Voraussetzung für die Bearbeitung der Praktikumsaufgaben und des
+Belegprojektes. Bitte stellen Sie sicher, dass Sie die Grundlagen beherrschen
+und die Werkzeuge auf Ihrem Rechner eingerichtet haben.
 
 include::sitemap.inc.adoc[]
