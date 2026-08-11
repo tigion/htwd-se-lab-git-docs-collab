@@ -87,7 +87,7 @@
 ====
 ****
 * Änderungen und Versionen mit *Git-Kommandos* verwalten
-** Versionen untersuchen und vergleichen (`git diff`, `git log`, `git checkout`)
+** Versionen untersuchen und vergleichen (`git diff`, `git log`, `git switch`)
 ** Änderungen verwerfen (`git restore`, `git clean`)
 ** Änderungen (temporär) wegspeichern (`git stash`)
 ** Versionen zurücknehmen mit `git reset` (Historie umschreiben) oder `git revert` (Historie erhalten)

@@ -101,8 +101,38 @@ $ git diff <branch-1> <branch-2> <7>
 =====
 ====
 
-. Wechseln Sie mit `checkout` zu einem älteren Projektstand und kehren
-Sie danach wieder zum aktuellen Stand zurück.
+. Wechseln Sie mit `switch` (oder `checkout`) zu einem älteren Projektstand und
+  kehren Sie danach wieder zum aktuellen Stand zurück.
++
+.Hinweise: `switch` (modernere Variante zu `checkout`)
+[%collapsible]
+====
+=====
+Mit dem Befehl `switch` kann zwischen Branches gewechselt werden. Mit der Option
+`--detach` kann außerdem ein bestimmter Commit ausgecheckt werden, ohne auf
+einen Branch zu wechseln.
+
+Zum aktuellen Stand kann man mit `git switch <branch>` zurückkehren. Ein
+Wechsel zu einem älteren Commit verändert die Historie nicht. Zwischenzeitliche
+Commits auf den vergangenen Projektstand erscheinen nicht mehr in der Historie,
+sind aber kurzzeitig über https://git-scm.com/docs/git-reflog[`git reflog`]
+wiederherstellbar.
+
+// TODO: Grafik für switch anpassen
+image::grafik_git_switch-detach.png["...",width=251]
+
+----
+$ git log --oneline <1>
+$ git switch --detach <old_commit> <2>
+$ git switch main <3>
+----
+<1> Versionshistorie (Commits) anzeigen; die Option `--oneline` erlaubt eine
+    Anzeige mit einer Zeile pro Commit.
+<2> Zum vergangenen Projektstand wechseln. Dabei befindet sich `HEAD` im
+    sogenannten __Detached-HEAD__-Zustand und zeigt direkt auf den Commit.
+<3> Zum aktuellen Projektstand (__main__-Branch) zurückkehren.
+=====
+====
 +
 .Hinweise: `checkout`
 [%collapsible]
@@ -126,7 +156,7 @@ $ git switch main <3>
 <1> Versionshistorie (commits) anzeigen, die Option `--oneline` erlaubt eine
     Anzeige mit weniger Details auf einer Zeile pro Commit
 <2> vergangenen Projektstand laden
-<3> Zu aktuellem Projektstand (_main_-Branch) zurückkehren.
+<3> Zu aktuellem Projektstand (__main__-Branch) zurückkehren.
 
 NOTE: In der unteren Statusleiste (links) in VS Code oder über das git-Kommando
 `git branch` sieht man den aktuellen Branch, bspw. _main_. Seit Oktober 2020
@@ -339,7 +369,7 @@ Versionshistorie des Repositorys, ähnlich wie bei `reset`. Es ist nur für
 *lokale*, *private* Repository und noch *nicht veröffentlichte* Versionen
 empfohlen, um unterschiedliche Versionsketten mit anderen Nutzern zu vermeiden.
 
-Falls der oder die ursprünglichen Commits schon in ein _remote_-Repository
+Falls der oder die ursprünglichen Commits schon in ein __remote__-Repository
 gepusht wurden, muss der überschriebene Commit noch einmal mit `git push
 --force` oder besser
 https://git-scm.com/docs/git-push#Documentation/git-push.txt---no-force-with-lease[`git
@@ -457,5 +487,29 @@ Sie mit kbd:[i] in den Bearbeitungsmodus wechseln und nach der Änderung mit
 kbd:[Esc] und der Eingabe von `:wq` speichern und den Editor schließen.
 =====
 ====
+
+{section-separator}
+
+=== Extras
+
+==== checkout vs switch/restore
+
+Der Befehl `git checkout` erfüllt mehrere unterschiedliche Aufgaben. Daher wurden
+mit `git switch` und `git restore` spezialisierte Befehle eingeführt, die
+deutlicher machen, ob ein Branch gewechselt oder eine Datei wiederhergestellt
+werden soll.
+
+.Moderne Alternativen zu git checkout
+[cols="1,1"]
+|===
+| git checkout                 | Moderne Alternative
+
+| git checkout <branch>        | git switch <branch>
+| git checkout -b <branch>     | git switch -c <branch>
+| git checkout <commit>        | git switch --detach <commit>
+| git checkout -- <file>       | git restore -- <file>
+| git checkout <commit> <file> | git restore --source=<commit> <file>
+|===
+
 
 include::sitemap.inc.adoc[]
