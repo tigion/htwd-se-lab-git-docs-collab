@@ -512,7 +512,9 @@ Dieses Dokument dient im Praktikum als Spielwiese für das Kennenlernen und prak
 <4> ... Attribut für das Inhaltsverzeichnis
 <5> ... Kommentar, wird später nicht generiert
 
+[#id-multiple-authors]
 [NOTE]
+.Verwendung von mehreren Autoren
 ====
 Mehrere Autoren werden in *eine Zeile* getrennt mit `;&#160;` (Semikolon
 + Leerzeichen) geschrieben. Namen können aus Vor-, Mittel- und Nachnamen
