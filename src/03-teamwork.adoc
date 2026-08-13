@@ -137,8 +137,8 @@ Remote-Repositories basieren.
 
 Wenn Sie Ihre lokalen Änderungen nicht benötigen, können Sie diese verwerfen.
 
-. Mit `git restore` (früher `git checkout`) werden Änderungen gegenüber dem
-  letzten lokalen Commit bzw. dem INDEX verworfen:
+. Mit `git restore` (neuere Alternative zu `git checkout`) werden Änderungen
+  gegenüber dem letzten lokalen Commit bzw. dem INDEX verworfen:
 ** `git restore :/` – Verwirft alle Änderungen im Repository.
 ** `git restore .` – Verwirft alle Änderungen im aktuellen Verzeichnis.
 ** `git restore <file>` – Verwirft die Änderungen in den angegebenen Dateien
@@ -319,7 +319,7 @@ praktische Üben von AsciiDoc und Teamarbeit mit Git.
 
 .icon:users[] Person A, B
 Aktualisieren Sie Ihr lokales Repository (`git pull`), damit *jeder* den
-gleichen Stand wie das gemeinsame Team-Repository auf GitHub haben.
+gleichen Stand wie das gemeinsame Team-Repository auf GitHub hat.
 
 .Aktuelle Projektstruktur:
 [source,txt]
@@ -334,8 +334,8 @@ htwd-se-example-teamproject
 ==== Aufgabe 2.2 - freie Teamarbeit
 
 Bearbeiten Sie im Team die folgenden Aufgaben und nehmen Sie jeweils *jede
-einzelne gelöste Aufgabe* als neue Version in Ihr lokales und Ihr entferntes
-(GitHub) Teamrepository auf.
+einzelne gelöste Aufgabe* als neue Version in Ihr lokales (`git commit`) und
+Ihr entferntes (GitHub) Teamrepository (`git pull`) auf.
 
 Es ist keine bestimmte Reihenfolge vorgegeben, nur was wer tun soll. Versuchen
 Sie aufgetretene __merge__-Konflikte zu lösen oder provozieren Sie diese.
@@ -358,8 +358,8 @@ NOTE: Beim Hinzufügen Ihres Namens, beachten Sie die Hinweise unter
 - Legen Sie in der Datei *_Teammitglieder.adoc_* eine
   https://docs.asciidoctor.org/asciidoc/latest/tables/build-a-basic-table/[Tabelle]
   mit den Namen und der Rolle der Teammitglieder an.
-- Legen Sie eine Datei .gitignore an, um HTML- und PDF-Dateien vom Repository
-  auszuschließen.
+- Legen Sie eine Datei .gitignore an, um HTML- und PDF-Dateien im Verzeichnis
+  `docs/` vom Repository auszuschließen.
 
 .Endaufgabe - icon:users[] Person A, B
 . Aktualisieren Sie, wenn alle Aufgaben erledigt sind, Ihr lokales Repository.
