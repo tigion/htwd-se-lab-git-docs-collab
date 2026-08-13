@@ -50,6 +50,11 @@ Terminal unter icon:windows[] Windows::
 Terminal unter icon:linux[] Linux, icon:apple[] macOS::
   Konsole, Terminal.app, kitty, Ghostty ...
 
+:imageTitle: Nothing happened
+:imageFile: comic_git-restore.jpg
+.{imageTitle}
+image::{imageFile}["{imageTitle}", width=600, link="{imagesdir}/{imageFile}"]
+
 {section-separator}
 
 === 1. Änderungen und Versionen verwalten
