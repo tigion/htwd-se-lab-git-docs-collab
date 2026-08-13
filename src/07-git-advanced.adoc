@@ -101,10 +101,10 @@ $ git diff <branch-1> <branch-2> <7>
 =====
 ====
 
-. Wechseln Sie mit `switch` (oder `checkout`) zu einem älteren Projektstand und
-  kehren Sie danach wieder zum aktuellen Stand zurück.
+. Wechseln Sie mit `switch --detach` (oder `checkout`) zu einem älteren
+  Projektstand und kehren Sie danach wieder zum aktuellen Stand zurück.
 +
-.Hinweise: `switch` (modernere Variante zu `checkout`)
+.Hinweise: `switch --detach` (modernere Alternative zu `checkout`)
 [%collapsible]
 ====
 =====
@@ -492,24 +492,99 @@ kbd:[Esc] und der Eingabe von `:wq` speichern und den Editor schließen.
 
 === Extras
 
-==== checkout vs switch/restore
+==== switch/restore vs checkout
 
-Der Befehl `git checkout` erfüllt mehrere unterschiedliche Aufgaben. Daher wurden
-mit `git switch` und `git restore` spezialisierte Befehle eingeführt, die
-deutlicher machen, ob ein Branch gewechselt oder eine Datei wiederhergestellt
-werden soll.
+Die Befehle `git switch` und `git restore` sind moderne Alternativen zu
+Anwendungsfällen vom klassischen `git checkout`. Sie wurden eingeführt, um die
+unterschiedlichen Aufgaben von `git checkout` klarer zu trennen und die
+Benutzerfreundlichkeit zu verbessern.
+
+`git switch`::
+wird verwendet, um zwischen Branches zu wechseln oder einen Detached HEAD zu
+erzeugen, um zu einem älteren Commit zu wechseln.
+
+`git restore`::
+wird verwendet, um Dateien im Arbeitsverzeichnis oder im Index auf einen
+bestimmten Zustand zurückzusetzen, beispielsweise auf den Zustand eines
+bestimmten Commits, oder um Änderungen an Dateien zu verwerfen.
 
 .Moderne Alternativen zu git checkout
-[cols="1,1"]
+[cols="2,2,1"]
 |===
-| git checkout                 | Moderne Alternative
+| Klassisches "checkout" | Moderne Alternative | Beschreibung
 
-| git checkout <branch>        | git switch <branch>
-| git checkout -b <branch>     | git switch -c <branch>
-| git checkout <commit>        | git switch --detach <commit>
-| git checkout -- <file>       | git restore -- <file>
-| git checkout <commit> <file> | git restore --source=<commit> <file>
+| `git checkout <branch>`
+| `git switch <branch>`
+| Branch wechseln
+
+| `git checkout -b <branch>`
+| `git switch -c <branch>`
+| neuen Branch erstellen und wechseln
+
+| `git checkout <commit>`
+| `git switch --detach <commit>`
+| Wechselt zu Commit (Detached HEAD)
+
+| `+git checkout <commit> -- <file>+`
+| `git restore --source=<commit> <file>`
+| Datei aus Commit wiederherstellen
+
+| `+git checkout -- <file>+`
+| `+git restore -- <file>+`
+| Änderungen einer Datei verwerfen
 |===
+
+==== Detached HEAD
+
+Ein *Detached HEAD* bedeutet, dass HEAD direkt auf einen Commit zeigt, anstatt
+auf einen Branch. Normalerweise zeigt HEAD auf den neuesten Commit des
+aktuellen Branches. Wenn Sie jedoch zu einem älteren Commit wechseln, wird HEAD
+"detached" (von einem Branch gelöst) und zeigt direkt auf diesen Commit.
+
+image::grafik_git_detached-head.png["...",width=800]
+
+[source, sh]
+----
+git switch main <1>
+git switch --detach <commit> <2>
+git switch main <3>
+----
+<1> `HEAD` zeigt auf den neuesten Commit des Branches `main`.
+<2> `HEAD` ist detached und zeigt direkt auf den angegebenen Commit.
+<3> `HEAD` zeigt wieder auf den neuesten Commit des Branches `main`.
+
+.Hinweise: Verwaister Commit
+[%collapsible]
+====
+=====
+Zwischenzeitliche Commits auf dem vergangenen Projektstand erscheinen
+nicht mehr in der Historie, sind aber kurzzeitig über
+https://git-scm.com/docs/git-reflog[`git reflog`] wiederherstellbar.
+
+image::grafik_git_verwaister-commit.png["...",width=800]
+
+[source, sh]
+----
+git switch --detach <commit> <1>
+vi <file>
+git add .
+git commit -m "..." <2>
+git switch main <3>
+----
+<1> Wechselt zu einem älteren Commit (Detached HEAD)
+<2> Ein neuer Commit wird erstellt, der auf dem älteren Commit basiert. Dieser
+    Commit ist verwaist, da er nicht mehr in der Historie des Branches `main`
+    enthalten ist.
+<3> Wechselt zurück zum Branch `main`. Der verwaiste Commit ist nicht mehr
+    in der Historie sichtbar oder erreichbar.
+
+TIP: Eine Lösung ist, an der Stelle des verwaisten Commits einen neuen Branch
+mit `git branch <new-branch-name>` zu erstellen, bevor man zurück zum
+``main``-Branch wechselt. Dadurch wird der Commit wieder in der Historie
+erreichbar und ist nicht mehr verwaist.
+=====
+====
+
 
 
 include::sitemap.inc.adoc[]
