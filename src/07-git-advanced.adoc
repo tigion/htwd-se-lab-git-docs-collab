@@ -76,17 +76,18 @@ oder zum lokalen Arbeitsstand angezeigt. Ein `+` steht für eine hinzugefügte u
 ein `-` für eine entfernte Zeile. Änderungen innerhalb einer Zeile werden mit
 einer Kombination aus `-` und `+` dargestellt.
 
+[source, sh]
 ----
-$ git diff <1>
-$ git diff <file> <2>
+git diff <1>
+git diff <file> <2>
 
-$ git diff --cached <3>
+git diff --cached <3>
 
-$ git diff <commit> <4>
-$ git diff <commit> HEAD <5>
-$ git diff <commit-1> <commit-2> <6>
+git diff <commit> <4>
+git diff <commit> HEAD <5>
+git diff <commit-1> <commit-2> <6>
 
-$ git diff <branch-1> <branch-2> <7>
+git diff <branch-1> <branch-2> <7>
 ----
 <1> zeigt Unterschied der letzten Version (_HEAD_) zum lokalen Arbeitsstand
 <2> mit der zusätzlichen Angabe `<file>` kann gezielt eine Datei oder ein
@@ -121,10 +122,11 @@ wiederherstellbar.
 // TODO: Grafik für switch anpassen
 image::grafik_git_switch-detach.png["...",width=251]
 
+[source, sh]
 ----
-$ git log --oneline <1>
-$ git switch --detach <old_commit> <2>
-$ git switch main <3>
+git log --oneline <1>
+git switch --detach <old_commit> <2>
+git switch main <3>
 ----
 <1> Versionshistorie (Commits) anzeigen; die Option `--oneline` erlaubt eine
     Anzeige mit einer Zeile pro Commit.
@@ -148,10 +150,11 @@ kurzzeitig über https://git-scm.com/docs/git-reflog[`git reflog`] wiederherstel
 
 image::grafik_git_checkout.png["...",width=251]
 
+[source, sh]
 ----
-$ git log --oneline <1>
-$ git checkout <old_commit> <2>
-$ git switch main <3>
+git log --oneline <1>
+git checkout <old_commit> <2>
+git switch main <3>
 ----
 <1> Versionshistorie (commits) anzeigen, die Option `--oneline` erlaubt eine
     Anzeige mit weniger Details auf einer Zeile pro Commit
@@ -183,22 +186,20 @@ gewechselt werden soll, ohne die aktuellen Änderungen als Commit zu speichern.
 
 image::grafik_git_stash.png["...",width=625]
 
+[source, sh]
 ----
-$ git stash <1>
-$ git stash push <2>
+git stash <1>
+git stash push <2>
 
-$ git stash pop <3>
-$ git stash apply <4>
+git stash pop <3>
+git stash apply <4>
 
-$ git stash drop <5>
+git stash drop <5>
 
-$ git stash list <6>
-stash@{0}: WIP on main: ...
-stash@{1}: WIP on main: ...
-stash@{2}: On main: Arbeitsstand X
+git stash list <6>
 
-$ git stash show <7>
-$ git stash show -p <8>
+git stash show <7>
+git stash show -p <8>
 ----
 <1> `git stash` ist eine Kurzform für `git stash push`.
 <2> Änderungen an verfolgten (*tracked*) Dateien werden im Stash gespeichert
@@ -266,11 +267,12 @@ anschließend, ohne eine neue Version zu erstellen.
 =====
 image::grafik_git_checkout-reset-clean.png["...",width=381]
 
+[source, sh]
 ----
-$ git restore -- <file> <2>
-$ git checkout -- <file> <1>
-$ git reset --hard <3>
-$ git clean -df <4>
+git restore -- <file> <2>
+git checkout -- <file> <1>
+git reset --hard <3>
+git clean -df <4>
 ----
 <1> Setzt lokale Änderungen einer oder mehrerer unter Versionskontrolle
     stehender Dateien auf die letzte Version zurück. +
@@ -308,11 +310,12 @@ die Option `--hard` angegeben wird.
 
 image::grafik_git_reset.png["...",width=490]
 
+[source, sh]
 ----
-$ git add .
-$ git commit -m "..."
-$ git log --oneline
-$ git reset --hard <commit> <1> <2>
+git add .
+git commit -m "..."
+git log --oneline
+git reset --hard <commit> <1> <2>
 ----
 <1> Setzt den aktuellen Stand des Repositorys auf die angegebe Version
     (Commit) zurück.
@@ -342,11 +345,12 @@ Die Versionshistorie bleibt inklusive der zurückgenommenen Version erhalten.
 
 image::grafik_git_revert.png["...",width=593]
 
+[source, sh]
 ----
-$ git add .
-$ git commit -m "..."
-$ git log --oneline
-$ git revert <commit> <1>
+git add .
+git commit -m "..."
+git log --oneline
+git revert <commit> <1>
 ----
 <1> Nimmt die Änderung der angegebenen Version zurück und erzeugt eine neue
     Version (ohne die Änderung der zurückgenommenen Version).
@@ -408,15 +412,17 @@ aufzunehmen.
 
 image::grafik_git_commit_amend.png["...",width=393]
 
+[source, sh]
 ----
-$ ...
-$ git add .
-$ git commit -m "... Message ..."
-$ git log --oneline
-$ ...
-$ git add . <1>
-$ git commit --amend -m "... (neue) Message ..." <2>
-$ git log --oneline
+# Create a new commit
+git add .
+git commit -m "... Message ..."
+git log --oneline
+
+# Amend the last commit
+git add . <1>
+git commit --amend -m "... (neue) Message ..." <2>
+git log --oneline
 ----
 <1> optional: Aufnahme der vergessenen/zusätzlichen Änderungen.
 <2> Mit der Option `--amend` wird der letzte Commit mit dem aktuellen Commit
@@ -446,6 +452,7 @@ und `fixup` wird der ausgewählte Commit mit dem direkt darüberstehenden
 
 image::grafik_git_rebase-i.png["...",width=435]
 
+[source, console]
 ----
 $ git log --oneline
 00af044 (HEAD -> main) Fix typo in <object>
@@ -584,7 +591,6 @@ mit `git branch <new-branch-name>` zu erstellen, bevor man zurück zum
 erreichbar und ist nicht mehr verwaist.
 =====
 ====
-
 
 
 include::sitemap.inc.adoc[]
