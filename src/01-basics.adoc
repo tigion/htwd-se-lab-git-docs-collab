@@ -547,41 +547,16 @@ image::screenshot_vscode_asciidoc.png[Screenshot VSCode mit AsciiDoc Vorschau, w
 .Überblick zum Git Workflow
 image::grafik_git_workflow.jpg[Überblick zum Git Workflow, width=800]
 
-Der Git-Workflow umfasst das Abrufen, Bearbeiten, Vormerken und Committen von
-Änderungen sowie deren Übertragung zum Remote-Repository.
+Der Git-Workflow umfasst das *Abrufen* (`https://git-scm.com/docs/git-pull[git
+pull]`), *Bearbeiten*, *Vormerken* (`https://git-scm.com/docs/git-add[git add]`)
+und *Festhalten* (`https://git-scm.com/docs/git-commit[git commit]`) von
+Änderungen sowie deren *Übertragung* zum Remote-Repository
+(`https://git-scm.com/docs/git-push[git push]`). Dazu gehört auch das *Erstellen*
+der Arbeitskopie (`https://git-scm.com/docs/git-clone[git clone]`) und das
+*Anzeigen* von Änderungen (`https://git-scm.com/docs/git-status[git status]`).
 
-.Hinweise: Grundlegende Git-Befehle
-[%collapsible]
-====
-.Grundlegende Git-Befehle
-[cols="2,5", options="header"]
-|===
-| Befehl                        | Beschreibung
-
-| `git clone <url>`             | Ein bestehendes Remote-Repository inklusive seiner Dateien und Versionshistorie als lokales Repository herunterladen. Dabei wird standardmäßig ein Verzeichnis mit dem Namen des Repositorys angelegt.
-
-| `git status`                  | Änderungen im Repository anzeigen
-| `git diff`                    | Änderungen im Repository anzeigen
-
-| `git add -A`                  | Alle Änderungen im Repository für den nächsten Commit vormerken
-| `git add -u`                  | Änderungen im Repository an bereits von Git erfassten Dateien für den nächsten Commit vormerken
-| `git add .`                   | Änderungen im aktuellen Verzeichnis und darunter für den nächsten Commit vormerken
-| `git add <file>`              | Angegebene Dateien oder Verzeichnisse für den nächsten Commit vormerken
-
-| `git restore --staged .`      | Alle vorgemerkten Änderungen wieder aus dem nächsten Commit entfernen
-| `git restore --staged <file>` | Vorgemerkte Änderungen an den angegebenen Dateien oder Verzeichnissen wieder aus dem nächsten Commit entfernen
-
-| `git commit`                  | Neuen Commit mit Standard-Editor für Commit-Nachricht erstellen
-| `git commit -m "..."`         | Neuen Commit mit Commit-Nachricht erstellen
-| `git commit -a -m "..."`      | ähnlich wie `git add -u` + `git commit -m`
-
-| `git log`                     | Historie der Commits anzeigen
-| `git log --oneline`           | Historie der Commits einzeilig anzeigen
-
-| `git pull`                    | Neue Versionen vom Remote-Repository laden
-| `git push`                    | Neue Versionen zum Remote-Repository senden
-|===
-====
+Eine Auflistung von grundlegenden Git-Befehlen finden Sie unter
+<<table_basic_git_commands>>.
 
 ==== Aufgabe 4.1 - Versionierung der Änderungen
 
@@ -651,6 +626,76 @@ Arbeitsablauf::
 {section-separator}
 
 === Extras
+
+==== Git-Grundbefehle
+
+Eine Auflistung von grundlegenden Git-Befehlen mit einer kurzen Beschreibung
+und Verlinkung zu den offiziellen Git-Dokumentationen.
+
+[#table_basic_git_commands]
+.Grundlegende Git-Befehle
+[cols="2,5", options="header"]
+|===
+| Befehl                        | Beschreibung
+
+| `https://git-scm.com/docs/git-clone[git clone] <url>`
+| Ein bestehendes Remote-Repository inklusive seiner Dateien und Versionshistorie als lokales Repository herunterladen. Dabei wird standardmäßig ein Verzeichnis mit dem Namen des Repositorys angelegt.
+
+| `https://git-scm.com/docs/git-status[git status]`
+| Änderungen im Repository anzeigen
+
+| `https://git-scm.com/docs/git-status[git status] -s`
+| Änderungen im Repository in Kurzform (`--short`) anzeigen
+
+| `https://git-scm.com/docs/git-diff[git diff]`
+| Änderungen im Repository anzeigen
+
+| `https://git-scm.com/docs/git-add[git add] -A`
+| Alle Änderungen (`--all`) im Repository für den nächsten Commit vormerken
+
+| `https://git-scm.com/docs/git-add[git add] -u`
+| Änderungen im Repository an bereits von Git erfassten Dateien (`--update`) für den nächsten Commit vormerken
+
+| `https://git-scm.com/docs/git-add[git add] .`
+| Änderungen im aktuellen Verzeichnis und darunter für den nächsten Commit vormerken
+
+| `https://git-scm.com/docs/git-add[git add] <file>`
+| Angegebene Dateien oder Verzeichnisse für den nächsten Commit vormerken
+
+| `https://git-scm.com/docs/git-restore[git restore] --staged .`
+| Alle vorgemerkten Änderungen wieder aus dem nächsten Commit entfernen
+
+| `https://git-scm.com/docs/git-restore[git restore] --staged <file>`
+| Vorgemerkte Änderungen an den angegebenen Dateien oder Verzeichnissen wieder aus dem nächsten Commit entfernen
+
+| `https://git-scm.com/docs/git-commit[git commit]`
+| Neuen Commit mit Standard-Editor für Commit-Nachricht erstellen
+
+| `https://git-scm.com/docs/git-commit[git commit] -m "..."`
+| Neuen Commit mit Commit-Nachricht erstellen
+
+| `https://git-scm.com/docs/git-commit[git commit] -a -m "..."`
+| Kurzform für `git add -u` + `git commit -m`
+
+| `https://git-scm.com/docs/git-log[git log]`
+| Historie der Commits anzeigen
+
+| `https://git-scm.com/docs/git-log[git log] --oneline`
+| Historie der Commits einzeilig anzeigen
+
+| `https://git-scm.com/docs/git-fetch[git fetch]`
+| Neue Versionen vom Remote-Repository laden, ohne dies in die lokale Arbeitskopie zu integrieren
+
+| `https://git-scm.com/docs/git-pull[git pull]`
+| Neue Versionen vom Remote-Repository laden und in die lokale Arbeitskopie integrieren. Kombination aus `git fetch` + `https://git-scm.com/docs/git-merge[git merge]` / `https://git-scm.com/docs/git-rebase[git rebase]`.
+
+| `https://git-scm.com/docs/git-push[git push]`
+| Neue Versionen zum Remote-Repository senden
+|===
+
+
+{section-separator}
+
 
 ==== HTML/PDF-Generierung
 
@@ -799,6 +844,9 @@ Ihrem Repository Verzeichnis.
 ======
 =====
 ====
+
+
+{section-separator}
 
 
 ==== Dateien ignorieren
