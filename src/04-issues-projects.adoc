@@ -8,25 +8,15 @@ include::notes-windows-lab.inc.adoc[]
 
 {section-separator}
 
-// Die Bearbeitung der Aufgabe 1 und zum Teil in Aufgabe 2 erfolgt in Ihrem Team-Repository *htwd-se-example-teamproject* aus dem letzten Praktikum. In Aufgabe 3 nehmen Sie Ihr Repository *htwd-se-example-project*.
-//
-// {section-separator}
-
 
 === 1. GitHub Issues
-
-[NOTE]
-====
-Issues are a great way to keep track of tasks, enhancements, and bugs for your
-projects. They’re kind of like email—except they can be shared and discussed
-with the rest of your team. Most software projects have a bug tracker of some
-kind. GitHub’s tracker is called Issues, and has its own section in every
-repository. - https://guides.github.com/features/issues/[GitHub Issues]
-====
 
 GitHub bietet mit dem Bereich *Issues* eine Möglichkeit anstehende Aufgaben,
 aufgetretene Probleme und mögliche Verbesserungen zentral in Ihrem Projekt
 innerhalb Ihres Repository zu verwalten und zu diskutieren.
+
+- https://docs.github.com/en/issues[GitHub Issues]
+- https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/quickstart[Quickstart for GitHub Issues]
 
 :imageTitle: Screenshot: Bereich Issues auf GitHub
 :imageFile: screenshot_github_issues.png
@@ -34,14 +24,14 @@ innerhalb Ihres Repository zu verwalten und zu diskutieren.
 image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 
 Jeder Issue (Aufgabe, Ticket, ...) besteht aus einem *Titel* und der
-*Beschreibung* des Sachverhaltes. Zusätzlich können zur besserer Verwaltung
+*Beschreibung* des Sachverhaltes. Zusätzlich können zur besseren Verwaltung
 noch *Assignees* (Beauftrage), *Labels* und weitere Kriterien hinzugefügt
 werden. Ebenfalls kann über *Kommentar* der Issue diskutiert und mit
-Anmerkungen versehen werden. Eine detailierte Beschreibung finden Sie in dem
+Anmerkungen versehen werden. Eine detaillierte Beschreibung finden Sie in dem
 Guide: https://guides.github.com/features/issues/[Mastering Issues]
 
 Bei Verwendung bestimmter *Keywords*
-(https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords[Closing
+(https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword[Closing
 issues using keywords]) in den Commit Messages können *referenzierte Issues*
 automatisch geschlossen werden.
 
@@ -61,7 +51,7 @@ andere Elemente verwendet werden. Diese werden von GitHub automatisch verlinkt.
 | *User*   | Accountname | `@account`
 |===
 
-Siehe auch: https://help.github.com/en/articles/autolinked-references-and-urls[Autolinked references and URLs]
+Siehe auch: https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/autolinked-references-and-urls[Autolinked references and URLs]
 
 Beispiele:
 
@@ -99,12 +89,12 @@ Collaborators hinzu.
 ==== Aufgabe 1.2 - Sub-Issues
 
 . Legen Sie für Ihr eben erstelltes Issue zwei Sub-Issues an, um sie in
-  konkretere Aufgabe zu unterteilen.
+  konkretere Aufgaben zu unterteilen.
 . Weisen Sie *einer* Sub-Issue ein Teammitglied zu (Assignee).
 
 ==== Aufgabe 1.3 - Issues bearbeiten
 
-. Bearbeiten Sie in VS Code die eine Ihnen zugewiesenen Issues.
+. Bearbeiten Sie in VS Code die *eine* Ihnen zugewiesene Issue.
 . Nehmen Sie das Ergebnis als neue Version, mit einer Referenz zur Issue, in
   Ihr lokales Repository auf und synchronisieren Sie es mit GitHub.
 . Schließen Sie die Issue manuell auf GitHub oder automatisch über eine erneute
@@ -146,13 +136,6 @@ Projects]
 ** https://docs.github.com/en/issues/planning-and-tracking-with-projects/understanding-fields[Understanding fields]
 ** https://docs.github.com/en/issues/planning-and-tracking-with-projects/customizing-views-in-your-project/filtering-projects[Filtering projects]
 
-// - Wie können Aufgaben (Issues) in Projects verwaltet werden?
-
-// TODO: Klären:
-//       - Beispiel für Product Backlog und Task Board
-//       - spalten für Priorisierung und Iterations/Sprints
-//       - Verwendung von Iterationen/Sprints
-//         - Filter für Task Board?
 
 ==== Vorbereitung
 
@@ -160,7 +143,7 @@ Für die Folgenden Aufgaben benötigen wir wieder Ihr eigenes *htwd-se-example-p
 Repository aus den ersten Praktika.
 
 . Öffnen Sie auf GitHub Ihr *htwd-se-example-project* Repository.
-. Legen Sie eine neue Issues an:
+. Legen Sie eine neue Issue an:
 ** Issue: `GitHub Project einrichten`, Label: `project-task`
 
 ==== Aufgabe 2.1 - Projekt anlegen
@@ -192,22 +175,24 @@ Repository aus den ersten Praktika.
 *** P3: `Niedrig (Nice to have)` (bspw. grau)
 
 . Legen Sie ein neues Feld *Sprint* an:
++
+--
 ** Field name: `Sprint`
 ** Field type: `Iteration`
 ** Starts on: Montag der aktuellen Woche
 ** Duration: `2 weeks`
 
-// . Legen Sie ein neues Feld *Estimate* an:
-// ** Field name: `Estimate`
-// ** Field type: `Number`
-//
-// . Legen Sie ein neues Feld *Feature* an:
-// ** Field name: `Feature`
-// ** Field type: `Text`
+Damit werden automatisch drei Sprints (`Sprint 1`, `Sprint 2` und `Sprint 3`),
+ausgehen vom Startdatum und mit der Zeitraumdauer, angelegt.
+--
+
+. Legen Sie ein neues Feld *Estimate* an:
+** Field name: `Estimate`
+** Field type: `Number`
 
 ==== Aufgabe 2.3 - Product Backlog
 
-Anzeige aller offener Aufgaben, insbesondere User Stories, Bugs, Spikes und
+Anzeige aller offenen Aufgaben, insbesondere User Stories, Bugs, Spikes und
 technische Stories.
 
 :imageTitle: Screenshot: GitHub Project - Product Backlog
@@ -222,7 +207,6 @@ die Bearbeitung sind.
 
 . Passen Sie den Filter wie folgt an:
 ** Filter: `is:open label:user-story,technical-story,spike,bug no:sprint`
-// ** Filter: `is:open no:sprint`
 
 . Blenden Sie die Anzeige folgender Spalten aus (Hide field):
 ** `Assignees`, `Labels`, `Linked pull requests`, `Sprint`, `Sub-issues progress`
@@ -235,7 +219,7 @@ die Bearbeitung sind.
 
 ==== Aufgabe 2.4 - Sprint Planning
 
-Anzeige aller offener Aufgaben gruppiert nach Ihrer Zuordnung zu den Sprints.
+Anzeige aller offenen Aufgaben gruppiert nach Ihrer Zuordnung zu den Sprints.
 
 :imageTitle: Screenshot: GitHub Project - Sprint Planning
 :imageFile: screenshot_github_project_sprint_planning.png
@@ -253,12 +237,12 @@ Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
 // optional zusätzlich: `-status:New`
 
 . Passen Sie die zu verwendenden Spalten an:
-** Titel, Status, Priority, Iteration, Estimate
+** Titel, Status, Priority, Sprint, Estimate
 
-. Gruppieren Sie die Tabelle nach dem Feld *Iteration* (Settings View):
+. Gruppieren Sie die Tabelle nach dem Feld *Sprint* (Settings View):
 ** Group by: `Sprint`
 
-. Weißen Sie die folgenden Aufgaben (Issues) dem Sprint `Sprint 1` zu:
+. Weisen Sie die folgenden Aufgaben (Issues) dem Sprint `Sprint 1` zu:
 ** `GitHub Project einrichten`
 ** `Benutzer kann sich anmelden`
 
@@ -307,7 +291,7 @@ Siehe auch: https://docs.github.com/de/get-started/writing-on-github/working-wit
 ====
 =====
 .Beispiel für Teilaufgaben:
-[code, markdown]
+[source, markdown]
 ----
 Abnahmekriterien:
 
@@ -318,7 +302,7 @@ Abnahmekriterien:
 ----
 
 .Beispiel für eine Check-Liste:
-[code, markdown]
+[source, markdown]
 ----
 Macht euch mit Aufgabenlisten vertraut.
 
@@ -355,17 +339,17 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 [%collapsible]
 ====
 =====
-Für eine gezielte Sicht auf bestimmt Einträge, gibt es ein Vielzahl an
+Für eine gezielte Sicht auf bestimmt Einträge, gibt es eine Vielzahl an
 Filtermöglichkeiten und deren Kombination. Ausgewählte finden Sie in der
-<<table_filterkritterien>> und eine komplette Liste und weitere Informationen
+<<table_filterkriterien>> und eine komplette Liste und weitere Informationen
 unter folgenden Links:
 
-- https://help.github.com/en/github/searching-for-information-on-github/searching-issues-and-pull-requests[GitHub - Searching issues and pull requests]
-- https://help.github.com/en/github/searching-for-information-on-github/understanding-the-search-syntax[GitHub - Understanding the search syntax]
-- https://help.github.com/en/github/searching-for-information-on-github/sorting-search-results[GitHub - Sorting search results].
+- https://docs.github.com/en/search-github/searching-on-github/searching-issues-and-pull-requests[Searching issues and pull requests]
+- https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax[Understanding the search syntax]
+- https://docs.github.com/en/search-github/getting-started-with-searching-on-github/sorting-search-results[Sorting search results]
 
-.Ausgewählte Filterkritterien
-[#table_filterkritterien]
+.Ausgewählte Filterkriterien
+[#table_filterkriterien]
 [cols="1,3"]
 |===
 | Filter      | Beschreibung
@@ -381,7 +365,7 @@ unter folgenden Links:
 | `project:PROJECT` | einem Projekt zugeordnet
 |===
 
-.Filterkritterien für fehlende Angaben
+.Filterkriterien für fehlende Angaben
 [cols="1,3"]
 |===
 | Filter         | Beschreibung
@@ -411,8 +395,9 @@ speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
 Nützliche Filter für GitHub Project Sichten:
 
 - `sprint:@current` - Alle Issues, welche dem aktuellen Sprint zugeordnet sind
-- `sprint:@none` - Alle Issues, welche keinem Sprint zugeordnet sind
+- `no:sprint` - Alle Issues, welche keinem Sprint zugeordnet sind
 - `assignee:@me` - Alle Issues, welche mir zugeordnet sind
 - `is:closed` - Alle geschlossenen Issues
+
 
 include::sitemap.inc.adoc[]
