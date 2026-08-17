@@ -99,6 +99,7 @@ Verzeichnis der jeweiligen  _adoc_-Datei(en) unter _.asciidoctor/diagram/_ und
 sollte auch vom Repository ausgeschlossen werden.
 
 ..gitignore
+[source,gitignore]
 ----
 *.html
 *.pdf
@@ -560,7 +561,7 @@ Diagramm.
 .Layout-Optionen
 [source,plantuml]
 ----
-LAYOUT_TOP_DOWN() or LAYOUT_LEFT_RIGHT() <1>
+LAYOUT_LANDSCAPE(), LAYOUT_TOP_DOWN() or LAYOUT_LEFT_RIGHT() <1>
 LAYOUT_WITH_LEGEND() <2>
 LAYOUT_AS_SKETCH() <3>
 ----
@@ -625,6 +626,17 @@ Rel(alias_element1, alias_element2, "Beschreibung", "Text in [...]")
 Boundary(alias, "Name") {
   ...
 }
+----
+
+.Themes
+* Siehe: https://github.com/plantuml-stdlib/C4-PlantUML/blob/master/Themes.md#themes[C4 PlantUML Themes]
+* Die Angabe des Themes muss vor dem zu verwendenden C4 Modell Diagrammtyp
+  stehen.
++
+[source,plantuml]
+----
+!theme C4_blue_new from <C4/themes>
+!include <c4/C4_Deployment.puml>
 ----
 =====
 ====

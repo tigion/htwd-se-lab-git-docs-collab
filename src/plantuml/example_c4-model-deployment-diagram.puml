@@ -1,8 +1,9 @@
 @startuml example-c4-dynamic-diagram
-' source: https://github.com/plantuml-stdlib/C4-PlantUML
-' C4 Model
+
+' C4 Model diagram
+' - https://github.com/plantuml-stdlib/C4-PlantUML
+!theme C4_blue_new from <C4/themes>
 !include <c4/C4_Deployment.puml>
-' !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Deployment.puml
 
 AddElementTag("fallback", $bgColor="#c0c0c0")
 AddRelTag("fallback", $textColor="#c0c0c0", $lineColor="#438DD5")

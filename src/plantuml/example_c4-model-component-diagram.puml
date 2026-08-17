@@ -1,10 +1,9 @@
 @startuml
 
-' source: https://github.com/plantuml-stdlib/C4-PlantUML
-' C4 Model
+' C4 Model diagram
+' - https://github.com/plantuml-stdlib/C4-PlantUML
+!theme C4_blue_new from <C4/themes>
 !include <c4/C4_Component.puml>
-
-LAYOUT_WITH_LEGEND()
 
 title Component Diagram – [Systemname]
 
@@ -38,5 +37,7 @@ Rel(user_svc, user_repo, "liest / schreibt Nutzerdaten", "JPA")
 Rel(booking_repo, db, "persistiert Daten", "SQL")
 Rel(user_repo, db, "persistiert Daten", "SQL")
 Rel(notification_svc, ext, "sendet E-Mails über", "SMTP")
+
+' LAYOUT_WITH_LEGEND()
 
 @enduml

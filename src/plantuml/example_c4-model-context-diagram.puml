@@ -1,7 +1,11 @@
 @startuml
-' source: https://github.com/plantuml-stdlib/C4-PlantUML
-' C4 Model
+
+' C4 Model diagram
+' - https://github.com/plantuml-stdlib/C4-PlantUML
+!theme C4_blue_new from <C4/themes>
 !include <c4/C4_Context.puml>
+
+LAYOUT_LANDSCAPE()
 
 ' Images
 !include <office/Users/user.puml>

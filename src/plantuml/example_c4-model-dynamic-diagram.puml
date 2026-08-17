@@ -1,8 +1,9 @@
 @startuml example-c4-dynamic-diagram
-' source: https://github.com/plantuml-stdlib/C4-PlantUML
-' C4 Model
+
+' C4 Model diagram
+' - https://github.com/plantuml-stdlib/C4-PlantUML
+!theme C4_blue_new from <C4/themes>
 !include <c4/C4_Dynamic.puml>
-'!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Dynamic.puml
 
 ' Diagram title
 title \nDynamic diagram example\n
