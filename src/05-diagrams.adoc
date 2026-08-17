@@ -1,6 +1,6 @@
 include::header.inc.adoc[]
 
-== Teil 5 - Diagramme 1
+== Teil 5 - Diagramme
 
 In diesem Aufgabenteil betrachten wir die Möglichkeit der textbasierten
 Diagrammgenerierung mit Asciidoctor und der textuellen Notation
@@ -62,7 +62,7 @@ sind Anpassungen in Visual Studio Code und Git notwendig.
 :imageTitle: VS Code mit Diagrammvorschau
 :imageFile: screenshot_vscode_asciidoctor-diagram.png
 :imageWidth: 800
-image::{imageFile}[title="{imageTitle}", alt="{imageTitle}, "width="{imageWidth}", link="{imagesdir}/{imageFile}"]
+image::{imageFile}[title="{imageTitle}", alt="{imageTitle}", width="{imageWidth}", link="{imagesdir}/{imageFile}"]
 
 
 ==== Visual Studio Code
@@ -84,14 +84,14 @@ Erweiterung
 https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml[PlantUML].
 
 * "Code > View > Command Palette..."
-** `PlantUML: Preview Current Diagramm`
-** `PlantUML: Export Current Diagramm`
+** `PlantUML: Preview Current Diagram`
+** `PlantUML: Export Current Diagram`
 ====
 
 ==== Git Konfiguration
 
-Es empfiehlt sich, die generierten Grafiken nicht ins Repository aufnehmen, da
-diese jederzeit neu generiert werden können.
+Es empfiehlt sich, die generierten Grafiken nicht ins Repository aufzunehmen,
+da diese jederzeit neu generiert werden können.
 
 Nutzt man die lokal installierte Asciidoctor-Version, wird für die generierten
 Grafiken ein zugehöriger Bilder-Cache angelegt. Dieser befindet sich im
@@ -179,7 +179,7 @@ generierenden Grafik enthält.
 
 .Asciidoctor Syntax-Beispiel:
 [#diagram_syntax-example_source]
-[source,plantuml]
+[source,asciidoc]
 ----
 .Klassendiagramm mit PlantUML <1>
 [plantuml, "{diagramsdir}/syntax-example1", svg] <2> <3>
@@ -202,10 +202,12 @@ Shape <|.. Square
 <2> Attribute für die Generierung mit der Asciidoctor-Diagramm Erweiterung
 <3> Attribute: Diagramm-Type (Textsyntax), generierter Dateiname (inkl.
     Zielverzeichnis `+{diagramsdir}+`), Bildformat (png, svg)
-<4> textliche Beschreibung (PlantUML Notation) des entsprechenden Diagramm-Types
+<4> textliche Beschreibung (PlantUML Notation) des entsprechenden
+    Diagramm-Types
 
 
-Die erfolgreich generierte Grafik <<diagram_syntax-example1>> sieht wie folgt aus:
+Die erfolgreich generierte Grafik <<diagram_syntax-example1>> sieht wie folgt
+aus:
 
 :diagramTitle: Klassendiagramm mit PlantUML
 :diagramFile: syntax-example
@@ -242,7 +244,8 @@ include::{plantumlsdir}/syntax-example.puml[]
 [%collapsible]
 ====
 =====
-Es gibt noch eine alternative Möglichkeit Diagramme als Block Macro einzubinden.
+Es gibt noch eine alternative Möglichkeit Diagramme als Block Macro
+einzubinden.
 
 .Syntax-Beispiel: Block Macro mit Attributen
 [source,asciidoc]
@@ -266,8 +269,10 @@ verwendet wird.
 plantuml::{plantumlsdir}/diagram-example.puml[format=svg, alt="Diagrammbeispiel", title="Diagrammbeispiel", target="{diagramsdir}/diagram-example"] <2>
 ----
 <1> optionale ID für Verweise (`+<<#ID>>+`) oder als `id=` Attribute
-<2> Block Macro mit Diagramm-Type (Textsyntax) und Attribute für die Generierung mit der Asciidotor-Diagramm Erweiterung
-* `plantuml::\{plantumlsdir\}/diagram-example.puml` ... PlantUML Datei im extra PlantUML Ordner
+<2> Block Macro mit Diagramm-Type (Textsyntax) und Attribute für die
+    Generierung mit der Asciidotor-Diagramm Erweiterung
+* `plantuml::\{plantumlsdir\}/diagram-example.puml` ... PlantUML Datei im extra
+  PlantUML Ordner
 * `format` ... Bildformat
 * `alt` ... Alternativer Name
 * `title` ... Titel der Grafik (Bildunterschrift, ebenfalls relevant für Verweise)
@@ -300,21 +305,21 @@ Für das Generieren im Terminal (CLI) muss zusätzlich die installierte
 Asciidoctor-Diagram Erweiterung mit `-r` bzw. `--require` angegeben werden:
 
 .HTML
-[source,console]
+[source,sh]
 ----
-% asciidoctor -r asciidoctor-diagram plantuml_test.adoc
+asciidoctor -r asciidoctor-diagram diagramme-mit-plantuml.adoc
 ----
 
 .PDF - v1
-[source,console]
+[source,sh]
 ----
-% asciidoctor-pdf -r asciidoctor-diagram plantuml_test.adoc
+asciidoctor-pdf -r asciidoctor-diagram diagramme-mit-plantuml.adoc
 ----
 
 .PDF - v2
-[source,console]
+[source,sh]
 ----
-% asciidoctor -r asciidoctor-diagram -r asciidoctor-pdf -b pdf plantuml_test.adoc
+asciidoctor -r asciidoctor-diagram -r asciidoctor-pdf -b pdf diagramme-mit-plantuml.adoc
 ----
 
 
@@ -322,7 +327,7 @@ Asciidoctor-Diagram Erweiterung mit `-r` bzw. `--require` angegeben werden:
 
 === 1. Diagramme erstellen
 
-Im Abschnitt <<extras,Extras>> findet man Hinweise zu den benötigten
+Im Abschnitt <<_extras>> findet man Hinweise zu den benötigten
 Diagrammtypen, deren Syntax und Beispiele.
 
 - https://plantuml.com/de/[PlantUML – Ein kurzer Überblick].
@@ -335,8 +340,8 @@ Diagrammtypen, deren Syntax und Beispiele.
 [%collapsible]
 ====
 =====
-* In der Regel definiert man erste die Elemente (Type, Bezeichnung) und
-  nachfolgend die Beziehungen zwischen ihnen. Elemente in Kontainern/Paketen,
+* In der Regel definiert man erst die Elemente (Type, Bezeichnung) und
+  nachfolgend die Beziehungen zwischen ihnen. Elemente in Kontainern/Paketen
   werden am Anfang des entsprechenden Kontainers definiert.
 * Lange Bezeichnungen mit Leerzeichen werden in Anführungszeichen bzw. den
   Eingrenzungszeichen des jeweiligen Elementes gesetzt und können mit `\n`
@@ -347,7 +352,7 @@ Diagrammtypen, deren Syntax und Beispiele.
 * Pro Zeile wird immer ein Elemente definiert.
 * Beziehungen können immer nur für zwei beteiligte Elemente pro Zeile angegeben
   werden. (Bspw. `A -- B` und `B -- C` statt `A -- B -- C`)
-* Die Hintergrundfarbe von Elemente kann durch Angabe eine Hexadezimalwertes
+* Die Hintergrundfarbe von Elementen kann durch Angabe eines Hexadezimalwertes
   festgelegt werden: `class MyClass #f00` (Siehe auch
   https://plantuml.com/de/color[Colors])
 ** Weitere Möglichkeiten das Aussehen anzupassen bieten die
@@ -369,6 +374,7 @@ Diagrammtypen, deren Syntax und Beispiele.
   verwendet, können innerhalb des PlantUML-Diagramms Variablen vom
   Asciidoctor-Dokument verwendet werden.
 +
+[source,asciidoc]
 ----
 :variable1: Human
 :variable2: Hello
@@ -441,7 +447,7 @@ actor Human
 note right of Human : Hello
 ....
 
-.Graphiz Dot Test
+.Graphviz Dot Test
 [plantuml, "{diagramsdir}/testdot", svg]
 ....
 @startuml
@@ -466,7 +472,7 @@ Ein Beispiel für ein im Dokument inkludiertes PlantUML-Diagramm als externe Dat
 ====
 
 
-. Speichern sie die Datei _diagramme-mit-plantuml.adoc_ und lassen Sie sich die
+. Speichern Sie die Datei _diagramme-mit-plantuml.adoc_ und lassen Sie sich die
   Vorschau des AsciiDoc-Dokuments parallel in VS Code anzeigen.
 ** Es sollten jetzt ein Testdiagramm und ein Infodiagramm zu sehen sein.
 
@@ -485,14 +491,14 @@ installierte Tools die Diagramme in der Vorschau anzeigen zu können.
 +
 [NOTE]
 ====
-Mit dieser Erweiterung können PlanUML-Dateien direkt in Visual Studio Code
+Mit dieser Erweiterung können PlantUML-Dateien direkt in Visual Studio Code
 bearbeitet (Syntax highlight, ...), exportiert und in einer Live-Vorschau
 angezeigt werden.
 ====
 
 . Bearbeiten Sie die Datei _diagramme-mit-plantuml.adoc_ und ergänzen Sie obiges
   <<diagram_syntax-example_source,Beispiel eines Klassendiagramm>> als
-  *includiertes* Diagramm.
+  *inkludiertes* Diagramm.
 ** Erstellen Sie hierzu eine Datei _syntax-example2.puml_ im Verzeichnis
    _plantuml_.
 ** Übernehmen den Inhalt des eingebetteten Diagrammes und aktivieren die
@@ -504,17 +510,18 @@ angezeigt werden.
 
 ==== Aufgabe 1.2 - Klassendiagramm
 
-. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *Klassendiagramm*.
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein
+  *Klassendiagramm*.
 
 ==== Aufgabe 1.3 - C4 Model Context Diagramm
 
-. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model Context (Level
-  1) Diagramm*.
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model
+  Context (Level 1) Diagramm*.
 
 ==== Aufgabe 1.4 - C4 Model Container Diagramm
 
-. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model Container
-  (Level 2) Diagramm*.
+. Erweitern Sie die Datei _diagramme-mit-plantuml.adoc_ um ein *C4 Model
+  Container (Level 2) Diagramm*.
 
 
 {section-separator}
@@ -538,7 +545,11 @@ werden.
 * [1] https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[The Hitchhiker’s Guide to PlantUML - C4 PlantUML]
 * [2] https://github.com/RicardoNiepel/C4-PlantUML[GitHub - C4-PlantUML]
 
-Schauen Sie sich auf https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[+[1]+] und https://github.com/RicardoNiepel/C4-PlantUML[+[2]+] die Syntax für die C4 Model Diagramme an und erstellen Sie, angelehnt an das Beispiel, ein C4 Model Diagramm.
+Schauen Sie sich auf
+https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C4Stdlib.html#c4-plantuml[+[1]+]
+und https://github.com/RicardoNiepel/C4-PlantUML[+[2]+] die Syntax für die C4
+Model Diagramme an und erstellen Sie, angelehnt an das Beispiel, ein C4 Model
+Diagramm.
 
 .Hinweise: C4 Model Diagramme in PlantUML
 [%collapsible]
@@ -547,18 +558,20 @@ Schauen Sie sich auf https://crashedmind.github.io/PlantUMLHitchhikersGuide/C4/C
 * https://github.com/plantuml-stdlib/C4-PlantUML#supported-diagram-types[C4-PlantUML - Supported Diagram Types]
 
 .Layout-Optionen
+[source,plantuml]
 ----
-LAYOUT_TOP_DOWN or LAYOUT_LEFT_RIGHT <1>
-LAYOUT_WITH_LEGEND <2>
-LAYOUT_AS_SKETCH <3>
+LAYOUT_TOP_DOWN() or LAYOUT_LEFT_RIGHT() <1>
+LAYOUT_WITH_LEGEND() <2>
+LAYOUT_AS_SKETCH() <3>
 ----
 <1> Diagrammausrichtung
 <2> Legende anzeigen
 <3> Darstellungsstil skizzenhaft
 
 .Diagrammtitel
-* Diagrammtitel werden mit `titel` vergeben:
+* Diagrammtitel werden mit `title` vergeben:
 +
+[source,plantuml]
 ----
 title Dies ist ein Diagrammtitel
 ----
@@ -586,22 +599,28 @@ title Dies ist ein Diagrammtitel
 .Elemente (Knoten)
 * Für jedes Element wird ein Alias, der Name und eine Beschreibung vergeben:
 +
+[source,plantuml]
 ----
 Person(alias, Name, "Beschreibung")
 ----
 
 .Beziehungen (Kanten)
-* Beziehungen werden über `Rel(...)` beschrieben und können zwischen Elementen und Kontainern bestehen:
+* Beziehungen werden über `Rel(...)` beschrieben und können zwischen Elementen
+  und Kontainern bestehen:
 +
+[source,plantuml]
 ----
 Rel(alias_person1, alias_container1, "Beschreibung")
 Rel(alias_element1, alias_element2, "Beschreibung", "Text in [...]")
 ----
-* Über `Rel_R`, `Rel_L`, `Rel_D`, `Rel_U`, `Rel_Back`, `Rel_Neighbor` und `Rel_Back_Neighbor` kann die Pfeilrichtung und Ausrichtung des in Beziehung stehenden Elementes beeinflusst werden.
+* Über `Rel_R`, `Rel_L`, `Rel_D`, `Rel_U`, `Rel_Back`, `Rel_Neighbor` und
+  `Rel_Back_Neighbor` kann die Pfeilrichtung und Ausrichtung des in Beziehung
+  stehenden Elementes beeinflusst werden.
 
 .Kontainer (Bereiche)
 * Elemente kann man in Bereiche bündeln:
 +
+[source,plantuml]
 ----
 Boundary(alias, "Name") {
   ...
@@ -613,7 +632,7 @@ Boundary(alias, "Name") {
 ._example_c4-model-diagram.puml_
 [%collapsible]
 ====
-[source,puml]
+[source,plantuml]
 ----
 include::{plantumlsdir}/example_c4-model-diagram.puml[]
 ----
@@ -630,7 +649,7 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 ._example_c4-model-context-diagram.puml_
 [%collapsible]
 ====
-[source,puml]
+[source,plantuml]
 ----
 include::{plantumlsdir}/example_c4-model-context-diagram.puml[]
 ----
@@ -647,7 +666,7 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 ._example_c4-model-container-diagram.puml_
 [%collapsible]
 ====
-[source,puml]
+[source,plantuml]
 ----
 include::{plantumlsdir}/example_c4-model-container-diagram.puml[]
 ----
@@ -743,7 +762,8 @@ interface Interface1 {
 ----
 <1> Klassen werden mit dem Schlüsselwort `class` angelegt.
 <2> Klassen können Angaben zu den Typen und Methoden haben.
-<3> Interface Klassen werden mit dem Schlüsselwort `interface` angelegt. Abstrakte Klassen mit `abstract` bzw. `abstract class`.
+<3> Interface Klassen werden mit dem Schlüsselwort `interface` angelegt.
+    Abstrakte Klassen mit `abstract` bzw. `abstract class`.
 
 .Sichtbarkeiten
 ----
@@ -754,7 +774,8 @@ class Dummy { <1>
   +method2()
 }
 ----
-<1> Mit `-` (private), `#` (protected), `~` (package private) und `+` (public) werden Sichtbarkeiten festgelegt.
+<1> Mit `-` (private), `#` (protected), `~` (package private) und `+` (public)
+    werden Sichtbarkeiten festgelegt.
 
 .Abstrakt/Statisch
 ----
@@ -772,7 +793,8 @@ Klasse3 <|-- Klasse4
 Klasse5 *-- Klasse6
 Klasse7 o-- Klasse8
 ----
-<1> Assoziation `+<--+`, Generalisierung `<|--`, Realisierung `<|..`, Komposition `*--`, Aggregation `o--`
+<1> Assoziation `+<--+`, Generalisierung `<|--`, Realisierung `<|..`,
+    Komposition `*--`, Aggregation `o--`
 <2> `--` durchgezogene Linie, `..` gestrichelte Linie
 <3> `-`/`.` vertikal, `--`/`..` horizontal, `---`/`...` horizontal lang
 
@@ -781,7 +803,8 @@ Klasse7 o-- Klasse8
 Klasse1 "1" *-- "many" Klasse2 : Beschreibung > <1> <2>
 ----
 <1> `"1"` und `"many"` legen die Kardinalität fest.
-<2> in der Beschreibung `:` kann mit `< text` oder `text >` eine Richtung angegeben werden.
+<2> in der Beschreibung `:` kann mit `< text` oder `text >` eine Richtung
+    angegeben werden.
 =====
 ====
 
@@ -892,7 +915,8 @@ https://plantuml.com/de/component-diagram[Komponentendiagramm]
 component Komponente1 <1>
 [Komponente 2] as co2
 ----
-<1> Komponenten werden über das Schlüsselwort `component` definiert oder in eckigen Klammern `[...]` eingeschlossen.
+<1> Komponenten werden über das Schlüsselwort `component` definiert oder in
+    eckigen Klammern `[...]` eingeschlossen.
 
 .Schnittstellen
 ----
@@ -900,7 +924,8 @@ interface Interface1 <1>
 () Interface2
 () "Special Interface 3" as if1
 ----
-<1> Interface werden über das Schlüsselwort `interface` oder mit `()` angegeben.
+<1> Interface werden über das Schlüsselwort `interface` oder mit `()`
+    angegeben.
 
 .Beziehungen
 ----
@@ -916,7 +941,8 @@ note right of co2 <2>
   be on several lines
 end note
 ----
-<1> Notizen können in Abhängigkeit der Richtung über `note left|right|top|bottom of` für Elemente vergeben werden.
+<1> Notizen können in Abhängigkeit der Richtung über `note
+    left|right|top|bottom of` für Elemente vergeben werden.
 <2> Mehrzeilige Notizen sind ebenfalls möglich.
 
 .Gruppierung
@@ -934,7 +960,8 @@ node "Webserver" { <2>
 [Web APP] -> [Apache] <3>
 [Opal] <- [Web APP]
 ----
-<1> Gruppierung der Komponente Opal als `cloud`. Andere Kontainer wären: `package`, `node`, `folder`, `frame` und `database`.
+<1> Gruppierung der Komponente Opal als `cloud`. Andere Kontainer wären:
+    `package`, `node`, `folder`, `frame` und `database`.
 <2> Verschachtelte Gruppierung
 <3> Angabe der Beziehung zwischen zwei Komponenten
 =====
@@ -974,7 +1001,8 @@ package Paket3 { <3>
 }
 ----
 <1> Pakete werden mit dem Schlüsselwort `package` angelegt.
-<2> Mit einer hexadezimalen Angabe kann die Hintergrundfarbe des Pakete angegeben werden.
+<2> Mit einer hexadezimalen Angabe kann die Hintergrundfarbe des Pakets
+    angegeben werden.
 <3> Pakete können Pakete und Klassen enthalten.
 
 .Beziehungen
@@ -982,7 +1010,8 @@ package Paket3 { <3>
 Paket1 <- Paket2 : import <1>
 Paket2 .. Paket3
 ----
-<1> Beziehungen zwischen Paketen oder den enthaltenen Klassen werden wie bisher angegeben.
+<1> Beziehungen zwischen Paketen oder den enthaltenen Klassen werden wie bisher
+    angegeben.
 =====
 ====
 
@@ -1011,13 +1040,15 @@ https://plantuml.com/de/sequence-diagram[Sequenzdiagramm]
 ====
 =====
 .Teilnehmer (Participants)
-- `participant` (default), `actor`, `boundary`, `control`, `entity`, `database`, `collections`
+- `participant` (default), `actor`, `boundary`, `control`, `entity`,
+  `database`, `collections`
 
 ----
 actor User as actor1 #LightGray <1> <2>
 participant "UI Class" as class1 <3>
 ----
-<1> Teilnehmer können direkt `+User -> class1+` oder mit ihrem Alias `+actor1 -> class1+` verwendet werden.
+<1> Teilnehmer können direkt `+User -> class1+` oder mit ihrem Alias `+actor1
+    -> class1+` verwendet werden.
 <2> Mit `#f00` oder `#LightGray` kann eine Hintergrundfarbe definiert werden.
 <3> Teilnehmernamen mit Leerzeichen werden in `"` eingefasst.
 
@@ -1028,9 +1059,13 @@ class1 -> class1: Do <2>
 ||| <3>
 class2 --> actor1: Send
 ----
-<1> Beziehungen zwischen Teilnehmern werden mit `+->+` (durchgezogen) oder `+-->+` (gestrichelt) angegeben. Die verschiedenen Pfeilarten entnehmen Sie bitte der offiziellen Dokumentation unter https://plantuml.com/de/sequence-diagram#efeda651e89e596c[Pfeilarten].
+<1> Beziehungen zwischen Teilnehmern werden mit `+->+` (durchgezogen) oder
+    `+-->+` (gestrichelt) angegeben. Die verschiedenen Pfeilarten entnehmen Sie
+    bitte der offiziellen Dokumentation unter
+    https://plantuml.com/de/sequence-diagram#efeda651e89e596c[Pfeilarten].
 <2> Teilnehmer können Beziehungen auch auf sich selbst haben.
-<3> Extra Abstände können mit `|||` oder mit einer Angabe in Pixeln `||45||` eingefügt werden.
+<3> Extra Abstände können mit `|||` oder mit einer Angabe in Pixeln `||45||`
+    eingefügt werden.
 =====
 ====
 
@@ -1137,7 +1172,8 @@ plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagra
 Die Syntax für ER-Diagramme in PlantUML find man unter:
 https://plantuml.com/de/ie-diagram[Syntax für ein ER-Diagramm]
 
-- Basierend auf der Information-Engineering-Notation, auch Krähenfußnotation genannt.
+- Basierend auf der Information-Engineering-Notation, auch Krähenfußnotation
+  genannt.
 - PlantUML nutzt hierfür eine Erweiterung der Notation der Klassendiagramme.
 
 .Hinweise: Entity Relationship Diagramm in PlantUML
@@ -1158,14 +1194,17 @@ entity Entity2 { <2>
 <2> Entity mit Platz für Attribute
 <3> Attribute:
 * `*` ... kennzeichnet verpflichtende Attribute (NOT NULL)
-* In `**` eingefasster Text wird fett dargestellt. Geeignet, um Primär Schlüssel hervorzuheben bzw. ordnet man sie im oberen Bereich, getrennt durch `--`, an.
+* In `**` eingefasster Text wird fett dargestellt. Geeignet, um Primär
+  Schlüssel hervorzuheben bzw. ordnet man sie im oberen Bereich, getrennt durch
+  `--`, an.
 * Dem Attributnamen folgt mit `:` der Datentyp.
 
 .Beziehungen mit Kardinalitäten
 ----
 Entity1 ||--o{ Entity2 <1>
 ----
-<1> Beziehung zwischen zwei Entitäten mit zugehöriger Kardinalität. Anzeige erfolgt als https://de.wikipedia.org/wiki/Martin-Notation[Krähenfussnotation]. +
+<1> Beziehung zwischen zwei Entitäten mit zugehöriger Kardinalität. Anzeige
+    erfolgt als https://de.wikipedia.org/wiki/Martin-Notation[Krähenfußnotation]. +
 {empty} +
 +
 .Notation Kardinalitäten
@@ -1183,7 +1222,8 @@ hide circle <1>
 skinparam linetype ortho <2>
 ----
 <1> Blendet das (E) im Entity-Kopf aus.
-<2> Verhindert schräge Linien, um eine unschöne Darstellungen der Krähenfuss-Notaion zu unterbinden.
+<2> Verhindert schräge Linien, um eine unschöne Darstellung der
+    Krähenfußnotation zu unterbinden.
 =====
 ====
 
@@ -1196,7 +1236,7 @@ include::{plantumlsdir}/example_erm-diagram_v1.puml[]
 ----
 ====
 
-:diagramTitle: Entity Relationship Diagramm (ERD) mit PlantUML (Krähenfuss-Notaion)
+:diagramTitle: Entity Relationship Diagramm (ERD) mit PlantUML (Krähenfußnotation)
 :diagramFile: example_erm-diagram_v1
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
@@ -1222,7 +1262,7 @@ include::{plantumlsdir}/example_rm-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Relationenmodell Diagramm (RM) mit PlantUML (Krähenfuss-Notaion)
+:diagramTitle: Relationenmodell Diagramm (RM) mit PlantUML (Krähenfußnotation)
 :diagramFile: example_rm-diagram
 plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
 
@@ -1243,7 +1283,8 @@ actor Akteur1 <1>
 :Akteur 2:
 actor "Akteur4 mit langem\nNamen" as ac2
 ----
-<1> Akteure werden über das Schlüsselwort `actor` oder in Doppelpunkte `:...:` eingeschlossen.
+<1> Akteure werden über das Schlüsselwort `actor` oder in Doppelpunkte `:...:`
+    eingeschlossen.
 
 .Anwendungsfälle (Use Case)
 ----
@@ -1257,8 +1298,10 @@ mit neuer Zeile
 --
 und Trennlinie"
 ----
-<1> Anwendungsfälle werden über das Schlüsselwort `usecase` oder in Klammern `(...)` eingeschlossen.
-<2> Bei Inhalt mit mehreren Zeilen, muss erst der Alias und dann der mehrzeilige Inhalt angegeben werden.
+<1> Anwendungsfälle werden über das Schlüsselwort `usecase` oder in Klammern
+    `(...)` eingeschlossen.
+<2> Bei Inhalt mit mehreren Zeilen, muss erst der Alias und dann der
+    mehrzeilige Inhalt angegeben werden.
 
 .Beziehungen
 ----
@@ -1266,7 +1309,8 @@ Akteur1 -- (Anwendungsfall1) <1>
 ac2 -- uc02
 uc02 <. uc03 : include <2> <3>
 ----
-<1> Beziehungen werden mit `--` (senkrecht), `-` (waagerecht) und gestrichelt mit `..` (senkrecht), `.` (waagerecht) angegeben.
+<1> Beziehungen werden mit `--` (senkrecht), `-` (waagerecht) und gestrichelt
+    mit `..` (senkrecht), `.` (waagerecht) angegeben.
 <2> Für Pfeilrichtungen an den entsprechenden Seiten ein `<` bzw. `>` anfügen.
 <3> Mit `:` wird der Beziehung eine Beschreibung angegeben.
 =====
