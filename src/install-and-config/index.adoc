@@ -29,6 +29,12 @@ Das Dokument beschreibt die Installation & Konfiguration der für das
 link:../[Praktikum] und den Beleg in Software Engineering I + II benötigten
 Software *Git*, *Asciidoctor* und *Visual Studio Code*.
 
+WARNING: Die Anleitung zur Installation und Konfiguration der benötigten
+Software ist ein Vorschlag und kann aufgrund von Änderungen an Software und
+Installationsverfahren möglicherweise nicht mehr aktuell sein. Hinweise,
+Vorschläge und Fehlermeldungen gern per
+https://github.com/tigion/htwd-se-lab-git-docs-collab/issues[Feedback (Issue)].
+
 == Installation
 
 === Git
