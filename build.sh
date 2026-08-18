@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 
 # This script builds the HTML files from the AsciiDoc files
-# to the build folder and adds an extra sidemap.
+# to the build folder and adds an extra sitemap.
 
 # Sets the src and build folder.
 source_folder="src"
 build_folder="build"
 
 # Ensures that the script runs from its own folder.
-if ! cd "$(dirname "$0")"; then exit; fi
+if ! cd "$(dirname "$0")"; then exit 1; fi
 
 # Checks if Asciidoctor is installed.
 if ! command -v asciidoctor &>/dev/null; then
@@ -25,7 +25,7 @@ for gem_name in "asciidoctor-diagram" "asciidoctor-diagram-plantuml"; do
     error=1
   fi
 done
-if [ $error -ne 0 ]; then exit 1; fi
+if ((error == 1)); then exit 1; fi
 
 # Checks the src folder.
 if [ ! -d "$source_folder" ]; then
@@ -72,13 +72,11 @@ replace='\
   <li><a href="04-issues-projects.html">Teil 4 - Aufgabenmanagement<\/a><\/li>\
   <li><a href="05-diagrams.html">Teil 5 - Diagramme<\/a><\/li>\
   <li><a href="06-code-review.html">Teil 6 - Code-Review und Integration<\/a><\/li>\
-  <\/li>\
   <li><span style="color: #7a2518"><br \/><span class="icon"><i class="fa fa-sitemap"><\/i><\/span> Praktika - SE II<\/span><\/li>\
   <li><a href="07-git-advanced.html">Teil 7 - Git Advanced<\/a><\/li>\
   <li><a href="08-github-actions.html">Teil 8 - GitHub Actions<\/a><\/li>\
-  <\/li>\
 '
-printf "Add extra sidemap: "
+printf "Add extra sitemap: "
 if [ "$(uname -s)" = "Darwin" ]; then
   find "$build_folder" -type f -name "*.html" -exec sed -i '' "s/${search}/${replace}/g" {} \; #macOS
 else
@@ -87,7 +85,7 @@ fi
 echo "done"
 
 # Adds a preview warning if in 'next' branch.
-git_branch=$(git rev-parse --abbrev-ref HEAD)
+git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
 if [ "$git_branch" = "next" ]; then
   search='<div id="header">'
   replace='<div id="cz_preview_warning" style="position: fixed;padding: 15px;background-color: rgba(255,244,0,.9);right: -130px;top: 15px;z-index: 1000;width: 400px;text-align: center;transform: rotate(35deg);border: 3px dashed #e00;">PREVIEW<br \/><a href="..\/arbeiten-mit-git-und-asciidoc\/" style="font-size: 10px;">Come to the productive side!<\/a><\/div><div id="header">'
