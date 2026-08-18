@@ -17,20 +17,20 @@ Projekt-Repository für sein Projektteam anlegt.
 
 === GitHub Repository
 
-==== 1. Projekt Repository anlegen
+==== 1. Projekt-Repository anlegen
 
-. Loggen Sie sich auf GitHub ein und öffnen Sie folgendes Template Repository:
+. Loggen Sie sich auf GitHub ein und öffnen Sie folgendes Template-Repository:
 ** https://github.com/htwdd-se/SE-Projektvorlage[SE-Projektvorlage]
 
 . Klicken Sie auf den Button "Use this template" und wählen Sie "Create a new
   repository".
 
-. Geben Sie einen Repository Namen für Ihr Projekt-Repository ein, z.B.
+. Geben Sie einen Repository-Namen für Ihr Projekt-Repository ein, z.B.
   `se-projekt-x0`, und klicken Sie auf "Create repository". Dadurch wird eine
-  Kopie des Template Repositories in Ihrem GitHub Account erstellt.
+  Kopie des Template-Repositories in Ihrem GitHub-Account erstellt.
 
-. Sobald das Repository angelegt ist, gehen Sie in die Repository Einstellungen
-  und fügen Sie unter "Collaborators" die Mitglieder Ihres Projektteam hinzu.
+. Sobald das Repository angelegt ist, gehen Sie in die Repository-Einstellungen
+  und fügen Sie unter "Collaborators" die Mitglieder Ihres Projektteams hinzu.
   Damit haben alle Teammitglieder Zugriff auf das Repository und Sie können
   gemeinsam daran arbeiten.
 
@@ -39,7 +39,7 @@ Projekt-Repository für sein Projektteam anlegt.
 ==== 2. Issue Labels anlegen
 
 . Legen Sie im Projekt-Repository über "Issues -> Labels -> New label" folgende
-  benötigte Labels an:
+  Labels an:
 ** `spike`, `user-story`, `technical-story`, `project-task`, `task`, `bug`
 
 {section-separator}
@@ -49,19 +49,19 @@ Projekt-Repository für sein Projektteam anlegt.
 Im Verzeichnis `.github/ISSUE_TEMPLATE/` befinden sich vorgefertigte Issue
 Templates.
 
-. Passen Sie in der Konfiguration `config.yml` die Verweise zu den Dokumenten
-  an, indem Sie die `[ORG]` und `[REPO]` Platzhalter durch die Daten ihres
-  Projekt-Repository ersetzen.
+. Passen Sie in der Konfiguration `config.yml` die Verweise auf die Dokumente
+  an, indem Sie die `[ORG]` und `[REPO]` Platzhalter durch die Daten Ihres
+  Projekt-Repositories ersetzen.
 
-. Passen Sie im Template `user-story.md` und `technical-story.md` jeweils im
+. Passen Sie im Template `user-story.md` und `technical-story.md` im
   Abschnitt *Definition of Ready* ebenfalls die `[ORG]` und `[REPO]`
-  Platzhalter im Verweis zum _team_charter.adoc_ Dokument auf an.
+  Platzhalter im Verweis zum _team_charter.adoc_ Dokument an.
 
 {section-separator}
 
 ==== 4. Projektinformationen anpassen
 
-In der Datei _docs/_includes/default-attributes.inc.adoc_ ist am Anfang der
+In der Datei _docs/_includes/default-attributes.inc.adoc_ sind am Anfang der
 **Projektname** und der **Systemname** als Attribute global zur Verwendung in
 den Dokumenten definiert.
 
@@ -88,11 +88,12 @@ Dokumentation an beliebiger Stelle verwendet werden.
 
 ==== 5. README.md beachten
 
-Beachten Sie auch weitere Hinweise in der *README.md* Datei des Template-Repositories.
+Beachten Sie auch weitere Hinweise in der **README.md**-Datei des
+Template-Repositories.
 
 {section-separator}
 
-=== GitHub Project #TODO#
+=== GitHub Project
 
 ==== 1. Projekt anlegen
 
