@@ -6,12 +6,12 @@
 !include <c4/C4_Context.puml>
 
 LAYOUT_LANDSCAPE()
+' LAYOUT_WITH_LEGEND()
 
 ' Images
 !include <office/Users/user.puml>
 !include <office/Users/mobile_user.puml>
 
-LAYOUT_WITH_LEGEND()
 
 title System Context Diagram – [Systemname]
 
