@@ -248,11 +248,11 @@ Fügen Sie Ihrem Repository *htwd-se-example-teamproject* über die Einstellunge
 "Settings > Collaborators > Manage access > Add people" Ihre
 Teammitglieder über den Account-Namen oder die E-Mail hinzu.
 
-:linkUrl: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository
-:linkUrlTitle: Permission levels for a personal account repository
+:url-01: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository
+:url-01-text: Permission levels for a personal account repository
 
 NOTE: Alle Mitglieder haben Schreibrechte und können gleichberechtigt
-Änderungen am Repository vornehmen. Siehe auch {linkUrl}[{linkUrlTitle}].
+Änderungen am Repository vornehmen. Siehe auch {url-01}[{url-01-text}].
 
 .icon:user[] Person B
 Schauen Sie in Ihr Mail-Postfach und nehmen Sie die Einladung zum

@@ -318,13 +318,13 @@ env:
 
 ==== Aufgabe 1 - Quickstart
 
-:gha-quickstart-url: https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow
-:gha-quickstart-name: Quickstart for GitHub Actions
+:url-gha-quickstart: https://docs.github.com/en/actions/get-started/quickstart#creating-your-first-workflow
+:url-gha-quickstart-text: Quickstart for GitHub Actions
 
 Bearbeiten Sie die Aufgaben in Ihrem vorhandenem
 `htwd-se-example-project`-Repository oder legen Sie sich dafür ein neues
 Repository auf GitHub an. Die Aufgabe orientiert sich am Einführungsbeispiel:
-{gha-quickstart-url}[{gha-quickstart-name}] von GitHub.
+{url-gha-quickstart}[{url-gha-quickstart-text}] von GitHub.
 
 . Erstellen Sie in Ihrem _lokalen_-Repository das Verzeichnis
   `.github/workflows/`.
@@ -356,7 +356,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 ----
-Quelle: {gha-quickstart-url}[{gha-quickstart-name}]
+Quelle: {url-gha-quickstart}[{url-gha-quickstart-text}]
 ====
 +
 ****
