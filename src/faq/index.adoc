@@ -27,11 +27,22 @@ Christoph Zirkelbach <christoph.zirkelbach@htw-dresden.de>
 
 === Wie kann ich die von Asciidoctor genutzten Google Fonts Datenschutzkonform verwenden?
 
-Wird das standardmäßige Stylesheet von Asciidoctor verwendet, werden Google Fonts von Google nachgeladen. Dabei fallen Daten an, welche nicht Datenschutzkonform sein können.
+Wird das standardmäßige Stylesheet von Asciidoctor verwendet, werden Google
+Fonts von Google nachgeladen. Dabei fallen Daten an, welche nicht
+Datenschutzkonform sein können.
 
-Dies kann verhindert werden, in dem die benötigten Google Fonts mit im Projekt hinterlegt werden. In der Asciidoctor-Dokumentation findet man unter https://docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/#disable-or-modify-the-web-fonts[Asciidoctor Docs - Disable or modify the web fonts] entsprechende Hinweise.
+:url-01: https://docs.asciidoctor.org/asciidoctor/latest/html-backend/default-stylesheet/#disable-or-modify-the-web-fonts
+:url-01-title: Asciidoctor Docs - Disable or modify the web fonts
 
-Folgend eine Variante für das Standardthema von Asciidoctor mit den selbst gehosteten Google Fonts:
+Dies kann verhindert werden, in dem die benötigten Google Fonts mit im Projekt
+hinterlegt werden. In der Asciidoctor-Dokumentation findet man unter
+{url-01}[{url-01-title}] entsprechende Hinweise.
+
+Folgend eine Variante für das Standardthema von Asciidoctor mit den selbst
+gehosteten Google Fonts:
+
+:url-02: https://docs.asciidoctor.org/asciidoc/latest/docinfo/
+:url-02-text: Docinfo Files
 
 . Es werden zwei Dokumenten-Attribute benötigt:
 +
@@ -40,10 +51,14 @@ Folgend eine Variante für das Standardthema von Asciidoctor mit den selbst geho
 :!webfonts: <1>
 :docinfo: shared-head <2>
 ----
-<1> Die negierte Form verhindert das externe Laden der Schriften von Google Fonts.
-<2> Beim Generieren der HTML-Dokumente wird die Datei _docinfo.html_ mit beachtet, welche eigene Stylesheet-Angaben enthalten kann (Siehe https://docs.asciidoctor.org/asciidoctor/latest/docinfo/[Docinfo Files]).
+<1> Die negierte Form verhindert das externe Laden der Schriften von Google
+    Fonts.
+<2> Beim Generieren der HTML-Dokumente wird die Datei _docinfo.html_ mit
+    beachtet, welche eigene Stylesheet-Angaben enthalten kann (Siehe
+    {url-02}[{url-02-text}]).
 
-. Eine eigene Stylesheet-Anpassung (Link zur Stylesheet-Datei) dem Projekt mit der Datei _docinfo.html_ mitgeben:
+. Eine eigene Stylesheet-Anpassung (Link zur Stylesheet-Datei) dem Projekt mit
+  der Datei _docinfo.html_ mitgeben:
 +
 .docinfo.html
 [source,html]
@@ -51,205 +66,64 @@ Folgend eine Variante für das Standardthema von Asciidoctor mit den selbst geho
 <link rel="stylesheet" media="screen" type="text/css" href="css/fonts.css" />
 ----
 
-. Die benötigten CSS-Angaben (schon in nachfolgender _fonts.css_ enthalten) und Google Fonts müssen über die Webseite https://google-webfonts-helper.herokuapp.com/fonts[google-webfonts-helper] identifiziert und geladen werden.
+:url-03: https://gwfh.mranftl.com/fonts
+:url-03-text: google-webfonts-helper
+
+. Die benötigten CSS-Angaben (schon in nachfolgender _fonts.css_ enthalten) und
+  Google Fonts müssen über die Webseite {url-03}[{url-03-text}] identifiziert
+  und geladen werden.
 +
 .Liste der identifizierte Dateien mit Schriftarten und Stile:
 [%collapsible]
 ====
 ----
-/* Noto Sans Mono */
-noto-sans-mono-v20-latin-700.woff
-noto-sans-mono-v20-latin-700.woff2
-noto-sans-mono-v20-latin-regular.woff
-noto-sans-mono-v20-latin-regular.woff2
+/* Droid Sans Mono -> Noto Sans Mono */
+noto-sans-mono-v37-latin-700.woff2
+noto-sans-mono-v37-latin-regular.woff2
 
 /* Noto Serif */
-noto-serif-v21-latin-700.woff
-noto-serif-v21-latin-700.woff2
-noto-serif-v21-latin-700italic.woff
-noto-serif-v21-latin-700italic.woff2
-noto-serif-v21-latin-italic.woff
-noto-serif-v21-latin-italic.woff2
-noto-serif-v21-latin-regular.woff
-noto-serif-v21-latin-regular.woff2
+noto-serif-v33-latin-700.woff2
+noto-serif-v33-latin-700italic.woff2
+noto-serif-v33-latin-italic.woff2
+noto-serif-v33-latin-regular.woff2
 
 /* Open Sans */
-open-sans-v29-latin-300.woff
-open-sans-v29-latin-300.woff2
-open-sans-v29-latin-300italic.woff
-open-sans-v29-latin-300italic.woff2
-open-sans-v29-latin-600.woff
-open-sans-v29-latin-600.woff2
-open-sans-v29-latin-600italic.woff
-open-sans-v29-latin-600italic.woff2
-open-sans-v29-latin-italic.woff
-open-sans-v29-latin-italic.woff2
-open-sans-v29-latin-regular.woff
-open-sans-v29-latin-regular.woff2
+open-sans-v44-latin-300.woff2
+open-sans-v44-latin-300italic.woff2
+open-sans-v44-latin-600.woff2
+open-sans-v44-latin-600italic.woff2
+open-sans-v44-latin-italic.woff2
+open-sans-v44-latin-regular.woff2
 ----
 ====
 
-. Einen Ordner `css/` und eine Stylesheet-Datei `fonts.css` für die kopierten CSS-Angaben der Font-Beschreibung anlegen:
+. Einen Ordner `css/` und eine Stylesheet-Datei `fonts.css` für die kopierten
+  CSS-Angaben der Font-Beschreibung anlegen:
 +
 .Inhalt der fonts.css:
 [%collapsible]
 ====
 [source,css]
 ----
-/* open-sans-300 - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 300;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-300.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-300.woff') format('woff');
-  }
-
-/* open-sans-regular - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-regular.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-regular.woff') format('woff');
-}
-
-/* open-sans-600 - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 600;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-600.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-600.woff') format('woff');
-}
-
-/* open-sans-300italic - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 300;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-300italic.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-300italic.woff') format('woff');
-}
-
-/* open-sans-italic - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-italic.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-italic.woff') format('woff');
-}
-
-/* open-sans-600italic - latin */
-@font-face {
-    font-family: 'Open Sans';
-    font-style: italic;
-    font-weight: 600;
-    src: local(''),
-        url('fonts/open-sans-v29-latin-600italic.woff2') format('woff2'),
-        url('fonts/open-sans-v29-latin-600italic.woff') format('woff');
-}
-
-/* noto-serif-regular - latin */
-@font-face {
-    font-family: 'Noto Serif';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/noto-serif-v21-latin-regular.woff2') format('woff2'),
-        url('fonts/noto-serif-v21-latin-regular.woff') format('woff');
-}
-
-/* noto-serif-italic - latin */
-@font-face {
-    font-family: 'Noto Serif';
-    font-style: italic;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/noto-serif-v21-latin-italic.woff2') format('woff2'),
-        url('fonts/noto-serif-v21-latin-italic.woff') format('woff');
-}
-
-/* noto-serif-700 - latin */
-@font-face {
-    font-family: 'Noto Serif';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''),
-        url('fonts/noto-serif-v21-latin-700.woff2') format('woff2'),
-        url('fonts/noto-serif-v21-latin-700.woff') format('woff');
-}
-
-/* noto-serif-700italic - latin */
-@font-face {
-    font-family: 'Noto Serif';
-    font-style: italic;
-    font-weight: 700;
-    src: local(''),
-        url('fonts/noto-serif-v21-latin-700italic.woff2') format('woff2'),
-        url('fonts/noto-serif-v21-latin-700italic.woff') format('woff');
-}
-
-/* noto-sans-mono-regular - latin */
-@font-face {
-    font-family: 'Noto Sans Mono';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/noto-sans-mono-v20-latin-regular.woff2') format('woff2'),
-        url('fonts/noto-sans-mono-v20-latin-regular.woff') format('woff');
-}
-
-/* noto-sans-mono-700 - latin */
-@font-face {
-    font-family: 'Noto Sans Mono';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''),
-        url('fonts/noto-sans-mono-v20-latin-700.woff2') format('woff2'),
-        url('fonts/noto-sans-mono-v20-latin-700.woff') format('woff');
-}
-
-/* replace: droid-sans-mono-regular - latin */
-@font-face {
-    font-family: 'Droid Sans Mono';
-    font-style: normal;
-    font-weight: 400;
-    src: local(''),
-        url('fonts/noto-sans-mono-v20-latin-regular.woff2') format('woff2'),
-        url('fonts/noto-sans-mono-v20-latin-regular.woff') format('woff');
-}
-
-/* replace: droid-sans-mono-700 - latin */
-@font-face {
-    font-family: 'Droid Sans Mono';
-    font-style: normal;
-    font-weight: 700;
-    src: local(''),
-        url('fonts/noto-sans-mono-v20-latin-700.woff2') format('woff2'),
-        url('fonts/noto-sans-mono-v20-latin-700.woff') format('woff');
-}
+include::../css/fonts.css[]
 ----
 ====
 +
-NOTE: Das Standardthema verwendet die nicht mehr als Download verfügbare `Droid Sans Mono`, weswegen sie mit der `Noto Sans Mono` ersetzt wurde.
+NOTE: Das Standardthema verwendet die nicht mehr als Download verfügbare `Droid
+Sans Mono`, weswegen sie mit der `Noto Sans Mono` ersetzt wurde.
 
-. Einen Ordner `fonts/` für die Schriftarten im Ordner `css/` anlegen und die geladenen Google Fonts entpacken und hineinkopieren.
+. Einen Ordner `fonts/` für die Schriftarten im Ordner `css/` anlegen und die
+  geladenen Google Fonts entpacken und hineinkopieren.
 
 Im Projekt müsste es jetzt folgende neue Struktur geben:
 
+[source,txt]
 ----
 documentation-x/
 ├── ...
 ├── css/
 │   ├── fonts/
-│   │   └── ... (woff und woff2 Dateien)
+│   │   └── ... (woff2 Dateien)
 │   └── fonts.css
 ├── ...
 ├── docinfo.html
@@ -258,9 +132,14 @@ documentation-x/
 
 === Wie kann ich die Beschriftungen für Elemente wie Tabellen, Abbildungen, etc. anpassen?
 
-In der Asciidoctor-Dokumentation findet man unter https://asciidoctor.org/docs/user-manual/#language-support[Using Asciidoctor with Other Languages] Attribute und Möglichkeiten für das Anpassen und Übersetzen von Beschriftungen.
+:url-04: https://docs.asciidoctor.org/asciidoctor/latest/localization-support/#customizing-labels
+:url-04-text: Localization Support: Translating built-in labels
 
-Folgend ein paar ausgewählte Dokument-Attribute, die die standardmäßig in englisch vorgegebene Beschriftung umbenennen:
+In der Asciidoctor-Dokumentation findet man unter {url-04}[{url-04-text}]
+Attribute und Möglichkeiten für das Anpassen und Übersetzen von Beschriftungen.
+
+Folgend ein paar ausgewählte Dokument-Attribute, die die standardmäßig in
+englisch vorgegebene Beschriftung umbenennen:
 
 [source,asciidoc]
 ----
@@ -269,11 +148,16 @@ Folgend ein paar ausgewählte Dokument-Attribute, die die standardmäßig in eng
 :figure-caption: Abbildung
 ----
 
-Alternativ lassen sich diese auch sprachabhängig oder angepasst aus dem Asciidoctor Projekt übernehmen:
+Alternativ lassen sich diese auch sprachabhängig oder angepasst aus dem
+Asciidoctor Projekt übernehmen:
 
-1. Im Dokumentenverzeichnis wird ein Ordner _locale_ angelegt.
-2. In dieses Verzeichnis werden aus dem https://github.com/asciidoctor/asciidoctor/tree/master/data/locale[Asciidoctor-Repository] die Dateien _attributes.adoc_ und _attributes-de.adoc_ kopiert.
-3. Dokument-Attribute wir folgt ergänzen:
+:url-05: https://github.com/asciidoctor/asciidoctor/tree/master/data/locale
+:url-05-text: Asciidoctor-Repository
+
+. Im Dokumentenverzeichnis wird ein Ordner _locale_ angelegt.
+. In dieses Verzeichnis werden aus dem {url-05}[{url-05-text}] die Dateien
+  _attributes.adoc_ und _attributes-de.adoc_ kopiert.
+. Dokument-Attribute wir folgt ergänzen:
 +
 [source,asciidoc]
 ----
@@ -283,20 +167,32 @@ Alternativ lassen sich diese auch sprachabhängig oder angepasst aus dem Asciido
 
 === Wie kann ich einen Teil einer Quelltextdatei einbinden?
 
-Mit dem Attribut `lines` wird beim `include` die Anfangs- und Endzeile getrennt durch `..` des einzubindenden Abschnittes festgelegt. Es ist auch möglich mehrere Abschnitte aus einer Datei mit `lines=2..4;8..12` festzulegen. Eine Angabe von `-1` für die Endzeile bedeutet bis zur letzten Zeile.
+Mit dem Attribut `lines` wird beim `include` die Anfangs- und Endzeile getrennt
+durch `..` des einzubindenden Abschnittes festgelegt. Es ist auch möglich
+mehrere Abschnitte aus einer Datei mit `lines=2..4;8..12` festzulegen. Eine
+Angabe von `-1` für die Endzeile bedeutet bis zur letzten Zeile.
 
 .Syntax
+[source,asciidoc]
 -----
 .Ergebnis
 [source,c]
 ----
-include::src/code.c[lines=5..8] <1>
+\include::src/code.c[lines=5..8] <1>
 ----
 -----
 <1> Es werden die Zeilen 5 bis 8 inkludiert.
 
-Weitere Hinweise und Varianten (bspw. Tags) findet man im offiziellen https://asciidoctor.org/docs/user-manual/#include-partial[User Manual: Select Portions of a Document to Include].
+:url-06: https://docs.asciidoctor.org/asciidoc/latest/directives/include-lines/
+:url-06-text: Include Content by Line Ranges
 
+:url-07: https://docs.asciidoctor.org/asciidoc/latest/directives/include-tagged-regions/
+:url-07-text: Include Content by Tagged Regions
+
+Weitere Hinweise und Varianten (bspw. Tags) findet man in der offiziellen Asciidoctor-Dokumentation unter:
+
+* {url-06}[{url-06-text}]
+* {url-07}[{url-07-text}]
 
 === Wie kann ich einen ausklappbaren Block erstellen?
 
@@ -313,7 +209,9 @@ Weitere Hinweise und Varianten (bspw. Tags) findet man im offiziellen https://as
 ====
 -----
 <1> Titel des aufklappbaren Blockes
-<2> Das Makro `[%collapsible]` erzeugt im generierten HTML Dokument einen aufklappbarer Block mit allem, was sich zwischen den Blockbegrenzungen `====` befindet.
+<2> Das Makro `[%collapsible]` erzeugt im generierten HTML Dokument einen
+    aufklappbarer Block mit allem, was sich zwischen den Blockbegrenzungen
+    `====` befindet.
 
 .Ergebnis (Klick mich)
 [%collapsible]
@@ -333,32 +231,44 @@ int main(int argc, char* argv[])
 
 === Wie kann ich Bilder und Diagramm besser einbinden?
 
-Um Schreibfehler beim mehrfachen Verwenden der Angaben eines Bildes bei der Einbindung im Dokument zu vermeiden, ist es sinnvoll, diese vorab als https://asciidoctor.org/docs/user-manual/#attributes[Attribute] zu definieren. Attribute können für jedes weitere Bild wieder neu gesetzt werden.
+:url-08: https://docs.asciidoctor.org/asciidoc/latest/attributes/attribute-entries/
+:url-08-text: Attribute Entries
+
+Um Schreibfehler beim mehrfachen Verwenden der Angaben eines Bildes bei der
+Einbindung im Dokument zu vermeiden, ist es sinnvoll, diese vorab als
+{url-08}[{url-08-text}] zu definieren. Attribute können für jedes weitere Bild
+wieder neu gesetzt werden.
 
 .Einbindung eines Bildes
 [%collapsible]
 ====
 =====
+:url-09: https://docs.asciidoctor.org/asciidoc/latest/macros/images/#block-image-macro
+:url-09-text: Blocksyntax
+
 [source,asciidoc]
 ----
-:imageTitle: Ich bin ein Bildtitel <1>
-:imageFile: image-file.jpg <2>
-:imageWidth: 800 <3>
-image::{imageFile}[title="{imageTitle}", alt="{imageTitle}", width={imageWidth}] <5> <6>
+:image-title: Ich bin ein Bildtitel <1>
+:image-file: image-file.jpg <2>
+:image-width: 800 <3>
+image::{image-file}[title="{image-title}", alt="{image-title}", width={image-width}] <5> <6>
 ----
+
 [source,asciidoc]
 ----
-:imageTitle: Ich bin ein Bildtitel <1>
-:imageFile: image-file.jpg <2>
-:imageWidth: 800 <3>
-:imageID: id01 <4>
-image::{imageFile}[title="{imageTitle}", alt="{imageTitle}", id="{imageID}", width={imageWidth}] <5> <6>
+:image-title: Ich bin ein Bildtitel <1>
+:image-file: image-file.jpg <2>
+:image-width: 800 <3>
+:image-id: id01 <4>
+image::{image-file}[title="{image-title}", alt="{image-title}", id="{image-id}", width={image-width}] <5> <6>
 ----
-<1> Attribut für den Bildtitel und Alternativtext. Unterscheiden sie sich, kann ein `:imageAlt: dafür verwendet werden`.
+<1> Attribut für den Bildtitel und Alternativtext. Unterscheiden sie sich, kann
+    ein `:imageAlt: dafür verwendet werden`.
 <2> Attribut für den Dateinamen mit Dateiendung
 <3> (optional) Angabe der Bildbreite
-<4> (optional) Vergabe einer ID, welche im Dokument als Sprungmarke verwendet wird. Alternativ geht auch ein `[#id01]` ohne dem `id="{imageID}"` Attribut.
-<5> Einbindung des Bildes (https://asciidoctor.org/docs/user-manual/#images[Blocksyntax]) mit Hilfe der Attribute.
+<4> (optional) Vergabe einer ID, welche im Dokument als Sprungmarke verwendet
+    wird. Alternativ geht auch ein `[#id01]` ohne dem `id="{image-id}"` Attribut.
+<5> Einbindung des Bildes ({url-09}[{url-09-text}]) mit Hilfe der Attribute.
 <6> Weitere optionale Attribute: +
 * `width=` ... gibt die Ausgabebreite des Bildes an
 * `link=` ... Link auf sich selbst oder ein anderes Ziel
@@ -370,38 +280,50 @@ image::{imageFile}[title="{imageTitle}", alt="{imageTitle}", id="{imageID}", wid
 [%collapsible]
 ====
 =====
+:url-10: https://docs.asciidoctor.org/diagram-extension/latest/
+:url-10-text: Asciidoctor Diagram
+
 [source,asciidoc]
 ----
-:diagramTitle: Asciidoctor mit PlantUML <1>
-:diagramFile: asciidoctor-with-plantuml <2>
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"] <5>
+:diagram-title: Asciidoctor mit PlantUML <1>
+:diagram-file: asciidoctor-with-plantuml <2>
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"] <5>
 ----
+
 [source,asciidoc]
 ----
-:diagramTitle: Asciidoctor mit PlantUML <1>
-:diagramFile: asciidoctor-with-plantuml <2>
-:diagramWidth: 800 <3>
-:diagramID: id02 <4>
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", id="{diagramID}", format="svg", target="{diagramsdir}/{diagramFile}", width=800, link="{imagesdir}/{diagramsdir}/{diagramFile}.svg", subs=attributes+] <5> <6>
+:diagram-title: Asciidoctor mit PlantUML <1>
+:diagram-file: asciidoctor-with-plantuml <2>
+:diagram-width: 800 <3>
+:diagram-id: id02 <4>
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", id="{diagram-id}", format="svg", target="{diagramsdir}/{diagram-file}", width=800, link="{imagesdir}/{diagramsdir}/{diagram-file}.svg", subs=attributes+] <5> <6>
 ----
-<1> Attribut für den Diagrammtitel und Alternativtext. Unterscheiden sie sich, kann ein `:diagramAlt: dafür verwendet werden`.
-<2> Attribut für den Dateinamen ohne Dateiendung, da der Dateiname als Name für die generierte Datei genommen wird. So wird aus `diagram.puml` eine `diagram.svg` Datei.
+<1> Attribut für den Diagrammtitel und Alternativtext. Unterscheiden sie sich,
+    kann ein `:diagramAlt: dafür verwendet werden`.
+<2> Attribut für den Dateinamen ohne Dateiendung, da der Dateiname als Name für
+    die generierte Datei genommen wird. So wird aus `diagram.puml` eine
+    `diagram.svg` Datei.
 <3> (optional) Angabe der Bildbreite
-<4> (optional) Vergabe einer ID, welche im Dokument als Sprungmarke verwendet wird. Alternativ geht auch ein `[#id02]` ohne dem `id="{imageID}"` Attribut.
-<5> Einbindung des Diagrammes (https://docs.asciidoctor.org/diagram-extension/latest/[Asciidoctor Diagram]) mit Hilfe der Attribute. +
+<4> (optional) Vergabe einer ID, welche im Dokument als Sprungmarke verwendet
+    wird. Alternativ geht auch ein `[#id02]` ohne dem `id="{image-id}"` Attribut.
+<5> Einbindung des Diagrammes ({url-10}[{url-10-text}]) mit Hilfe der Attribute. +
 * `format=` ... Zielformat des generierten Diagramms
-* `target=` ... Zielordner, in welchem das generierte Diagramm abgelegt wird. Ist ein globales `:imagesdir:` gesetzt, befindet der Zielordner darin.
+* `target=` ... Zielordner, in welchem das generierte Diagramm abgelegt wird.
+  Ist ein globales `:imagesdir:` gesetzt, befindet der Zielordner darin.
 <6> Weitere optionale Attribute: +
 * `width=` ... gibt die Ausgabebreite des Diagramms an
 * `link=` ... Link auf sich selbst oder ein anderes Ziel
-* `subs=attributes+` ... Attribute des Asciidoctor-Dokumentes werden an das PlantUML-Diagramm durchgereicht
+* `subs=attributes+` ... Attribute des Asciidoctor-Dokumentes werden an das
+  PlantUML-Diagramm durchgereicht
 =====
 ====
 
 
 === Wie verwende ich Silbentrennung im PDF Export?
 
-Damit Silbentrennung in den exportierten PDF-Dokumenten angewendet wird, muss das RubyGem *text-hyphen* installiert und zwei Dokumentenattribute vorhanden sein.
+Damit Silbentrennung in den exportierten PDF-Dokumenten angewendet wird, muss
+das RubyGem *text-hyphen* installiert und zwei Dokumentenattribute vorhanden
+sein.
 
 . Vorbereitung:
 +
@@ -418,11 +340,14 @@ $ gem install text-hyphen
 :hyphens:
 ----
 
-Die generierten PDF-Dokumente enthalten jetzt eine Silbentrennung, was gerade für Texte in Tabellen sinnvoll ist.
+Die generierten PDF-Dokumente enthalten jetzt eine Silbentrennung, was gerade
+für Texte in Tabellen sinnvoll ist.
 
 
 === Wie kann ich mehrere Bilder nebeneinander ausgeben?
-Am einfachsten kann man Bilder nebeneinander als *inline-Makro* (Variante 1) ausgeben:
+
+Am einfachsten kann man Bilder nebeneinander als *inline-Makro* (Variante 1)
+ausgeben:
 
 .Variante 1: Bilder ohne Titel als inline-Bilder (HTML, PDF)
 [%collapsible]
@@ -443,13 +368,15 @@ image:test.jpg[test, width=200]
 =====
 ====
 
-Möchte man zusätzlich die Abbildungsbezeichnung mit ausgeben, wofür das *block-Makro* verwendet wird, wären mögliche Lösungen die Varianten 2 und 3:
+Möchte man zusätzlich die Abbildungsbezeichnung mit ausgeben, wofür das
+*block-Makro* verwendet wird, wären mögliche Lösungen die Varianten 2 und 3:
 
 .Variante 2: Bilder mit Titel und Textposition mit float (left/right), nur für HTML
 [%collapsible]
 ====
 =====
-NOTE: Diese Variante funktioniert nur für die Generierung von HTML-Dokumenten. In PDFs werden Sie untereinander angeordnet.
+NOTE: Diese Variante funktioniert nur für die Generierung von HTML-Dokumenten.
+In PDFs werden Sie untereinander angeordnet.
 
 .Code:
 [source,asciidoc]
@@ -519,7 +446,14 @@ image::test.jpg[test, width=200]
 
 === Wie kann ich eigene HTML-/CSS-formatierte Inhalte einbinden?
 
-Eigene Stylesheets und HTML-Codes können über ein https://asciidoctor.org/docs/user-manual/#docinfo-file[Docinfo File] und https://asciidoctor.org/docs/user-manual/#pass-blocks[Passthrough Blocks] in das Asciidoc-Document aufgenommen.
+:url-11: https://docs.asciidoctor.org/asciidoc/latest/docinfo/
+:url-11-text: Docinfo Files
+
+:url-12: https://docs.asciidoctor.org/asciidoc/latest/pass/pass-block/
+:url-12-text: Passthrough Blocks
+
+Eigene Stylesheets und HTML-Codes können über ein {url-11}[{url-11-text}] und
+{url-12}[{url-12-text}] in das Asciidoc-Document aufgenommen.
 
 [%collapsible]
 ====
@@ -548,14 +482,20 @@ Eigene Stylesheets und HTML-Codes können über ein https://asciidoctor.org/docs
 =====
 ====
 
-Ein Beispiel ist in meinem https://tigion.github.io/htw-playground-asciidoc/#_html[Asciidoctor-Playground auf GitHub] zu finden.
+:url-13: https://tigion.github.io/htw-playground-asciidoc/#_html
+:url-13-text: Asciidoctor-Playground auf GitHub
+
+Ein Beispiel ist in meinem {url-13}[{url-13-text}] zu finden.
 
 
 == icon:comments-o[] Git
 
 === Was ist bei mehreren GitHub-Accounts zu beachten?
 
-Damit das System bei zwischengespeicherten Logindaten (Passwortmanager, Schlüsselbund, Cache, ...) den richtigen Username und das passende Passwort verwendet, muss in der Remote-URL zusätzlich der _Username_ des gewünschten GitHub-Accounts mit angegeben werden.
+Damit das System bei zwischengespeicherten Logindaten (Passwortmanager,
+Schlüsselbund, Cache, ...) den richtigen Username und das passende Passwort
+verwendet, muss in der Remote-URL zusätzlich der _Username_ des gewünschten
+GitHub-Accounts mit angegeben werden.
 
 Direkt beim Clonen des Repositories:
 
@@ -566,7 +506,8 @@ $ git clone https://<USERNAME>@github.com/username/repository.git
 
 Oder nachträglich in der Konfiguration:
 
-* Das Kommando `git remote set-url` ändert die vorhandene Remote-URL eines Repositories:
+* Das Kommando `git remote set-url` ändert die vorhandene Remote-URL eines
+  Repositories:
 +
 [source,console]
 ----
@@ -584,31 +525,35 @@ $ git remote set-url origin https://<USERNAME>@github.com/username/repository.gi
 $ git config remote.origin.url
 github.com/username/repository.git
 
-$ git config remote.origin.url <USERNAME>@github.com/username/repository.git
+$ git config remote.origin.url https://<USERNAME>@github.com/username/repository.git
 ----
 
 === Was ist bei mehreren Git-Identitäten zu beachten?
-Alle Repositories verwenden standardmäßig die in der globalen Konfiguration mit `git config --global` angegebene Identität (_user.name_, _user.email_).
 
-[source,console]
+Alle Repositories verwenden standardmäßig die in der globalen Konfiguration mit
+`git config --global` angegebene Identität (_user.name_, _user.email_).
+
+[source,sh]
 ----
-$ git config --global user.name "Vorname Nachname"
-$ git config --global user.email mail@example.org
+git config --global user.name "Vorname Nachname"
+git config --global user.email mail@example.org
 ----
 
-Möchte man in verschiedenen lokalen Repositories mit jeweils anderen Git-Identitäten arbeiten, hat man folgende Möglichkeiten:
+Möchte man in verschiedenen lokalen Repositories mit jeweils anderen
+Git-Identitäten arbeiten, hat man folgende Möglichkeiten:
 
 .Variante 1 - Identität je Repository setzen
 [%collapsible]
 ====
 =====
-Angaben der globalen Konfiguration können innerhalb jedes Repositories in einer lokalen Konfiguration überschrieben werden:
+Angaben der globalen Konfiguration können innerhalb jedes Repositories in einer
+lokalen Konfiguration überschrieben werden:
 
-[source,console]
+[source,sh]
 ----
-$ cd ~/Git/Studium/Projekt-Repository
-$ git config user.name "Vorname Nachname"
-$ git config user.email mail@example.org
+cd ~/Git/Studium/Projekt-Repository
+git config user.name "Vorname Nachname"
+git config user.email mail@example.org
 ----
 =====
 ====
@@ -617,10 +562,15 @@ $ git config user.email mail@example.org
 [%collapsible]
 ====
 =====
-Mit https://git-scm.com/docs/git-config#_conditional_includes[Conditional includes] können Konfiguration bspw. abhängig vom Verzeichnis/Pfad gesetzt werden.
+:url-14: https://git-scm.com/docs/git-config#_conditional_includes
+:url-14-text: Conditional includes
+
+Mit {url-14}[{url-14-text}] können Konfiguration bspw. abhängig vom
+Verzeichnis/Pfad gesetzt werden.
 
 private Identität::
-Globale Konfiguration _~/.gitconfig_ für alle Repositories mit *privater* Identität (+privat@example.org+):
+Globale Konfiguration _~/.gitconfig_ für alle Repositories mit *privater*
+Identität (+privat@example.org+):
 +
 .~/.gitconfig
 [source,gitconfig]
@@ -631,12 +581,16 @@ Globale Konfiguration _~/.gitconfig_ für alle Repositories mit *privater* Ident
 [includeIf "gitdir:~/Git/Studium/"] <1>
     path = "~/.gitconfig_studium" <2>
 ----
-<1> Include ist bedingungsabhängig: _Gilt nur Innerhalb des angegebenen Verzeichnisses_
-<2> Pfad zur speziellen Konfiguration. Wird nur geladen, wenn Bedingung erfüllt ist.
+<1> Include ist bedingungsabhängig: _Gilt nur Innerhalb des angegebenen
+    Verzeichnisses_
+<2> Pfad zur speziellen Konfiguration. Wird nur geladen, wenn Bedingung erfüllt
+    ist.
 
 
 studentische Identität::
-Spezielle Konfiguration _~/.gitconfig_studium_ für alle Repositories unterhalb des Verzeichnisses _~/Git/Studium/_ mit *studentischer* Identität (+studium@example.org+):
+Spezielle Konfiguration _~/.gitconfig_studium_ für alle Repositories unterhalb
+des Verzeichnisses _~/Git/Studium/_ mit *studentischer* Identität
+(+studium@example.org+):
 +
 .~/.gitconfig_studium
 [source,gitconfig]
@@ -667,36 +621,59 @@ studium@example.org
 
 === Warum erscheint beim erzeugen eines PDFs die Fehlermeldung "PNG uses unsupported interlace method"?
 
-Es gibt im Dokument Bilder, welche mit einem nicht unterstützten https://de.wikipedia.org/wiki/Interlacing_(Grafiken)[Interlacing]-Format erstellt wurden. Dies kann beim Erstellen von PDF-Dokumenten aus Asciidoctor heraus zu obigem Fehler und dem Nichteinfügen führen.
+:url-15: https://de.wikipedia.org/wiki/Interlacing_(Grafiken)
+:url-15-text: Interlacing
+
+Es gibt im Dokument Bilder, welche mit einem nicht unterstützten
+{url-15}[{url-15-text}]-Format erstellt wurden. Dies kann beim Erstellen von
+PDF-Dokumenten aus Asciidoctor heraus zu obigem Fehler und dem Nichteinfügen
+führen.
 
 .Fehlermeldung:
 [source,console]
 ----
-% asciidoctor-pdf documentation.adoc
+$ asciidoctor-pdf documentation.adoc
 asciidoctor: WARNING: could not embed image: /.../example.png; PNG uses unsupported interlace method; install prawn-gmagick gem to add support
 ----
 
 ==== Lösungsvariante 1
-Öffnen Sie die betreffenden Bilder in einem Bildbearbeitungsprogramm ihrer Wahl und speichern Sie diese erneut als PNG-Datei ab. (Falls vorhanden, im Speichern-/Exportieren-Dialog ggf. entsprechende Interlacing-Einstellungen beachten.)
+
+Öffnen Sie die betreffenden Bilder in einem Bildbearbeitungsprogramm ihrer Wahl
+und speichern Sie diese erneut als PNG-Datei ab. (Falls vorhanden, im
+Speichern-/Exportieren-Dialog ggf. entsprechende Interlacing-Einstellungen
+beachten.)
 
 ==== Lösungsvariante 2
-Installieren Sie, wie in der obigen Fehlermeldung erwähnt, noch zusätzlich das RubyGem prawn-gmagick:
 
-[source,console]
+Installieren Sie, wie in der obigen Fehlermeldung erwähnt, noch zusätzlich das
+RubyGem prawn-gmagick:
+
+[source,sh]
 ----
-% gem install prawn-gmagick
+gem install prawn-gmagick
 ----
 
 === Warum funktioniert in Visual Studio Code die Anzeige von Bildern in der Vorschau eines AsciiDoc-Dokumentes nicht?
 
-Grund könnte ein Fehler in der aktuellen https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode[AsciiDoc] Extension (2.8.3, 2.8.4) von VS Code sein. Hier hilft es die Bilder direkt als data url in das HTML-Dokument für die Vorschau generieren zu lassen.
+:url-16: https://marketplace.visualstudio.com/items?itemName=asciidoctor.asciidoctor-vscode
+:url-16-text: AsciiDoc
 
-Das kann in den Einstellungen von VS Code unter: "Preferences > Extensions > Asciidoc" -> Asciidoc: *Preview Attributes* -> [underline]#Edit in settings.json# angepasst werden. Hier wird ein `"data-uri": ""` in den  `"asciidoc.preview.attributes": {}` Bereich eingefügt:
+Grund könnte ein Fehler in der aktuellen {url-16}[{url-16-text}] Extension
+(2.8.3, 2.8.4) von VS Code sein. Hier hilft es die Bilder direkt als data url
+in das HTML-Dokument für die Vorschau generieren zu lassen.
 
+Das kann in den Einstellungen von VS Code unter: "Preferences > Extensions
+> Asciidoc" -> Asciidoc: *Preview Attributes* -> [underline]#Edit in
+settings.json# angepasst werden. Hier wird ein `"data-uri": ""` in den
+`"asciidoc.preview.attributes": {}` Bereich eingefügt:
+
+[source,json]
 ----
 "asciidoc.preview.attributes": {
     "data-uri": ""
 },
 ----
 
-Der Bugfix hat keine Auswirkung auf das Generieren der Dokumente mit den `asciidoctor` Kommandos im Terminal, sondern bezieht sich nur auf die Vorschau in VS Code.
+Der Bugfix hat keine Auswirkung auf das Generieren der Dokumente mit den
+`asciidoctor` Kommandos im Terminal, sondern bezieht sich nur auf die Vorschau
+in VS Code.
