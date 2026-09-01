@@ -73,7 +73,7 @@ gehosteten Google Fonts:
   Google Fonts müssen über die Webseite {url-03}[{url-03-text}] identifiziert
   und geladen werden.
 +
-.Liste der identifizierte Dateien mit Schriftarten und Stile:
+.Liste der identifizierten Dateien mit Schriftarten und Stilen:
 [%collapsible]
 ====
 ----
@@ -157,7 +157,7 @@ Asciidoctor Projekt übernehmen:
 . Im Dokumentenverzeichnis wird ein Ordner _locale_ angelegt.
 . In dieses Verzeichnis werden aus dem {url-05}[{url-05-text}] die Dateien
   _attributes.adoc_ und _attributes-de.adoc_ kopiert.
-. Dokument-Attribute wir folgt ergänzen:
+. Dokument-Attribute wie folgt ergänzen:
 +
 [source,asciidoc]
 ----
@@ -174,13 +174,13 @@ Angabe von `-1` für die Endzeile bedeutet bis zur letzten Zeile.
 
 .Syntax
 [source,asciidoc]
------
+....
 .Ergebnis
 [source,c]
 ----
-\include::src/code.c[lines=5..8] <1>
+include::src/code.c[lines=5..8] <1>
 ----
------
+....
 <1> Es werden die Zeilen 5 bis 8 inkludiert.
 
 :url-06: https://docs.asciidoctor.org/asciidoc/latest/directives/include-lines/
@@ -198,7 +198,7 @@ Weitere Hinweise und Varianten (bspw. Tags) findet man in der offiziellen Asciid
 
 .Syntax mit aufklappbarem Block
 [source,asciidoc]
------
+....
 .Ergebnis <1>
 [%collapsible] <2>
 ====
@@ -207,10 +207,10 @@ Weitere Hinweise und Varianten (bspw. Tags) findet man in der offiziellen Asciid
 \include::src/code.c[lines=11..12]
 ----
 ====
------
+....
 <1> Titel des aufklappbaren Blockes
 <2> Das Makro `[%collapsible]` erzeugt im generierten HTML Dokument einen
-    aufklappbarer Block mit allem, was sich zwischen den Blockbegrenzungen
+    aufklappbaren Block mit allem, was sich zwischen den Blockbegrenzungen
     `====` befindet.
 
 .Ergebnis (Klick mich)
@@ -368,8 +368,9 @@ image:test.jpg[test, width=200]
 =====
 ====
 
-Möchte man zusätzlich die Abbildungsbezeichnung mit ausgeben, wofür das
-*block-Makro* verwendet wird, wären mögliche Lösungen die Varianten 2 und 3:
+Möchte man zusätzlich die Abbildungsbezeichnung ausgeben, für die das
+*block-Makro* verwendet wird, bieten sich die Varianten 2 und 3 als mögliche
+Lösungen an:
 
 .Variante 2: Bilder mit Titel und Textposition mit float (left/right), nur für HTML
 [%collapsible]
@@ -453,7 +454,7 @@ image::test.jpg[test, width=200]
 :url-12-text: Passthrough Blocks
 
 Eigene Stylesheets und HTML-Codes können über ein {url-11}[{url-11-text}] und
-{url-12}[{url-12-text}] in das Asciidoc-Document aufgenommen.
+{url-12}[{url-12-text}] in das Asciidoc-Document aufgenommen werden.
 
 [%collapsible]
 ====
@@ -499,9 +500,9 @@ GitHub-Accounts mit angegeben werden.
 
 Direkt beim Clonen des Repositories:
 
-[source,console]
+[source,sh]
 ----
-$ git clone https://<USERNAME>@github.com/username/repository.git
+git clone https://<USERNAME>@github.com/username/repository.git
 ----
 
 Oder nachträglich in der Konfiguration:
@@ -565,7 +566,7 @@ git config user.email mail@example.org
 :url-14: https://git-scm.com/docs/git-config#_conditional_includes
 :url-14-text: Conditional includes
 
-Mit {url-14}[{url-14-text}] können Konfiguration bspw. abhängig vom
+Mit {url-14}[{url-14-text}] können Konfigurationen bspw. abhängig vom
 Verzeichnis/Pfad gesetzt werden.
 
 private Identität::
