@@ -312,6 +312,8 @@ Macht euch mit Aufgabenlisten vertraut.
 =====
 ====
 
+{section-separator}
+
 ==== Issue Templates
 
 Mit Hilfe von
@@ -323,6 +325,8 @@ Diese Vorlage kann dann beim Erstellen einer Issue ausgewählt werden.
 - Repository-Einstellungen -> General -> Features -> Issues -> kbd:[Set up templates]
 - Die Templates werden unter dem Verzeichnis `.github/ISSUE_TEMPLATE/` im
   Repository gespeichert und mit versioniert.
+
+{section-separator}
 
 ==== Issues Filters
 
@@ -389,6 +393,8 @@ speichern. Für das obere Beispiel würde die URL am Ende wie folgt aussehen: +
 ======
 =====
 ====
+
+{section-separator}
 
 ==== GitHub Project Filter
 

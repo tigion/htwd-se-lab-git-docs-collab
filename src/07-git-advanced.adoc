@@ -546,6 +546,8 @@ bestimmten Commits, oder um Änderungen an Dateien zu verwerfen.
 | Änderungen einer Datei verwerfen
 |===
 
+{section-separator}
+
 ==== Detached HEAD
 
 Ein *Detached HEAD* bedeutet, dass HEAD direkt auf einen Commit zeigt, anstatt
