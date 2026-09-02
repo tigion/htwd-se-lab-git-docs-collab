@@ -45,6 +45,22 @@ if [[ ! -d "$source_folder" ]]; then
   exit 1
 fi
 
+# Checks that no HTML file exists next to an AsciiDoc file.
+# Such a file would be copied to the build folder and
+# overwrite the freshly generated HTML file.
+conflicting_html_files=()
+while IFS= read -r adoc_file; do
+  html_file="${adoc_file%.adoc}.html"
+  if [[ -f "${html_file}" ]]; then
+    conflicting_html_files+=("$html_file")
+  fi
+done < <(find "$source_folder" -type f -name "*.adoc" -not -name "*.inc.adoc")
+if ((${#conflicting_html_files[@]} > 0)); then
+  echo "Error: These HTML files conflict with the generated files. Please delete them:"
+  printf '%s\n' "${conflicting_html_files[@]}"
+  exit 1
+fi
+
 # Cleans or creates the build folder.
 printf "Clean '%s' folder: " "$build_folder"
 mkdir -p "$build_folder"
