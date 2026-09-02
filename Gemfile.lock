@@ -13,7 +13,7 @@ GEM
     asciidoctor-diagram-plantuml (1.2026.2)
       asciidoctor-diagram (~> 3.2, >= 3.2.1)
       asciidoctor-diagram-batik (~> 1.17)
-    asciidoctor-pdf (2.3.24)
+    asciidoctor-pdf (2.3.25)
       asciidoctor (~> 2.0)
       concurrent-ruby (~> 1.3)
       matrix (~> 0.4)
@@ -86,7 +86,7 @@ CHECKSUMS
   asciidoctor-diagram (3.2.1) sha256=e432d051f2a627f7846a22b7beb1f6c8bb392f49ee07e2cb73be2611242a6684
   asciidoctor-diagram-batik (1.19) sha256=d16df4143913fd2e167ec83e3bac4fcc4b1e57f575fe44189a7532fa6ffa59ca
   asciidoctor-diagram-plantuml (1.2026.2) sha256=06d30ded2dfab8b1454e29e4ceed919a0de0a896c81e15dd655e4b70b5ca3c2f
-  asciidoctor-pdf (2.3.24) sha256=3076e55132d43b21de93cd7c8149a8c1b2e4afc07e79855fb6b795a0ef20b051
+  asciidoctor-pdf (2.3.25) sha256=84e4b201e317166ac9553a91e57b38cbff4f7321900fe04a2df7e4f5de4af949
   concurrent-ruby (1.3.8) sha256=b2f1be836e968ccc78ccfce277ea79c72a88633f22306782c16ff23fb415d1e1
   css_parser (1.22.0) sha256=f274988a40c6178305530d60e7deb5162f7b5538b701b61b5488fc703e5b40c1
   hashery (2.1.2) sha256=d239cc2310401903f6b79d458c2bbef5bf74c46f3f974ae9c1061fb74a404862
