@@ -9,10 +9,10 @@ wie Sie über Forks Änderungen an öffentlichen Repositories vorschlagen könne
 // The original comic is from the Geek&Poke comic series.
 // Geek&Poke - Dev Cycle (Friday Evening Edition)
 // https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition
-:imageTitle: Development Cycle - Friday Evening Edition
-:imageFile: comic_development-cycle-friday-evening-edition.jpg
-.{imageTitle} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition[Original])]
-image::{imageFile}["{imageTitle}", width=700, alt="{imageTitle}"]
+:image-title: Development Cycle - Friday Evening Edition
+:image-file: comic_development-cycle-friday-evening-edition.jpg
+.{image-title} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2014/2/23/dev-cycle-friday-evening-edition[Original])]
+image::{image-file}["{image-title}", width=700, alt="{image-title}"]
 
 include::learning-goals.inc.adoc[tag=06-code-review]
 
@@ -44,10 +44,10 @@ Pull-/Merge-Request::
     (bspw. _main_-Branch). (In GitHub wird es Pull-Request und in GitLab
     Merge-Request genannt.)
 
-:imageTitle: Pull Request Workflow
-:imageFile: grafik_git_pull-request.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=650, link="{imagesdir}/{imageFile}"]
+:image-title: Pull Request Workflow
+:image-file: grafik_git_pull-request.png
+.{image-title}
+image::{image-file}["{image-title}", width=650, link="{imagesdir}/{image-file}"]
 <1> _feature_-Branch erstellen und bearbeiten
 <2> Pull-Request anfordern
 <3> Code-Review mit Diskussion und ergänzenden Commits
@@ -215,10 +215,10 @@ Pull-Request auch selber zuweisen und bearbeiten.
 Mit Hilfe eines Forks kann einem öffentlichen Repository eine Änderung als
 Pull-/Merge-Request, ähnlich einer Code-Review, vorgeschlagen werden.
 
-:imageTitle: Mehrere von Forks genehmigte Pull Requests
-:imageFile: screenshot_vscode_git-graph_pull-requests.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Mehrere von Forks genehmigte Pull Requests
+:image-file: screenshot_vscode_git-graph_pull-requests.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Fork::
 Eine Fork ist eine Kopie eines existierenden (öffentlichen) Repositories unter
@@ -239,10 +239,10 @@ als Pull-Request im originalen Repository zu hinterlassen.
 . Erstellen Sie auf GitHub von einem öffentlichen Repository über den
   entsprechenden Button kbd:[Fork] einen Fork.
 +
-:imageTitle: Fork-Button auf GitHub
-:imageFile: screenshot_github_fork-button.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Fork-Button auf GitHub
+:image-file: screenshot_github_fork-button.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 . Clonen Sie das in Ihrem Account als Kopie entstandene Repository auf Ihren
   lokalen Rechner.
 . (optional) Erstellen Sie lokal einen neuen Branch, bspw. _patch-fix-XYZ_,
@@ -255,25 +255,25 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
    neueren Commit voraus ist. Klicken Sie hier auf **Contribute** und
    anschließend auf kbd:[Open pull request].
 +
-:imageTitle: Pull-Request erstellen - Schritt 1
-:imageFile: screenshot_github_pull-request_1.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Pull-Request erstellen - Schritt 1
+:image-file: screenshot_github_pull-request_1.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 .. Jetzt sehen Sie, auf welche beide Repositories und Branches sich der
    Pull-Request beziehen soll. Erstellen Sie ihn mit dem kbd:[Create pull
    request]-Button. +
-:imageTitle: Pull-Request erstellen - Schritt 2
-:imageFile: screenshot_github_pull-request_2.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Pull-Request erstellen - Schritt 2
+:image-file: screenshot_github_pull-request_2.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 .. Vergeben Sie eine Beschreibung für Ihren Änderungsvorschlages. Als Standard
    wird die (letzte) Commit-Message übernommen. Zusätzliche Details können in
    dem Kommentarfeld hinterlassen werden.
 +
-:imageTitle: Pull-Request erstellen - Schritt 3
-:imageFile: screenshot_github_pull-request_3.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Pull-Request erstellen - Schritt 3
+:image-file: screenshot_github_pull-request_3.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 +
 Mit dem Button kbd:[Create pull request] wird jetzt Ihre Änderung als
 Pull-Request vorgeschlagen und kann vom originalen Repository-Besitzer
@@ -283,10 +283,10 @@ bearbeitet werden.
 . Kleinere Änderungen, wie bspw. Schreibfehler, können in der Quelldatei direkt
   auf GitHub über die Editieren-Funktion bearbeitet werden.
 +
-:imageTitle: Editieren direkt in GitHub
-:imageFile: screenshot_github_edit-in-fork.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Editieren direkt in GitHub
+:image-file: screenshot_github_edit-in-fork.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 . GitHub stellt fest, dass Sie keine Schreibrechte für das Repository haben und
   legt für Sie einen Fork mit zugehörigem Patch-Branch und Pull-Request an.
 +
@@ -300,10 +300,10 @@ a pull request.
   mit dem Button kbd:[Propose Changes] die Änderung als Pull-Request
   vorgeschlagen werden.
 +
-:imageTitle: Änderungen Vorschlagen nach Bearbeitung direkt auf GitHub
-:imageFile: screenshot_github_propose-changes.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Änderungen Vorschlagen nach Bearbeitung direkt auf GitHub
+:image-file: screenshot_github_propose-changes.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 =====
 ====
 
@@ -315,10 +315,10 @@ image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
 Ihre erstellten Pull-Requests findet Sie in der oberen Leiste neben der Suche
 mit einem Klick auf **Pull requests**:
 
-:imageTitle: Pull-Requests auf GitHub finden
-:imageFile: screenshot_github_pull-request_4.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Pull-Requests auf GitHub finden
+:image-file: screenshot_github_pull-request_4.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 .Bearbeitungsstand
 Klicken Sie in den Suchergebnissen auf den Kommentartitel des betreffenden
@@ -349,10 +349,10 @@ für Ihre vorgeschlagenen Änderungen erstellen.
 Mit *Fetch upstream* gefolgt von einem kbd:[Fetch and merge] kann der Fork auf
 die aktuelle Version des Quellrepository aktualisiert werden.
 
-:imageTitle: Fork aktualisieren
-:imageFile: screenshot_github_fork_keep_up-to-date.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Fork aktualisieren
+:image-file: screenshot_github_fork_keep_up-to-date.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 .Variante: GitHub - Fetch upstream mit Merge-Konflikt #TODO#
 . Falls noch nicht vorhanden den Fork lokal clonen:

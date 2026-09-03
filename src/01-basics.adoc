@@ -6,10 +6,10 @@ include::header.inc.adoc[]
 Im ersten Teil des Praktikums geht es um die Einrichtung und das Kennenlernen
 der Werkzeuge *GitHub*, *Git*, *Visual Studio Code* und *AsciiDoc*.
 
-:imageTitle: Meanwhile, in the Classroom...
-:imageFile: comic_basics.jpg
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=700, title="{imageTitle}"]
+:image-title: Meanwhile, in the Classroom...
+:image-file: comic_basics.jpg
+.{image-title}
+image::{image-file}["{image-title}", width=700, title="{image-title}"]
 
 include::learning-goals.inc.adoc[tag=01-basics]
 
@@ -718,10 +718,10 @@ asciidoctor -r asciidoctor-pdf -b pdf Beispieldokumentation.adoc
 
 Die fertig generierten Dokumente sehen dann wie folgt aus:
 
-:imageTitle: Screenshot Generiertes HTML (links) und PDF (rechts)
-:imageFile: screenshot_html_pdf.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=500]
+:image-title: Screenshot Generiertes HTML (links) und PDF (rechts)
+:image-file: screenshot_html_pdf.png
+.{image-title}
+image::{image-file}["{image-title}", width=500]
 
 .Hinweise zur Nutzung über die *ilux150*
 [%collapsible]

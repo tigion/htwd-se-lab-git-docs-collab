@@ -7,10 +7,10 @@ gemeinsamen Projekt mit Git und GitHub. Dabei werden typische Konflikte bei der
 Zusammenarbeit oder der Verwendung von Branches und deren Lösungsmöglichkeiten
 vorgestellt.
 
-:imageFile: grafik_overview_git_teamarbeit.jpg
-:imageTitle: Zusammenarbeit im Team mit Git
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-file: grafik_overview_git_teamarbeit.jpg
+:image-title: Zusammenarbeit im Team mit Git
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 include::learning-goals.inc.adoc[tag=03-teamwork]
 
@@ -36,17 +36,17 @@ Konflikt zu einem späteren Zeitpunkt gelöst werden oder weitere Änderungen
 vorgenommen werden.
 ====
 
-:imageFile: grafik_git_push_error.png
-:imageTitle: Schritte zum Lösen eines push-Error Konfliktes mit
-:imageTitleCmd: git pull
-.{imageTitle} `{imageTitleCmd}`
-image::{imageFile}["{imageTitle} `{imageTitleCmd}`", width=1024, link="{imagesdir}/{imageFile}"]
+:image-file: grafik_git_push_error.png
+:image-title: Schritte zum Lösen eines push-Error Konfliktes mit
+:image-title-cmd: git pull
+.{image-title} `{image-title-cmd}`
+image::{image-file}["{image-title} `{image-title-cmd}`", width=1024, link="{imagesdir}/{image-file}"]
 
-:imageFile: grafik_git_push_error2.png
-:imageTitle: Schritte zum Lösen eines push-Error Konfliktes
-:imageTitleCmd: git pull --rebase
-.{imageTitle} `{imageTitleCmd}`
-image::{imageFile}["{imageTitle} `{imageTitleCmd}`", width=1024, link="{imagesdir}/{imageFile}"]
+:image-file: grafik_git_push_error2.png
+:image-title: Schritte zum Lösen eines push-Error Konfliktes
+:image-title-cmd: git pull --rebase
+.{image-title} `{image-title-cmd}`
+image::{image-file}["{image-title} `{image-title-cmd}`", width=1024, link="{imagesdir}/{image-file}"]
 
 .Hinweis: push-Error Konflikte lösen
 [%collapsible]
@@ -212,10 +212,10 @@ Schwerwiegend: Es muss angegeben werden, wie mit abweichenden Branches umgegange
 // The original comic is from the Geek&Poke comic series.
 // Geek&Poke - The New Developer
 // https://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html
-:imageTitle: The New Developer
-:imageFile: comic_the-new-developer.jpg
-.{imageTitle} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html[Original])]
-image::{imageFile}["{imageTitle}", width=250, role="right"]
+:image-title: The New Developer
+:image-file: comic_the-new-developer.jpg
+.{image-title} footnote:[Von den Geek&Poke Comics inspiriert. (https://geek-and-poke.com/geekandpoke/2012/4/25/the-new-developer.html[Original])]
+image::{image-file}["{image-title}", width=250, role="right"]
 
 === 1. Einrichtung des Teams
 

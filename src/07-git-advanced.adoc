@@ -5,10 +5,10 @@ include::header.inc.adoc[]
 In den folgenden Aufgaben wird die Änderungs-/Versionsverwaltung von Git
 genauer betrachtet.
 
-:imageTitle: Git-Versionskette
-:imageFile: grafik_git_versions_chain.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Git-Versionskette
+:image-file: grafik_git_versions_chain.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 include::learning-goals.inc.adoc[tag=07-git-advanced]
 
@@ -50,10 +50,10 @@ Terminal unter icon:windows[] Windows::
 Terminal unter icon:linux[] Linux, icon:apple[] macOS::
   Konsole, Terminal.app, kitty, Ghostty ...
 
-:imageTitle: Nothing happened
-:imageFile: comic_git-restore.jpg
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=600, link="{imagesdir}/{imageFile}"]
+:image-title: Nothing happened
+:image-file: comic_git-restore.jpg
+.{image-title}
+image::{image-file}["{image-title}", width=600, link="{imagesdir}/{image-file}"]
 
 {section-separator}
 

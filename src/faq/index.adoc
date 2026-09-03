@@ -263,7 +263,7 @@ image::{image-file}[title="{image-title}", alt="{image-title}", width={image-wid
 image::{image-file}[title="{image-title}", alt="{image-title}", id="{image-id}", width={image-width}] <5> <6>
 ----
 <1> Attribut für den Bildtitel und Alternativtext. Unterscheiden sie sich, kann
-    ein `:imageAlt: dafür verwendet werden`.
+    ein `:image-alt: dafür verwendet werden`.
 <2> Attribut für den Dateinamen mit Dateiendung
 <3> (optional) Angabe der Bildbreite
 <4> (optional) Vergabe einer ID, welche im Dokument als Sprungmarke verwendet
@@ -296,10 +296,10 @@ plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diag
 :diagram-file: asciidoctor-with-plantuml <2>
 :diagram-width: 800 <3>
 :diagram-id: id02 <4>
-plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", id="{diagram-id}", format="svg", target="{diagramsdir}/{diagram-file}", width=800, link="{imagesdir}/{diagramsdir}/{diagram-file}.svg", subs=attributes+] <5> <6>
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", id="{diagram-id}", format="svg", target="{diagramsdir}/{diagram-file}", width={diagram-width}, link="{imagesdir}/{diagramsdir}/{diagram-file}.svg", subs=attributes+] <5> <6>
 ----
 <1> Attribut für den Diagrammtitel und Alternativtext. Unterscheiden sie sich,
-    kann ein `:diagramAlt: dafür verwendet werden`.
+    kann ein `:diagram-alt: dafür verwendet werden`.
 <2> Attribut für den Dateinamen ohne Dateiendung, da der Dateiname als Name für
     die generierte Datei genommen wird. So wird aus `diagram.puml` eine
     `diagram.svg` Datei.

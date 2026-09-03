@@ -6,10 +6,10 @@ Der Aufgabenteil beschäftigt sich mit der Verwendung von Branches
 (Verzweigungen) in Git, um parallel an verschiedenen Projektständen zu
 arbeiten.
 
-:imageTitle: Git-Versionsblütenzweige
-:imageFile: grafik_git_version_blossom_branch_text.jpg
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Git-Versionsblütenzweige
+:image-file: grafik_git_version_blossom_branch_text.jpg
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 include::learning-goals.inc.adoc[tag=02-git-branching]
 

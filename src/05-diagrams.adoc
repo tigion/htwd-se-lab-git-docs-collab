@@ -6,10 +6,10 @@ In diesem Aufgabenteil betrachten wir die Möglichkeit der textbasierten
 Diagrammgenerierung mit Asciidoctor und der textuellen Notation
 http://plantuml.com/de/guide[PlantUML].
 
-:diagramTitle: Asciidoctor mit PlantUML
-:diagramFile: grafik_overview_asciidoctor-with-plantuml
-:diagramWidth: 800
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}", width={diagramWidth}, subs=attributes+]
+:diagram-title: Asciidoctor mit PlantUML
+:diagram-file: grafik_overview_asciidoctor-with-plantuml
+:diagram-width: 800
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}", width={diagram-width}, subs=attributes+]
 
 include::learning-goals.inc.adoc[tag="05-diagrams"]
 
@@ -59,10 +59,10 @@ Weiterführende Informationen zur PlantUML Notation:
 Für die Unterstützung der PlantUML Syntax und der Generierung von Diagrammen
 sind Anpassungen in Visual Studio Code und Git notwendig.
 
-:imageTitle: VS Code mit Diagrammvorschau
-:imageFile: screenshot_vscode_asciidoctor-diagram.png
-:imageWidth: 800
-image::{imageFile}[title="{imageTitle}", alt="{imageTitle}", width="{imageWidth}", link="{imagesdir}/{imageFile}"]
+:image-title: VS Code mit Diagrammvorschau
+:image-file: screenshot_vscode_asciidoctor-diagram.png
+:image-width: 800
+image::{image-file}[title="{image-title}", alt="{image-title}", width="{image-width}", link="{imagesdir}/{image-file}"]
 
 
 ==== Visual Studio Code
@@ -210,10 +210,10 @@ Shape <|.. Square
 Die erfolgreich generierte Grafik <<diagram_syntax-example1>> sieht wie folgt
 aus:
 
-:diagramTitle: Klassendiagramm mit PlantUML
-:diagramFile: syntax-example
+:diagram-title: Klassendiagramm mit PlantUML
+:diagram-file: syntax-example
 [#diagram_syntax-example1]
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 
 ==== Diagramm in extra Datei
@@ -251,9 +251,9 @@ einzubinden.
 .Syntax-Beispiel: Block Macro mit Attributen
 [source,asciidoc]
 ----
-:diagramTitle: Klassendiagramm mit PlantUML
-:diagramFile: syntax-example2
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Klassendiagramm mit PlantUML
+:diagram-file: syntax-example2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 ----
 
 [IMPORTANT]
@@ -283,9 +283,9 @@ plantuml::{plantumlsdir}/diagram-example.puml[format=svg, alt="Diagrammbeispiel"
 .Variante mit Attributen:
 [source,asciidoc]
 ----
-:diagramTitle: Klassendiagramm mit PlantUML
-:diagramFile: syntax-example2
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Klassendiagramm mit PlantUML
+:diagram-file: syntax-example2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 ----
 =====
 ====
@@ -650,9 +650,9 @@ include::{plantumlsdir}/example_c4-model-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Diagramm mit PlantUML
-:diagramFile: example_c4-model-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Diagramm mit PlantUML
+:diagram-file: example_c4-model-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -667,9 +667,9 @@ include::{plantumlsdir}/example_c4-model-context-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Context Diagramm
-:diagramFile: example_c4-model-context-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Context Diagramm
+:diagram-file: example_c4-model-context-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -684,9 +684,9 @@ include::{plantumlsdir}/example_c4-model-container-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Container Diagramm
-:diagramFile: example_c4-model-container-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Container Diagramm
+:diagram-file: example_c4-model-container-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -703,9 +703,9 @@ include::{plantumlsdir}/example_c4-model-component-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Component Diagramm mit PlantUML
-:diagramFile: example_c4-model-component-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Component Diagramm mit PlantUML
+:diagram-file: example_c4-model-component-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -722,9 +722,9 @@ include::{plantumlsdir}/example_c4-model-dynamic-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Dynamic Diagramm mit PlantUML
-:diagramFile: example_c4-model-dynamic-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Dynamic Diagramm mit PlantUML
+:diagram-file: example_c4-model-dynamic-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -741,9 +741,9 @@ include::{plantumlsdir}/example_c4-model-deployment-diagram.puml[]
 ----
 ====
 
-:diagramTitle: C4 Model Deployment Diagramm mit PlantUML
-:diagramFile: example_c4-model-deployment-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: C4 Model Deployment Diagramm mit PlantUML
+:diagram-file: example_c4-model-deployment-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -829,9 +829,9 @@ include::{plantumlsdir}/example_class-diagram2.puml[]
 ----
 ====
 
-:diagramTitle: Domänenmodell als Klassendiagramm
-:diagramFile: example_class-diagram2
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Domänenmodell als Klassendiagramm
+:diagram-file: example_class-diagram2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ._example_class-diagram3.puml_
 [%collapsible]
@@ -842,9 +842,9 @@ include::{plantumlsdir}/example_class-diagram3.puml[]
 ----
 ====
 
-:diagramTitle: Domänenmodell als Klassendiagramm
-:diagramFile: example_class-diagram3
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Domänenmodell als Klassendiagramm
+:diagram-file: example_class-diagram3
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ._example_class-diagram.puml_
 [%collapsible]
@@ -855,9 +855,9 @@ include::{plantumlsdir}/example_class-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Klassendiagramm mit PlantUML
-:diagramFile: example_class-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Klassendiagramm mit PlantUML
+:diagram-file: example_class-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -875,9 +875,9 @@ include::{plantumlsdir}/example_activity-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Aktivitätsdiagramm mit PlantUML (neue Syntax)
-:diagramFile: example_activity-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Aktivitätsdiagramm mit PlantUML (neue Syntax)
+:diagram-file: example_activity-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ._example_activity-diagram2.puml_
 [%collapsible]
@@ -888,9 +888,9 @@ include::{plantumlsdir}/example_activity-diagram2.puml[]
 ----
 ====
 
-:diagramTitle: Onboarding-Flow Aktivitätsdiagramm mit PlantUML
-:diagramFile: example_activity-diagram2
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Onboarding-Flow Aktivitätsdiagramm mit PlantUML
+:diagram-file: example_activity-diagram2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 .Hinweise: Bisherige Aktivitätsdiagramm (Legacy) Variante
 [%collapsible]
@@ -906,9 +906,9 @@ include::{plantumlsdir}/example_activity-diagram_legacy.puml[]
 ----
 =====
 
-:diagramTitle: Aktivitätsdiagramm mit PlantUML (legacy)
-:diagramFile: example_activity-diagram_legacy
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Aktivitätsdiagramm mit PlantUML (legacy)
+:diagram-file: example_activity-diagram_legacy
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 ====
 
 {section-separator}
@@ -988,9 +988,9 @@ include::{plantumlsdir}/example_component-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Komponentendiagramm mit PlantUML
-:diagramFile: example_component-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Komponentendiagramm mit PlantUML
+:diagram-file: example_component-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -1036,9 +1036,9 @@ include::{plantumlsdir}/example_package-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Paketdiagramm mit PlantUML
-:diagramFile: example_package-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Paketdiagramm mit PlantUML
+:diagram-file: example_package-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -1090,9 +1090,9 @@ include::{plantumlsdir}/example_sequence-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Sequenzdiagramm mit PlantUML
-:diagramFile: example_sequence-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Sequenzdiagramm mit PlantUML
+:diagram-file: example_sequence-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 
 {section-separator}
@@ -1175,9 +1175,9 @@ include::{plantumlsdir}/example_erm-diagram_v3.puml[]
 ----
 ====
 
-:diagramTitle: Entity Relationship Diagramm (ERD) mit PlantUML (Chen-Notation)
-:diagramFile: example_erm-diagram_v3
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Entity Relationship Diagramm (ERD) mit PlantUML (Chen-Notation)
+:diagram-file: example_erm-diagram_v3
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ====== Variante: Erweiterung des Klassen Diagramms
 
@@ -1248,9 +1248,9 @@ include::{plantumlsdir}/example_erm-diagram_v1.puml[]
 ----
 ====
 
-:diagramTitle: Entity Relationship Diagramm (ERD) mit PlantUML (Krähenfußnotation)
-:diagramFile: example_erm-diagram_v1
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Entity Relationship Diagramm (ERD) mit PlantUML (Krähenfußnotation)
+:diagram-file: example_erm-diagram_v1
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ._example_erm-diagram_v2.puml_
 [%collapsible]
@@ -1261,9 +1261,9 @@ include::{plantumlsdir}/example_erm-diagram_v2.puml[]
 ----
 ====
 
-:diagramTitle: Entity Relationship Diagramm (ERD) mit PlantUML (UML, Chen-Notation)
-:diagramFile: example_erm-diagram_v2
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Entity Relationship Diagramm (ERD) mit PlantUML (UML, Chen-Notation)
+:diagram-file: example_erm-diagram_v2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 ._example_rm-diagram.puml_
 [%collapsible]
@@ -1274,9 +1274,9 @@ include::{plantumlsdir}/example_rm-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Relationenmodell Diagramm (RM) mit PlantUML (Krähenfußnotation)
-:diagramFile: example_rm-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Relationenmodell Diagramm (RM) mit PlantUML (Krähenfußnotation)
+:diagram-file: example_rm-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 {section-separator}
 
@@ -1337,9 +1337,9 @@ include::{plantumlsdir}/example_usecase-diagram.puml[]
 ----
 ====
 
-:diagramTitle: Anwendungsfalldiagramm für eine beispielhafte eRoller App
-:diagramFile: example_usecase-diagram
-plantuml::{plantumlsdir}/{diagramFile}.puml[title="{diagramTitle}", alt="{diagramTitle}", format="svg", target="{diagramsdir}/{diagramFile}"]
+:diagram-title: Anwendungsfalldiagramm für eine beispielhafte eRoller App
+:diagram-file: example_usecase-diagram
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
 
 include::sitemap.inc.adoc[]

@@ -18,10 +18,10 @@ innerhalb Ihres Repository zu verwalten und zu diskutieren.
 - https://docs.github.com/en/issues[GitHub Issues]
 - https://docs.github.com/en/issues/tracking-your-work-with-issues/learning-about-issues/quickstart[Quickstart for GitHub Issues]
 
-:imageTitle: Screenshot: Bereich Issues auf GitHub
-:imageFile: screenshot_github_issues.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Screenshot: Bereich Issues auf GitHub
+:image-file: screenshot_github_issues.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Jeder Issue (Aufgabe, Ticket, ...) besteht aus einem *Titel* und der
 *Beschreibung* des Sachverhaltes. Zusätzlich können zur besseren Verwaltung
@@ -195,10 +195,10 @@ ausgehen vom Startdatum und mit der Zeitraumdauer, angelegt.
 Anzeige aller offenen Aufgaben, insbesondere User Stories, Bugs, Spikes und
 technische Stories.
 
-:imageTitle: Screenshot: GitHub Project - Product Backlog
-:imageFile: screenshot_github_project_product_backlog.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Screenshot: GitHub Project - Product Backlog
+:image-file: screenshot_github_project_product_backlog.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Dies dient als Grundlage, um zu klären, welche Aufgaben `neu` oder `ready` für
 die Bearbeitung sind.
@@ -221,10 +221,10 @@ die Bearbeitung sind.
 
 Anzeige aller offenen Aufgaben gruppiert nach Ihrer Zuordnung zu den Sprints.
 
-:imageTitle: Screenshot: GitHub Project - Sprint Planning
-:imageFile: screenshot_github_project_sprint_planning.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Screenshot: GitHub Project - Sprint Planning
+:image-file: screenshot_github_project_sprint_planning.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
 Übersicht über alle offenen (Ready) Aufgaben zu behalten.
@@ -256,10 +256,10 @@ Dies dient als Grundlage für die Planung der nächsten Iteration/Sprint, um die
 Anzeige aller Aufgaben, die aktuell in Bearbeitung sind, gruppiert nach ihrem
 Status.
 
-:imageTitle: Screenshot: GitHub Project - Current Sprint
-:imageFile: screenshot_github_project_current_sprint.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Screenshot: GitHub Project - Current Sprint
+:image-file: screenshot_github_project_current_sprint.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Dies dient als Übersicht über den Fortschritt der Aufgaben im aktuellen
 Sprint.
@@ -334,10 +334,10 @@ In der *Issues* Anzeige von GitHub werden alle vorhandenen *Issues* und *Pull
 Requests* aufgelistet. Standardmäßig ist die Sicht mit `is:issue is:open` auf
 offene Issues gefiltert.
 
-:imageTitle: Issue-Ansicht in GitHub
-:imageFile: screenshot_github_issues_filter.jpg
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Issue-Ansicht in GitHub
+:image-file: screenshot_github_issues_filter.jpg
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 .Hinweise zu den Filtermöglichkeiten
 [%collapsible]

@@ -197,10 +197,10 @@ workflows] können eigene Workflows angelegt oder aus Vorlagen passende
 ausgewählt werden. Alternativ kann man die Workflow-Dateien auch direkt unter
 `.github/workflows` anlegen.
 
-:imageTitle: GitHub Actions in GitHub
-:imageFile: screenshot_github_github-actions.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: GitHub Actions in GitHub
+:image-file: screenshot_github_github-actions.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 Sind die Workflows angelegt, werden sie bei Änderungen am Quellcode bzw. in
 Abhängigkeit der festgelegten Events ausgeführt. Den Status der Workflows, ob
@@ -227,15 +227,15 @@ GitHub-Oberfläche an Symbolen und Textangaben.
 
 Folgend ein paar Screenshots der GitHub-Oberfläche:
 
-:imageTitle: Pull-Request mit zusätzlichem Status der zugehörigen Workflows
-:imageFile: screenshot_github_github-actions_workflow_status.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Pull-Request mit zusätzlichem Status der zugehörigen Workflows
+:image-file: screenshot_github_github-actions_workflow_status.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
-:imageTitle: Detailansicht eines erfolgreichen Jobs in einem Workflow
-:imageFile: screenshot_github_github-actions_workflow_job_okay.png
-.{imageTitle}
-image::{imageFile}["{imageTitle}", width=800, link="{imagesdir}/{imageFile}"]
+:image-title: Detailansicht eines erfolgreichen Jobs in einem Workflow
+:image-file: screenshot_github_github-actions_workflow_job_okay.png
+.{image-title}
+image::{image-file}["{image-title}", width=800, link="{imagesdir}/{image-file}"]
 
 =====
 ====
