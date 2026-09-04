@@ -59,7 +59,7 @@ image::{image-file}["{image-title}", width=600, link="{imagesdir}/{image-file}"]
 
 === 1. Änderungen und Versionen verwalten
 
-. Die folgenden Aufgaben behandeln den Umgang mit *Änderungen* und *Versionen*
+Die folgenden Aufgaben behandeln den Umgang mit *Änderungen* und *Versionen*
 (Commits) im lokalen Arbeitsverzeichnis.
 
 - *Änderung* ... (noch) nicht versionierte Änderung im lokalen Arbeitsverzeichnis
