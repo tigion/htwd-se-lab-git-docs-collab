@@ -606,7 +606,107 @@ pub fn info(&self) -> String {
 
 {section-separator}
 
-==== Aufgabe 3 - Diskussion
+==== Aufgabe 3 - Convert AsciiDoc to PDF
+
+In dieser Aufgabe wird ein Workflow erstellt, welcher das Konvertieren von
+einer AsciiDoc-Datei in ein PDF automatisiert.
+
+:url-gha-event-wd: https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#workflow_dispatch
+
+NOTE: Da GitHub Actions je nach Tarif einem zeitlichen Limit unterliegt, wird
+der Workflow nicht bei jeder neuen Version automatisch ausgeführt. Stattdessen
+ermöglicht {url-gha-event-wd}[`workflow_dispatch`] den manuellen Start über die
+GitHub-Actions-Oberfläche.
+
+. Wechseln Sie wieder in Ihr `htwd-se-example-project`-Repository.
+. Legen Sie eine weitere Workflow-Datei _generate-docs.yaml_ an mit folgenden
+  Inhalt an:
++
+.generate-docs.yaml
+[%collapsible]
+====
+[source,yaml]
+----
+# This workflow converts an AsciiDoc file to an PDF
+# using Asciidoctor CLI and uploads it as an artifact.
+name: Convert AsciiDoc to PDF
+
+# Set the AsciiDoc source file here.
+env:
+  DOCUMENT_1: docs/demo-document.adoc
+
+# Trigger the workflow manually from the GitHub Actions tab.
+on: workflow_dispatch
+
+jobs:
+  build-pdf:
+    name: Generate PDF from AsciiDoc
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      # Setup Ruby environment
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0"
+          bundler-cache: true
+
+      # Install Asciidoctor and related gems
+      - name: Install Asciidoctor
+        run: |
+          # Required dependency for Asciidoctor with Ruby 4.0.0+
+          gem install logger
+          # Asciidoctor and PDF converter
+          gem install asciidoctor
+          gem install asciidoctor-pdf
+          # Syntax highlighting
+          gem install rouge
+          # Text hyphenation
+          gem install text-hyphen
+          # Diagram support for Asciidoctor
+          gem install asciidoctor-diagram
+          gem install asciidoctor-diagram-plantuml
+
+      # Install Graphviz (dot) for advanced diagrams (PlantUML)
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      # Convert AsciiDoc to PDF in the build directory
+      - name: Convert AsciiDoc to PDF
+        run: |
+          asciidoctor-pdf -r asciidoctor-diagram -D build "${{ env.DOCUMENT_1 }}"
+
+      # Upload the generated PDF as an artifact
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v7
+        with:
+          # Variant 1: Upload each PDF in the build directory (unzipped)
+          path: "build/*.pdf"
+          archive: false
+          # Variant 2: Upload the entire build directory (zipped)
+          # name: documents
+          # path: build
+----
+====
+
+. Passen Sie die AsciiDoc-Datei `docs/demo-document.adoc` in der Variable
+  `DOCUMENT_1` an Ihre zu verwendende AsciiDoc-Datei an.
+
+. Übernehmen Sie die eben angelegten Workflow-Dateien als neue Version in Ihr
+  Repository und pushen diese zum _remote_-Repository.
+
+. Starten Sie den Workflow über die GitHub Actions Oberfläche und schauen Sie
+  das generierte PDF-Dokument an.
+
+{section-separator}
+
+==== Aufgabe 4 - Diskussion
 
 . Diskutieren Sie, welche Möglichkeiten für die Einführung automatisierter
   Tests in Ihren jeweiligen Beleg-Projekten sinnvoll wären und was getestet
