@@ -433,7 +433,6 @@ sein, dass immer noch die alten fehlerhaften Diagrammbilder angezeigt werden.
 Hier hilft es die alten Diagrammbilder vorher zu löschen. In Praktikum wären
 das der Ordner *.asciidoctor*/ und der Ordner images/*diagrams*/.
 
-
 ==== Variante 3: Asciidoctor mit icon:ship[] Docker
 
 NOTE: Voraussetzung für die Verwendung dieser Variante ist eine vorhandene
@@ -569,6 +568,81 @@ Container.
 
 . Beenden mit Rechtsklick auf Dev Container: Asciidoctor (links unten) …`Close
   Remote Connection` oder  `Reopen Folder Locally`
+
+
+==== Variante 4. Asciidoctor mit icon:apple[] Apple Container
+
+Apple Container ist eine Container-Laufzeitumgebung ähnlich wie Docker, aber
+nur für icon:apple[] macOS mit arm64 (Apple Silicon) Architektur. Sie ist
+kompatible zu Docker-Containern.
+
+NOTE: Voraussetzung ist eine vorhandene
+https://github.com/apple/container[Installation von Apple Container],
+bspw. über Homebrew: `brew install container`.
+
+===== Variante: Interaktive Shell
+
+Die Konvertierung der Dokumente erfolgt über einen Asciidoctor Container, in
+welchem die Asciidoctor Tools installiert sind. Die Vorschau des Dokumentes in
+VS Code erfolgt weiterhin über die Asciidoctor Erweiterung.
+
+. In das lokale Projektverzeichnis `my-asciidoctor-project` wechseln:
++
+[source,sh]
+----
+cd my-asciidoctor-project
+----
+
+. Apple Container mit interaktiver Shell im Terminal (bspw. von VS Code)
+  starten:
++
+[source,sh]
+----
+container run \
+  --interactive --tty \ <1>
+  --remove \ <2>
+  --name asciidoctor \ <3>
+  --volume "$(pwd):/documents/" \ <4>
+  asciidoctor/docker-asciidoctor <5>
+----
+<1> Startet den Container im interaktiven Modus mit Terminal
+<2> Entfernt den Container nach dem Beenden automatisch
+<3> Name des Containers
+<4> Mountet das lokale Projektverzeichnis in den Container als `/documents`
+<5> Der angegebene Asciidoctor Docker Container
+    https://github.com/asciidoctor/docker-asciidoctor[asciidoctor/docker-asciidoctor]
+    ist vom Asciidoctor Projekt und enthält alle relevanten Tools.
+
+. Prüfen, ob lokaler Projektinhalt im Container im `/documents`
+  Verzeichnis verfügbar ist:
++
+[source,console]
+----
+asciidoctor:/documents# pwd
+/documents
+asciidoctor:/documents# ls
+README.md  docs
+----
+
+. Dokument mit Asciidoctor-Befehl im Container als HTML/PDF erstellen:
++
+[source,console]
+----
+asciidoctor:/documents# cd docs
+asciidoctor:/documents/docs# asciidoctor document.adoc
+asciidoctor:/documents/docs# asciidoctor-pdf document.adoc
+asciidoctor:/documents/docs# asciidoctor -r asciidoctor-diagram document.adoc
+asciidoctor:/documents/docs# asciidoctor-pdf -r asciidoctor-diagram document.adoc
+----
++
+Das Ergebnis liegt anschließend im Projektverzeichnis.
+
+. Container in der interaktiven Shell mit `exit` beenden:
++
+[source,console]
+----
+asciidoctor:/documents/docs# exit
+----
 
 == Konfiguration
 
