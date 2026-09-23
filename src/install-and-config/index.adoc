@@ -94,9 +94,9 @@ for converting AsciiDoc content to HTML5, DocBook, PDF, and other formats.
   - https://asciidoctor.org/[Asciidoctor]
 ====
 
-Im Folgenden werden drei Varianten gezeigt, wie Asciidoctor installiert werden
-kann. Die erste Variante ist für den Anfang die einfachste, da hier nur Visual
-Studio Code mit der Asciidoctor Erweiterung benötigt wird.
+Im Folgenden werden verschiedene Varianten gezeigt, wie Asciidoctor installiert
+werden kann. Die erste Variante ist für den Anfang die einfachste, da hier nur
+Visual Studio Code mit der Asciidoctor Erweiterung benötigt wird.
 
 ==== Variante 1: Asciidoctor mit Visual Studio Code
 
@@ -582,19 +582,25 @@ bspw. über Homebrew: `brew install container`.
 
 ===== Variante: Interaktive Shell
 
-Die Konvertierung der Dokumente erfolgt über einen Asciidoctor Container, in
-welchem die Asciidoctor Tools installiert sind. Die Vorschau des Dokumentes in
+Die Konvertierung der Dokumente erfolgt über einen Linux Container, in
+welchem die Asciidoctor Tools installiert sind. Die Vorschau der Dokumente in
 VS Code erfolgt weiterhin über die Asciidoctor Erweiterung.
 
-. In das lokale Projektverzeichnis `my-asciidoctor-project` wechseln:
+. Falls noch nicht geschehen, Apple Container Umgebung starten:
 +
 [source,sh]
 ----
-cd my-asciidoctor-project
+container system start
 ----
 
-. Apple Container mit interaktiver Shell im Terminal (bspw. von VS Code)
-  starten:
+. In das lokale Projektverzeichnis wechseln:
++
+[source,sh]
+----
+cd my-asciidoctor-project/
+----
+
+. Asciidoctor Container mit interaktiver Shell starten:
 +
 [source,sh]
 ----
@@ -605,37 +611,37 @@ container run \
   --volume "$(pwd):/documents/" \ <4>
   asciidoctor/docker-asciidoctor <5>
 ----
-<1> Startet den Container im interaktiven Modus mit Terminal
-<2> Entfernt den Container nach dem Beenden automatisch
+<1> Startet den Container im interaktiven Modus mit Terminal (kurz `-it`)
+<2> Entfernt den Container nach dem Beenden automatisch (kurz `--rm`)
 <3> Name des Containers
-<4> Mountet das lokale Projektverzeichnis in den Container als `/documents`
+<4> Mountet das lokale Projektverzeichnis in den Container als `/documents` (kurz `-v`)
 <5> Der angegebene Asciidoctor Docker Container
     https://github.com/asciidoctor/docker-asciidoctor[asciidoctor/docker-asciidoctor]
     ist vom Asciidoctor Projekt und enthält alle relevanten Tools.
 
-. Prüfen, ob lokaler Projektinhalt im Container im `/documents`
-  Verzeichnis verfügbar ist:
+. Prüfen, ob lokaler Projektinhalt im gestarteten Container unter `/documents`
+  verfügbar ist:
 +
 [source,console]
 ----
-asciidoctor:/documents# pwd
-/documents
 asciidoctor:/documents# ls
 README.md  docs
 ----
 
-. Dokument mit Asciidoctor-Befehl im Container als HTML/PDF erstellen:
+. Dokument mit Asciidoctor-Befehl im Container als HTML oder PDF erstellen:
 +
 [source,console]
 ----
 asciidoctor:/documents# cd docs
+
 asciidoctor:/documents/docs# asciidoctor document.adoc
 asciidoctor:/documents/docs# asciidoctor-pdf document.adoc
+
 asciidoctor:/documents/docs# asciidoctor -r asciidoctor-diagram document.adoc
 asciidoctor:/documents/docs# asciidoctor-pdf -r asciidoctor-diagram document.adoc
 ----
 +
-Das Ergebnis liegt anschließend im Projektverzeichnis.
+Das Ergebnis liegt anschließend im lokalen Projektverzeichnis.
 
 . Container in der interaktiven Shell mit `exit` beenden:
 +
@@ -643,6 +649,14 @@ Das Ergebnis liegt anschließend im Projektverzeichnis.
 ----
 asciidoctor:/documents/docs# exit
 ----
+
+. Falls gewünscht, die Apple Container Umgebung wieder beenden:
++
+[source,sh]
+----
+container system stop
+----
+
 
 == Konfiguration
 
