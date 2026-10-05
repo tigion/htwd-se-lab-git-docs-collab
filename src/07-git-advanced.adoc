@@ -77,7 +77,7 @@ und wechseln Sie temporär zu einem früheren Projektstand.
 ====
 =====
 Mit dem Befehl `diff` werden die Unterschiede zwischen zwei Versionen (Commits)
-oder zum lokalen Arbeitsstand angezeigt. Ein `+` steht für eine hinzugefügte und
+oder zum lokalen Arbeitsstand angezeigt. Ein `\+` steht für eine hinzugefügte und
 ein `-` für eine entfernte Zeile. Änderungen innerhalb einer Zeile werden mit
 einer Kombination aus `-` und `+` dargestellt.
 
