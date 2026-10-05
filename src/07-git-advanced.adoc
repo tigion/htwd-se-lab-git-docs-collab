@@ -114,9 +114,10 @@ git diff <branch-1> <branch-2> <7>
 [%collapsible]
 ====
 =====
-Mit dem Befehl `switch` kann zwischen Branches gewechselt werden. Mit der Option
-`--detach` kann außerdem ein bestimmter Commit ausgecheckt werden, ohne auf
-einen Branch zu wechseln.
+Mit der Option `--detach` wird bei `git switch --detach <commit>`, statt zu
+einem Branch, zu einem bestimmten Commit gewechselt. Dabei befindet sich `HEAD`
+im sogenannten <<_detached_head,Detached HEAD>>-Zustand und zeigt statt auf
+einen Branch direkt auf den Commit.
 
 Zum aktuellen Stand kann man mit `git switch <branch>` zurückkehren. Ein
 Wechsel zu einem älteren Commit verändert die Historie nicht. Zwischenzeitliche
