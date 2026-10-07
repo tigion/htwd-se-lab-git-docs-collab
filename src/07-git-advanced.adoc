@@ -275,8 +275,8 @@ image::grafik_git_checkout-reset-clean.png["...",width=381]
 
 [source, sh]
 ----
-git restore -- <file> <2>
-git checkout -- <file> <1>
+git restore -- <file> <1>
+git checkout -- <file> <2>
 git reset --hard <3>
 git clean -df <4>
 ----
