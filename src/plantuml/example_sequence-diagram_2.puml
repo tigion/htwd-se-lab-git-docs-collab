@@ -1,0 +1,41 @@
+@startuml example-sequence-diagram
+
+'skinparam sequenceMessageAlign center
+'skinparam responseMessageBelowArrow true
+
+title Für Event anmelden (mit Fehlerfall)
+
+actor "Student/in" as a01
+participant "Web App" as p01
+participant "RegistrationController" as p02
+participant "RegisterForEvent" as p03 #fab9ac
+participant "EventRepository" as p04
+participant "RegistrationRepository" as p05
+
+a01 ->  p01:  1. Anmelden wählen
+p01 ->  p02:  2. POST /registration\n{studentId, eventId}
+p02 ->  p03:  3. register(studentId, eventId)
+
+p03 ->  p04:  4. Veranstaltung laden
+p04 --> p03:  5. Event
+p03 ->  p05:  6. relevante Registrierungsinformation laden
+p05 --> p03:  7. Registrierungsinformation
+p03 ->  p03:  8. koordiniert Prüfung der Anmelderegeln
+
+alt Anmeldung zulässig
+
+  p03 ->  p05:  9. Registrierung speichern
+  p05 --> p03: 10. gespeichert
+  p03 --> p02: 11. Erfolg
+  p02 --> p01: 12. 201 Created
+  p01 --> a01: 13. Anmeldung bestätigt
+
+else Event voll
+
+  p03 --> p02:  9. Event voll
+  p02 --> p01: 10. 409 Conflict
+  p01 --> a01: 11. Keine Anmeldung möglich
+
+end
+
+@enduml

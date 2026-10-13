@@ -1094,6 +1094,19 @@ include::{plantumlsdir}/example_sequence-diagram.puml[]
 :diagram-file: example_sequence-diagram
 plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
 
+._example_sequence-diagram_2.puml_
+[%collapsible]
+====
+[source,puml]
+----
+include::{plantumlsdir}/example_sequence-diagram_2.puml[]
+----
+====
+
+:diagram-title: Sequenzdiagramm mit PlantUML
+:diagram-file: example_sequence-diagram_2
+plantuml::{plantumlsdir}/{diagram-file}.puml[title="{diagram-title}", alt="{diagram-title}", format="svg", target="{diagramsdir}/{diagram-file}"]
+
 
 {section-separator}
 
