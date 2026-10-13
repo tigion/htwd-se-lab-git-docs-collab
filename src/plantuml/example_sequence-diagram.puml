@@ -20,7 +20,7 @@ c02 -> c03: Do Work
 activate c03 #LightSalmon
 
 c03 -> db01: Request Data
-'|||
+
 db01 --> c03: Send Data
 
 c03 -> c03: Work
