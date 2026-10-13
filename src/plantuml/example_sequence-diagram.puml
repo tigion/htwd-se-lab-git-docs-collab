@@ -5,7 +5,7 @@
 
 actor User as u01
 participant "UI Class" as c01
-participant "Controller Class" as c02
+participant "Controller Class" as c02 #b9edfa
 participant "Work Class" as c03 #LightSalmon
 database "SQL Server" as db01 #LightGray
 
@@ -14,7 +14,7 @@ activate c01
 note left: user requests data
 
 c01 -> c02: Create Request
-activate c02
+activate c02 #b9edfa
 
 c02 -> c03: Do Work
 activate c03 #LightSalmon
