@@ -77,19 +77,22 @@ echo "done"
 echo "Generate HTML files:"
 # Main documents
 attributes=(-a toc=left)
-required_libs=(-r asciidoctor-diagram)
+requires=(
+  -r asciidoctor-diagram
+  -r "./${source_folder}/extensions/copy-button-postprocessor.rb"
+)
 find "$source_folder" \
   -maxdepth 1 \
   -type f -name "*.adoc" -not -name "*.inc.adoc" \
   -exec echo "  {}" \; \
-  -exec asciidoctor "${attributes[@]}" "${required_libs[@]}" -D "$build_folder" {} \;
+  -exec asciidoctor "${attributes[@]}" "${requires[@]}" -D "$build_folder" {} \;
 # Special subfolders
 attributes=(-a toc=auto)
 for special_subfolder in "faq" "install-and-config"; do
   find "${source_folder}/${special_subfolder}" \
     -type f -name "*.adoc" -not -name "*.inc.adoc" \
     -exec echo "  {}" \; \
-    -exec asciidoctor "${attributes[@]}" "${required_libs[@]}" -D "${build_folder}/${special_subfolder}" {} \;
+    -exec asciidoctor "${attributes[@]}" "${requires[@]}" -D "${build_folder}/${special_subfolder}" {} \;
 done
 echo "done"
 

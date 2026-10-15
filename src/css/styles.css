@@ -52,3 +52,41 @@
 .listingblock {
   font-size: 0.9em;
 }
+
+/* --- Code Copy Button --- */
+
+.code-wrapper:hover .copy-btn {
+  display: block;
+}
+
+.copy-btn {
+  display: none;
+
+  position: absolute;
+  font-size: 0.75em;
+  /* top: 1.425rem; */
+  bottom: 0.425rem;
+  right: 0.225rem;
+  line-height: 1;
+  text-transform: uppercase;
+  color: inherit;
+
+  font-family: "Droid Sans Mono", "DejaVu Sans Mono", monospace;
+  font-weight: 400;
+
+  border: none;
+  background: none;
+  opacity: 0.5;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+}
+
+.copy-btn:active {
+  color: #c00;
+}
+
+/* .copy-btn svg { */
+/*   margin-right: 0.15rem; */
+/* } */
